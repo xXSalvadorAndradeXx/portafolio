@@ -326,6 +326,22 @@ top: 50%;
     transform: scale(1.1); /* Efecto de agrandamiento */
 }
 
+.progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar .progress {
+            width: 0%; /* Cambiar según el progreso */
+            height: 100%;
+            background: #0078ff;
+            transition: width 0.4s ease;
+        }
+
 
 
     </style>
@@ -356,9 +372,11 @@ top: 50%;
   
 
     <div class="container4">
-       
+        <div class="card2">
+            <img src="recursos/python.png" alt="" height="50" width="50" style="position: relative;">
+        
             <h2>Habilidades</h2>
-
+        </div>
     </div>
 
     </div>
@@ -370,16 +388,26 @@ top: 50%;
 
     <div class="container">
         <div class="card">
-            <h2>Feature 1</h2>
-            <p>Discover the amazing capabilities of our platform.</p>
+            <img src="recursos/python.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>Python</h2>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
         </div>
         <div class="card">
-            <h2>Feature 2</h2>
-            <p>Effortless and elegant solutions for your needs.</p>
+            <img src="recursos/html.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>HTML</h2>
+            <div class="progress-bar">
+                <div class="progress"></div>
+        </div>
         </div>
         <div class="card">
-            <h2>Feature 3</h2>
-            <p>Seamlessly integrated with modern technologies.</p>
+            <img src="recursos/java.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>Java</h2>
+            
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
         </div>
     </div>
 
