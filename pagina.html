@@ -301,30 +301,7 @@
             text-align: center; 
         }
 
-        .button-container {
-    
-    position: absolute;
-top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-}
 
-.transparent-button {
-    background-color: rgba(255, 255, 255, 0.6); /* Fondo negro con transparencia */
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.transparent-button:hover {
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo más oscuro al pasar el mouse */
-    transform: scale(1.1); /* Efecto de agrandamiento */
-}
 
 .progress-bar {
             width: 100%;
@@ -341,6 +318,44 @@ top: 50%;
             background: #0078ff;
             transition: width 0.4s ease;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .button-container {
+    
+    position: absolute;
+top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.transparent-button {
+    background-color: rgba(255, 255, 255, 0.183); /* Fondo negro con transparencia */
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Añadimos la animación de 'transform' */
+    text-decoration: none;
+}
+
+.transparent-button:hover {
+    background-color: rgba(255, 255, 255, 0.288); /* Fondo más oscuro al pasar el mouse */
+    transform: scale(1.1); /* Efecto de agrandamiento */
+}
 
 
 
@@ -365,18 +380,22 @@ top: 50%;
 
     <img src="recursos/1.jpg" alt="Logo de construcción" height="400" width="1300" style="position: relative;">
 
+
+
+    
     <div class="button-container">
-        <button class="transparent-button">Haz clic aquí</button>
+        <button onclick="downloadCV()" class="transparent-button">Haz clic aquí</button>
     </div>
+    
+    
+    
 
   
 
     <div class="container4">
-        <div class="card2">
-            <img src="recursos/python.png" alt="" height="50" width="50" style="position: relative;">
-        
+
             <h2>Habilidades</h2>
-        </div>
+
     </div>
 
     </div>
@@ -422,6 +441,15 @@ top: 50%;
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('show');
         });
+
+
+        function downloadCV() {
+    var link = document.createElement('a');
+    link.href = 'Doc/cv.pdf'; // Asegúrate de que la ruta sea correcta
+    link.download = 'MiCV'; // Nombre del archivo al descargarse
+    link.click(); // Simula el clic para descargar el archivo
+}
+
     </script>
 </body>
 
