@@ -1,108 +1,151 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página en Construcción</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Bahnschrift';
-        }
-
-        body {
-            background-color: #f5f5f7;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        .container {
-            text-align: center;
-            background: #ffffff;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 90%;
-        }
-
-        .container img {
-            width: 100px;
-            height: auto;
-            margin-bottom: 1rem;
-        }
-
-        .container h1 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            color: #111;
-        }
-
-        .container p {
-            font-size: 1rem;
-            color: #666;
-            margin-bottom: 1.5rem;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: #e0e0e0;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 1rem;
-        }
-
-        .progress-bar .progress {
-            width: 0%; /* Cambiar según el progreso */
-            height: 100%;
-            background: #0078ff;
-            transition: width 0.4s ease;
-        }
-
-        .button {
-            display: inline-block;
-            background-color: #0078ff;
-            color: #fff;
-            padding: 0.75rem 1.5rem;
-            font-size: 1rem;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-
-        .button:hover {
-            background-color: #005ecb;
-        }
-
-        footer {
-            margin-top: 1rem;
-            font-size: 0.875rem;
-            color: #999;
-        }
-    </style>
+    <title>Infinity UI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="Diseño/inicio.css">
 </head>
 <body>
-    <div class="container">
-        <img src="recursos/1.png" alt="Logo de construcción" />
-        <h1>Página en Construcción</h1>
-        <p>Estamos trabajando duro para traerte algo increíble. ¡Vuelve pronto!</p>
-        
-        <div class="progress-bar">
-            <div class="progress"></div>
+    <nav>
+        <a class="menu-toggle"><i class="fas fa-bars"></i></a>
+        <ul>
+          
+               
+                         
+            
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="#acerca1">Acerca de</a></li>
+           
+        </ul>
+       
+    </nav>
+
+    
+    <img src="recursos/1.jpg" alt="Logo" class="logo" height="400px" width="1300px">
+
+    <div id="acerca1" class="sobre-mi">
+        <div class="imagen">
+            <img src="recursos/1.png" alt="Elias Mauricio Parada Lozano">
         </div>
+        <div class="contenido">
+            <h1>Sobre Mí</h1>
+            <p>
+                Soy Salvador Ernesto Andrade Peña, un desarrollador full-stack apasionado por la creación de soluciones web innovadoras. Con una amplia experiencia tanto en desarrollo front-end como back-end, trabajo con tecnologías como HTML, CSS, JavaScript, PHP, Laravel, Node.js, Vue y Firebase. Siempre en busca de nuevas tecnologías y desafíos, me dedico a mejorar constantemente mis habilidades y aportar un valor significativo a los proyectos en los que participo, fusionando creatividad y eficiencia en cada solución que desarrollo.
+            </p>
+            <a href="#" class="descargar-cv">Descargar CV</a>
+        </div>
+    </div>
+
+    
+    
+    
 
   
 
-        <footer>
-            &copy; 2024 Salvador Andrade. Todos los derechos reservados.
-        </footer>
+    <div id="acerca" class="container4">
+
+            <h2>Habilidades</h2>
+
     </div>
+
+   
+    <div class="container">
+        <div class="card">
+            <img src="recursos/python.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>Python</h2>
+            <div class="progress-bar python-progress">
+                <div class="progress" style="width: 80%;"></div> <!-- Cambiar el ancho aquí -->
+            </div>
+        </div>
+        <div class="card">
+            <img src="recursos/html.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>HTML</h2>
+            <div class="progress-bar html-progress">
+                <div class="progress" style="width: 90%;"></div> <!-- Cambiar el ancho aquí -->
+            </div>
+        </div>
+        <div class="card">
+            <img src="recursos/java.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>Java</h2>
+            <div class="progress-bar java-progress">
+                <div class="progress" style="width: 60%;"></div> <!-- Cambiar el ancho aquí -->
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="card">
+            <img src="recursos/javas.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>JavaScript</h2>
+            <div class="progress-bar javascript-progress">
+                <div class="progress" style="width: 70%;"></div> <!-- Cambiar el ancho aquí -->
+            </div>
+        </div>
+        <div class="card">
+            <img src="recursos/csha.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>C#</h2>
+            <div class="progress-bar csharp-progress">
+                <div class="progress" style="width: 85%;"></div> <!-- Cambiar el ancho aquí -->
+            </div>
+        </div>
+        <div class="card">
+            <img src="recursos/blender.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>Blender</h2>
+            <div class="progress-bar blender-progress">
+                <div class="progress" style="width: 50%;"></div> <!-- Cambiar el ancho aquí -->
+            </div>
+        </div>
+    </div>
+    
+    
+
+
+
+    <div class="container4">
+
+        <h2>Contacto</h2>
+
+</div>
+
+
+
+    
+
+    <footer>
+        &copy; 2024 Salvador Andrade. All rights reserved.
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+    
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+
+
+        function downloadCV() {
+    var link = document.createElement('a');
+    link.href = 'Doc/cv.pdf'; // Asegúrate de que la ruta sea correcta
+    link.download = 'MiCV'; // Nombre del archivo al descargarse
+    link.click(); // Simula el clic para descargar el archivo
+}
+
+
+window.addEventListener('scroll', function() {
+    const sobreMi = document.querySelector('.sobre-mi');
+    if (window.scrollY > 100) {  // Ajusta el valor para que se active después de un cierto desplazamiento
+        sobreMi.classList.add('visible');
+    } else {
+        sobreMi.classList.remove('visible');
+    }
+});
+
+
+    </script>
 </body>
+
+
 </html>
