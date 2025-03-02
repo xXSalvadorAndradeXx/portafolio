@@ -67,6 +67,11 @@ nav {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    position: fixed;  /* Fija el menú en la pantalla */
+    top: 0;  /* Colócalo en la parte superior */
+    left: 50%;  /* Centra el menú horizontalmente */
+    transform: translateX(-50%);  /* Ajusta el centrado */
+    z-index: 1000;  /* Asegura que esté por encima de otros elementos */
     
 }
 
@@ -512,4 +517,10 @@ transform: scale(1.1); /* Efecto de agrandamiento */
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+
+
+.contenedor {
+    margin-top: 70px;
 }
