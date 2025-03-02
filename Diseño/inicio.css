@@ -285,16 +285,17 @@ nav ul li a:hover {
 
 
 .container4 {
-    margin-top: 20px;   
+ 
     background-color: #ffffff;
     padding: 2rem;
     border-radius: 16px;
     
-    max-width: 400px;
-    width: 90%;
-   
-    text-align: center; 
+    width: 105%; /* Asegura que ocupe todo el ancho disponible */
+    max-width: 110%; /* Asegura que no haya un límite de ancho */
+    
+    text-align: center;
 }
+
 
 .progress-bar {
     width: 100%;
@@ -663,3 +664,21 @@ h1{
     filter: blur(1px); /* Desenfoque de la imagen */
     
 }
+
+.habilidades {
+    margin-top: 60px;
+    background-color: #021b89;
+    color: rgb(255, 255, 255);
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    max-width: none; /* Elimina cualquier restricción de ancho */
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+   
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(20px);
+}
+
+
