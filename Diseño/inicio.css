@@ -7,6 +7,9 @@
     --text-color: black;
     --hover-color: black;
 }
+.justificado {
+    text-align: justify;
+}
 
 * {
     margin: 0;
@@ -280,10 +283,6 @@ nav ul li a:hover {
     }
 }
 
-iframe {
-   margin-top: 10px;
-   border-radius: 10px;
-}
 
 .container4 {
     margin-top: 20px;   
@@ -508,6 +507,18 @@ iframe {
     }
 }
 
+@keyframes firebaseFlash {
+    0% {
+        background-color: #8e44ad;
+    }
+    50% {
+        background-color: #9b59b6;
+    }
+    100% {
+        background-color: #8e44ad;
+    }
+}
+
 
 
 
@@ -622,4 +633,32 @@ transform: scale(1.1); /* Efecto de agrandamiento */
 
 .contenedor {
     margin-top: 70px;
+    position: relative;
+    display: inline-block;
+}
+
+.texto {
+    background-color: #01013980;
+    position: absolute;
+    padding: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+}
+
+h1{
+    margin: 0;
+}
+.subtitulo {
+    font-size: 12px;
+    margin: 0;
+}
+
+.fondo {
+    border-radius: 30px;
+    filter: blur(1px); /* Desenfoque de la imagen */
+    
 }
