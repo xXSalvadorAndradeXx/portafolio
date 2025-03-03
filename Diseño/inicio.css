@@ -142,12 +142,14 @@ footer {
 }
 
 .container {
+    position: relative;
+    margin-left: 100px;
     max-width: 1200px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
-    justify-content: center;
+ 
 }
 
 .card {
