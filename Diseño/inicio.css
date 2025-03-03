@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Samsung';
+    src: 
+         url('/fonts/Samsung-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
 :root {
     --primary-color: #4a90e2;
     --secondary-color: #5b83b4;
@@ -18,7 +26,7 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Samsung', sans-serif;
     background: var(--dark-color);
     color: var(--text-color);
     display: flex;
@@ -61,6 +69,7 @@ border-radius: 5px; /* Esquinas redondeadas para la barra horizontal */
 }
 
 nav {
+    font-family: 'Samsung', sans-serif;
     background: rgba(255, 255, 255, 0.505);
     padding: 1rem;
     border-radius: 80px;
@@ -79,6 +88,7 @@ nav {
 }
 
 nav ul {
+    font-family: 'Samsung', sans-serif;
     list-style: none;
     display: flex;
    
@@ -666,7 +676,7 @@ h1{
 }
 
 .habilidades {
-    margin-top: 60px;
+    margin-top: 70px;
     background-color: #021b89;
     color: rgb(255, 255, 255);
     width: 100%; /* Asegura que ocupe todo el ancho disponible */
@@ -681,4 +691,65 @@ h1{
     transform: translateY(20px);
 }
 
+/* Contenedor principal */
+.skills-section {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #e0e0e0;
+}
 
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #212529;
+    margin: 0;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.skill-card {
+    background: #f1f3f5;
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.skill-title {
+    font-size: 1.5rem;
+    font-weight: bold; /* O puedes usar 700 */
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+
+.skill-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #6c757d;
+    text-align: justify;
+}
+.container8 {
+ 
+
+    padding: 2rem;
+    border-radius: 16px;
+    
+    width: 105%; /* Asegura que ocupe todo el ancho disponible */
+    max-width: 110%; /* Asegura que no haya un límite de ancho */
+    
+    text-align: center;
+}
