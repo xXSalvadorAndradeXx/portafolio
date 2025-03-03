@@ -1,51 +1,52 @@
 /* Contenedor principal */
 .skills-section {
     text-align: center;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-bottom: 2px solid #e0e0e0;
+    padding: 2rem 1rem;
+    background-color: #fafafa00;
+    border-bottom: 1px solid #ddd;
 }
 
+/* Título de sección */
 .section-title {
     font-size: 1.8rem;
-    font-weight: 600;
-    color: #212529;
-    margin: 0;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 1.5rem;
 }
 
+/* Grid de tarjetas */
 .skills-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    background-color: #ffffff;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
 }
 
+/* Tarjeta individual */
 .skill-card {
-    background: #f1f3f5;
-    border: 1px solid #dee2e6;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease-in-out;
 }
 
 .skill-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Título dentro de la tarjeta */
 .skill-title {
-    font-size: 1.5rem;
-    font-weight: bold; /* O puedes usar 700 */
-    color: #000000;
-    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 0.5rem;
 }
 
-
+/* Descripción dentro de la tarjeta */
 .skill-description {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #6c757d;
-    text-align: justify;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #666;
 }

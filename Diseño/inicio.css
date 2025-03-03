@@ -143,7 +143,7 @@ footer {
 
 .container {
     max-width: 1200px;
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
@@ -158,8 +158,8 @@ footer {
     border-radius: 16px;
     padding: 1.5rem;
     text-align: center;
-    flex: 1 1 calc(30% - 1rem);
-    max-width: calc(30% - 1rem);
+    flex: 1 1 calc(23% - 1rem); /* Ajusta el ancho para 4 por fila */
+    max-width: calc(23% - 1rem); /* Ajusta el ancho para 4 por fila */
     transition: transform 0.2s ease-in-out;
 }
 
@@ -176,6 +176,7 @@ footer {
     font-size: 1rem;
     color: #666666;
 }
+
 
 .nav-icon {
     width: 32px;
@@ -691,15 +692,3 @@ h1{
     transform: translateY(20px);
 }
 
-
-.container8 {
- 
-
-    padding: 2rem;
-    border-radius: 16px;
-    
-    width: 105%; /* Asegura que ocupe todo el ancho disponible */
-    max-width: 110%; /* Asegura que no haya un límite de ancho */
-    
-    text-align: center;
-}
