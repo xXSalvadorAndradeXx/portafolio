@@ -26,6 +26,7 @@
 }
 
 body {
+    overflow-x: hidden;
     font-family: 'Samsung', sans-serif;
     background: var(--dark-color);
     color: var(--text-color);
@@ -167,6 +168,7 @@ footer {
 
 .card:hover {
     transform: translateY(-10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.29);
 }
 
 .card h2 {
@@ -299,7 +301,7 @@ nav ul li a:hover {
 
 .container4 {
  
-    background-color: #ffffff;
+    background-color: #ffffff00;
     padding: 2rem;
     border-radius: 16px;
     
@@ -308,228 +310,7 @@ nav ul li a:hover {
 }
 
 
-.progress-bar {
-    width: 100%;
-    height: 8px;
-    background: #e0e0e0;
-    border-radius: 4px;
-    overflow: hidden;
-    margin-bottom: 1rem;
-}
 
-.progress-bar .progress {
-    height: 100%;
-    transition: width 0.4s ease;
-}
-
-/* Animaciones para cada barra de progreso */
-.python-progress .progress {
-    animation: pythonFlash 1.5s infinite alternate;
-}
-
-.html-progress .progress {
-    animation: htmlFlash 1.5s infinite alternate;
-}
-
-.java-progress .progress {
-    animation: javaFlash 1.5s infinite alternate;
-}
-
-.javascript-progress .progress {
-    animation: jsFlash 1.5s infinite alternate;
-}
-
-.csharp-progress .progress {
-    animation: csharpFlash 1.5s infinite alternate;
-}
-
-.blender-progress .progress {
-    animation: blenderFlash 1.5s infinite alternate;
-}
-
-.node-progress .progress {
-    animation: nodeFlash 1.5s infinite alternate;
-}
-
-.react-progress .progress {
-    animation: reactFlash 1.5s infinite alternate;
-}
-
-.vue-progress .progress {
-    animation: vueFlash 1.5s infinite alternate;
-}
-
-.sql-progress .progress {
-    animation: sqlFlash 1.5s infinite alternate;
-}
-
-.laravel-progress .progress {
-    animation: laravelFlash 1.5s infinite alternate;
-}
-
-.php-progress .progress {
-    animation: phpFlash 1.5s infinite alternate;
-}
-
-.firebase-progress .progress {
-    animation: firebaseFlash 1.5s infinite alternate;
-}
-
-@keyframes pythonFlash {
-    0% {
-        background-color: #0078ff;
-    }
-    50% {
-        background-color: #00bfff; /* Color más brillante para el destello */
-    }
-    100% {
-        background-color: #0078ff;
-    }
-}
-
-@keyframes htmlFlash {
-    0% {
-        background-color: #ff5722;
-    }
-    50% {
-        background-color: #ff7043;
-    }
-    100% {
-        background-color: #ff5722;
-    }
-}
-
-@keyframes javaFlash {
-    0% {
-        background-color: #ff9800;
-    }
-    50% {
-        background-color: #ffb74d;
-    }
-    100% {
-        background-color: #ff9800;
-    }
-}
-
-@keyframes jsFlash {
-    0% {
-        background-color: #4caf50;
-    }
-    50% {
-        background-color: #81c784;
-    }
-    100% {
-        background-color: #4caf50;
-    }
-}
-
-@keyframes csharpFlash {
-    0% {
-        background-color: #00bcd4;
-    }
-    50% {
-        background-color: #80deea;
-    }
-    100% {
-        background-color: #00bcd4;
-    }
-}
-
-@keyframes blenderFlash {
-    0% {
-        background-color: #9c27b0;
-    }
-    50% {
-        background-color: #ba68c8;
-    }
-    100% {
-        background-color: #9c27b0;
-    }
-}
-
-@keyframes nodeFlash {
-    0% {
-        background-color: #8cc84b;
-    }
-    50% {
-        background-color: #a7d88c;
-    }
-    100% {
-        background-color: #8cc84b;
-    }
-}
-
-@keyframes reactFlash {
-    0% {
-        background-color: #61dafb;
-    }
-    50% {
-        background-color: #7ac8f2;
-    }
-    100% {
-        background-color: #61dafb;
-    }
-}
-
-@keyframes vueFlash {
-    0% {
-        background-color: #42b883;
-    }
-    50% {
-        background-color: #61d9a1;
-    }
-    100% {
-        background-color: #42b883;
-    }
-}
-
-@keyframes sqlFlash {
-    0% {
-        background-color: #f29111;
-    }
-    50% {
-        background-color: #ff9c44;
-    }
-    100% {
-        background-color: #f29111;
-    }
-}
-
-@keyframes laravelFlash {
-    0% {
-        background-color: #ff2d20;
-    }
-    50% {
-        background-color: #ff6f62;
-    }
-    100% {
-        background-color: #ff2d20;
-    }
-}
-
-@keyframes phpFlash {
-    0% {
-        background-color: #8e44ad;
-    }
-    50% {
-        background-color: #9b59b6;
-    }
-    100% {
-        background-color: #8e44ad;
-    }
-}
-
-@keyframes firebaseFlash {
-    0% {
-        background-color: #8e44ad;
-    }
-    50% {
-        background-color: #9b59b6;
-    }
-    100% {
-        background-color: #8e44ad;
-    }
-}
 
 
 
