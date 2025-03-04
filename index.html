@@ -336,11 +336,11 @@ function moveSkills(direction) {
     
     // Si es hacia la izquierda
     if (direction === 'left') {
-        currentIndex = currentIndex === 0 ? cards.length - 1 : currentIndex - 1; // Si está en el primer elemento, regresa al último
+        currentIndex = currentIndex === 0 ? cards.length - 4 : currentIndex - 1; // Si está en el primer elemento, regresa al último
     } 
     // Si es hacia la derecha
     else if (direction === 'right') {
-        currentIndex = currentIndex === cards.length - 1 ? 0 : currentIndex + 1; // Si está en el último elemento, regresa al primero
+        currentIndex = currentIndex === cards.length - 4 ? 0 : currentIndex + 1; // Si está en el último elemento, regresa al primero
     }
 
     // Desplazamos el contenedor de las tarjetas
