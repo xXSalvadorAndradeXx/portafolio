@@ -5,48 +5,61 @@
     background-color: #fafafa00;
     border-bottom: 1px solid #ddd;
 }
-
-/* Título de sección */
 .section-title {
-    font-size: 1.8rem;
-    font-weight: 500;
+    font-size: 2rem; /* Aumento de tamaño para mayor visibilidad */
+    font-weight: 700; /* Más negrita para resaltar */
     color: #333;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem; /* Más espacio debajo para separar del contenido */
+    letter-spacing: 0.5px; /* Espaciado de letras para mejorar la legibilidad */
 }
 
 /* Grid de tarjetas */
 .skills-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+    gap: 2rem; /* Aumento de espacio entre tarjetas */
     padding: 1rem;
+    max-width: 1200px; /* Limita el ancho máximo para evitar que se estire demasiado */
+    margin: 0 auto; /* Centrado automático */
 }
 
 /* Tarjeta individual */
 .skill-card {
     background-color: #fff;
     border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 1rem 1.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    transition: box-shadow 0.2s ease-in-out;
+    border-radius: 12px; /* Bordes más redondeados para un look más suave */
+    padding: 2rem; /* Espacio interno más generoso */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
+    transition: all 0.3s ease-in-out; /* Transición más fluida */
 }
 
 .skill-card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada en hover */
+    transform: translateY(-5px); /* Efecto de elevación al pasar el cursor */
 }
 
 /* Título dentro de la tarjeta */
 .skill-title {
-    font-size: 1.2rem;
+    font-size: 1.4rem; /* Título ligeramente más grande */
     font-weight: 600;
     color: #444;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem; /* Mayor separación con la descripción */
+    text-transform: uppercase; /* Hacer el título en mayúsculas */
+    letter-spacing: 1px; /* Espaciado entre letras para más estilo */
 }
 
 /* Descripción dentro de la tarjeta */
 .skill-description {
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.7;
     color: #666;
+    margin-bottom: 1.5rem; /* Espacio debajo para mejorar la separación */
+    text-align: left; /* Mejor alineación para lectura */
+}
+
+/* Opcional: agregar un ícono para las habilidades (si tienes iconos) */
+.skill-icon {
+    font-size: 2rem;
+    color: #007bff; /* Un color destacado */
+    margin-bottom: 1rem;
 }
