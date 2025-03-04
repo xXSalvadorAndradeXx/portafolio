@@ -177,35 +177,44 @@
 
 
 
-
-    
     <div class="skills-section">
-
-        <hr style="border: 1px solid black;
-        margin: 20px;">
+        <hr style="border: 1px solid black; margin: 20px;">
         <h2 class="section-title">Habilidades Blandas</h2>
         <div class="skills-container">
-            <div class="skill-card">
-                <h3 class="skill-title">Comunicación efectiva</h3>
-                <p class="skill-description">Expresar ideas y conceptos técnicos de forma clara a equipos técnicos y no técnicos, y escuchar las necesidades de los clientes y compañeros.</p>
+            <!-- Flecha izquierda -->
+            <button class="arrow-btn left" onclick="moveSkills('left')">&#8592;</button>
+    
+            <!-- Contenedor de las tarjetas -->
+            <div class="skills-container-content">
+                <div class="skill-card">
+                    <h3 class="skill-title">Comunicación efectiva</h3>
+                    <p class="skill-description">Expresar ideas y conceptos técnicos de forma clara a equipos técnicos y no técnicos, y escuchar las necesidades de los clientes y compañeros.</p>
+                </div>
+                <div class="skill-card">
+                    <h3 class="skill-title">Trabajo en equipo</h3>
+                    <p class="skill-description">Colaborar con desarrolladores, diseñadores y otros stakeholders, siendo abierto a recibir y dar retroalimentación constructiva.</p>
+                </div>
+                <div class="skill-card">
+                    <h3 class="skill-title">Gestión del tiempo</h3>
+                    <p class="skill-description">Priorizar tareas y proyectos según su urgencia e importancia, cumpliendo plazos y manejando múltiples proyectos simultáneamente.</p>
+                </div>
+                <div class="skill-card">
+                    <h3 class="skill-title">Resolución de problemas</h3>
+                    <p class="skill-description">Abordar desafíos técnicos y no técnicos de manera lógica y creativa, identificando rápidamente la raíz de los problemas y proponiendo soluciones efectivas.</p>
+                </div>
+                <div class="skill-card">
+                    <h3 class="skill-title">Adaptabilidad</h3>
+                    <p class="skill-description">Ajustarse a nuevas tecnologías, herramientas y cambios en los proyectos, manejando eficazmente entornos de trabajo dinámicos y cambiantes.</p>
+                </div>
             </div>
-            <div class="skill-card">
-                <h3 class="skill-title">Trabajo en equipo</h3>
-                <p class="skill-description">Colaborar con desarrolladores, diseñadores y otros stakeholders, siendo abierto a recibir y dar retroalimentación constructiva.</p>
-            </div>
-            <div class="skill-card">
-                <h3 class="skill-title">Gestión del tiempo</h3>
-                <p class="skill-description">Priorizar tareas y proyectos según su urgencia e importancia, cumpliendo plazos y manejando múltiples proyectos simultáneamente.</p>
-            </div>
-            <div class="skill-card">
-                <h3 class="skill-title">Resolución de problemas</h3>
-                <p class="skill-description">Abordar desafíos técnicos y no técnicos de manera lógica y creativa, identificando rápidamente la raíz de los problemas y proponiendo soluciones efectivas.</p>
-            </div>
-            <div class="skill-card">
-                <h3 class="skill-title">Adaptabilidad</h3>
-                <p class="skill-description">Ajustarse a nuevas tecnologías, herramientas y cambios en los proyectos, manejando eficazmente entornos de trabajo dinámicos y cambiantes.</p>
-            </div>
+    
+            <!-- Flecha derecha -->
+            <button class="arrow-btn right" onclick="moveSkills('right')">&#8594;</button>
         </div>
+ 
+    
+    
+    
 
         <hr style="border: 1px solid black;
         margin: 20px;">
@@ -268,6 +277,16 @@
 
 
     <script>
+
+
+
+
+
+
+
+
+
+
         const menuToggle = document.querySelector('.menu-toggle');
         const navMenu = document.querySelector('nav ul');
     
@@ -306,6 +325,27 @@ function updateCarousel(index) {
     });
 }
 
+
+
+let currentIndex1 = 0; // Índice inicial
+
+function moveSkills(direction) {
+    const container = document.querySelector('.skills-container-content');
+    const cards = container.children;
+    const cardWidth = document.querySelector('.skill-card').offsetWidth + 20; // Ajuste del margen
+    
+    // Si es hacia la izquierda
+    if (direction === 'left') {
+        currentIndex = currentIndex === 0 ? cards.length - 1 : currentIndex - 1; // Si está en el primer elemento, regresa al último
+    } 
+    // Si es hacia la derecha
+    else if (direction === 'right') {
+        currentIndex = currentIndex === cards.length - 1 ? 0 : currentIndex + 1; // Si está en el último elemento, regresa al primero
+    }
+
+    // Desplazamos el contenedor de las tarjetas
+    container.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+}
 
 
 
