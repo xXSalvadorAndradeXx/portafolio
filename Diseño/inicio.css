@@ -1,0 +1,598 @@
+@font-face {
+    font-family: 'Samsung';
+    src: 
+         url('/fonts/Samsung-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #5b83b4;
+    --dark-color: white;
+    --background-color: #5b83b4;
+    --menu-background: white;
+    --text-color: black;
+    --hover-color: black;
+}
+.justificado {
+    text-align: justify;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    overflow-x: hidden;
+    font-family: 'Samsung', sans-serif;
+    background: var(--dark-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    scrollbar-width: thin; /* Para navegadores basados en Gecko */
+scrollbar-color: var(--primary-color) var(--secondary-color); /* Colores del thumb y el fondo */
+}
+
+
+/* Estilo para navegadores basados en WebKit */
+::-webkit-scrollbar {
+width: 12px; /* Ancho de la barra de scroll */
+}
+
+::-webkit-scrollbar-track {
+background: rgb(180, 179, 179); /* Fondo de la pista */
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+background-color: black; /* Color del thumb */
+border-radius: 10px; /* Esquinas redondeadas */
+/* Bordes para un efecto de separación */
+}
+
+::-webkit-scrollbar-thumb:hover {
+background-color: black; /* Color al pasar el cursor */
+}
+
+/* Opcional: Barra de scroll horizontal */
+::-webkit-scrollbar:horizontal {
+height: 8px; /* Altura de la barra de scroll horizontal */
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+border-radius: 5px; /* Esquinas redondeadas para la barra horizontal */
+}
+
+nav {
+    font-family: 'Samsung', sans-serif;
+    background: rgba(255, 255, 255, 0.505);
+    padding: 1rem;
+    border-radius: 80px;
+    width: 90%;
+    margin: 1rem auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: fixed;  /* Fija el menú en la pantalla */
+    top: 0;  /* Colócalo en la parte superior */
+    left: 50%;  /* Centra el menú horizontalmente */
+    transform: translateX(-50%);  /* Ajusta el centrado */
+    z-index: 1000;  /* Asegura que esté por encima de otros elementos */
+    
+}
+
+nav ul {
+    font-family: 'Samsung', sans-serif;
+    list-style: none;
+    display: flex;
+   
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 80px;
+    transition: background 0.3s ease;
+}
+
+nav ul li a:hover {
+    background: var(--hover-color);
+    color: white;
+}
+
+.section-container {
+    width: 100%;
+    background: var(--background-color);
+    border-radius: 0 0 24px 24px;
+    padding: 2rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-content {
+    background: var(--secondary-color);
+    width: 80%;
+    height: 300px;
+    border-radius: 16px 16px 0 0;
+}
+
+footer {
+    margin-top: auto;
+    padding: 1rem;
+    background: var(--menu-background);
+    text-align: center;
+    color: var(--text-color);
+    border-radius: 80px;
+    width: 90%;
+    margin-bottom: 1rem;
+    
+}
+
+.container {
+    position: relative;
+    margin-left: 100px;
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+ 
+}
+
+.card {
+    margin-top: 30px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #000;
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    flex: 1 1 calc(23% - 1rem); /* Ajusta el ancho para 4 por fila */
+    max-width: calc(23% - 1rem); /* Ajusta el ancho para 4 por fila */
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.29);
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #666666;
+}
+
+
+.nav-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+}
+
+.nav-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    footer {
+        width: 95%;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul li a {
+        font-size: 0.9rem;
+        padding: 0.4rem 1rem;
+    }
+
+    .card h2 {
+        font-size: 1.2rem;
+    }
+
+    .card p {
+        font-size: 0.9rem;
+    }
+
+    footer {
+        font-size: 0.8rem;
+        padding: 0.8rem;
+    }
+}
+
+.menu-toggle {
+   background-color: var(--menu-background);
+   align-items: right;
+   display: none;
+
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+
+nav ul li a:hover {
+    background: var(--hover-color);
+}
+
+.nav-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-left: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.nav-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Estilo para pantallas pequeñas */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background: var(--menu-background);
+        padding: 1rem 0;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 0.5rem 0;
+    }
+
+    .nav-icon {
+        margin: 1rem 0 0;
+    }
+}
+
+
+.container4 {
+ 
+    background-color: #ffffff00;
+    padding: 2rem;
+    border-radius: 16px;
+    
+   
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+.text-container {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+z-index: 1;
+}
+
+.styled-text {
+background-color: rgba(255, 255, 255, 0.183); /* Fondo blanco con transparencia */
+color: white;
+padding: 1rem 2rem;
+font-size: 1.2rem;
+border-radius: 8px;
+display: inline-block;
+text-decoration: none;
+transition: background-color 0.3s ease, transform 0.3s ease; /* Añadimos la animación de 'transform' */
+cursor: default; /* Cursor de texto */
+}
+
+.styled-text:hover {
+background-color: rgba(255, 255, 255, 0.288); /* Fondo más oscuro al pasar el mouse */
+transform: scale(1.1); /* Efecto de agrandamiento */
+}
+
+.sobre-mi {
+    display: none; /* Se oculta inicialmente */
+    margin-top: 100px;
+    background-color: #021b89;
+    color: rgb(255, 255, 255);
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    opacity: 0; /* Inicialmente invisible */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Animación suave */
+    transform: translateY(20px); /* Empuja el contenido hacia abajo inicialmente */
+}
+.sobre-mi.visible {
+    display: flex; /* Muestra el elemento cuando se añada la clase */
+    opacity: 1; /* Hace el contenido visible */
+    transform: translateY(0); /* Devuelve el contenido a su posición original */
+}
+
+
+.imagen {
+    margin-left: 111px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contenido h1 {
+    
+    margin: 0 0 1rem 0;
+    font-size: 1.8rem;
+}
+.contenido p {
+   
+    margin: 0 0 1rem 0;
+    line-height: 1.6;
+}
+.descargar-cv {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.8rem 1.5rem;
+    color: #000000;
+    background-color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 70px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: all 0.3s ease-in-out;
+   
+    
+}
+
+.descargar-cv:hover {
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    border-radius: 70px;
+    transform:scale(1.1);
+}
+
+
+/* Aplica la animación a la clase 'logo' */
+.logo {
+    opacity: 0;  /* La imagen comienza invisible */
+    transform: translateY(-50px);  /* Comienza desplazada hacia arriba */
+    animation: fadeInUp 1s forwards;  /* Animación que durará 1 segundo */
+}
+
+/* Define la animación */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.contenedor {
+    margin-top: 70px;
+    position: relative;
+    display: inline-block;
+    opacity: 0; /* Inicia invisible */
+    animation: fadeIn 2s forwards; /* Aparece suavemente */
+}
+
+.texto {
+    background-color: #01013980;
+    position: absolute;
+    padding: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    border-radius: 70px;
+    opacity: 0; /* Inicia invisible */
+    transform: translateY(20px); /* Desplazamiento inicial hacia abajo */
+    animation: slideIn 2s 0.5s forwards; /* Aparece con un deslizamiento */
+}
+
+
+
+h1 {
+    margin: 0;
+}
+
+.subtitulo {
+    font-size: 12px;
+    margin: 0;
+}
+
+.fondo {
+    border-radius: 30px;
+    filter: blur(1px);
+    opacity: 0; /* Inicia invisible */
+    animation: fadeIn 0.5s forwards; /* Imagen aparece suavemente */
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.habilidades {
+
+    background-color: #021b8900;
+    color: rgb(0, 0, 0);
+
+   
+ 
+}
+
+.container22 {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.card2 {
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #000;
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: left;
+    flex: 1 1 calc(45% - 1rem); /* Dos tarjetas por fila */
+    max-width: calc(45% - 1rem);
+    transition: transform 0.2s ease-in-out;
+}
+
+.card2:hover {
+    transform: translateY(-10px);
+}
+
+.card2 h2 {
+    font-size: 1.5rem;
+
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+.contact-section {
+    align-items: flex-start;
+
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px 40px;
+    text-align: center;
+    margin: 30px;
+    max-width: 800px;
+    width: 90%;
+}
+.contact-section h2 {
+    margin-bottom: 20px;
+    color: #343a40;
+}
+.contact-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.contact-section ul li {
+    margin: 0;
+}
+.contact-section ul li a {
+    text-decoration: none;
+    color: #495057;
+    font-size: 18px;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+}
+.contact-section ul li a:hover {
+    color: #007bff;
+}
+.contact-section ul li a i {
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+
+.flotante {
+    position: fixed;
+    top: 18px;
+    right: 70px;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0);
+    animation: latir 2s ease-in-out 0s 2; /* 1s de duración, repetida 5 veces */
+}
+
+@keyframes latir {
+    0% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
