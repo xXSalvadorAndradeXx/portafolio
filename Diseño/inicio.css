@@ -303,9 +303,7 @@ nav ul li a:hover {
     padding: 2rem;
     border-radius: 16px;
     
-    width: 105%; /* Asegura que ocupe todo el ancho disponible */
-    max-width: 110%; /* Asegura que no haya un límite de ancho */
-    
+   
     text-align: center;
 }
 
@@ -645,11 +643,12 @@ transform: scale(1.1); /* Efecto de agrandamiento */
 }
 
 
-
 .contenedor {
     margin-top: 70px;
     position: relative;
     display: inline-block;
+    opacity: 0; /* Inicia invisible */
+    animation: fadeIn 2s forwards; /* Aparece suavemente */
 }
 
 .texto {
@@ -661,12 +660,16 @@ transform: scale(1.1); /* Efecto de agrandamiento */
     transform: translate(-50%, -50%);
     text-align: center;
     color: white;
-    border-radius: 10px;
+    border-radius: 70px;
+    opacity: 0; /* Inicia invisible */
+    transform: translateY(20px); /* Desplazamiento inicial hacia abajo */
+    animation: slideIn 2s 0.5s forwards; /* Aparece con un deslizamiento */
 }
 
-h1{
+h1 {
     margin: 0;
 }
+
 .subtitulo {
     font-size: 12px;
     margin: 0;
@@ -674,9 +677,25 @@ h1{
 
 .fondo {
     border-radius: 30px;
-    filter: blur(1px); /* Desenfoque de la imagen */
     
+    opacity: 0; /* Inicia invisible */
+    animation: fadeIn 0.5s forwards; /* Imagen aparece suavemente */
 }
+
+/* Animaciones */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 .habilidades {
 
@@ -708,13 +727,97 @@ h1{
     transition: transform 0.2s ease-in-out;
 }
 
-.card:hover {
+.card2:hover {
     transform: translateY(-10px);
 }
 
-.card h2 {
+.card2 h2 {
     font-size: 1.5rem;
 
     margin-bottom: 0.5rem;
     color: #333;
+}
+
+
+.contact-section {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.contact-section h2 {
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.contact-section p {
+    color: #555;
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+.contact-section a {
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.linkedin-logo {
+    margin-left: 30px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+    background-color: #ffffff00;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+}
+
+.linkedin-logo:hover {
+    transform: scale(1.1);
+}
+
+.contact-section a:hover .linkedin-logo {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contact-section a span {
+    display: block;
+    margin-top: 15px;
+    color: #0077b5;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+
+.flotante {
+    position: fixed;
+    top: 18px;
+    right: 70px;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0);
+    animation: latir 2s ease-in-out 0s 2; /* 1s de duración, repetida 5 veces */
+}
+
+@keyframes latir {
+    0% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
