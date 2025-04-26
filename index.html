@@ -9,21 +9,111 @@
     <link rel="stylesheet" href="Diseño/inicio.css">
     <link rel="stylesheet" href="Diseño/habilidades.css">
     <link rel="stylesheet" href="Diseño/progres.css">
+    <style>
+        /* Estilo del botón */
+        .language-button {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: linear-gradient(45deg, #007bff, #6610f2);
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .language-button:hover {
+            background: linear-gradient(45deg, #6610f2, #007bff);
+            transform: scale(1.1);
+        }
+    </style>
+    <script>
+        const translations = {
+            en: {
+                inicio: "Home",
+                acerca: "About Me",
+                subtitulo: "Full-Stack Developer",
+                sobreMi: "About Me",
+                descripcion: "I am Salvador Ernesto Andrade Peña, a full-stack developer passionate about creating innovative web solutions...",
+                descargarCV: "Download CV",
+                habilidadesDuras: "Hard Skills",
+                habilidadesBlandas: "Soft Skills",
+                intereses: "Interests",
+                valores: "Values",
+                contacto: "Contact Me",
+                comunicacion: "Effective Communication",
+                trabajoEquipo: "Teamwork",
+                gestionTiempo: "Time Management",
+                resolucionProblemas: "Problem Solving",
+                adaptabilidad: "Adaptability"
+            },
+            es: {
+                inicio: "Inicio",
+                acerca: "Acerca de",
+                subtitulo: "Desarrollador Full-Stack",
+                sobreMi: "Sobre Mí",
+                descripcion: "Soy Salvador Ernesto Andrade Peña, un desarrollador full-stack apasionado por la creación de soluciones web innovadoras...",
+                descargarCV: "Descargar CV",
+                habilidadesDuras: "Habilidades Duras",
+                habilidadesBlandas: "Habilidades Blandas",
+                intereses: "Intereses",
+                valores: "Valores",
+                contacto: "Contáctame",
+                comunicacion: "Comunicación Efectiva",
+                trabajoEquipo: "Trabajo en Equipo",
+                gestionTiempo: "Gestión del Tiempo",
+                resolucionProblemas: "Resolución de Problemas",
+                adaptabilidad: "Adaptabilidad"
+            }
+        };
+
+        let currentLang = "es";
+
+        function changeLanguage() {
+            currentLang = currentLang === "es" ? "en" : "es";
+            document.querySelector("li a[href='index.html']").textContent = translations[currentLang].inicio;
+            document.querySelector("li a[href='#acerca']").textContent = translations[currentLang].acerca;
+            document.querySelector(".subtitulo").textContent = translations[currentLang].subtitulo;
+            document.querySelector(".sobre-mi h1").textContent = translations[currentLang].sobreMi;
+            document.querySelector(".sobre-mi p").textContent = translations[currentLang].descripcion;
+            document.querySelector(".descargar-cv").textContent = translations[currentLang].descargarCV;
+            document.querySelector(".container4 h2").textContent = translations[currentLang].habilidadesDuras;
+            document.querySelector(".skills-section h2").textContent = translations[currentLang].habilidadesBlandas;
+            document.querySelector(".card2:first-child h2").textContent = translations[currentLang].intereses;
+            document.querySelector(".card2:last-child h2").textContent = translations[currentLang].valores;
+            document.querySelector(".contact-section h2").textContent = translations[currentLang].contacto;
+
+            // Traducir habilidades blandas
+            const skills = document.querySelectorAll(".skill-card h3, .skill-card p");
+            const skillTranslations = [
+                translations[currentLang].comunicacion,
+                translations[currentLang].trabajoEquipo,
+                translations[currentLang].gestionTiempo,
+                translations[currentLang].resolucionProblemas,
+                translations[currentLang].adaptabilidad
+            ];
+            skills.forEach((skill, index) => {
+                skill.textContent = skillTranslations[index];
+            });
+        }
+    </script>
 </head>
 <body>
     <nav>
         <a class="menu-toggle"><i class="fas fa-bars"></i></a>
         <ul>
-          
-               
-                         
-            
             <li><a href="index.html">Inicio</a></li>
             <li><a href="#acerca">Acerca de</a></li>
-           
         </ul>
-       
     </nav>
+
+    <button class="language-button" onclick="changeLanguage()">Español / English</button>
+
 
     <div class="contenedor">  
         <div class="image-container">
