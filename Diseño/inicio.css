@@ -465,6 +465,7 @@ h1 {
 }
 
 .fondo {
+    margin-left: auto;
     border-radius: 30px;
     filter: blur(1px);
     opacity: 0; /* Inicia invisible */
