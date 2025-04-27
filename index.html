@@ -10,110 +10,33 @@
     <link rel="stylesheet" href="Diseño/habilidades.css">
     <link rel="stylesheet" href="Diseño/progres.css">
     <style>
-        /* Estilo del botón */
-        .language-button {
+        .language-btn {
             position: fixed;
-            top: 100px;
+            top: 20px;
             right: 20px;
-            background: linear-gradient(45deg, #007bff, #6610f2);
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
             border: none;
-            color: #fff;
-            padding: 10px 20px;
-            font-size: 14px;
-            font-weight: bold;
-            border-radius: 50px;
+            border-radius: 5px;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease-in-out;
+            z-index: 1000;
         }
-
-        .language-button:hover {
-            background: linear-gradient(45deg, #6610f2, #007bff);
-            transform: scale(1.1);
+        .language-btn:hover {
+            background-color: #0056b3;
         }
     </style>
-    <script>
-        const translations = {
-            en: {
-                inicio: "Home",
-                acerca: "About Me",
-                subtitulo: "Full-Stack Developer",
-                sobreMi: "About Me",
-                descripcion: "I am Salvador Ernesto Andrade Peña, a full-stack developer passionate about creating innovative web solutions...",
-                descargarCV: "Download CV",
-                habilidadesDuras: "Hard Skills",
-                habilidadesBlandas: "Soft Skills",
-                intereses: "Interests",
-                valores: "Values",
-                contacto: "Contact Me",
-                comunicacion: "Effective Communication",
-                trabajoEquipo: "Teamwork",
-                gestionTiempo: "Time Management",
-                resolucionProblemas: "Problem Solving",
-                adaptabilidad: "Adaptability"
-            },
-            es: {
-                inicio: "Inicio",
-                acerca: "Acerca de",
-                subtitulo: "Desarrollador Full-Stack",
-                sobreMi: "Sobre Mí",
-                descripcion: "Soy Salvador Ernesto Andrade Peña, un desarrollador full-stack apasionado por la creación de soluciones web innovadoras...",
-                descargarCV: "Descargar CV",
-                habilidadesDuras: "Habilidades Duras",
-                habilidadesBlandas: "Habilidades Blandas",
-                intereses: "Intereses",
-                valores: "Valores",
-                contacto: "Contáctame",
-                comunicacion: "Comunicación Efectiva",
-                trabajoEquipo: "Trabajo en Equipo",
-                gestionTiempo: "Gestión del Tiempo",
-                resolucionProblemas: "Resolución de Problemas",
-                adaptabilidad: "Adaptabilidad"
-            }
-        };
-
-        let currentLang = "es";
-
-        function changeLanguage() {
-            currentLang = currentLang === "es" ? "en" : "es";
-            document.querySelector("li a[href='index.html']").textContent = translations[currentLang].inicio;
-            document.querySelector("li a[href='#acerca']").textContent = translations[currentLang].acerca;
-            document.querySelector(".subtitulo").textContent = translations[currentLang].subtitulo;
-            document.querySelector(".sobre-mi h1").textContent = translations[currentLang].sobreMi;
-            document.querySelector(".sobre-mi p").textContent = translations[currentLang].descripcion;
-            document.querySelector(".descargar-cv").textContent = translations[currentLang].descargarCV;
-            document.querySelector(".container4 h2").textContent = translations[currentLang].habilidadesDuras;
-            document.querySelector(".skills-section h2").textContent = translations[currentLang].habilidadesBlandas;
-            document.querySelector(".card2:first-child h2").textContent = translations[currentLang].intereses;
-            document.querySelector(".card2:last-child h2").textContent = translations[currentLang].valores;
-            document.querySelector(".contact-section h2").textContent = translations[currentLang].contacto;
-
-            // Traducir habilidades blandas
-            const skills = document.querySelectorAll(".skill-card h3, .skill-card p");
-            const skillTranslations = [
-                translations[currentLang].comunicacion,
-                translations[currentLang].trabajoEquipo,
-                translations[currentLang].gestionTiempo,
-                translations[currentLang].resolucionProblemas,
-                translations[currentLang].adaptabilidad
-            ];
-            skills.forEach((skill, index) => {
-                skill.textContent = skillTranslations[index];
-            });
-        }
-    </script>
 </head>
 <body>
+    <button class="language-btn" id="languageBtn">English</button>
+    
     <nav>
         <a class="menu-toggle"><i class="fas fa-bars"></i></a>
         <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="#acerca">Acerca de</a></li>
+            <li><a href="index.html" data-es="Inicio" data-en="Home">Inicio</a></li>
+            <li><a href="#acerca" data-es="Acerca de" data-en="About">Acerca de</a></li>
         </ul>
     </nav>
-
-    <button class="language-button" onclick="changeLanguage()">Español / English</button>
-
 
     <div class="contenedor">  
         <div class="image-container">
@@ -122,44 +45,34 @@
         
         <div class="texto">
             <h1>Salvador Andrade</h1>
-            <h2 class="subtitulo">Desarrollador Full-Stack</h2>
+            <h2 class="subtitulo" data-es="Desarrollador Full-Stack" data-en="Full-Stack Developer">Desarrollador Full-Stack</h2>
         </div>
     </div>
     <img src="/recursos/1.png" alt="Imagen Flotante" class="flotante" height="50px" width="50px">
 
+    <div id="acerca"></div>
 
-<div id = "acerca"></div>
-
-    <div id = "" class="sobre-mi">
+    <div id="" class="sobre-mi">
         <div class="imagen">
             <img src="recursos/Foto1.jpg" alt="">
         </div>
         <div class="contenido">
-            <h1>Sobre Mí</h1>
-            <p>
+            <h1 data-es="Sobre Mí" data-en="About Me">Sobre Mí</h1>
+            <p data-es="Soy Salvador Ernesto Andrade Peña, un desarrollador full-stack apasionado por la creación de soluciones web innovadoras. Con una amplia experiencia tanto en desarrollo front-end como back-end, trabajo con tecnologías como HTML, CSS, JavaScript, PHP, Laravel, Node.js, Vue.js y React.js. Siempre en busca de nuevas tecnologías y desafíos, me dedico a mejorar constantemente mis habilidades y aportar un valor significativo a los proyectos en los que participo, fusionando creatividad y eficiencia en cada solución que desarrollo." 
+               data-en="I am Salvador Ernesto Andrade Peña, a passionate full-stack developer dedicated to creating innovative web solutions. With extensive experience in both front-end and back-end development, I work with technologies such as HTML, CSS, JavaScript, PHP, Laravel, Node.js, Vue.js, and React.js. Always seeking new technologies and challenges, I am committed to continuously improving my skills and adding significant value to the projects I participate in, combining creativity and efficiency in every solution I develop.">
                 Soy Salvador Ernesto Andrade Peña, un desarrollador full-stack apasionado por la creación de soluciones web innovadoras.
-                 Con una amplia experiencia tanto en desarrollo front-end como back-end, trabajo con tecnologías
-                  como HTML, CSS, JavaScript, PHP, Laravel, Node.js, Vue.js y React.js. Siempre en busca de nuevas 
-                  tecnologías y desafíos, me dedico a mejorar constantemente mis habilidades y aportar un valor 
-                  significativo a los proyectos en los que participo, fusionando creatividad y eficiencia en cada solución que desarrollo.
+                Con una amplia experiencia tanto en desarrollo front-end como back-end, trabajo con tecnologías
+                como HTML, CSS, JavaScript, PHP, Laravel, Node.js, Vue.js y React.js. Siempre en busca de nuevas 
+                tecnologías y desafíos, me dedico a mejorar constantemente mis habilidades y aportar un valor 
+                significativo a los proyectos en los que participo, fusionando creatividad y eficiencia en cada solución que desarrollo.
             </p>
-            <a href="recursos/Curriculum.docx" class="descargar-cv" download="Tu_CV.docx">Descargar CV</a>
-
+            <a href="recursos/Curriculum.docx" class="descargar-cv" download="Tu_CV.docx" data-es="Descargar CV" data-en="Download CV">Descargar CV</a>
         </div>
     </div>
 
-    
-    
-    
-
-  
-
-    <div  class="container4">
-        
-        
-            <h2 >Habilidades Duras</h2>
-            <hr style="border: 1px solid black;
-        margin: 20px;">
+    <div class="container4">
+        <h2 data-es="Habilidades Duras" data-en="Hard Skills">Habilidades Duras</h2>
+        <hr style="border: 1px solid black; margin: 20px;">
     </div>
 
     <div class="container">
@@ -188,8 +101,6 @@
             <p>90%</p>
         </div>
  
-    
-
         <div class="card">
             <img src="recursos/csha.png" alt="" height="50" width="50" style="position: relative;">
             <h2>C#</h2>
@@ -222,8 +133,6 @@
             </div>
             <p>80%</p>
         </div>
-
-    
 
         <div class="card">
             <img src="recursos/node.png" alt="" height="50" width="50" style="position: relative;">
@@ -266,88 +175,86 @@
             </div>
             <p>40%</p>
         </div>
-        
     </div>
-
-
 
     <div class="skills-section">
         <hr style="border: 1px solid black; margin: 20px;">
-        <h2 class="section-title">Habilidades Blandas</h2>
+        <h2 class="section-title" data-es="Habilidades Blandas" data-en="Soft Skills">Habilidades Blandas</h2>
         <div class="skills-container">
-            <!-- Flecha izquierda -->
             <button class="arrow-btn left" onclick="moveSkills('left')">&#8592;</button>
     
-            <!-- Contenedor de las tarjetas -->
             <div class="skills-container-content">
                 <div class="skill-card">
-                    <h3 class="skill-title">Comunicación efectiva</h3>
-                    <p class="skill-description">Expresar ideas y conceptos técnicos de forma clara a equipos técnicos y no técnicos, y escuchar las necesidades de los clientes y compañeros.</p>
+                    <h3 class="skill-title" data-es="Comunicación efectiva" data-en="Effective Communication">Comunicación efectiva</h3>
+                    <p class="skill-description" data-es="Expresar ideas y conceptos técnicos de forma clara a equipos técnicos y no técnicos, y escuchar las necesidades de los clientes y compañeros." 
+                       data-en="Expressing ideas and technical concepts clearly to both technical and non-technical teams, and listening to the needs of clients and colleagues.">
+                        Expresar ideas y conceptos técnicos de forma clara a equipos técnicos y no técnicos, y escuchar las necesidades de los clientes y compañeros.
+                    </p>
                 </div>
                 <div class="skill-card">
-                    <h3 class="skill-title">Trabajo en equipo</h3>
-                    <p class="skill-description">Colaborar con desarrolladores, diseñadores y otros stakeholders, siendo abierto a recibir y dar retroalimentación constructiva.</p>
+                    <h3 class="skill-title" data-es="Trabajo en equipo" data-en="Teamwork">Trabajo en equipo</h3>
+                    <p class="skill-description" data-es="Colaborar con desarrolladores, diseñadores y otros stakeholders, siendo abierto a recibir y dar retroalimentación constructiva." 
+                       data-en="Collaborating with developers, designers, and other stakeholders, being open to receiving and giving constructive feedback.">
+                        Colaborar con desarrolladores, diseñadores y otros stakeholders, siendo abierto a recibir y dar retroalimentación constructiva.
+                    </p>
                 </div>
                 <div class="skill-card">
-                    <h3 class="skill-title">Gestión del tiempo</h3>
-                    <p class="skill-description">Priorizar tareas y proyectos según su urgencia e importancia, cumpliendo plazos y manejando múltiples proyectos simultáneamente.</p>
+                    <h3 class="skill-title" data-es="Gestión del tiempo" data-en="Time Management">Gestión del tiempo</h3>
+                    <p class="skill-description" data-es="Priorizar tareas y proyectos según su urgencia e importancia, cumpliendo plazos y manejando múltiples proyectos simultáneamente." 
+                       data-en="Prioritizing tasks and projects according to their urgency and importance, meeting deadlines, and managing multiple projects simultaneously.">
+                        Priorizar tareas y proyectos según su urgencia e importancia, cumpliendo plazos y manejando múltiples proyectos simultáneamente.
+                    </p>
                 </div>
                 <div class="skill-card">
-                    <h3 class="skill-title">Resolución de problemas</h3>
-                    <p class="skill-description">Abordar desafíos técnicos y no técnicos de manera lógica y creativa, identificando rápidamente la raíz de los problemas y proponiendo soluciones efectivas.</p>
+                    <h3 class="skill-title" data-es="Resolución de problemas" data-en="Problem Solving">Resolución de problemas</h3>
+                    <p class="skill-description" data-es="Abordar desafíos técnicos y no técnicos de manera lógica y creativa, identificando rápidamente la raíz de los problemas y proponiendo soluciones efectivas." 
+                       data-en="Addressing technical and non-technical challenges logically and creatively, quickly identifying the root of problems and proposing effective solutions.">
+                        Abordar desafíos técnicos y no técnicos de manera lógica y creativa, identificando rápidamente la raíz de los problemas y proponiendo soluciones efectivas.
+                    </p>
                 </div>
                 <div class="skill-card">
-                    <h3 class="skill-title">Adaptabilidad</h3>
-                    <p class="skill-description">Ajustarse a nuevas tecnologías, herramientas y cambios en los proyectos, manejando eficazmente entornos de trabajo dinámicos y cambiantes.</p>
+                    <h3 class="skill-title" data-es="Adaptabilidad" data-en="Adaptability">Adaptabilidad</h3>
+                    <p class="skill-description" data-es="Ajustarse a nuevas tecnologías, herramientas y cambios en los proyectos, manejando eficazmente entornos de trabajo dinámicos y cambiantes." 
+                       data-en="Adjusting to new technologies, tools, and project changes, effectively managing dynamic and changing work environments.">
+                        Ajustarse a nuevas tecnologías, herramientas y cambios en los proyectos, manejando eficazmente entornos de trabajo dinámicos y cambiantes.
+                    </p>
                 </div>
             </div>
     
-            <!-- Flecha derecha -->
             <button class="arrow-btn right" onclick="moveSkills('right')">&#8594;</button>
         </div>
- 
     
-    
-    
-
-        <hr style="border: 1px solid black;
-        margin: 20px;">
-
+        <hr style="border: 1px solid black; margin: 20px;">
 
         <div class="container22">
-            <!-- Intereses -->
             <div class="card2">
-                <h2>Intereses</h2>
+                <h2 data-es="Intereses" data-en="Interests">Intereses</h2>
                 <ul class="list">
-                    <li>Desarrollo de aplicaciones web</li>
-                    <li>Arquitectura de software</li>
-                    <li>Diseño UX/UI</li>
-                    <li>Inteligencia artificial</li>
-                    <li>Tecnologías de blockchain</li>
+                    <li data-es="Desarrollo de aplicaciones web" data-en="Web application development">Desarrollo de aplicaciones web</li>
+                    <li data-es="Arquitectura de software" data-en="Software architecture">Arquitectura de software</li>
+                    <li data-es="Diseño UX/UI" data-en="UX/UI Design">Diseño UX/UI</li>
+                    <li data-es="Inteligencia artificial" data-en="Artificial intelligence">Inteligencia artificial</li>
+                    <li data-es="Tecnologías de blockchain" data-en="Blockchain technologies">Tecnologías de blockchain</li>
                 </ul>
             </div>
         
-            <!-- Valores -->
             <div class="card2">
-                <h2>Valores</h2>
+                <h2 data-es="Valores" data-en="Values">Valores</h2>
                 <ul class="list">
-                    <li>Innovación constante</li>
-                    <li>Trabajo en equipo</li>
-                    <li>Resolución de problemas</li>
-                    <li>Compromiso con la calidad</li>
-                    <li>Aprendizaje continuo</li>
+                    <li data-es="Innovación constante" data-en="Constant innovation">Innovación constante</li>
+                    <li data-es="Trabajo en equipo" data-en="Teamwork">Trabajo en equipo</li>
+                    <li data-es="Resolución de problemas" data-en="Problem solving">Resolución de problemas</li>
+                    <li data-es="Compromiso con la calidad" data-en="Commitment to quality">Compromiso con la calidad</li>
+                    <li data-es="Aprendizaje continuo" data-en="Continuous learning">Aprendizaje continuo</li>
                 </ul>
             </div>
         </div>
 
-
-
-        <hr style="border: 1px solid black;
-        margin: 20px;">
+        <hr style="border: 1px solid black; margin: 20px;">
        
      <center>
-       <div id ="contacto" class="contact-section">
-        <h2>Contact Me</h2>
+       <div id="contacto" class="contact-section">
+        <h2 data-es="Contáctame" data-en="Contact Me">Contáctame</h2>
         <ul>
             <li>
                 <a href="https://www.linkedin.com/in/salvadorandrade" target="_blank">
@@ -362,7 +269,6 @@
             <li>
                 <a href="#contacto">
                     <i class="fas fa-envelope"></i> salvadorandrade7089@gmail.com
-                    
                 </a>
             </li>
             <li>
@@ -372,15 +278,46 @@
             </li>
         </ul>
     </div>
-
-
-    </div>
-
-</center>
+    </center>
    
-    <footer>
+    <footer data-es="&copy; 2025 Salvador Andrade. Todos los derechos reservados." 
+            data-en="&copy; 2025 Salvador Andrade. All rights reserved.">
         &copy; 2025 Salvador Andrade. All rights reserved.
     </footer>
+
+    <script>
+        let currentLanguage = 'es';
+        
+        document.getElementById('languageBtn').addEventListener('click', function() {
+            currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+            this.textContent = currentLanguage === 'es' ? 'English' : 'Español';
+            updateLanguage();
+        });
+        
+        function updateLanguage() {
+            // Actualizar elementos con atributos data-es y data-en
+            document.querySelectorAll('[data-es], [data-en]').forEach(element => {
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    element.placeholder = element.getAttribute(`data-${currentLanguage}`);
+                } else {
+                    element.textContent = element.getAttribute(`data-${currentLanguage}`);
+                }
+            });
+            
+            // Actualizar el atributo lang del documento
+            document.documentElement.lang = currentLanguage;
+            
+            // Actualizar el título de la página
+            document.title = currentLanguage === 'es' ? 'Salvador Andrade' : 'Salvador Andrade';
+        }
+        
+        // Función para mover las habilidades (existente)
+        function moveSkills(direction) {
+            // Tu código existente para mover las habilidades
+        }
+    </script>
+</body>
+</html>
 
 
 
