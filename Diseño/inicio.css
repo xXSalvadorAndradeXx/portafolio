@@ -132,6 +132,7 @@ nav ul li a:hover {
 }
 
 footer {
+    margin-left: 65px;
     margin-top: auto;
     padding: 1rem;
     background: var(--menu-background);
