@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="Diseño/inicio.css">
     <link rel="stylesheet" href="Diseño/habilidades.css">
     <link rel="stylesheet" href="Diseño/progres.css">
+    <link rel="stylesheet" href="Diseño/modo_oscuro.css">
     <style>
 
     </style>
@@ -21,7 +22,11 @@
             <span>English</span>
         </button>
     </div>
-    
+    <div class="theme-switcher">
+        <button class="theme-btn" id="themeBtn" title="Modo nocturno">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
     <nav>
         <a class="menu-toggle"><i class="fas fa-bars"></i></a>
         <ul>
@@ -358,7 +363,7 @@ window.addEventListener('scroll', function() {
 
 
 const items = document.querySelectorAll('.carousel-item');
-let currentIndex = 0;
+let currentIndex = 1;
 
 function updateCarousel(index) {
     items.forEach((item, i) => {
@@ -390,7 +395,50 @@ function moveSkills(direction) {
     // Desplazamos el contenedor de las tarjetas
     container.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
 }
-
+// Modo nocturno
+const themeBtn = document.getElementById('themeBtn');
+        const body = document.body;
+        
+        // Verificar preferencia del sistema o localStorage
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const localStorageTheme = localStorage.getItem('theme');
+        
+        if (localStorageTheme === 'dark' || (!localStorageTheme && prefersDark)) {
+            enableDarkMode();
+        }
+        
+        themeBtn.addEventListener('click', toggleDarkMode);
+        
+        function toggleDarkMode() {
+            if (body.classList.contains('dark-mode')) {
+                disableDarkMode();
+            } else {
+                enableDarkMode();
+            }
+        }
+        
+        function enableDarkMode() {
+            body.classList.add('dark-mode');
+            themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            localStorage.setItem('theme', 'dark');
+        }
+        
+        function disableDarkMode() {
+            body.classList.remove('dark-mode');
+            themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+            localStorage.setItem('theme', 'light');
+        }
+        
+        // Opcional: Cambiar automáticamente según la preferencia del sistema
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (localStorage.getItem('theme') === null) {
+                if (e.matches) {
+                    enableDarkMode();
+                } else {
+                    disableDarkMode();
+                }
+            }
+        });
 
 
 
