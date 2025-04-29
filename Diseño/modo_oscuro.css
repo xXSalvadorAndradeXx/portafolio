@@ -93,9 +93,12 @@ body.dark-mode .contact-section h2 {
 body.dark-mode .contact-section a {
     color: #e0e0e0;
 }
+body.dark-mode .contact-section  a {
+    color: #e0e0e0;
+}
 
 body.dark-mode .contact-section a:hover {
-    color: #ffffff;
+    color: #0d8dcd;
 }
 
 /* Footer */
