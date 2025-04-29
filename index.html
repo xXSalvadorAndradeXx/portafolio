@@ -35,17 +35,23 @@
         </ul>
     </nav>
     <div  id="inicio">  
-    <div class="contenedor" >  
+        <div class="contenedor">  
 
-        <div class="image-container">
-            <img class="fondo" src="recursos/fondo.png" alt="Logo" class="logo" height="400px" width="1250px">
+            <div class="image-container">
+                <img class="fondo" src="recursos/fondo1.png" alt="Logo" class="logo" height="400px" width="1250px">
+            </div>
+            
+            <div class="texto">
+                <h1>Salvador Andrade</h1>
+                <h2 class="subtitulo" data-es="Desarrollador Full-Stack" data-en="Full-Stack Developer">Desarrollador Full-Stack</h2>
+                
+            </div>
+
+            <div class="texto2">
+                <p class="frase-personal">[Marca personal]</p>
+            </div>
         </div>
         
-        <div class="texto">
-            <h1>Salvador Andrade</h1>
-            <h2 class="subtitulo" data-es="Desarrollador Full-Stack" data-en="Full-Stack Developer">Desarrollador Full-Stack</h2>
-        </div>
-    </div>
     <img src="/recursos/1.png" alt="Imagen Flotante" class="flotante" height="50px" width="50px">
 
     <div id="acerca"></div>
@@ -390,7 +396,7 @@
 
      <center>
        <div id="contacto" class="contact-section">
-        <h2 data-es="Contáctame" data-en="Contact Me">Contáctame</h2>
+        <h2 data-es="Conocer más" data-en="Learn more">Conocer más</h2>
         <ul>
             <li>
                 <a href="https://www.linkedin.com/in/salvadorandrade" target="_blank">
@@ -417,9 +423,10 @@
     </center>
    
     <footer data-es="&copy; 2025 Salvador Andrade. Todos los derechos reservados." 
-            data-en="&copy; 2025 Salvador Andrade. All rights reserved.">
-        &copy; 2025 Salvador Andrade. All rights reserved.
-    </footer>
+    data-en="&copy; 2025 Salvador Andrade. All rights reserved.">
+&copy; 2025 Salvador Andrade. Todos los derechos reservados.
+</footer>
+
 
     <script>
 let currentLanguage = 'es';
@@ -631,7 +638,27 @@ const themeBtn = document.getElementById('themeBtn');
             handleResize();
             updateProjectsDisplay();
         });
+        document.addEventListener("DOMContentLoaded", function() {
+            var frases = [
+                "El código no tiene errores, solo soluciones esperando ser descubiertas.",
+                "Cada bug es una oportunidad para aprender algo nuevo.",
+                "Lo más importante no es el lenguaje, sino la forma en que piensas como programador.",
+                "Ser fullstack significa ser curioso y nunca dejar de aprender.",
+                "Los proyectos grandes empiezan con pequeños pasos... y muchos commits.",
+                "El mejor código es el que no necesitas escribir.",
+                "El desarrollo web es un viaje, no un destino.",
+                "Con cada línea de código, construimos el futuro, un proyecto a la vez."
+            ];
 
+            // Obtener el día actual
+            var diaDelMes = new Date().getDate();
+
+            // Elegir una frase diferente según el día
+            var fraseElegida = frases[diaDelMes % frases.length];
+
+            // Cambiar el contenido de la etiqueta <p> con la clase "frase-personal"
+            document.querySelector(".frase-personal").textContent = fraseElegida;
+        });
     </script>
 </body>
 

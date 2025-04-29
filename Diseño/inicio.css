@@ -443,8 +443,8 @@ transform: scale(1.1); /* Efecto de agrandamiento */
     background-color: #01013980;
     position: absolute;
     padding: 10px;
-    top: 50%;
-    left: 50%;
+    top: 35%;
+    left: 60%;
     transform: translate(-50%, -50%);
     text-align: center;
     color: white;
@@ -454,6 +454,40 @@ transform: scale(1.1); /* Efecto de agrandamiento */
     animation: slideIn 2s 0.5s forwards; /* Aparece con un deslizamiento */
 }
 
+.texto2 {
+    background-color: #01013980;
+    position: absolute;
+    padding: 10px;
+    top: 80%;
+    left: 50%;
+    right: 5%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    border-radius: 70px;
+    opacity: 0; /* Inicia invisible */
+    transform: translateY(20px); /* Desplazamiento inicial hacia abajo */
+    animation: slideIn 2s 0.5s forwards; /* Aparece con un deslizamiento */
+}
+@keyframes slideIn {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
 
 h1 {
