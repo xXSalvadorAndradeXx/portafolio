@@ -453,7 +453,14 @@ transform: scale(1.1); /* Efecto de agrandamiento */
     transform: translateY(20px); /* Desplazamiento inicial hacia abajo */
     animation: slideIn 2s 0.5s forwards; /* Aparece con un deslizamiento */
 }
+.skills-section {
+    margin-top: 50px;
 
+
+}
+.projects-section{
+    margin-top: 50px;
+}
 .texto2 {
     background-color: #01013980;
     position: absolute;

@@ -70,7 +70,7 @@
                 tecnologías y desafíos, me dedico a mejorar constantemente mis habilidades y aportar un valor 
                 significativo a los proyectos en los que participo, fusionando creatividad y eficiencia en cada solución que desarrollo.
             </p>
-            <a href="recursos/Curriculum.docx" class="descargar-cv" download="Tu_CV.docx" data-es="Descargar CV" data-en="Download CV">Descargar CV</a>
+            <a href="recursos/cv.pdf" class="descargar-cv" download="CV.pdf" data-es="Descargar CV" data-en="Download CV">Descargar CV</a>
         </div>
     </div>
 
@@ -182,8 +182,9 @@
     </div>
 
     <div class="skills-section">
-        <hr style="border: 1px solid black; margin: 20px;">
+   
         <h2 class="section-title" data-es="Habilidades Blandas" data-en="Soft Skills">Habilidades Blandas</h2>
+        <hr style="border: 1px solid black; margin: 20px;">
         <div class="skills-container">
             <button class="arrow-btn left" onclick="moveSkills('left')">&#8592;</button>
     
@@ -227,8 +228,8 @@
     
             <button class="arrow-btn right" onclick="moveSkills('right')">&#8594;</button>
         </div>
-    
-        <hr style="border: 1px solid black; margin: 20px;">
+        <h2 class="section-title" data-es="Intereses y Valores" data-en="Interests and Values">Intereses y Valores</h2>
+        <hr style="border: 1px solid black; margin: 20px; ">
 
         <div class="container22">
             <div class="card2">
@@ -254,13 +255,13 @@
             </div>
         </div>
 
-        <hr style="border: 1px solid black; margin: 20px;">
        
 
         <div class="projects-section">
             <div class="projects-container">
                 <h2 class="projects-title" data-es="Mis Proyectos" data-en="My Projects">Mis Proyectos</h2>
-                
+                <hr style="border: 1px solid black; margin: 20px;">
+       
                 <div class="projects-carousel">
                     <button class="carousel-btn prev" onclick="moveProjects(-1)">&#10094;</button>
                     
@@ -491,7 +492,7 @@ let currentLanguage = 'es';
 
         function downloadCV() {
     var link = document.createElement('a');
-    link.href = 'Doc/cv.pdf'; // Asegúrate de que la ruta sea correcta
+    link.href = '/recursos/cv.pdf'; // Asegúrate de que la ruta sea correcta
     link.download = 'MiCV'; // Nombre del archivo al descargarse
     link.click(); // Simula el clic para descargar el archivo
 }
