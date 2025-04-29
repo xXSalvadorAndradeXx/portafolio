@@ -287,3 +287,86 @@ body.dark-mode .submit-btn:hover {
         align-self: center;
     }
 }
+
+/* Estilos para la sección de proyectos en modo oscuro */
+body.dark-mode .projects-section {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .projects-title {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .project-card {
+    background-color: #2d2d2d;
+
+
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .project-image {
+  
+    
+    filter: brightness(0.9) contrast(1.1);
+}
+
+body.dark-mode .project-info h3 {
+    color: #4fc3f7;
+}
+
+body.dark-mode .project-info p {
+    color: #b0bec5;
+}
+
+body.dark-mode .project-tech .tech-tag {
+    background-color: #444;
+    color: #e0e0e0;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 5px 5px 0;
+    display: inline-block;
+}
+
+body.dark-mode .project-link {
+    color: #ffffff;
+    border: 1px solid #4fc3f7;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .project-link:hover {
+    background-color: #4fc3f7;
+    color: #1e1e1e;
+}
+
+body.dark-mode .carousel-btn {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+    border: 1px solid #444;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .carousel-btn:hover {
+    background-color: #4fc3f7;
+    color: #1e1e1e;
+}
