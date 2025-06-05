@@ -32,6 +32,138 @@
     .dark-mode .project-role img {
         filter: brightness(0.8);
     }
+
+
+
+
+.reconocimientos-container {
+           
+         
+            margin: auto;
+            position: relative;
+        }
+
+        .reconocimientos-title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: #333;
+        }
+
+        .reconocimientos-carousel {
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .reconocimientos-items {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .reconocimientos-card {
+            min-width: 180px;
+            height: 240px;
+            margin: 0 16px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .reconocimientos-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .reconocimientos-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .reconocimientos-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 50%;
+        }
+
+        .reconocimientos-button.left {
+            left: -24px;
+        }
+
+        .reconocimientos-button.right {
+            right: -24px;
+        }
+
+        .reconocimientos-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s;
+        }
+
+        .reconocimientos-modal.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .reconocimientos-modal-content {
+            top: 20px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 16px;
+            max-width: 90%;
+            width: 600px;
+            text-align: center;
+            position: relative;
+        }
+
+        .reconocimientos-modal-content img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .reconocimientos-close-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #f44336;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+        }
+
+        .reconocimientos-description {
+            margin-top: 16px;
+            font-size: 14px;
+            color: #555;
+        }
     </style>
 </head>
 <body>
@@ -433,7 +565,40 @@
         
 
 
+<div class="reconocimientos-container">
+        <h2 class="reconocimientos-title">Mis Reconocimientos</h2>
+       
+        <div class="reconocimientos-carousel">
 
+            <div class="reconocimientos-items" id="carouselItems">
+                <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/1.png', 'CCNAv7: Switching, Routing, and Wireless Essentials')">
+                    <img src="/recursos/Recomo/1.png" alt="Diploma 1">
+                </div>
+
+                <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/2.png', 'CCNA: Introduction to Networks')">
+                    <img src="/recursos/Recomo/2.png" alt="Diploma 2">
+                </div>
+
+                <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/3.png', 'Networking challenge 2025')">
+                    <img src="/recursos/Recomo/3.png" alt="Diploma 3">
+                </div>
+                
+                <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/4.png', 'Concurso Estudiantil de Investigación 2024')">
+                    <img src="/recursos/Recomo/4.png" alt="Diploma 3">
+                </div>
+
+            </div>
+        </div>
+  
+    </div>
+
+    <div class="reconocimientos-modal" id="reconocimientos-modal">
+        <div class="reconocimientos-modal-content">
+            <button class="reconocimientos-close-btn" onclick="reconocimientosCloseModal()">&times;</button>
+            <img id="reconocimientos-modal-image" src="" alt="Diploma">
+            <p class="reconocimientos-description" id="reconocimientos-modal-description"></p>
+        </div>
+    </div>
 
 
 
@@ -505,6 +670,29 @@
 
 
     <script>
+ let currentPosition = 0;
+
+        function moveCarousel(direction) {
+            const carousel = document.getElementById('carouselItems');
+            const items = carousel.children.length;
+            const itemWidth = carousel.children[0].offsetWidth + 16; // Card width + margin
+            const visibleItems = Math.floor(carousel.parentElement.offsetWidth / itemWidth);
+            currentPosition = Math.max(0, Math.min(currentPosition + direction, items - visibleItems));
+            carousel.style.transform = `translateX(-${currentPosition * itemWidth}px)`;
+        }
+
+        function reconocimientosOpenModal(imageSrc, description) {
+            document.getElementById('reconocimientos-modal-image').src = imageSrc;
+            document.getElementById('reconocimientos-modal-description').innerText = description;
+            document.getElementById('reconocimientos-modal').classList.add('active');
+        }
+
+        function reconocimientosCloseModal() {
+            document.getElementById('reconocimientos-modal').classList.remove('active');
+        }
+
+
+
 let currentLanguage = 'es';
         const languageBtn = document.getElementById('languageBtn');
         
