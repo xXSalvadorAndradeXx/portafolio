@@ -427,6 +427,7 @@ body.dark-mode .carousel-btn:hover {
             min-width: 180px;
             height: 240px;
             margin: 0 16px;
+         
             background: var(--card-bg);
             border-radius: 16px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -458,13 +459,7 @@ body.dark-mode .carousel-btn:hover {
             border-radius: 50%;
         }
 
-        .reconocimientos-button.left {
-            left: -24px;
-        }
-
-        .reconocimientos-button.right {
-            right: -24px;
-        }
+      
 
         .reconocimientos-modal {
             position: fixed;
@@ -472,7 +467,7 @@ body.dark-mode .carousel-btn:hover {
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--modal-bg);
+            background: rgba(0, 0, 0, 0.8);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -487,15 +482,20 @@ body.dark-mode .carousel-btn:hover {
         }
 
         .reconocimientos-modal-content {
-            background: var(--modal-content-bg);
+            top: 40px;
+            background: rgba(48, 47, 47, 0.842);
             border-radius: 16px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 16px rgba(222, 218, 218, 0.2);
             padding: 16px;
             max-width: 90%;
             width: 600px;
+            color: #fff;
             text-align: center;
             position: relative;
         }
+.no-scroll {
+    overflow: hidden;
+}
 
         .reconocimientos-modal-content img {
             width: 100%;
@@ -510,6 +510,7 @@ body.dark-mode .carousel-btn:hover {
             border: none;
             font-size: 24px;
             cursor: pointer;
+            background-color: #ff0000;
             color: #fff;
             width: 40px;
             height: 40px;
