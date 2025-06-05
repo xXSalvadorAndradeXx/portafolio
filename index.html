@@ -11,164 +11,7 @@
     <link rel="stylesheet" href="Diseño/progres.css">
     <link rel="stylesheet" href="Diseño/modo_oscuro.css">
     <style>
-:root {
-        --accent-color: #4CAF50;
-        --role-bg: #f9f9f9;
-        --role-text: #000;
-    }
 
-    /* Variables de color para modo oscuro */
-    .dark-mode {
-        --accent-color: #8BC34A;
-        --role-bg: #2a2a2a;
-        --role-text: #fff;
-    }
-
-    /* Otros estilos generales */
-    .project-role {
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    .dark-mode .project-role img {
-        filter: brightness(0.8);
-    }
-
-
-
-.reconocimientos-container {
-         
-            margin: auto;
-            position: relative;
-        }
-
-        .reconocimientos-title {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 16px;
-        }
-
-        .reconocimientos-carousel {
-            display: flex;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .reconocimientos-items {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .reconocimientos-card {
-            min-width: 180px;
-            height: 240px;
-            margin: 0 16px;
-            background: var(--card-bg);
-            border-radius: 16px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .reconocimientos-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .reconocimientos-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .reconocimientos-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            border: none;
-            color: #fff;
-            font-size: 18px;
-            cursor: pointer;
-            padding: 8px 12px;
-            border-radius: 50%;
-        }
-
-        .reconocimientos-button.left {
-            left: -24px;
-        }
-
-        .reconocimientos-button.right {
-            right: -24px;
-        }
-
-        .reconocimientos-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--modal-bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            visibility: hidden;
-            opacity: 0;
-            transition: visibility 0s, opacity 0.3s;
-        }
-
-        .reconocimientos-modal.active {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .reconocimientos-modal-content {
-            background: var(--modal-content-bg);
-            border-radius: 16px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            padding: 16px;
-            max-width: 90%;
-            width: 600px;
-            text-align: center;
-            position: relative;
-        }
-
-        .reconocimientos-modal-content img {
-            width: 100%;
-            border-radius: 8px;
-        }
-
-        .reconocimientos-close-btn {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background: var(--close-btn-bg);
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: #fff;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-        }
-
-        .reconocimientos-description {
-            margin-top: 16px;
-            font-size: 14px;
-        }
-
-        .dark-mode {
-            --accent-color: #8BC34A;
-            --bg-color: #2a2a2a;
-            --text-color: #fff;
-            --card-bg: #333;
-            --modal-bg: rgba(255, 255, 255, 0.7);
-            --modal-content-bg: #444;
-            --close-btn-bg: #e57373;
-        }
 
     </style>
 </head>
@@ -235,9 +78,50 @@
         </div>
     </div>
 
-    <div class="container4" id="skill">
-        <h2 data-es="Habilidades Duras" data-en="Hard Skills">Habilidades Duras</h2>
+<div class="reconocimientos-container">
+        <h2 class="reconocimientos-title">Mis Reconocimientos</h2>
+       
+        <div class="reconocimientos-carousel">
+
+            <div class="reconocimientos-items" id="carouselItems">
+                <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/1.png', 'CCNAv7: Switching, Routing, and Wireless Essentials')">
+                    <img src="/recursos/Recomo/1.png" alt="Diploma 1">
+                </div>
+
+                <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/2.png', 'CCNA: Introduction to Networks')">
+                    <img src="/recursos/Recomo/2.png" alt="Diploma 2">
+                </div>
+
+                <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/3.png', 'Networking challenge 2025')">
+                    <img src="/recursos/Recomo/3.png" alt="Diploma 3">
+                </div>
+                
+                <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/4.png', 'Concurso Estudiantil de Investigación 2024')">
+                    <img src="/recursos/Recomo/4.png" alt="Diploma 3">
+                </div>
+
+            </div>
+        </div>
+  
+    </div>
+
+    <div class="reconocimientos-modal" id="reconocimientos-modal">
+        <div class="reconocimientos-modal-content">
+            <button class="reconocimientos-close-btn" onclick="reconocimientosCloseModal()">&times;</button>
+            <img id="reconocimientos-modal-image" src="" alt="Diploma">
+            <p class="reconocimientos-description" id="reconocimientos-modal-description"></p>
+        </div>
+    </div>
+
+
+<div id="skill"></div>
+
+
+
+    <div class="container4" >
+     
         <hr style="border: 1px solid black; margin: 20px;">
+           <h2 data-es="Habilidades Duras" data-en="Hard Skills">Habilidades Duras</h2>
     </div>
 
     <div class="container">
@@ -417,12 +301,12 @@
         </div>
 
        
-
+<div id="proyect"></div>
         <div class="projects-section" id="proyect">
             <div class="projects-container">
-                <h2 class="projects-title" data-es="Mis Proyectos" data-en="My Projects">Mis Proyectos</h2>
+
                 <hr style="border: 1px solid black; margin: 20px;">
-       
+                       <h2 class="projects-title" data-es="Mis Proyectos" data-en="My Projects">Mis Proyectos</h2>
                 <div class="projects-carousel">
                     <button class="carousel-btn prev" onclick="moveProjects(-1)">&#10094;</button>
                     
@@ -571,40 +455,7 @@
         
 
 
-<div class="reconocimientos-container">
-        <h2 class="reconocimientos-title">Mis Reconocimientos</h2>
-       
-        <div class="reconocimientos-carousel">
 
-            <div class="reconocimientos-items" id="carouselItems">
-                <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/1.png', 'CCNAv7: Switching, Routing, and Wireless Essentials')">
-                    <img src="/recursos/Recomo/1.png" alt="Diploma 1">
-                </div>
-
-                <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/2.png', 'CCNA: Introduction to Networks')">
-                    <img src="/recursos/Recomo/2.png" alt="Diploma 2">
-                </div>
-
-                <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/3.png', 'Networking challenge 2025')">
-                    <img src="/recursos/Recomo/3.png" alt="Diploma 3">
-                </div>
-                
-                <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/4.png', 'Concurso Estudiantil de Investigación 2024')">
-                    <img src="/recursos/Recomo/4.png" alt="Diploma 3">
-                </div>
-
-            </div>
-        </div>
-  
-    </div>
-
-    <div class="reconocimientos-modal" id="reconocimientos-modal">
-        <div class="reconocimientos-modal-content">
-            <button class="reconocimientos-close-btn" onclick="reconocimientosCloseModal()">&times;</button>
-            <img id="reconocimientos-modal-image" src="" alt="Diploma">
-            <p class="reconocimientos-description" id="reconocimientos-modal-description"></p>
-        </div>
-    </div>
 
 
 
