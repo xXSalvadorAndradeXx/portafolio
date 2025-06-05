@@ -35,9 +35,7 @@
 
 
 
-
 .reconocimientos-container {
-           
          
             margin: auto;
             position: relative;
@@ -47,7 +45,6 @@
             text-align: center;
             font-size: 24px;
             margin-bottom: 16px;
-            color: #333;
         }
 
         .reconocimientos-carousel {
@@ -66,7 +63,7 @@
             min-width: 180px;
             height: 240px;
             margin: 0 16px;
-            background: #fff;
+            background: var(--card-bg);
             border-radius: 16px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             overflow: hidden;
@@ -111,7 +108,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: var(--modal-bg);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -126,8 +123,7 @@
         }
 
         .reconocimientos-modal-content {
-            top: 20px;
-            background: #fff;
+            background: var(--modal-content-bg);
             border-radius: 16px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             padding: 16px;
@@ -146,7 +142,7 @@
             position: absolute;
             top: 8px;
             right: 8px;
-            background: #f44336;
+            background: var(--close-btn-bg);
             border: none;
             font-size: 24px;
             cursor: pointer;
@@ -162,8 +158,18 @@
         .reconocimientos-description {
             margin-top: 16px;
             font-size: 14px;
-            color: #555;
         }
+
+        .dark-mode {
+            --accent-color: #8BC34A;
+            --bg-color: #2a2a2a;
+            --text-color: #fff;
+            --card-bg: #333;
+            --modal-bg: rgba(255, 255, 255, 0.7);
+            --modal-content-bg: #444;
+            --close-btn-bg: #e57373;
+        }
+
     </style>
 </head>
 <body>
