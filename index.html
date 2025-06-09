@@ -159,6 +159,144 @@
 .publicacion-descarga:hover {
     background-color: var(--color-secundario);
 }
+
+
+
+.testimonials-section {
+    padding: 50px 20px;
+    background-color: rgb(212, 212, 212);
+    text-align: center;
+}
+
+.section-title {
+    color: #333;
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.testimonials-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    cursor: pointer;
+    transition: transform 0.3s;
+    width: 150px;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial-avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #4a6fa5;
+}
+
+.testimonial-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.testimonial-name {
+    color: #333;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Estilos del Popup */
+.testimonial-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+}
+
+.popup-avatar {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #4a6fa5;
+}
+
+.popup-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.popup-name {
+    color: #4a6fa5;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.popup-date {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.popup-testimonial {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.popup-testimonial p {
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .testimonial-card {
+        width: 120px;
+    }
+    
+    .testimonial-avatar {
+        width: 100px;
+        height: 100px;
+    }
+}
     </style>
 </head>
 <body>
@@ -637,7 +775,36 @@
 </div>
         
 
+<div class="testimonials-section">
+    <h2 class="section-title">Testimonios</h2>
+    <div class="testimonials-container">
+        <!-- Testimonio 1 -->
+        <div class="testimonial-card" onclick="openTestimonial(1)">
+            <div class="testimonial-avatar">
+                <img src="/testimonios/victor.jpg" alt="María González">
+            </div>
+            <h3 class="testimonial-name">Victor Rivera</h3></h3>
+        </div>
 
+        
+        
+    </div>
+</div>
+
+<!-- Popup de Testimonio -->
+<div id="testimonialPopup" class="testimonial-popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closeTestimonial()">&times;</span>
+        <div class="popup-avatar">
+            <img id="popupAvatar" src="" alt="">
+        </div>
+        <h3 id="popupName" class="popup-name"></h3>
+        <p id="popupDate" class="popup-date"></p>
+        <div class="popup-testimonial">
+            <p id="popupText"></p>
+        </div>
+    </div>
+</div>
 
 
 
@@ -979,6 +1146,59 @@ const themeBtn = document.getElementById('themeBtn');
             // Cambiar el contenido de la etiqueta <p> con la clase "frase-personal"
             document.querySelector(".frase-personal").textContent = fraseElegida;
         });
+
+
+
+
+
+
+        // Datos de los testimonios
+const testimonials = [
+    {
+        id: 1,
+        name: "Victor Rivera",
+        avatar: "/testimonios/victor.jpg",
+        date: "Junio 2025",
+        text: "Excelente profesional. Su trabajo en el desarrollo de nuestro sistema legal fue fundamental para optimizar nuestros procesos. Siempre atento a los detalles y con soluciones innovadoras."
+    },
+    {
+        id: 2,
+        name: "Carlos Martínez",
+        avatar: "ruta/a/foto2.jpg",
+        date: "Marzo 2023",
+        text: "Trabajar con él fue una experiencia enriquecedora. Su capacidad para resolver problemas complejos y su dedicación al proyecto superaron todas nuestras expectativas."
+    },
+    {
+        id: 3,
+        name: "Ana Rodríguez",
+        avatar: "ruta/a/foto3.jpg",
+        date: "Julio 2023",
+        text: "Su enfoque metódico y su atención al detalle hicieron que nuestro proyecto fuera un éxito. Recomiendo ampliamente sus servicios profesionales."
+    }
+];
+
+function openTestimonial(id) {
+    const testimonial = testimonials.find(t => t.id === id);
+    if (testimonial) {
+        document.getElementById('popupAvatar').src = testimonial.avatar;
+        document.getElementById('popupName').textContent = testimonial.name;
+        document.getElementById('popupDate').textContent = testimonial.date;
+        document.getElementById('popupText').textContent = testimonial.text;
+        document.getElementById('testimonialPopup').style.display = 'flex';
+    }
+}
+
+function closeTestimonial() {
+    document.getElementById('testimonialPopup').style.display = 'none';
+}
+
+// Cerrar al hacer clic fuera del contenido
+window.onclick = function(event) {
+    const popup = document.getElementById('testimonialPopup');
+    if (event.target === popup) {
+        closeTestimonial();
+    }
+}
     </script>
 </body>
 
