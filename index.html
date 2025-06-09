@@ -12,7 +12,153 @@
     <link rel="stylesheet" href="Diseño/modo_oscuro.css">
     <style>
 
+:root {
+    --color-primario: #3a5a78;
+    --color-secundario: #6d8cb0;
+    --color-texto: #000000;
+    --color-fondo: #f8f9fa;
+    --color-borde: #e0e0e0;
+}
 
+#publicacion-salud-mental {
+    background-color: var(--color-fondo);
+    padding: 2rem 0;
+ 
+}
+
+.publicacion-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.publicacion-divider {
+    border: 1px solid var(--color-secundario);
+    margin: 20px auto;
+    width: 80px;
+}
+
+.publicacion-titulo {
+    text-align: center;
+    color: var(--color-primario);
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.publicacion-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 2rem;
+}
+
+@media (min-width: 768px) {
+    .publicacion-content {
+        flex-direction: row;
+    }
+}
+
+.publicacion-imagen-container {
+    position: relative;
+    flex: 1;
+    min-height: 300px;
+}
+
+.publicacion-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.publicacion-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--color-primario);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.publicacion-detalles {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.publicacion-autores, 
+.publicacion-institucion, 
+.publicacion-fecha {
+    color: var(--color-texto);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.publicacion-autores {
+    font-weight: 600;
+}
+
+.publicacion-resumen h3, 
+.publicacion-metodos h3 {
+    color: var(--color-primario);
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+}
+
+.publicacion-resumen p, 
+.publicacion-metodos ul {
+    color: var(--color-texto);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.publicacion-metodos ul {
+    padding-left: 1.2rem;
+}
+
+.publicacion-metodos li {
+    margin-bottom: 0.5rem;
+}
+
+.publicacion-tags {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.tag {
+    background-color: #e0e7ff;
+    color: var(--color-primario);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.publicacion-descarga {
+    display: inline-block;
+    background-color: var(--color-primario);
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 40px;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+    text-align: center;
+    font-weight: 500;
+}
+
+.publicacion-descarga:hover {
+    background-color: var(--color-secundario);
+}
     </style>
 </head>
 <body>
@@ -307,6 +453,7 @@
 
                 <hr style="border: 1px solid black; margin: 20px;">
                        <h2 class="projects-title" data-es="Mis Proyectos" data-en="My Projects">Mis Proyectos</h2>
+                      
                 <div class="projects-carousel">
                     <button class="carousel-btn prev" onclick="moveProjects(-1)">&#10094;</button>
                     
@@ -426,25 +573,7 @@
                         </div>
                         
                         <!-- Proyecto 4 -->
-                        <div class="project-card">
-                            <img src="/recursos/investiga.png" alt="Proyecto 4" class="project-image">
-                            <div class="project-info">
-                                <h3 class="project-title" data-es="Evaluación de Salud Mental" data-en="Mental Health Evaluation">Evaluación de Salud Mental</h3>
-                                <p class="project-description" data-es="Evaluación del nivel en la salud mental de los estudiantes de la Facultad de Ciencias Jurídicas durante el Ciclo 01-2024 en la Universidad Gerardo Barrios, Centro Regional de Usulután." 
-                                   data-en="Evaluation of the mental health level of students in the Faculty of Legal Sciences during the 01-2024 Semester at Universidad Gerardo Barrios, Regional Center of Usulután.">
-                                    Evaluación del nivel en la salud mental de los estudiantes de la Facultad de Ciencias Jurídicas durante el Ciclo 01-2024 en la Universidad Gerardo Barrios, Centro Regional de Usulután.
-                                </p>
-
-                                
-                                <div class="project-tech">
-                                    <span class="tech-tag">Psicología</span>
-                                    <span class="tech-tag">Estadística</span>
-                                    <span class="tech-tag">Metodología Cualitativa</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="/recursos/Evaluación del nivel en la salud mental de los estudiantes de la Facultad de Ciencias Jurídicas, durante el Ciclo 01-2024 en la Universidad Gerardo Barrios, Centro Regional de Usulután.pdf" target="_blank" class="project-link" data-es="Ver Detalles" data-en="View Details">Ver Detalles</a>
-                                </div>
-                            </div>
+                        
                         </div>
                     </div>
                     
@@ -452,6 +581,60 @@
                 </div>
             </div>
         </div>
+
+
+<div id="publicacion-salud-mental">
+    <div class="publicacion-container">
+        <hr class="publicacion-divider">
+        <h2 class="publicacion-titulo" data-es="Mis Publicaciones" data-en="My Publications">
+            Mis Publicaciones
+        </h2>
+        
+        <div class="publicacion-content">
+            <div class="publicacion-imagen-container">
+                <img src="/recursos/investiga.png" alt="Investigación en Salud Mental" class="publicacion-imagen">
+                <div class="publicacion-badge" data-es="Estudio Científico" data-en="Scientific Study">Estudio Científico</div>
+            </div>
+            
+            <div class="publicacion-detalles">
+                <p class="publicacion-autores">Autor: Salvador Ernesto Andrade Peña</p>
+                <p class="publicacion-institucion">Universidad Gerardo Barrios, Centro Regional de Usulután</p>
+                <p class="publicacion-fecha">Ciclo 01-2024</p>
+                
+                <div class="publicacion-resumen">
+                    <h3 data-es="Resumen" data-en="Abstract">Resumen</h3>
+                    <p data-es="Evaluación del nivel en la salud mental de los estudiantes de la Facultad de Ciencias Jurídicas durante el Ciclo 01-2024." 
+                       data-en="Evaluation of the mental health level of students in the Faculty of Legal Sciences during the 01-2024 Semester.">
+                        Evaluación del nivel en la salud mental de los estudiantes de la Facultad de Ciencias Jurídicas durante el Ciclo 01-2024 en la Universidad Gerardo Barrios, Centro Regional de Usulután.
+                    </p>
+                </div>
+                
+                <div class="publicacion-metodos">
+                    <h3 data-es="Métodos" data-en="Methods">Métodos</h3>
+                    <ul>
+                        <li data-es="Estudio cuantitativo" data-en="Quantitative study">Estudio cuantitativo</li>
+                        <li data-es="Muestreo estratificado" data-en="Stratified sampling">Muestreo estratificado</li>
+                        <li data-es="Instrumentos validados" data-en="Validated instruments">Instrumentos validados</li>
+                    </ul>
+                </div>
+                
+                <div class="publicacion-tags">
+                    <span class="tag" data-es="Psicología" data-en="Psychology">Psicología</span>
+                    <span class="tag" data-es="Educación Superior" data-en="Higher Education">Educación Superior</span>
+                    <span class="tag" data-es="Salud Pública" data-en="Public Health">Salud Pública</span>
+                </div>
+                
+                <a href="/recursos/Evaluación del nivel en la salud mental de los estudiantes de la Facultad de Ciencias Jurídicas, durante el Ciclo 01-2024 en la Universidad Gerardo Barrios, Centro Regional de Usulután.pdf" 
+                   class="publicacion-descarga" 
+                   target="_blank"
+                   data-es="Descargar Estudio Completo" 
+                   data-en="Download Full Study">
+                    Descargar Estudio Completo
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
         
 
 
