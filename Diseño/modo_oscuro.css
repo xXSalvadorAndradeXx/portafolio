@@ -461,69 +461,7 @@ body.dark-mode .carousel-btn:hover {
 
       
 
-        .reconocimientos-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            visibility: hidden;
-            opacity: 0;
-            transition: visibility 0s, opacity 0.3s;
-        }
 
-        .reconocimientos-modal.active {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .reconocimientos-modal-content {
-            top: 40px;
-            background: rgba(48, 47, 47, 0.842);
-            border-radius: 16px;
-            box-shadow: 0 8px 16px rgba(222, 218, 218, 0.2);
-            padding: 16px;
-            max-width: 90%;
-            width: 600px;
-            color: #fff;
-            text-align: center;
-            position: relative;
-        }
-.no-scroll {
-    overflow: hidden;
-}
-
-        .reconocimientos-modal-content img {
-            width: 100%;
-            border-radius: 8px;
-        }
-
-        .reconocimientos-close-btn {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background: var(--close-btn-bg);
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            background-color: #ff0000;
-            color: #fff;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-        }
-
-        .reconocimientos-description {
-            margin-top: 16px;
-            font-size: 14px;
-        }
 
         .dark-mode {
             --accent-color: #8BC34A;
@@ -534,3 +472,143 @@ body.dark-mode .carousel-btn:hover {
             --modal-content-bg: #444;
             --close-btn-bg: #e57373;
         }
+
+        .reconocimientos-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 1000;
+    perspective: 1000px;
+}
+
+.reconocimientos-modal.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.reconocimientos-modal-content {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    padding: 24px;
+    max-width: 90%;
+    width: 700px; /* Reducido un poco el ancho para mejor proporción */
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Cambiado a columna */
+    gap: 20px; /* Espacio entre imagen y descripción */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transform: translateY(20px) rotateX(5deg);
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), 
+                box-shadow 0.4s ease;
+    overflow: hidden;
+}
+
+.reconocimientos-modal.active .reconocimientos-modal-content {
+    transform: translateY(0) rotateX(0);
+}
+
+.reconocimientos-modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%);
+    z-index: -1;
+}
+
+.reconocimientos-modal-content img {
+    width: 100%; /* Ahora ocupa el ancho completo */
+    border-radius: 12px;
+    object-fit: cover;
+    max-height: 400px; /* Altura máxima para la imagen */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.reconocimientos-modal-content img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.reconocimientos-close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255, 0, 0, 0.8);
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 2;
+}
+
+.reconocimientos-close-btn:hover {
+    background: rgba(255, 0, 0, 1);
+    transform: rotate(90deg);
+}
+
+.reconocimientos-description {
+    padding: 20px;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.7);
+    font-size: 15px;
+    line-height: 1.6;
+    width: 100%; /* Ahora ocupa el ancho completo */
+    box-sizing: border-box;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.4s ease;
+    margin-top: 0; /* Eliminamos margen superior */
+}
+
+.reconocimientos-description:hover {
+    background-color: rgba(255, 255, 255, 0.85);
+    transform: translateY(-2px);
+}
+
+/* Efecto de título opcional (puedes añadir un h2 en tu HTML) */
+.reconocimientos-title {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 1.5em;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .reconocimientos-modal-content {
+        width: 90%;
+        padding: 16px;
+    }
+    
+    .reconocimientos-modal-content img {
+        max-height: 300px;
+    }
+}
+
