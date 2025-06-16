@@ -25,19 +25,28 @@
     <title>Andrade Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="recursos/milogo.png" type="image/x-icon">
-    <link rel="stylesheet" href="/nDiseños/body.css">
-    <link rel="stylesheet" href="/nDiseños/nav.css">
-    <link rel="stylesheet" href="/nDiseños/acercade.css">
-    <link rel="stylesheet" href="/nDiseños/reconocimientos.css">
-    <link rel="stylesheet" href="/nDiseños/Inicio.css">
-    <link rel="stylesheet" href="/nDiseños/skills.css">
-    <link rel="stylesheet" href="/nDiseños/skillsblandas.css">
-    <link rel="stylesheet" href="/nDiseños/valores.css">
-    <link rel="stylesheet" href="/nDiseños/project.css">
-    <link rel="stylesheet" href="/nDiseños/publicaciones.css">
-    <link rel="stylesheet" href="/nDiseños/testimonios.css">
-    <link rel="stylesheet" href="/nDiseños/contacto.css">
-    <link rel="stylesheet" href="/nDiseños/footer.css">    
+<!-- Estilos Base -->
+<link rel="stylesheet" href="/nDiseños/body.css">
+<link rel="stylesheet" href="/nDiseños/nav.css">
+
+<!-- Secciones Principales -->
+<link rel="stylesheet" href="/nDiseños/Inicio.css">
+<link rel="stylesheet" href="/nDiseños/acercade.css">
+<link rel="stylesheet" href="/nDiseños/skills.css">
+<link rel="stylesheet" href="/nDiseños/skillsblandas.css">
+<link rel="stylesheet" href="/nDiseños/project.css">
+
+<!-- Componentes Específicos -->
+<link rel="stylesheet" href="/nDiseños/reconocimientos.css">
+<link rel="stylesheet" href="/nDiseños/publicaciones.css">
+<link rel="stylesheet" href="/nDiseños/testimonios.css">
+
+<!-- Pie de Página y Contacto -->
+<link rel="stylesheet" href="/nDiseños/contacto.css">
+<link rel="stylesheet" href="/nDiseños/footer.css">
+
+<!-- Valores (¿Quizás mover a secciones principales?) -->
+<link rel="stylesheet" href="/nDiseños/valores.css">    
 </head>
 <style>
     /* Estilos LEGO */
@@ -167,6 +176,134 @@
     transform: translateY(-100%);
   }
 }
+/* Selector de idioma - Estilo One UI */
+.language-switcher {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.language-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+    background-color: var(--oneui-primary);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--oneui-transition);
+    box-shadow: 0 4px 12px rgba(61, 106, 254, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.language-btn:hover {
+    background-color: #2d5ae0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(61, 106, 254, 0.4);
+}
+
+.language-btn:active {
+    transform: scale(0.98);
+}
+
+.language-btn i {
+    font-size: 1.1rem;
+}
+
+/* Efecto pulse */
+.language-btn.pulse::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--oneui-primary);
+    border-radius: 30px;
+    z-index: -1;
+    animation: pulse 2s infinite;
+    opacity: 0.7;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    70% {
+        transform: scale(1.15);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+/* Tooltip flotante */
+.language-btn::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.language-btn:hover::after {
+    opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .language-switcher {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .language-btn {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .language-switcher {
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .language-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        padding: 0;
+    }
+    
+    .language-btn span {
+        display: none;
+    }
+    
+    .language-btn i {
+        font-size: 1.2rem;
+    }
+}
 </style>
 <body>
 <div class="lego-construction">
@@ -185,7 +322,12 @@
   <div class="lego-blocks-container"></div>
 </div>
 
-
+ <div class="language-switcher">
+        <button class="language-btn pulse" id="languageBtn">
+            <i class="fas fa-language"></i>
+            <span>English</span>
+        </button>
+    </div>
 
 
     <nav id="mainNav">
@@ -1082,7 +1224,89 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const languageBtn = document.getElementById('languageBtn');
+    const textElements = document.querySelectorAll('[data-es], [data-en]');
+    let currentLanguage = 'es'; // Idioma por defecto
+    
+    // Configurar tooltip inicial
+    updateButtonText();
+    
+    languageBtn.addEventListener('click', function() {
+        // Cambiar idioma
+        currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+        
+        // Actualizar todos los textos
+        textElements.forEach(element => {
+            if (element.hasAttribute(`data-${currentLanguage}`)) {
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    element.placeholder = element.getAttribute(`data-${currentLanguage}`);
+                } else {
+                    element.textContent = element.getAttribute(`data-${currentLanguage}`);
+                }
+            }
+        });
+        
+        // Actualizar el botón
+        updateButtonText();
+        
+        // Efecto visual
+        this.classList.add('clicked');
+        setTimeout(() => this.classList.remove('clicked'), 300);
+        
+        // Guardar preferencia (opcional)
+        localStorage.setItem('preferredLanguage', currentLanguage);
+    });
+    
+    // Cargar idioma guardado (opcional)
+    const savedLanguage = localStorage.getItem('preferredLanguage');
+    if (savedLanguage && savedLanguage !== currentLanguage) {
+        languageBtn.click(); // Simular click para cambiar idioma
+    }
+    
+    function updateButtonText() {
+        const langText = currentLanguage === 'es' ? 'English' : 'Español';
+        const tooltipText = currentLanguage === 'es' ? 'Cambiar a inglés' : 'Switch to Spanish';
+        
+        languageBtn.querySelector('span').textContent = langText;
+        languageBtn.setAttribute('data-tooltip', tooltipText);
+    }
+    
+    // Efecto de onda al hacer clic
+    languageBtn.addEventListener('click', function(e) {
+        const x = e.clientX - e.target.getBoundingClientRect().left;
+        const y = e.clientY - e.target.getBoundingClientRect().top;
+        
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+    });
+});
 
+// Añadir al CSS:
+/*
+.ripple {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    animation: rippleEffect 0.6s linear;
+}
+
+@keyframes rippleEffect {
+    to {
+        transform: translate(-50%, -50%) scale(30);
+        opacity: 0;
+    }
+}
+*/
     </script>
 </body>
 </html>
