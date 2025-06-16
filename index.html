@@ -1,66 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <!-- Metadatos básicos -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portafolio profesional de Salvador Andrade, desarrollador Full-Stack con experiencia en PHP, JavaScript, React, Vue, Node.js y más. Explora mis proyectos y habilidades técnicas.">
-    <meta name="keywords" content="desarrollador Full-Stack, Salvador Andrade, portafolio programador, desarrollo web, PHP, JavaScript, React, Vue, Node.js, proyectos desarrollo web">
-    <meta name="author" content="Salvador Andrade">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://andradedev.site/">
-    <meta property="og:title" content="Salvador Andrade | Desarrollador Full-Stack">
-    <meta property="og:description" content="Portafolio profesional de Salvador Andrade, desarrollador Full-Stack especializado en tecnologías modernas.">
-    <meta property="og:image" content="https://salvadorandrade.com/recursos/1.png">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://andradedev.site/">
-    <meta property="twitter:title" content="Salvador Andrade | Desarrollador Full-Stack">
-    <meta property="twitter:description" content="Portafolio profesional de Salvador Andrade, desarrollador Full-Stack especializado en tecnologías modernas.">
-    <meta property="twitter:image" content="https://salvadorandrade.com/recursos/milogo.png">
-    
+    <title>Menú One UI Style</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="recursos/milogo.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="Diseño/inicio.css">
-    <link rel="stylesheet" href="Diseño/habilidades.css">
-    <link rel="stylesheet" href="Diseño/progres.css">
-    <link rel="stylesheet" href="Diseño/modo_oscuro.css">
-    <style>
-
-
-    </style>
+    <link rel="stylesheet" href="/nDiseños/body.css">
+    <link rel="stylesheet" href="/nDiseños/nav.css">
+    <link rel="stylesheet" href="/nDiseños/acercade.css">
+    <link rel="stylesheet" href="/nDiseños/reconocimientos.css">
+    <link rel="stylesheet" href="/nDiseños/Inicio.css">
+    <link rel="stylesheet" href="/nDiseños/skills.css">
+    <link rel="stylesheet" href="/nDiseños/skillsblandas.css">
+    <link rel="stylesheet" href="/nDiseños/valores.css">
+    <link rel="stylesheet" href="/nDiseños/project.css">
+    <link rel="stylesheet" href="/nDiseños/publicaciones.css">
+    <link rel="stylesheet" href="/nDiseños/testimonios.css">
+    <link rel="stylesheet" href="/nDiseños/contacto.css">
+    <link rel="stylesheet" href="/nDiseños/footer.css">    
 </head>
 <body>
-
-    <div class="language-switcher">
-        <button class="language-btn pulse" id="languageBtn">
-            <i class="fas fa-language"></i>
-            <span>English</span>
-        </button>
-    </div>
-    <div class="theme-switcher">
-        <button class="theme-btn" id="themeBtn" title="Modo nocturno">
-            <i class="fas fa-moon"></i>
-        </button>
-    </div>
-    <nav>
-        <a class="menu-toggle"><i class="fas fa-bars"></i></a>
-        <ul>
-            <li><a href=#inicio data-es="Inicio" data-en="Home">Inicio</a></li>
+    <nav id="mainNav">
+        <a class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></a>
+        <ul id="menuList">
+            <li><a href="#inicio" data-es="Inicio" data-en="Home">Inicio</a></li>
             <li><a href="#skill" data-es="Habilidades" data-en="Skills">Habilidades</a></li>
             <li><a href="#proyect" data-es="Proyectos" data-en="Proyects">Proyectos</a></li>
             <li><a href="#acerca" data-es="Acerca de" data-en="About">Acerca de</a></li>
-   
         </ul>
+        <img src="/recursos/milogo.png" alt="Imagen Flotante" class="flotante" height="50px" width="50px">
     </nav>
-    <div  id="inicio">  
-        <div class="contenedor">  
+    <section id="inicio" style="height: 100vh; padding: 20px;">
+    <div class="contenedor">  
 
             <div class="image-container">
-                <img class="fondo" src="recursos/fondo1.png" alt="Logo" class="logo" height="400px" width="1250px">
+                <img class="fondo" src="recursos/fondo1.png" alt="Logo" class="logo" >
             </div>
             
             <div class="texto">
@@ -73,14 +48,12 @@
                 <p class="" data-es="El código no tiene errores, solo soluciones esperando ser descubiertas." data-en="The code doesn't have errors, only solutions waiting to be discovered.">El código no tiene errores, solo soluciones esperando ser descubiertas.</p>
             </div>
         </div>
-        
-    <img src="/recursos/milogo.png" alt="Imagen Flotante" class="flotante" height="50px" width="50px">
+    </section>
 
-    <div id="acerca"></div>
-
-    <div id="" class="sobre-mi">
+ <section id="acerca" style="height: 100vh; padding: 20px;">
+    <div class="sobre-mi">
         <div class="imagen">
-            <img src="recursos/Foto1.jpg" alt="">
+            <img src="recursos/Foto1.jpg" alt="Foto de Salvador" />
         </div>
         <div class="contenido">
             <h1 data-es="Sobre Mí" data-en="About Me">Sobre Mí</h1>
@@ -95,7 +68,14 @@
             <a href="recursos/cv.pdf" class="descargar-cv" download="CV.pdf" data-es="Descargar CV" data-en="Download CV">Descargar CV</a>
         </div>
     </div>
+</section>
 
+
+
+
+
+ 
+<section id="reconociminentos" style="padding: 20px;">
 <div class="reconocimientos-container">
         <h2 class="reconocimientos-title" data-es="Mis Reconocimientos" data-en="My Awards">Mis Reconocimientos</h2>
        
@@ -131,16 +111,17 @@
         </div>
     </div>
 
-
-<div id="skill"></div>
-
+ </section>
 
 
-    <div class="container4" >
-     
-        <hr style="border: 1px solid black; margin: 20px;">
+
+    
+    <section id="skill" >
+      
+<div class="container4" >
+ 
            <h2 data-es="Habilidades Duras" data-en="Hard Skills">Habilidades Duras</h2>
-    </div>
+    
 
     <div class="container">
         <div class="card">
@@ -243,7 +224,20 @@
             <p>40%</p>
         </div>
     </div>
+</div>
 
+
+
+
+
+
+
+
+
+
+    </section>
+
+ <section id="skill blandas" >
     <div class="skills-section">
    
         <h2 class="section-title" data-es="Habilidades Blandas" data-en="Soft Skills">Habilidades Blandas</h2>
@@ -291,10 +285,14 @@
     
             <button class="arrow-btn right" onclick="moveSkills('right')">&#10095;</button>
         </div>
-        <h2 class="section-title" data-es="Intereses y Valores" data-en="Interests and Values">Intereses y Valores</h2>
-       
+    </section>
 
+<section id="valores" style=" padding: 20px;">
+
+ <div class="valores">
+<h2 class="section-title" data-es="Intereses y Valores" data-en="Interests and Values">Intereses y Valores</h2>
         <div class="container22">
+            
             <div class="card2">
                 <h2 data-es="Intereses" data-en="Interests">Intereses</h2>
                 <ul class="list">
@@ -318,11 +316,152 @@
             </div>
         </div>
 
-       
+</div>
 
 
+</section>
 
-<div id="publicacion-salud-mental">
+    <section id="proyect" >
+
+
+            <div class="projects-container">
+
+              
+                       <h2 class="projects-title" data-es="Mis Proyectos" data-en="My Projects">Mis Proyectos</h2>
+                      
+                <div class="projects-carousel">
+                    <button class="carousel-btn prev" onclick="moveProjects(-1)">&#10094;</button>
+                    
+                    <div class="projects-track" id="projectsTrack">
+                        <!-- Proyecto 1 -->
+                        <div class="project-card">
+                            <img src="/recursos/inicio.png" alt="Proyecto 1" class="project-image">
+                            <div class="project-info">
+                                <h3 class="project-title" data-es="Legal Connect" data-en="Legal Connect">Legal Connect</h3>
+                                <p class="project-description" data-es="Sistema integral para la gestión de casos legales con funcionalidades avanzadas." 
+                                   data-en="Comprehensive system for legal case management with advanced features.">
+                                    Sistema integral para la gestión de casos legales con funcionalidades avanzadas.
+                                </p>
+
+                                <div class="project-role" style="margin: 10px;padding: 10px; border-left: 4px solid var(--accent-color); border-radius: 5px; margin-top: 10px; display: flex; align-items: center; background-color: var(--role-bg); color: var(--role-text);">
+                                   
+                                    <p style="margin: 0;" data-es="Rol desempeñado: Desarrollador Frontend - Backend y Coordinador de Proyecto." 
+                                       data-en="Role: Frontend - Backend Developer and Project Coordinator.">
+                                        <strong>Rol desempeñado:</strong> Desarrollador Frontend - Backend  y Coordinador de Proyecto.
+                                    </p>
+                                </div>
+                                <div class="project-tech">
+                                    <span class="tech-tag">PHP</span>
+                                    <span class="tech-tag">CSS</span>
+                                   
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/xXSalvadorAndradeXx/LegalConnect" target="_blank" class="project-link" data-es="Código" data-en="Code">Código</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Proyecto 2 -->
+                        <div class="project-card">
+                            <img src="/recursos/huerto.png" alt="Proyecto 2" class="project-image">
+                            <div class="project-info">
+                                <h3 class="project-title" data-es="Huerto en Mano" data-en="Huerto en Mano">Huerto en Mano</h3>
+                                <p class="project-description" data-es="Plataforma para gestión de huertos urbanos, incluyendo foros de blockchain y visualización de datos." 
+                                   data-en="Platform for urban garden management, including blockchain forums and data visualization.">
+                                    Plataforma para gestión de huertos urbanos, incluyendo foros de blockchain y visualización de datos.
+                                </p>
+                                <div class="project-role" style="margin: 10px; padding: 10px; border-left: 4px solid var(--accent-color); border-radius: 5px; margin-top: 10px; display: flex; align-items: center; background-color: var(--role-bg); color: var(--role-text);">
+                                   
+                                    <p style="margin: 0;" data-es="Rol desempeñado: Desarrollador Frontend - Backendy Coordinador de Proyecto." 
+                                       data-en="Role: Frontend - Backend Developer and Project Coordinator.">
+                                        <strong>Rol desempeñado:</strong> Desarrollador Frontend - Backend y Coordinador de Proyecto.
+                                    </p>
+                                </div>
+                                <div class="project-tech">
+                                    <span class="tech-tag">HTML</span>
+                                    <span class="tech-tag">CSS</span>
+                                    <span class="tech-tag">Blockchain</span>
+                                    <span class="tech-tag" style="background-color: brown; color: azure;">En Desarrollo</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/Juan-Carlos-Mejia/huertoenmano" target="_blank" class="project-link" data-es="Código" data-en="Code">Código</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        <!-- Proyecto 3 -->
+                        <div class="project-card">
+                            <img src="/recursos/camaron.png" alt="Proyecto 3" class="project-image">
+                            <div class="project-info">
+                                <h3 class="project-title" data-es="Don Camarón Sistema Interno" data-en="Don Camarón Internal System">Don Camarón Sistema Interno</h3>
+                                <p class="project-description" data-es="Sistema interno para la gestión operativa de un restaurante." 
+                                   data-en="Internal system for operational management of a restaurant.">
+                                    Sistema interno para la gestión operativa de un restaurante.
+                                </p>
+
+                                <div class="project-role" style="margin: 10px;padding: 10px; border-left: 4px solid var(--accent-color); border-radius: 5px; margin-top: 10px; display: flex; align-items: center; background-color: var(--role-bg); color: var(--role-text);">
+                                   
+                                    <p style="margin: 0;" data-es="Rol desempeñado: Desarrollador Frontend - Backend y Coordinador de Proyecto." 
+                                       data-en="Role: Frontend - Backend Developer and Project Coordinator.">
+                                        <strong>Rol desempeñado:</strong> Desarrollador Frontend - Backend y Coordinador de Proyecto.
+                                    </p>
+                                </div>
+                                <div class="project-tech">
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">ASP.NET</span>
+                                    <span class="tech-tag">Visual Basic</span>
+                                    <span class="tech-tag">CSS</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" target="_blank" class="project-link" data-es="Código" data-en="Code">Código</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <img src="/recursos/sala.png" alt="Proyecto 3" class="project-image">
+                            <div class="project-info">
+                                <h3 class="project-title" data-es="Calculadora salarial" data-en="Salary Calculator">Calculadora salarial</h3>
+                                <p class="project-description" data-es="Aplicación web para calcular su salario en el salvador despues de descontar lo que dicte la ley" 
+                                   data-en="Web application to calculate your salary in El Salvador after deducting what the law dictates.">
+                                   Aplicación web para calcular su salario en el salvador despues de descontar lo que dicte la ley.
+                                </p>
+
+                                <div class="project-role" style="margin: 10px;padding: 10px; border-left: 4px solid var(--accent-color); border-radius: 5px; margin-top: 10px; display: flex; align-items: center; background-color: var(--role-bg); color: var(--role-text);">
+                                   
+                                    <p style="margin: 0;" data-es="Rol desempeñado: Desarrollador Frontend - Backend y Coordinador de Proyecto." 
+                                       data-en="Role: Frontend - Backend Developer and Project Coordinator.">
+                                        <strong>Rol desempeñado:</strong> Desarrollador Frontend - Backend y Coordinador de Proyecto.
+                                    </p>
+                                </div>
+                                <div class="project-tech">
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">HTML</span>
+                                    <span class="tech-tag">CSS</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" target="_blank" class="project-link" data-es="Código" data-en="Code">Código</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Proyecto 4 -->
+                        
+                        </div>
+                         <button class="carousel-btn next" onclick="moveProjects(1)">&#10095;</button>
+                    </div>
+                    
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+<section id="mis publicaciones" style="padding: 20px;">
+    <div id="publicacion-salud-mental">
     <div class="publicacion-container">
         <hr class="publicacion-divider">
         <h2 class="publicacion-titulo" data-es="Mis Publicaciones" data-en="My Publications">
@@ -378,9 +517,12 @@
         </div>
     </div>
 </div>
-        
+</section>
 
-<div class="testimonials-section">
+
+
+<section id="testimonios" style="padding: 20px;">
+    <div class="testimonials-section">
     <h2 class="section-title" data-es="Testimonios" data-en="Testimonials">Testimonios</h2>
     <div class="testimonials-container">
         <!-- Testimonio 1 -->
@@ -431,20 +573,8 @@
         </div>
     </div>
 </div>
+</section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- HTML de la sección de contacto -->
 <section id="contacto" class="contacto-section">
     <div class="contacto-container">
         <h2 class="section-title" data-es="Contáctame" data-en="Contact Me">Contáctame</h2>
@@ -470,19 +600,9 @@
     </button>
 </form>
 
-<!-- Agrega estos scripts al final de tu body -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script src="contacto.js"></script>
-<script src="script.js"></script>
-
-<!-- Agrega estos scripts al final de tu body -->
-
-
-    </div>
 </section>
 
-     <center>
-       <div id="mas" class="mas-content">
+<div id="mas" class="mas-content">
         <h2 data-es="Conocer más" data-en="Learn more">Conocer más</h2>
         <ul>
             <li>
@@ -523,9 +643,211 @@
 </footer>
 
 
+
+
+
+
+
+
+
+
+
+    <script src="/scripts/proyect.js"></script>
+    <script src="/scripts/publicaciones.js"></script>
+    <script src="/scripts/skiilsb.js"></script>
+     <script src="/scripts/testimonio.js"></script>
     <script>
+
+// Variables para el carrusel
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Animar las barras de progreso al cargar la página
+    const progressBars = document.querySelectorAll('.progress');
+    
+    progressBars.forEach(bar => {
+        const targetWidth = bar.style.width;
+        bar.style.width = '0';
+        
+        setTimeout(() => {
+            bar.style.width = targetWidth;
+        }, 100);
+    });
+    
+    // Opcional: Efecto de hover más pronunciado
+    const cards = document.querySelectorAll('.card');
+    
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px)';
+            this.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.2)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(-5px)';
+            this.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.15)';
+        });
+    });
+});
+// Función para abrir el modal de reconocimientos
+function reconocimientosOpenModal(imageSrc, description) {
+    const modal = document.getElementById('reconocimientos-modal');
+    const modalImage = document.getElementById('reconocimientos-modal-image');
+    const modalDescription = document.getElementById('reconocimientos-modal-description');
+    
+    // Configurar el contenido del modal
+    modalImage.src = imageSrc;
+    modalImage.alt = description;
+    modalDescription.textContent = description;
+    
+    // Mostrar el modal con animación
+    modal.classList.add('active');
+    
+    // Bloquear el scroll del body
+    document.body.style.overflow = 'hidden';
+}
+
+// Función para cerrar el modal
+function reconocimientosCloseModal() {
+    const modal = document.getElementById('reconocimientos-modal');
+    
+    // Ocultar el modal
+    modal.classList.remove('active');
+    
+    // Restaurar el scroll del body
+    document.body.style.overflow = '';
+}
+
+// Cerrar modal al hacer clic fuera del contenido
+document.getElementById('reconocimientos-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        reconocimientosCloseModal();
+    }
+});
+
+// Cerrar modal con tecla ESC
+document.addEventListener('keydown', function(e) {
+    const modal = document.getElementById('reconocimientos-modal');
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+        reconocimientosCloseModal();
+    }
+});
+
+
+
+        // Toggle del menú móvil
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                
+                // Animación de clic
+                this.classList.add('clicked');
+                setTimeout(() => {
+                    this.classList.remove('clicked');
+                }, 300);
+            });
+            
+            // Cerrar menú al hacer clic en un enlace (solo móvil)
+            const menuLinks = document.querySelectorAll('#menuList a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth < 768) {
+                        mainNav.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Cambiar clase active al desplazarse
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('nav a');
+                
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+
+
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+    // Seleccionar todos los enlaces del menú
+    const menuLinks = document.querySelectorAll('#menuList a[href^="#"]');
+    
+    // Agregar evento click a cada enlace
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevenir comportamiento predeterminado
+            
+            // Obtener el ID de la sección objetivo
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                // Cerrar menú móvil si está abierto
+                const nav = document.getElementById('mainNav');
+                nav.classList.remove('active');
+                
+                // Calcular posición de la sección
+                const targetPosition = targetSection.offsetTop;
+                const startPosition = window.pageYOffset;
+                const distance = targetPosition - startPosition;
+                const duration = 800; // Duración en milisegundos
+                let startTime = null;
+                
+                // Función de animación
+                function animation(currentTime) {
+                    if (startTime === null) startTime = currentTime;
+                    const timeElapsed = currentTime - startTime;
+                    const run = ease(timeElapsed, startPosition, distance, duration);
+                    window.scrollTo(0, run);
+                    if (timeElapsed < duration) requestAnimationFrame(animation);
+                }
+                
+                // Función de easing para efecto suave
+                function ease(t, b, c, d) {
+                    t /= d/2;
+                    if (t < 1) return c/2*t*t*t + b;
+                    t -= 2;
+                    return c/2*(t*t*t + 2) + b;
+                }
+                
+                // Iniciar animación
+                requestAnimationFrame(animation);
+            }
+        });
+    });
+    
+    // Opcional: Actualizar URL sin recargar la página
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            const targetId = this.getAttribute('href');
+            history.pushState(null, null, targetId);
+        });
+    });
+});
     </script>
 </body>
-
-
 </html>

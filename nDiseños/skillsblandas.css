@@ -7,8 +7,9 @@
 .skills-section {
     max-width: 1200px;
     margin: 0 auto;
-    background-color: white ;
+    background-color: white;
     border-radius: 30px;
+    padding: 20px;
 }
 
 .section-title {
@@ -24,6 +25,7 @@
     display: flex;
     align-items: center;
     gap: 15px;
+    overflow: hidden;
 }
 
 .skills-container-content {
@@ -108,8 +110,6 @@
     z-index: 1;
 }
 
-
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .section-title {
@@ -133,18 +133,27 @@
 
 @media (max-width: 480px) {
     #skill-blandas {
-        padding: 40px 15px;
+        padding: 30px 10px;
     }
     
+    .skills-section {
+        padding: 15px;
+    }
+
     .skill-card {
-        flex: 0 0 85%;
+        flex: 0 0 90%;
+        padding: 15px;
     }
     
     .skill-title {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
     
     .skill-description {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+    }
+
+    .skills-container-content {
+        gap: 10px;
     }
 }
