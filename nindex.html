@@ -536,111 +536,11 @@
 
     <script src="/scripts/proyect.js"></script>
     <script src="/scripts/publicaciones.js"></script>
+    <script src="/scripts/valores.js"></script>
     <script>
 
 // Variables para el carrusel
-let currentIndex = 0;
-const skillCards = document.querySelectorAll('.skill-card');
-const skillsContent = document.querySelector('.skills-container-content');
-const dotsContainer = document.createElement('div');
-dotsContainer.className = 'dots-container';
 
-// Crear puntos indicadores
-skillCards.forEach((_, index) => {
-    const dot = document.createElement('div');
-    dot.className = 'dot';
-    if (index === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => {
-        goToSkill(index);
-    });
-    dotsContainer.appendChild(dot);
-});
-
-// Insertar puntos después del contenedor
-document.querySelector('.skills-container').appendChild(dotsContainer);
-
-// Función para mover el carrusel
-function moveSkills(direction) {
-    const cardWidth = skillCards[0].offsetWidth + 20; // Ancho de la tarjeta + gap
-    const containerWidth = skillsContent.offsetWidth;
-    const maxScroll = skillsContent.scrollWidth - containerWidth;
-    
-    if (direction === 'left') {
-        currentIndex = Math.max(currentIndex - 1, 0);
-    } else {
-        currentIndex = Math.min(currentIndex + 1, skillCards.length - 1);
-    }
-    
-    // Calcular posición de desplazamiento
-    let scrollPosition;
-    if (window.innerWidth >= 1024) {
-        scrollPosition = currentIndex * cardWidth * 3; // Para desktop (3 tarjetas visibles)
-    } else if (window.innerWidth >= 768) {
-        scrollPosition = currentIndex * cardWidth * 2; // Para tablet (2 tarjetas visibles)
-    } else {
-        scrollPosition = currentIndex * cardWidth; // Para móvil (1 tarjeta visible)
-    }
-    
-    skillsContent.scrollTo({
-        left: scrollPosition,
-        behavior: 'smooth'
-    });
-    
-    updateDots();
-}
-
-// Función para ir a una skill específica
-function goToSkill(index) {
-    currentIndex = index;
-    const cardWidth = skillCards[0].offsetWidth + 20;
-    let scrollPosition;
-    
-    if (window.innerWidth >= 1024) {
-        scrollPosition = index * cardWidth * 3;
-    } else if (window.innerWidth >= 768) {
-        scrollPosition = index * cardWidth * 2;
-    } else {
-        scrollPosition = index * cardWidth;
-    }
-    
-    skillsContent.scrollTo({
-        left: scrollPosition,
-        behavior: 'smooth'
-    });
-    
-    updateDots();
-}
-
-// Actualizar puntos activos
-function updateDots() {
-    const dots = document.querySelectorAll('.dot');
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentIndex);
-    });
-}
-
-// Evento para detectar el scroll y actualizar el índice
-skillsContent.addEventListener('scroll', () => {
-    const cardWidth = skillCards[0].offsetWidth + 20;
-    const scrollPosition = skillsContent.scrollLeft;
-    
-    if (window.innerWidth >= 1024) {
-        currentIndex = Math.round(scrollPosition / (cardWidth * 3));
-    } else if (window.innerWidth >= 768) {
-        currentIndex = Math.round(scrollPosition / (cardWidth * 2));
-    } else {
-        currentIndex = Math.round(scrollPosition / cardWidth);
-    }
-    
-    updateDots();
-});
-
-// Ajustar al cambiar tamaño de pantalla
-window.addEventListener('resize', () => {
-    moveSkills('left'); // Vuelve al inicio
-    currentIndex = 0;
-    updateDots();
-});
 
 
 
