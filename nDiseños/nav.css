@@ -8,6 +8,7 @@ nav {
             z-index: 1000;
             padding: 12px 16px;
             transition: var(--oneui-transition);
+            border-radius: 30px;
         }
 
         .menu-toggle {

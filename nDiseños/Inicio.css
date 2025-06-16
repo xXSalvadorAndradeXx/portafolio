@@ -8,6 +8,7 @@
     justify-content: center;
     align-items: center;
     background-color: var(--oneui-background);
+      border-radius: 30px;
 }
 
 .image-container {
@@ -18,15 +19,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+      border-radius: 30px;
+  
 }
 
 .fondo {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.1;
+      opacity: 0.1;
     filter: grayscale(10%) brightness(1.1);
     transition: var(--oneui-transition);
+      border-radius: 30px;
 }
 
 .texto {
