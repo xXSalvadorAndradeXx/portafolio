@@ -10,6 +10,10 @@ nav {
             transition: var(--oneui-transition);
             border-radius: 30px;
         }
+        li :hover{
+            background-color: rgba(61, 106, 254, 0.1);
+            color: var(--oneui-primary);
+        }
 
         .menu-toggle {
             display: flex;
