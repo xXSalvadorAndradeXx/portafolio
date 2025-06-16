@@ -1,129 +1,76 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const track = document.getElementById('projectsTrack');
-    const projects = document.querySelectorAll('.project-card');
-    const projectCards = Array.from(projects);
-    const indicatorsContainer = document.createElement('div');
-
-    
-    // Crear indicadores
-    projectCards.forEach((_, index) => {
-        const indicator = document.createElement('div');
-       
-        if (index === 0) indicator.classList.add('active');
-        indicator.addEventListener('click', () => {
-            goToProject(index);
-        });
-        indicatorsContainer.appendChild(indicator);
+  const track = document.getElementById('projectsTrack');
+  const projects = document.querySelectorAll('.project-card');
+  const dotsContainer = document.createElement('div');
+  dotsContainer.className = 'dots-container';
+  
+  // Crear puntos indicadores
+  projects.forEach((_, index) => {
+    const dot = document.createElement('div');
+    dot.className = 'dot';
+    if (index === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => {
+      goToProject(index);
+    });
+    dotsContainer.appendChild(dot);
+  });
+  
+  // Insertar puntos después del carrusel
+  document.querySelector('.projects-carousel').appendChild(dotsContainer);
+  
+  // Configurar el carrusel
+  let currentIndex = 0;
+  const cardWidth = projects[0].offsetWidth + 30; // Ancho de la tarjeta + gap
+  
+  function updateCarousel() {
+    track.scrollTo({
+      left: currentIndex * cardWidth,
+      behavior: 'smooth'
     });
     
-    document.querySelector('.projects-carousel').appendChild(indicatorsContainer);
-    
-    const projectWidth = projects[0].offsetWidth + 30; // Ancho + gap
-    let currentIndex = 0;
-    const visibleProjects = 3; // Número de proyectos a mover por clic
-    
-    // Función para mover el carrusel
-    window.moveProjects = function(direction) {
-        currentIndex += direction * visibleProjects;
-        
-        // Ajustar índice para efecto infinito sin reset
-        if (currentIndex >= projectCards.length) {
-            currentIndex = 0;
-        } else if (currentIndex < 0) {
-            currentIndex = projectCards.length - visibleProjects;
-        }
-        
-        // Calcular nueva posición
-        const newPosition = currentIndex * projectWidth;
-        track.style.transition = 'transform 0.5s ease-in-out';
-        track.style.transform = `translateX(-${newPosition}px)`;
-        
-        updateIndicators();
-    };
-    
-    // Función para ir a un proyecto específico
-    function goToProject(index) {
-        currentIndex = index;
-        track.style.transform = `translateX(-${currentIndex * projectWidth}px)`;
-        updateIndicators();
-    }
-    
-    // Actualizar indicadores
-    function updateIndicators() {
-        const indicators = document.querySelectorAll('.carousel-indicator');
-        const normalizedIndex = currentIndex % projectCards.length;
-        
-        indicators.forEach((indicator, index) => {
-            indicator.classList.toggle('active', index === normalizedIndex);
-        });
-    }
-    
-    // Touch/swipe handling mejorado
-    let isDragging = false;
-    let startX, startScrollLeft, currentTranslate = 0;
-    
-    const dragStart = (e) => {
-        isDragging = true;
-        startX = e.pageX || e.touches[0].pageX;
-        startScrollLeft = currentIndex * projectWidth;
-        track.style.cursor = 'grabbing';
-        track.style.transition = 'none';
-        cancelAnimationFrame(animationId);
-    };
-    
-    const dragMove = (e) => {
-        if(!isDragging) return;
-        e.preventDefault();
-        const x = e.pageX || e.touches[0].pageX;
-        const walk = (x - startX) * 1.5; // Sensibilidad ajustada
-        
-        currentTranslate = startScrollLeft - walk;
-        track.style.transform = `translateX(-${currentTranslate}px)`;
-    };
-    
-    const dragEnd = () => {
-        isDragging = false;
-        track.style.cursor = 'grab';
-        track.style.transition = 'transform 0.5s ease-in-out';
-        
-        // Determinar si fue un swipe significativo
-        const threshold = projectWidth / 3;
-        const delta = startScrollLeft - currentTranslate;
-        
-        if (delta > threshold) {
-            moveProjects(1); // Swipe izquierda
-        } else if (delta < -threshold) {
-            moveProjects(-1); // Swipe derecha
-        } else {
-            // Volver a la posición actual si no se superó el threshold
-            track.style.transform = `translateX(-${currentIndex * projectWidth}px)`;
-        }
-    };
-    
-    // Event listeners
-    track.addEventListener('mousedown', dragStart);
-    track.addEventListener('touchstart', dragStart, { passive: false });
-    
-    document.addEventListener('mousemove', dragMove);
-    document.addEventListener('touchmove', dragMove, { passive: false });
-    
-    document.addEventListener('mouseup', dragEnd);
-    document.addEventListener('touchend', dragEnd);
-    
-    // Animación suave para el arrastre
-    let animationId;
-    function smoothDrag() {
-        if(!isDragging) return;
-        track.style.transform = `translateX(-${currentTranslate}px)`;
-        animationId = requestAnimationFrame(smoothDrag);
-    }
-    
-    // Inicialización
-    updateIndicators();
-    
-    // Ajuste responsive
-    window.addEventListener('resize', () => {
-        const newProjectWidth = projects[0].offsetWidth + 30;
-        track.style.transform = `translateX(-${currentIndex * newProjectWidth}px)`;
+    // Actualizar puntos activos
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
     });
+  }
+  
+  function moveProjects(direction) {
+    const maxIndex = projects.length - 1;
+    
+    if (direction === -1 && currentIndex > 0) {
+      currentIndex--;
+    } else if (direction === 1 && currentIndex < maxIndex) {
+      currentIndex++;
+    }
+    
+    updateCarousel();
+  }
+  
+  function goToProject(index) {
+    currentIndex = index;
+    updateCarousel();
+  }
+  
+  // Event listeners para los botones
+  document.querySelector('.prev').addEventListener('click', () => moveProjects(-1));
+  document.querySelector('.next').addEventListener('click', () => moveProjects(1));
+  
+  // Evento para detectar el scroll y actualizar el índice
+  track.addEventListener('scroll', () => {
+    const scrollPosition = track.scrollLeft;
+    currentIndex = Math.round(scrollPosition / cardWidth);
+    
+    // Actualizar puntos activos
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+  });
+  
+  // Ajustar al cambiar tamaño de pantalla
+  window.addEventListener('resize', () => {
+    cardWidth = projects[0].offsetWidth + 30;
+    updateCarousel();
+  });
 });

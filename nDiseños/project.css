@@ -1,220 +1,261 @@
-/* Estilos para la sección de proyectos */
-#proyect {
-    background-color: var(--oneui-background);
-    padding: 60px 20px;
+/* Variables de color */
+:root {
+  --primary-color: #3d6afe;
+  --secondary-color: #f5f5f5;
+  --background-color: #ffffff;
+  --text-color: #1a1a1a;
+  --accent-color: #3d6afe;
+  --role-bg: rgba(61, 106, 254, 0.1);
+  --role-text: #1a1a1a;
+  --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --border-radius: 16px;
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.projects-section {
-    max-width: 1400px;
-    margin: 0 auto;
+/* Estilos para la sección de proyectos */
+#proyect {
+  padding: 80px 0;
+  background-color: var(--secondary-color);
+}
+
+.projects-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
 }
 
 .projects-title {
-    text-align: center;
-    font-size: 2.2rem;
-    color: var(--oneui-primary);
-    margin-bottom: 40px;
-    font-weight: 600;
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 50px;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.projects-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), transparent);
+  border-radius: 3px;
 }
 
 .projects-carousel {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    padding: 20px 0;
+  position: relative;
+  padding: 0 50px;
 }
 
 .projects-track {
-    display: flex;
-    gap: 30px;
-    transition: transform 0.5s ease-in-out;
-    padding: 10px;
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 20px 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.projects-track::-webkit-scrollbar {
+  display: none;
 }
 
 .project-card {
-    flex: 0 0 380px;
-    background-color: var(--oneui-background);
-    border-radius: var(--oneui-border-radius);
-    box-shadow: var(--oneui-card-shadow);
-    overflow: hidden;
-    transition: var(--oneui-transition);
-    display: flex;
-    flex-direction: column;
+  flex: 0 0 380px;
+  scroll-snap-align: start;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
 }
 
 .project-image {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .project-info {
-    padding: 20px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+  padding: 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-title {
-    font-size: 1.4rem;
-    color: var(--oneui-primary);
-    margin-bottom: 10px;
-    font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  font-weight: 600;
 }
 
 .project-description {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: var(--oneui-text);
-    margin-bottom: 15px;
-    flex-grow: 1;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin-bottom: 15px;
+  flex-grow: 1;
 }
 
 .project-role {
-    margin: 10px 0;
-    padding: 10px;
-    border-left: 4px solid var(--oneui-primary);
-    border-radius: 5px;
-    background-color: rgba(61, 106, 254, 0.05);
-    color: var(--oneui-text);
+  margin: 15px 0;
+  padding: 12px;
+  border-left: 4px solid var(--accent-color);
+  border-radius: 5px;
+  background-color: var(--role-bg);
+  color: var(--role-text);
 }
 
 .project-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 15px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
 }
 
 .tech-tag {
-    background-color: rgba(61, 106, 254, 0.1);
-    color: var(--oneui-primary);
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 500;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
 }
 
 .project-links {
-    display: flex;
-    gap: 10px;
-    margin-top: auto;
+  display: flex;
+  gap: 15px;
+  margin-top: auto;
 }
 
 .project-link {
-    padding: 8px 20px;
-    background-color: var(--oneui-primary);
-    color: white;
-    border-radius: 20px;
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: var(--oneui-transition);
-    text-align: center;
-    flex-grow: 1;
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  text-align: center;
+  flex-grow: 1;
 }
 
 .project-link:hover {
-    background-color: var(--oneui-text);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: var(--text-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    background-color: var(--oneui-primary);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    cursor: pointer;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--oneui-transition);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: var(--background-color);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
 }
 
 .carousel-btn:hover {
-    background-color: var(--oneui-text);
-    transform: translateY(-50%) scale(1.1);
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-50%) scale(1.1);
 }
 
 .carousel-btn.prev {
-    left: -0px;
+  left: 0;
 }
 
 .carousel-btn.next {
-    right: -0px;
+  right: 0;
 }
 
-/* Indicadores del carrusel */
-.carousel-indicators {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 30px;
+/* Puntos indicadores */
+.dots-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 10px;
 }
 
-.carousel-indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: #ccc;
-    cursor: pointer;
-    transition: var(--oneui-transition);
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: var(--transition);
 }
 
-.carousel-indicator.active {
-    background-color: var(--oneui-primary);
-    transform: scale(1.2);
+.dot.active {
+  background-color: var(--primary-color);
+  transform: scale(1.2);
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+  .project-card {
+    flex: 0 0 320px;
+  }
+}
+
 @media (max-width: 768px) {
-    .project-card {
-        flex: 0 0 280px;
-    }
-    
-    .carousel-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-    
-    .carousel-btn.prev {
-        left: -0px;
-    }
-    
-    .carousel-btn.next {
-        right: -0px;
-    }
+  .projects-carousel {
+    padding: 0 30px;
+  }
+  
+  .project-card {
+    flex: 0 0 280px;
+  }
+  
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
 }
 
 @media (max-width: 480px) {
-    .projects-title {
-        font-size: 1.8rem;
-    }
-    
-    .project-card {
-        flex: 0 0 260px;
-    }
-    
-    .project-title {
-        font-size: 1.2rem;
-    }
-    
-    .project-description {
-        font-size: 0.85rem;
-    }
+  .projects-title {
+    font-size: 2rem;
+  }
+  
+  .projects-carousel {
+    padding: 0 15px;
+  }
+  
+  .project-card {
+    flex: 0 0 260px;
+  }
+  
+  .project-info {
+    padding: 20px;
+  }
 }
