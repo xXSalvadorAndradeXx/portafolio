@@ -1,0 +1,142 @@
+/* Estilos para la sección de habilidades */
+.container4 {
+    max-width: 1200px;
+    margin: 40px  20px;
+    padding: 0 20px;
+    background-color: white;
+    border-radius: 30px;
+}
+
+.container4 h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: black;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.container4 hr {
+    border: none;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+    max-width: 80%;
+}
+
+/* Contenedor de tarjetas */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+     background-color: white;
+     border-radius: 30px;
+}
+
+/* Tarjetas de habilidades */
+.card {
+    background-color: var(--oneui-background);
+    border-radius: var(--oneui-border-radius);
+    padding: 25px;
+    box-shadow: var(--oneui-card-shadow);
+    transition: var(--oneui-transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+    margin-bottom: 15px;
+    object-fit: contain;
+    transition: var(--oneui-transition);
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+.card h2 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--oneui-text);
+    font-weight: 600;
+}
+
+/* Barras de progreso */
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 1.5s ease-in-out;
+}
+
+/* Colores específicos para cada habilidad */
+.html-progress .progress { background-color: #E44D26; }
+.sql-progress .progress { background-color: #00758F; }
+.php-progress .progress { background-color: #777BB3; }
+.csharp-progress .progress { background-color: #68217A; }
+.react-progress .progress { background-color: #61DAFB; }
+.python-progress .progress { background-color: #3776AB; }
+.vue-progress .progress { background-color: #4FC08D; }
+.node-progress .progress { background-color: #8CC84B; }
+.javascript-progress .progress { background-color: #F7DF1E; }
+.java-progress .progress { background-color: #007396; }
+.blender-progress .progress { background-color: #F5792A; }
+.laravel-progress .progress { background-color: #FF2D20; }
+
+.card p {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--oneui-text);
+    margin-top: 5px;
+}
+
+/* Efecto de carga animada */
+@keyframes loadProgress {
+    from { width: 0; }
+    to { width: attr(data-percent); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 15px;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+    
+    .card h2 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .container4 h2 {
+        font-size: 1.8rem;
+    }
+}

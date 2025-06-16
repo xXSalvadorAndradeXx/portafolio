@@ -1,0 +1,121 @@
+#acerca {
+    margin-top: 60px;
+    background-color: var(--oneui-background);
+    padding: 40px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sobre-mi {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.imagen {
+    display: flex;
+    justify-content: center;
+}
+
+.imagen img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--oneui-primary);
+    box-shadow: var(--oneui-card-shadow);
+    transition: var(--oneui-transition);
+}
+
+.imagen img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 24px rgba(61, 106, 254, 0.2);
+}
+
+.contenido {
+    text-align: center;
+}
+
+.contenido h1 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: var(--oneui-primary);
+    font-weight: 600;
+}
+
+.contenido p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--oneui-text);
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+.descargar-cv {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--oneui-primary);
+    color: white;
+    border-radius: 24px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--oneui-transition);
+    border: 2px solid var(--oneui-primary);
+    box-shadow: 0 4px 12px rgba(61, 106, 254, 0.2);
+}
+
+.descargar-cv:hover {
+    background-color: transparent;
+    color: var(--oneui-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(61, 106, 254, 0.3);
+}
+
+.descargar-cv:active {
+    transform: scale(0.98);
+}
+
+/* Responsive para tablets */
+@media (min-width: 768px) {
+    .sobre-mi {
+        grid-template-columns: 1fr 2fr;
+        gap: 60px;
+    }
+    
+    .contenido {
+        text-align: left;
+    }
+    
+    .imagen img {
+        width: 260px;
+        height: 260px;
+    }
+    
+    .contenido h1 {
+        font-size: 2.5rem;
+    }
+    
+    .contenido p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Responsive para desktop */
+@media (min-width: 1024px) {
+    .sobre-mi {
+        gap: 80px;
+    }
+    
+    .imagen img {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .contenido h1 {
+        font-size: 2.8rem;
+    }
+}

@@ -1,0 +1,103 @@
+nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--oneui-background);
+            box-shadow: var(--oneui-card-shadow);
+            z-index: 1000;
+            padding: 12px 16px;
+            transition: var(--oneui-transition);
+        }
+
+        .menu-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: transparent;
+            color: var(--oneui-primary);
+            font-size: 20px;
+            cursor: pointer;
+            transition: var(--oneui-transition);
+        }
+
+        .menu-toggle:active {
+            background-color: rgba(61, 106, 254, 0.1);
+            transform: scale(0.95);
+        }
+
+        nav ul {
+            list-style: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            margin-top: 12px;
+            border-radius: var(--oneui-border-radius);
+            background-color: var(--oneui-background);
+        }
+
+        nav.active ul {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        nav li {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        nav li:last-child {
+            border-bottom: none;
+        }
+
+        nav a {
+            display: block;
+            padding: 16px 20px;
+            text-decoration: none;
+            color: var(--oneui-text);
+            font-weight: 500;
+            font-size: 16px;
+            transition: var(--oneui-transition);
+            border-radius: 12px;
+            margin: 4px 0;
+        }
+
+        nav a:active {
+            background-color: rgba(61, 106, 254, 0.1);
+            color: var(--oneui-primary);
+        }
+
+        nav a.active {
+            color: var(--oneui-primary);
+            background-color: rgba(61, 106, 254, 0.1);
+        }
+
+        /* Responsive para tablets */
+        @media (min-width: 768px) {
+            nav {
+                padding: 16px 24px;
+            }
+            
+            .menu-toggle {
+                display: none;
+            }
+            
+            nav ul {
+                max-height: none;
+                display: flex;
+                gap: 8px;
+                margin-top: 0;
+                background-color: transparent;
+            }
+            
+            nav li {
+                border-bottom: none;
+            }
+            
+            nav a {
+                padding: 10px 16px;
+                border-radius: 20px;
+            }
+        }

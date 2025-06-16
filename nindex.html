@@ -5,613 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú One UI Style</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --oneui-primary: #3d6afe;
-            --oneui-secondary: #f5f5f5;
-            --oneui-background: #ffffff;
-            --oneui-text: #1a1a1a;
-            --oneui-card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            --oneui-border-radius: 16px;
-            --oneui-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-
-        body {
-            background-color: var(--oneui-secondary);
-            color: var(--oneui-text);
-            padding-top: 60px;
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--oneui-background);
-            box-shadow: var(--oneui-card-shadow);
-            z-index: 1000;
-            padding: 12px 16px;
-            transition: var(--oneui-transition);
-        }
-
-        .menu-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: transparent;
-            color: var(--oneui-primary);
-            font-size: 20px;
-            cursor: pointer;
-            transition: var(--oneui-transition);
-        }
-
-        .menu-toggle:active {
-            background-color: rgba(61, 106, 254, 0.1);
-            transform: scale(0.95);
-        }
-
-        nav ul {
-            list-style: none;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            margin-top: 12px;
-            border-radius: var(--oneui-border-radius);
-            background-color: var(--oneui-background);
-        }
-
-        nav.active ul {
-            max-height: 500px;
-            transition: max-height 0.5s ease-in;
-        }
-
-        nav li {
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        nav li:last-child {
-            border-bottom: none;
-        }
-
-        nav a {
-            display: block;
-            padding: 16px 20px;
-            text-decoration: none;
-            color: var(--oneui-text);
-            font-weight: 500;
-            font-size: 16px;
-            transition: var(--oneui-transition);
-            border-radius: 12px;
-            margin: 4px 0;
-        }
-
-        nav a:active {
-            background-color: rgba(61, 106, 254, 0.1);
-            color: var(--oneui-primary);
-        }
-
-        nav a.active {
-            color: var(--oneui-primary);
-            background-color: rgba(61, 106, 254, 0.1);
-        }
-
-        /* Responsive para tablets */
-        @media (min-width: 768px) {
-            nav {
-                padding: 16px 24px;
-            }
-            
-            .menu-toggle {
-                display: none;
-            }
-            
-            nav ul {
-                max-height: none;
-                display: flex;
-                gap: 8px;
-                margin-top: 0;
-                background-color: transparent;
-            }
-            
-            nav li {
-                border-bottom: none;
-            }
-            
-            nav a {
-                padding: 10px 16px;
-                border-radius: 20px;
-            }
-        }
-
-       /* Estilos para la sección Acerca de */
-#acerca {
-    background-color: var(--oneui-background);
-    padding: 40px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.sobre-mi {
-    max-width: 1200px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 40px;
-    align-items: center;
-}
-
-.imagen {
-    display: flex;
-    justify-content: center;
-}
-
-.imagen img {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid var(--oneui-primary);
-    box-shadow: var(--oneui-card-shadow);
-    transition: var(--oneui-transition);
-}
-
-.imagen img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 24px rgba(61, 106, 254, 0.2);
-}
-
-.contenido {
-    text-align: center;
-}
-
-.contenido h1 {
-    font-size: 2.2rem;
-    margin-bottom: 20px;
-    color: var(--oneui-primary);
-    font-weight: 600;
-}
-
-.contenido p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--oneui-text);
-    margin-bottom: 30px;
-    text-align: justify;
-}
-
-.descargar-cv {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: var(--oneui-primary);
-    color: white;
-    border-radius: 24px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: var(--oneui-transition);
-    border: 2px solid var(--oneui-primary);
-    box-shadow: 0 4px 12px rgba(61, 106, 254, 0.2);
-}
-
-.descargar-cv:hover {
-    background-color: transparent;
-    color: var(--oneui-primary);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(61, 106, 254, 0.3);
-}
-
-.descargar-cv:active {
-    transform: scale(0.98);
-}
-
-/* Responsive para tablets */
-@media (min-width: 768px) {
-    .sobre-mi {
-        grid-template-columns: 1fr 2fr;
-        gap: 60px;
-    }
-    
-    .contenido {
-        text-align: left;
-    }
-    
-    .imagen img {
-        width: 260px;
-        height: 260px;
-    }
-    
-    .contenido h1 {
-        font-size: 2.5rem;
-    }
-    
-    .contenido p {
-        font-size: 1.1rem;
-    }
-}
-
-/* Responsive para desktop */
-@media (min-width: 1024px) {
-    .sobre-mi {
-        gap: 80px;
-    }
-    
-    .imagen img {
-        width: 300px;
-        height: 300px;
-    }
-    
-    .contenido h1 {
-        font-size: 2.8rem;
-    }
-}
-
-
-/* Estilos para el contenedor principal */
-.contenedor {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--oneui-background);
-}
-
-.image-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.fondo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.1;
-    filter: grayscale(10%) brightness(1.1);
-    transition: var(--oneui-transition);
-}
-
-.texto {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 0 20px;
-    margin-bottom: 20px;
-}
-
-.texto h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--oneui-primary);
-    margin-bottom: 10px;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    animation: fadeInUp 0.8s ease-out;
-}
-
-.texto .subtitulo {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: var(--oneui-text);
-    margin-bottom: 30px;
-    animation: fadeInUp 0.8s ease-out 0.2s both;
-}
-
-.texto2 {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 0 20px;
-    max-width: 600px;
-}
-
-.texto2 p {
-    font-size: 1.2rem;
-    font-style: italic;
-    color: var(--oneui-text);
-    opacity: 0.9;
-    line-height: 1.6;
-    animation: fadeInUp 0.8s ease-out 0.4s both;
-}
-
-.flotante {
-    position: absolute;
-    z-index: 3;
-    top: 10px;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-
-    object-fit: contain;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
-    transition: var(--oneui-transition);
-    animation: float 3s ;
-}
-
-.flotante:hover {
-    transform: scale(1.1);
-    filter: drop-shadow(0 4px 12px rgba(61, 106, 254, 0.3));
-}
-
-/* Animaciones */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-}
-
-/* Efecto de degradado para mejorar legibilidad */
-.contenedor::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, 
-                rgba(255,255,255,0.1) 0%, 
-                rgba(255,255,255,0.3) 50%, 
-                rgba(255,255,255,0.7) 100%);
-    z-index: 1;
-}
-
-/* Responsive para tablets */
-@media (max-width: 768px) {
-    .texto h1 {
-        font-size: 2.5rem;
-    }
-    
-    .texto .subtitulo {
-        font-size: 1.3rem;
-    }
-    
-    .texto2 p {
-        font-size: 1.1rem;
-    }
-    
-    .flotante {
-        width: 40px;
-        height: 40px;
-        bottom: 20px;
-        right: 20px;
-    }
-}
-
-/* Responsive para móviles */
-@media (max-width: 480px) {
-    .texto h1 {
-        font-size: 2rem;
-    }
-    
-    .texto .subtitulo {
-        font-size: 1.1rem;
-    }
-    
-    .texto2 p {
-        font-size: 1rem;
-    }
-    
-    .flotante {
-        width: 35px;
-        height: 35px;
-    }
-}
-
-
-
-/* Estilos para el contenedor de reconocimientos */
-.reconocimientos-container {
-    padding: 40px 20px;
-    background-color: var(--oneui-background);
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.reconocimientos-title {
-    text-align: center;
-    font-size: 2.2rem;
-    color: var(--oneui-primary);
-    margin-bottom: 30px;
-    font-weight: 600;
-}
-
-.reconocimientos-carousel {
-    position: relative;
-    overflow: hidden;
-    padding: 20px 0;
-}
-
-.reconocimientos-items {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 20px 0;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
-}
-
-.reconocimientos-items::-webkit-scrollbar {
-    display: none; /* Chrome/Safari/Opera */
-}
-
-.reconocimientos-card {
-    flex: 0 0 250px;
-    scroll-snap-align: start;
-    border-radius: var(--oneui-border-radius);
-    overflow: hidden;
-    box-shadow: var(--oneui-card-shadow);
-    transition: var(--oneui-transition);
-    cursor: pointer;
-    background-color: white;
-}
-
-.reconocimientos-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-.reconocimientos-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-/* Estilos para el modal */
-.reconocimientos-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 2000;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.reconocimientos-modal.active {
-    display: flex;
-    opacity: 1;
-}
-
-.reconocimientos-modal-content {
-    position: relative;
-    max-width: 90%;
-    max-height: 90vh;
-    background-color: var(--oneui-background);
-    border-radius: var(--oneui-border-radius);
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    animation: modalFadeIn 0.3s ease-out;
-}
-
-.reconocimientos-modal img {
-    max-width: 100%;
-    max-height: 70vh;
-    display: block;
-    margin: 0 auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.reconocimientos-description {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 1.2rem;
-    color: var(--oneui-text);
-    font-weight: 500;
-}
-
-.reconocimientos-close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 1.8rem;
-    color: var(--oneui-text);
-    background: none;
-    border: none;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--oneui-transition);
-}
-
-.reconocimientos-close-btn:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-    color: var(--oneui-primary);
-}
-
-/* Animaciones */
-@keyframes modalFadeIn {
-    from {
-        transform: scale(0.9);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-    .reconocimientos-card {
-        flex: 0 0 220px;
-    }
-}
-
-@media (max-width: 768px) {
-    .reconocimientos-card {
-        flex: 0 0 200px;
-    }
-    
-    .reconocimientos-modal-content {
-        padding: 20px;
-    }
-    
-    .reconocimientos-description {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .reconocimientos-title {
-        font-size: 1.8rem;
-    }
-
-    .reconocimientos-card {
-        flex: 0 0 150px;
-    }
-    
-    .reconocimientos-description {
-        font-size: 0.9rem;
-    }
-}
-
-    </style>
+    <link rel="stylesheet" href="/nDiseños/body.css">
+    <link rel="stylesheet" href="/nDiseños/nav.css">
+    <link rel="stylesheet" href="/nDiseños/acercade.css">
+    <link rel="stylesheet" href="/nDiseños/reconocimientos.css">
+    <link rel="stylesheet" href="/nDiseños/Inicio.css">
+    <link rel="stylesheet" href="/nDiseños/skills.css">
 </head>
 <body>
     <nav id="mainNav">
@@ -624,6 +23,9 @@
         </ul>
         <img src="/recursos/milogo.png" alt="Imagen Flotante" class="flotante" height="50px" width="50px">
     </nav>
+
+
+
 
     <section id="inicio" style="height: 100vh; padding: 20px;">
     <div class="contenedor">  
@@ -642,9 +44,6 @@
                 <p class="" data-es="El código no tiene errores, solo soluciones esperando ser descubiertas." data-en="The code doesn't have errors, only solutions waiting to be discovered.">El código no tiene errores, solo soluciones esperando ser descubiertas.</p>
             </div>
         </div>
-        
-    
-
     </section>
 
  <section id="acerca" style="height: 100vh; padding: 20px;">
@@ -667,7 +66,12 @@
     </div>
 </section>
 
- <section id="reconociminentos" style="height: 100vh; padding: 20px;">
+
+
+
+
+ 
+<section id="reconociminentos" style="padding: 20px;">
 <div class="reconocimientos-container">
         <h2 class="reconocimientos-title" data-es="Mis Reconocimientos" data-en="My Awards">Mis Reconocimientos</h2>
        
@@ -706,10 +110,127 @@
  </section>
 
 
-    <!-- Contenido de ejemplo para probar el scroll -->
+
     
-    <section id="skill" style="height: 100vh; padding: 20px;">
+    <section id="skill" >
       
+<div class="container4" >
+ 
+           <h2 data-es="Habilidades Duras" data-en="Hard Skills">Habilidades Duras</h2>
+    
+
+    <div class="container">
+        <div class="card">
+            <img src="recursos/html.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>HTML</h2>
+            <div class="progress-bar html-progress">
+                <div class="progress" style="width: 90%;"></div>
+            </div>
+            <p>90%</p>
+        </div>
+        <div class="card">
+            <img src="recursos/sql.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>SQL</h2>
+            <div class="progress-bar sql-progress">
+                <div class="progress" style="width: 90%;"></div>
+            </div>
+            <p>90%</p>
+        </div>
+        <div class="card">
+            <img src="recursos/php.png" alt="" height="50" width="100" style="position: relative;">
+            <h2>PHP</h2>
+            <div class="progress-bar php-progress">
+                <div class="progress" style="width: 90%;"></div>
+            </div>
+            <p>90%</p>
+        </div>
+ 
+        <div class="card">
+            <img src="recursos/csha.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>C#</h2>
+            <div class="progress-bar csharp-progress">
+                <div class="progress" style="width: 85%;"></div>
+            </div>
+            <p>85%</p>
+        </div>
+        <div class="card">
+            <img src="recursos/react.png" alt="" height="50" width="60" style="position: relative;">
+            <h2>React</h2>
+            <div class="progress-bar react-progress">
+                <div class="progress" style="width: 85%;"></div>
+            </div>
+            <p>85%</p>
+        </div>
+        <div class="card">
+            <img src="recursos/python.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>Python</h2>
+            <div class="progress-bar python-progress">
+                <div class="progress" style="width: 80%;"></div>
+            </div>
+            <p>80%</p>
+        </div>
+        <div class="card">
+            <img src="recursos/vue.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>Vue</h2>
+            <div class="progress-bar vue-progress">
+                <div class="progress" style="width: 80%;"></div>
+            </div>
+            <p>80%</p>
+        </div>
+
+        <div class="card">
+            <img src="recursos/node.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>Node.js</h2>
+            <div class="progress-bar node-progress">
+                <div class="progress" style="width: 75%;"></div>
+            </div>
+            <p>75%</p>
+        </div>
+        <div class="card">
+            <img src="recursos/javas.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>JavaScript</h2>
+            <div class="progress-bar javascript-progress">
+                <div class="progress" style="width: 70%;"></div>
+            </div>
+            <p>70%</p>
+        </div>
+        <div class="card">
+            <img src="recursos/java.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>Java</h2>
+            <div class="progress-bar java-progress">
+                <div class="progress" style="width: 60%;"></div>
+            </div>
+            <p>60%</p>
+        </div>
+ 
+        <div class="card">
+            <img src="recursos/blender.png" alt="" height="50" width="60" style="position: relative;">
+            <h2>Blender</h2>
+            <div class="progress-bar blender-progress">
+                <div class="progress" style="width: 50%;"></div>
+            </div>
+            <p>50%</p>
+        </div>
+        <div class="card">
+            <img src="recursos/laravel.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>Laravel</h2>
+            <div class="progress-bar laravel-progress">
+                <div class="progress" style="width: 40%;"></div>
+            </div>
+            <p>40%</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
     </section>
     <section id="proyect" style="height: 100vh; padding: 20px;">
         <h2>Proyectos</h2>
