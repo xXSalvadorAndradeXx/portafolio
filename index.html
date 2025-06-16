@@ -47,136 +47,11 @@
 <link rel="stylesheet" href="/nDiseños/footer.css">
 
 <!-- Valores (¿Quizás mover a secciones principales?) -->
-<link rel="stylesheet" href="/nDiseños/valores.css">    
+<link rel="stylesheet" href="/nDiseños/valores.css">  
+<link rel="stylesheet" href="/nDiseños/splash.css">   
 </head>
 <style>
-    /* Estilos LEGO */
-.lego-construction {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #f5f5f5;
-  z-index: 9999;
-  overflow: hidden;
-  font-family: 'Segoe UI', sans-serif;
-}
 
-.lego-base {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-  padding: 40px;
-  background-color: #fff;
-  border-radius: 30px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  text-align: center;
-  z-index: 2;
-  opacity: 0;
-  animation: legoAppear 1s forwards 0.5s;
-}
-
-@keyframes legoAppear {
-  to { opacity: 1; }
-}
-
-.lego-logo-container {
-  margin-bottom: 30px;
-}
-
-.lego-logo {
-  width: 80px;
-  height: 80px;
-  border-radius: 30px;
-  object-fit: contain;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
-}
-
-.lego-progress-container {
-  width: 100%;
-  height: 15px;
-  background-color: #e0e0e0;
-  border-radius: 30px;
-  margin: 30px 0;
-  overflow: hidden;
-}
-
-.lego-progress {
-  height: 100%;
-  width: 0;
-  background-color: #3d6afe;
-  border-radius: 30px;
-  animation: legoProgress 3s forwards;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
-}
-
-@keyframes legoProgress {
-  to { width: 100%; }
-}
-
-.lego-message h2 {
-  color: #333;
-  font-size: 1.4rem;
-  margin-bottom: 15px;
-}
-
-.lego-highlight {
-  color: #3d6afe;
-  font-weight: bold;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* Bloques LEGO */
-.lego-blocks-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.lego-block {
-  position: absolute;
-  background-color: #3d6afe;
-  border-radius: 8px;
-  opacity: 0;
-  transform: scale(0);
-  animation: legoBlockAppear 0.5s forwards;
-  box-shadow: inset 0 -4px 0 rgba(0,0,0,0.2);
-}
-
-@keyframes legoBlockAppear {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Efecto de desmontaje */
-.lego-construction.hide {
-  animation: legoDisassemble 1.5s forwards;
-}
-
-@keyframes legoDisassemble {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-100%);
-  }
-}
 /* Selector de idioma - Estilo One UI */
 .language-switcher {
     position: fixed;
@@ -303,6 +178,22 @@
     
     .language-btn i {
         font-size: 1.2rem;
+    }
+}
+.ripple {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    animation: rippleEffect 0.6s linear;
+}
+
+@keyframes rippleEffect {
+    to {
+        transform: translate(-50%, -50%) scale(30);
+        opacity: 0;
     }
 }
 </style>
@@ -969,7 +860,8 @@
     <script src="/scripts/proyect.js"></script>
     <script src="/scripts/publicaciones.js"></script>
     <script src="/scripts/skiilsb.js"></script>
-     <script src="/scripts/testimonio.js"></script>
+    <script src="/scripts/testimonio.js"></script>
+    <script src="/scripts/lego.js"></script>
     <script>
 
 // Variables para el carrusel
@@ -1164,70 +1056,7 @@ document.addEventListener('keydown', function(e) {
 });
 
 
-document.addEventListener('DOMContentLoaded', function() {
-  const container = document.querySelector('.lego-construction');
-  const blocksContainer = document.querySelector('.lego-blocks-container');
-  
-  // Crear bloques LEGO
-  function createLegoBlocks() {
-    const blockSize = 40;
-    const cols = Math.ceil(window.innerWidth / blockSize);
-    const rows = Math.ceil(window.innerHeight / blockSize);
-    const totalBlocks = cols * rows;
-    
-    for (let i = 0; i < totalBlocks; i++) {
-      const block = document.createElement('div');
-      block.className = 'lego-block';
-      
-      // Posición aleatoria
-      const x = (i % cols) * blockSize;
-      const y = Math.floor(i / cols) * blockSize;
-      
-      // Estilo del bloque
-      block.style.width = `${blockSize}px`;
-      block.style.height = `${blockSize}px`;
-      block.style.left = `${x}px`;
-      block.style.top = `${y}px`;
-      
-      // Color aleatorio (variaciones del color primario)
-      const hue = 220 + Math.random() * 20 - 10; // Variación de ±10 del azul
-      const saturation = 70 + Math.random() * 20;
-      const lightness = 50 + Math.random() * 20;
-      block.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-      
-      // Retraso de animación escalonado
-      const delay = Math.random() * 2;
-      block.style.animationDelay = `${delay}s`;
-      
-      blocksContainer.appendChild(block);
-    }
-  }
-  
-  // Iniciar construcción
-  createLegoBlocks();
-  
-  // Ocultar después de 4 segundos
-  setTimeout(() => {
-    container.classList.add('hide');
-    
-    // Eliminar completamente después de la animación
-    setTimeout(() => {
-      container.remove();
-      
-      // Efecto de rebote en el logo al cargar la página
-      const logo = document.querySelector('.flotante');
-      if (logo) {
-        logo.style.animation = 'legoBounce 0.8s ease';
-      }
-    }, 1500);
-  }, 4000);
-  
-  // Opcional: Saltar al hacer clic
-  container.addEventListener('click', function() {
-    this.classList.add('hide');
-    setTimeout(() => this.remove(), 1500);
-  });
-});
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const languageBtn = document.getElementById('languageBtn');
