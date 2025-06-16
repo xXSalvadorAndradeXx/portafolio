@@ -40,6 +40,7 @@
 <link rel="stylesheet" href="/nDiseños/reconocimientos.css">
 <link rel="stylesheet" href="/nDiseños/publicaciones.css">
 <link rel="stylesheet" href="/nDiseños/testimonios.css">
+<link rel="stylesheet" href="/nDiseños/modoo.css">
 
 <!-- Pie de Página y Contacto -->
 <link rel="stylesheet" href="/nDiseños/contacto.css">
@@ -328,7 +329,11 @@
             <span>English</span>
         </button>
     </div>
-
+    <div class="theme-switcher">
+        <button class="theme-btn" id="themeBtn" title="Modo nocturno">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
 
     <nav id="mainNav">
         <a class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></a>
@@ -549,7 +554,7 @@
  <section id="skill blandas" >
     <div class="skills-section">
    
-        <h2 class="section-title" data-es="Habilidades Blandas" data-en="Soft Skills">Habilidades Blandas</h2>
+        <h2 class="titleskills" data-es="Habilidades Blandas" data-en="Soft Skills">Habilidades Blandas</h2>
     
         <div class="skills-container">
             <button class="arrow-btn left" onclick="moveSkills('left')">&#10094;</button>
@@ -1307,6 +1312,77 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 }
 */
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const themeBtn = document.getElementById('themeBtn');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // Verificar preferencia del sistema o guardada
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
+        enableDarkMode();
+    }
+    
+    // Configurar evento click
+    themeBtn.addEventListener('click', function() {
+        if (document.body.classList.contains('dark-mode')) {
+            disableDarkMode();
+        } else {
+            enableDarkMode();
+        }
+        
+        // Efecto de onda
+        this.classList.add('active');
+        setTimeout(() => this.classList.remove('active'), 300);
+    });
+    
+    // Opcional: Escuchar cambios en las preferencias del sistema
+    prefersDarkScheme.addListener(e => {
+        if (e.matches && !document.body.classList.contains('dark-mode')) {
+            enableDarkMode();
+        } else if (!e.matches && document.body.classList.contains('dark-mode')) {
+            disableDarkMode();
+        }
+    });
+    
+    function enableDarkMode() {
+        document.body.classList.add('dark-mode');
+        themeBtn.setAttribute('title', 'Modo diurno');
+        themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+        localStorage.setItem('theme', 'dark');
+        
+        // Animación especial
+        document.documentElement.style.setProperty('--oneui-transition', 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)');
+        setTimeout(() => {
+            document.documentElement.style.setProperty('--oneui-transition', 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)');
+        }, 500);
+    }
+    
+    function disableDarkMode() {
+        document.body.classList.remove('dark-mode');
+        themeBtn.setAttribute('title', 'Modo nocturno');
+        themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+        localStorage.setItem('theme', 'light');
+        
+        // Animación especial
+        document.documentElement.style.setProperty('--oneui-transition', 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)');
+        setTimeout(() => {
+            document.documentElement.style.setProperty('--oneui-transition', 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)');
+        }, 500);
+    }
+    
+    // Efecto de carga gradual para el modo oscuro
+    if (document.body.classList.contains('dark-mode')) {
+        document.body.style.opacity = '0';
+        setTimeout(() => {
+            document.body.style.transition = 'opacity 0.5s ease';
+            document.body.style.opacity = '1';
+        }, 10);
+    }
+});
     </script>
 </body>
 </html>

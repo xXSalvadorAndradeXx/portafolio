@@ -3,14 +3,14 @@
     max-width: 1200px;
     margin: 40px  20px;
     padding: 0 20px;
-    background-color: white;
+    background-color: var(--oneui-background);
     border-radius: 30px;
 }
 
 .container4 h2 {
     text-align: center;
     font-size: 2.2rem;
-    color: black;
+   color: var(--oneui-primary);
     margin-bottom: 30px;
     font-weight: 600;
 }
@@ -31,7 +31,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-     background-color: white;
+    background-color: var(--oneui-background);
      border-radius: 30px;
 }
 

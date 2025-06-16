@@ -7,17 +7,19 @@
 .skills-section {
     max-width: 1200px;
     margin: 0 auto;
-    background-color: white;
+    background-color: var(--oneui-background);
     border-radius: 30px;
     padding: 20px;
 }
 
-.section-title {
+.titleskills {
     text-align: center;
     font-size: 2.2rem;
     color: var(--oneui-primary);
     margin-bottom: 40px;
     font-weight: 600;
+    background-color: var(--oneui-background); ;
+    
 }
 
 .skills-container {

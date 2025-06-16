@@ -5,12 +5,12 @@
     color: var(--oneui-primary);
     margin: 60px 0 40px;
     font-weight: 600;
-    background-color: white;
+    background-color: var(--oneui-background);
        border-radius: 30px;
     
 }
 .valores{
-    background-color: white;
+    background-color: var(--oneui-background);
     border-radius: 30px;
     padding: auto;
 }
