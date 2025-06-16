@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // Insertar puntos después del carrusel
-  document.querySelector('.projects-carousel').appendChild(dotsContainer);
+
   
   // Configurar el carrusel
   let currentIndex = 0;

@@ -23,6 +23,8 @@
   margin: 0 auto;
   padding: 0 20px;
   position: relative;
+  background-color: white;
+  border-radius: 30px;
 }
 
 .projects-title {
@@ -35,6 +37,7 @@
   display: inline-block;
   left: 50%;
   transform: translateX(-50%);
+  
 }
 
 .projects-title::after {
@@ -46,11 +49,13 @@
   height: 3px;
   background: linear-gradient(90deg, var(--primary-color), transparent);
   border-radius: 3px;
+  
 }
 
 .projects-carousel {
   position: relative;
   padding: 0 50px;
+  
 }
 
 .projects-track {
@@ -62,6 +67,7 @@
   padding: 20px 0;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  
 }
 
 .projects-track::-webkit-scrollbar {
@@ -72,9 +78,9 @@
   flex: 0 0 380px;
   scroll-snap-align: start;
   background-color: var(--background-color);
-  border-radius: var(--border-radius);
+  border-radius: 30px;
   overflow: hidden;
-  box-shadow: var(--card-shadow);
+  border: solid 3px var(--primary-color);
   transition: var(--transition);
   display: flex;
   flex-direction: column;
