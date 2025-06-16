@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/nDiseños/valores.css">
       <link rel="stylesheet" href="/nDiseños/project.css">
       <link rel="stylesheet" href="/nDiseños/publicaciones.css">
+      <link rel="stylesheet" href="/nDiseños/testimonios.css">
 </head>
 <body>
     <nav id="mainNav">
@@ -521,7 +522,59 @@
 
 
 
+<section id="testimonios" style="padding: 20px;">
+    <div class="testimonials-section">
+    <h2 class="section-title" data-es="Testimonios" data-en="Testimonials">Testimonios</h2>
+    <div class="testimonials-container">
+        <!-- Testimonio 1 -->
+        <div class="testimonial-card" onclick="openTestimonial(1)">
+            <div class="testimonial-avatar">
+                <img src="/testimonios/victor.jpg" alt="María González">
+            </div>
+            <h3 class="testimonial-name">Victor Rivera</h3></h3>
+        </div>
+        <div class="testimonial-card" onclick="openTestimonial(2)">
+            <div class="testimonial-avatar">
+                <img src="/testimonios/mary.jpg" alt="María González">
+            </div>
+            <h3 class="testimonial-name">Maria Salgado</h3></h3>
+        </div>
+<div class="testimonial-card" onclick="openTestimonial(3)">
+            <div class="testimonial-avatar">
+                <img src="/testimonios/juan.jpg" alt="María González">
+            </div>
+            <h3 class="testimonial-name">Juan Mejia</h3></h3>
+        </div>
+        <div class="testimonial-card" onclick="openTestimonial(4)">
+            <div class="testimonial-avatar">
+                <img src="/testimonios/july.jpg" alt="María González">
+            </div>
+            <h3 class="testimonial-name">Julissa Odaly</h3></h3>
+        </div>
+        <div class="testimonial-card" onclick="openTestimonial(5)">
+            <div class="testimonial-avatar">
+                <img src="/testimonios/ramon.jpg" alt="María González">
+            </div>
+            <h3 class="testimonial-name">Juan Ramon</h3></h3>
+        </div>
+    </div>
+</div>
 
+<!-- Popup de Testimonio -->
+<div id="testimonialPopup" class="testimonial-popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closeTestimonial()">&times;</span>
+        <div class="popup-avatar">
+            <img id="popupAvatar" src="" alt="">
+        </div>
+        <h3 id="popupName" class="popup-name"></h3>
+        <p id="popupDate" class="popup-date"></p>
+        <div class="popup-testimonial">
+            <p id="popupText"></p>
+        </div>
+    </div>
+</div>
+</section>
 
 
 
@@ -536,7 +589,8 @@
 
     <script src="/scripts/proyect.js"></script>
     <script src="/scripts/publicaciones.js"></script>
-    <script src="/scripts/valores.js"></script>
+    <script src="/scripts/skiilsb.js"></script>
+     <script src="/scripts/testimonio.js"></script>
     <script>
 
 // Variables para el carrusel

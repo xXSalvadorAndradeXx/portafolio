@@ -38,7 +38,7 @@
 /* Tarjetas de habilidades */
 .card {
     background-color: var(--oneui-background);
-    border-radius: var(--oneui-border-radius);
+    border-radius: 30px;
     padding: 25px;
     box-shadow: var(--oneui-card-shadow);
     transition: var(--oneui-transition);

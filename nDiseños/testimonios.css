@@ -1,0 +1,219 @@
+/* Estilos para la sección de testimonios */
+#testimonios {
+    padding: 60px 20px;
+    background-color: var(--oneui-background);
+    border-radius: 30px;
+}
+
+.testimonials-section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--oneui-primary);
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.testimonials-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
+}
+
+.testimonial-card {
+    background-color: var(--oneui-background);
+    border-radius: 30px;
+    padding: 25px;
+    box-shadow: var(--oneui-card-shadow);
+    transition: var(--oneui-transition);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 15px;
+    border: 3px solid var(--oneui-primary);
+}
+
+.testimonial-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.testimonial-name {
+    font-size: 1.2rem;
+    color: var(--oneui-text);
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+/* Popup de Testimonio */
+.testimonial-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 3000;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.testimonial-popup.active {
+    display: flex;
+    opacity: 1;
+}
+
+.popup-content {
+    position: relative;
+    max-width: 600px;
+    width: 90%;
+    background-color: var(--oneui-background);
+    border-radius: var(--oneui-border-radius);
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: modalFadeIn 0.3s ease-out;
+    text-align: center;
+}
+
+.popup-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 20px;
+    border: 4px solid var(--oneui-primary);
+}
+
+.popup-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.popup-name {
+    font-size: 1.5rem;
+    color: var(--oneui-primary);
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.popup-date {
+    font-size: 0.9rem;
+    color: var(--oneui-text);
+    opacity: 0.7;
+    margin-bottom: 20px;
+}
+
+.popup-testimonial {
+    background-color: rgba(61, 106, 254, 0.05);
+    padding: 20px;
+    border-radius: var(--oneui-border-radius);
+    border-left: 4px solid var(--oneui-primary);
+}
+
+.popup-testimonial p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--oneui-text);
+    font-style: italic;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.8rem;
+    color: var(--oneui-text);
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--oneui-transition);
+}
+
+.close-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--oneui-primary);
+}
+
+/* Animaciones */
+@keyframes modalFadeIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .testimonials-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 20px;
+    }
+    
+    .testimonial-avatar {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .popup-content {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonials-container {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 15px;
+    }
+    
+    .testimonial-card {
+        padding: 15px;
+    }
+    
+    .testimonial-avatar {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .popup-avatar {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .popup-testimonial p {
+        font-size: 1rem;
+    }
+}

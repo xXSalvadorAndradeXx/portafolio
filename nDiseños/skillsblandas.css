@@ -7,6 +7,8 @@
 .skills-section {
     max-width: 1200px;
     margin: 0 auto;
+    background-color: white ;
+    border-radius: 30px;
 }
 
 .section-title {
@@ -43,9 +45,9 @@
     flex: 0 0 300px;
     scroll-snap-align: start;
     background-color: var(--oneui-background);
-    border-radius: var(--oneui-border-radius);
+    border-radius: 30px;
     padding: 25px;
-    box-shadow: var(--oneui-card-shadow);
+    border: solid 3px var(--primary-color);
     transition: var(--oneui-transition);
 }
 
@@ -68,7 +70,7 @@
 }
 
 .arrow-btn {
-    width: 40px;
+    width: 60px;
     height: 40px;
     border-radius: 50%;
     background-color: var(--oneui-background);
@@ -106,15 +108,7 @@
     z-index: 1;
 }
 
-.skills-container::before {
-    left: 0;
-    background: linear-gradient(to right, var(--oneui-secondary), rgba(245, 245, 245, 0));
-}
 
-.skills-container::after {
-    right: 0;
-    background: linear-gradient(to left, var(--oneui-secondary), rgba(245, 245, 245, 0));
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
