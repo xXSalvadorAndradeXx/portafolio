@@ -1,0 +1,127 @@
+/* Estilos para la sección de habilidades blandas */
+.skills-section {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+    background-color: white;
+    border-radius: 30px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--oneui-primary);
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.skills-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.skills-container-content {
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    gap: 20px;
+    padding: 10px;
+    width: 100%;
+}
+
+.skill-card {
+    flex: 0 0 calc(100% - 40px);
+    background-color: var(--oneui-background);
+    border-radius: var(--oneui-border-radius);
+    padding: 25px;
+    box-shadow: var(--oneui-card-shadow);
+    transition: var(--oneui-transition);
+    scroll-snap-align: start;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.skill-title {
+    font-size: 1.4rem;
+    color: var(--oneui-primary);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.skill-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--oneui-text);
+}
+
+.arrow-btn {
+    background-color: var(--oneui-primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--oneui-transition);
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.arrow-btn:hover {
+    background-color: var(--oneui-text);
+    transform: scale(1.1);
+}
+
+.arrow-btn:active {
+    transform: scale(0.95);
+}
+
+/* Puntos indicadores (opcional) */
+.dots-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ccc;
+    cursor: pointer;
+    transition: var(--oneui-transition);
+}
+
+.dot.active {
+    background-color: var(--oneui-primary);
+    transform: scale(1.2);
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .skill-card {
+        flex: 0 0 calc(50% - 30px);
+    }
+    
+    .arrow-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .skill-card {
+        flex: 0 0 calc(33.333% - 27px);
+    }
+}

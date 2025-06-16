@@ -1,0 +1,132 @@
+/* Estilos para la sección Intereses y Valores */
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--oneui-primary);
+    margin: 60px 0 40px;
+    font-weight: 600;
+    background-color: white;
+       border-radius: 30px;
+    
+}
+.valores{
+    background-color: white;
+    border-radius: 30px;
+    padding: auto;
+}
+
+.container22 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.card2 {
+    background-color: var(--oneui-background);
+    border-radius: var(--oneui-border-radius);
+    padding: 30px;
+    box-shadow: var(--oneui-card-shadow);
+    transition: var(--oneui-transition);
+}
+
+.card2:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card2 h2 {
+    font-size: 1.8rem;
+    color: var(--oneui-primary);
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(61, 106, 254, 0.1);
+    font-weight: 600;
+}
+
+.list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list li {
+    position: relative;
+    padding: 12px 0 12px 35px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--oneui-text);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: var(--oneui-transition);
+}
+
+.list li:last-child {
+    border-bottom: none;
+}
+
+.list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-color: var(--oneui-primary);
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 11.08V12a10 10 0 1 1-5.93-9.14'%3E%3C/path%3E%3Cpolyline points='22 4 12 14.01 9 11.01'%3E%3C/polyline%3E%3C/svg%3E");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: var(--oneui-primary);
+    opacity: 0.8;
+}
+
+.list li:hover {
+    color: var(--oneui-primary);
+    transform: translateX(5px);
+}
+
+/* Efecto de aparición para los items */
+.list li {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.list li:nth-child(1) { animation-delay: 0.1s; }
+.list li:nth-child(2) { animation-delay: 0.2s; }
+.list li:nth-child(3) { animation-delay: 0.3s; }
+.list li:nth-child(4) { animation-delay: 0.4s; }
+.list li:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive para tablets y desktop */
+@media (min-width: 768px) {
+    .container22 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+    
+    .card2 {
+        padding: 35px;
+    }
+    
+    .card2 h2 {
+        font-size: 2rem;
+    }
+    
+    .list li {
+        font-size: 1.15rem;
+        padding: 15px 0 15px 40px;
+    }
+}
