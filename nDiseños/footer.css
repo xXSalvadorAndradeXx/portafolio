@@ -1,0 +1,142 @@
+/* Estilos para la sección "Conocer más" */
+.mas-content {
+    padding: 60px 20px;
+    background-color: var(--oneui-background);
+    text-align: center;
+}
+
+.mas-content h2 {
+    font-size: 2.2rem;
+    color: var(--oneui-primary);
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.mas-content ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.mas-content li {
+    flex: 1 1 200px;
+}
+
+.mas-content a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 20px;
+    background-color: var(--oneui-primary);
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--oneui-transition);
+    box-shadow: var(--oneui-card-shadow);
+}
+
+.mas-content a:hover {
+    background-color: #2d5ae0;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(61, 106, 254, 0.3);
+}
+
+.mas-content a:active {
+    transform: scale(0.98);
+}
+
+.mas-content i {
+    font-size: 1.2rem;
+}
+
+/* Estilos para el footer */
+footer {
+    background-color: var(--oneui-text);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.social-links a {
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--oneui-transition);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.social-links a:hover {
+    background-color: var(--oneui-primary);
+    transform: translateY(-3px);
+}
+
+.social-links svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .mas-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .mas-content a {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+    
+    footer {
+        padding: 25px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mas-content {
+        padding: 40px 15px;
+    }
+    
+    .mas-content h2 {
+        font-size: 1.6rem;
+    }
+    
+    .mas-content ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .mas-content li {
+        flex: 1 1 auto;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+    }
+}

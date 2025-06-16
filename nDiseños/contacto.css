@@ -1,0 +1,145 @@
+/* Estilos para la sección de contacto */
+.contacto-section {
+    padding: 60px 20px;
+    background-color: var(--oneui-secondary);
+}
+
+.contacto-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--oneui-background);
+    border-radius: var(--oneui-border-radius);
+    padding: 40px;
+    box-shadow: var(--oneui-card-shadow);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--oneui-primary);
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.contacto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 1rem;
+    color: var(--oneui-text);
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: var(--oneui-transition);
+    background-color: rgba(245, 245, 245, 0.5);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--oneui-primary);
+    box-shadow: 0 0 0 2px rgba(61, 106, 254, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.submit-btn {
+    padding: 15px 25px;
+    background-color: var(--oneui-primary);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--oneui-transition);
+    align-self: center;
+    margin-top: 10px;
+    box-shadow: 0 4px 12px rgba(61, 106, 254, 0.2);
+}
+
+.submit-btn:hover {
+    background-color: #2d5ae0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(61, 106, 254, 0.3);
+}
+
+.submit-btn:active {
+    transform: scale(0.98);
+}
+
+/* Estado de éxito/error del formulario */
+.form-message {
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 20px;
+    text-align: center;
+    display: none;
+}
+
+.form-message.success {
+    background-color: rgba(46, 204, 113, 0.1);
+    color: #2ecc71;
+    border: 1px solid #2ecc71;
+    display: block;
+}
+
+.form-message.error {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+    display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contacto-container {
+        padding: 30px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .contacto-form {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contacto-container {
+        padding: 25px 20px;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 12px;
+    }
+    
+    .submit-btn {
+        padding: 12px 20px;
+        width: 100%;
+    }
+}
