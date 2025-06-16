@@ -148,6 +148,60 @@
     transform: translateY(-100%);
   }
 }
+
+/* Estilos del reproductor de música */
+.music-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.music-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  background-color: var(--oneui-primary);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: var(--oneui-card-shadow);
+  transition: var(--oneui-transition);
+}
+
+.music-toggle:hover {
+  background-color: #2d5ae0;
+  transform: translateY(-2px);
+}
+
+.music-toggle:active {
+  transform: scale(0.95);
+}
+
+.music-toggle .fa-music {
+  font-size: 1.2rem;
+}
+
+.music-status {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Estado muteado */
+.music-toggle.muted {
+  background-color: #e0e0e0;
+  color: var(--oneui-text);
+}
+
+.music-toggle.muted .music-status::after {
+  content: "OFF";
+}
+
+.music-toggle:not(.muted) .music-status::after {
+  content: "ON";
+}
 </style>
 <body>
 <div class="lego-construction">
@@ -166,7 +220,17 @@
   <div class="lego-blocks-container"></div>
 </div>
 
-
+<!-- Reproductor de música -->
+<div class="music-player">
+  <audio id="backgroundMusic" loop>
+    <source src="/recursos/First Time Setup (TV) - Nintendo Wii U.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+  <button id="musicToggle" class="music-toggle">
+    <i class="fas fa-music"></i>
+    <span class="music-status">Música:</span>
+  </button>
+</div>
 
 
     <nav id="mainNav">
@@ -1063,6 +1127,93 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+
+document.addEventListener('DOMContentLoaded', function() {
+  const music = document.getElementById('backgroundMusic');
+  const toggleBtn = document.getElementById('musicToggle');
+  let musicEnabled = false;
+
+  // Intentar iniciar la música automáticamente (puede ser bloqueado por el navegador)
+  function tryAutoPlay() {
+    const promise = music.play();
+    
+    if (promise !== undefined) {
+      promise.catch(error => {
+        // Auto-play fue prevenido, mostrar UI para activar manualmente
+        console.log("Auto-play prevenido, mostrando controles");
+        musicEnabled = false;
+        updateButtonState();
+      }).then(() => {
+        musicEnabled = true;
+        updateButtonState();
+      });
+    }
+  }
+
+  // Actualizar estado del botón
+  function updateButtonState() {
+    if (musicEnabled) {
+      toggleBtn.classList.remove('muted');
+      music.muted = false;
+    } else {
+      toggleBtn.classList.add('muted');
+      music.muted = true;
+    }
+  }
+
+  // Alternar música
+  function toggleMusic() {
+    musicEnabled = !musicEnabled;
+    
+    if (musicEnabled) {
+      music.play().then(() => {
+        updateButtonState();
+      }).catch(e => {
+        console.log("Error al reproducir:", e);
+        musicEnabled = false;
+        updateButtonState();
+      });
+    } else {
+      music.pause();
+      updateButtonState();
+    }
+  }
+
+  // Event listeners
+  toggleBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    toggleMusic();
+  });
+
+  // Intenta autoplay después de que el usuario interactúe con la página
+  document.addEventListener('click', function firstInteraction() {
+    tryAutoPlay();
+    document.removeEventListener('click', firstInteraction);
+  }, { once: true });
+
+  // Guardar preferencia en localStorage
+  function saveMusicPreference() {
+    localStorage.setItem('musicEnabled', musicEnabled);
+  }
+
+  // Cargar preferencia guardada
+  function loadMusicPreference() {
+    const savedPreference = localStorage.getItem('musicEnabled');
+    if (savedPreference !== null) {
+      musicEnabled = savedPreference === 'true';
+      if (musicEnabled) {
+        music.play().catch(e => console.log("Auto-play prevented:", e));
+      }
+      updateButtonState();
+    }
+  }
+
+  // Cargar preferencias al inicio
+  loadMusicPreference();
+
+  // Guardar preferencia al cambiar
+  toggleBtn.addEventListener('click', saveMusicPreference);
+});
 
     </script>
 </body>
