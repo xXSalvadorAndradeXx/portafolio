@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio profesional de Salvador Andrade, desarrollador Full-Stack con experiencia en PHP, JavaScript, React, Vue, Node.js y más. Explora mis proyectos y habilidades técnicas.">
+    <meta name="keywords" content="desarrollador Full-Stack, Salvador Andrade, portafolio programador, desarrollo web, PHP, JavaScript, React, Vue, Node.js, proyectos desarrollo web">
+    <meta name="author" content="Salvador Andrade">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andradedev.site/">
+    <meta property="og:title" content="Salvador Andrade | Desarrollador Full-Stack">
+    <meta property="og:description" content="Portafolio profesional de Salvador Andrade, desarrollador Full-Stack especializado en tecnologías modernas.">
+    <meta property="og:image" content="https://salvadorandrade.com/recursos/1.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://andradedev.site/">
+    <meta property="twitter:title" content="Salvador Andrade | Desarrollador Full-Stack">
+    <meta property="twitter:description" content="Portafolio profesional de Salvador Andrade, desarrollador Full-Stack especializado en tecnologías modernas.">
+    <meta property="twitter:image" content="https://salvadorandrade.com/recursos/milogo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrade Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="recursos/milogo.png" type="image/x-icon">
+<!-- Estilos Base -->
+<link rel="stylesheet" href="/nDiseños/body.css">
+<link rel="stylesheet" href="/nDiseños/nav.css">
+
+<!-- Secciones Principales -->
+<link rel="stylesheet" href="/nDiseños/Inicio.css">
+<link rel="stylesheet" href="/nDiseños/acercade.css">
+<link rel="stylesheet" href="/nDiseños/skills.css">
+<link rel="stylesheet" href="/nDiseños/skillsblandas.css">
+<link rel="stylesheet" href="/nDiseños/project.css">
+
+<!-- Componentes Específicos -->
+<link rel="stylesheet" href="/nDiseños/reconocimientos.css">
+<link rel="stylesheet" href="/nDiseños/publicaciones.css">
+<link rel="stylesheet" href="/nDiseños/testimonios.css">
+<link rel="stylesheet" href="/nDiseños/modoo.css">
+
+<!-- Pie de Página y Contacto -->
+<link rel="stylesheet" href="/nDiseños/contacto.css">
+<link rel="stylesheet" href="/nDiseños/footer.css">
+
+<!-- Valores (¿Quizás mover a secciones principales?) -->
+<link rel="stylesheet" href="/nDiseños/valores.css">  
+<link rel="stylesheet" href="/nDiseños/splash.css">   
+</head>
+<style>
+
+/* Selector de idioma - Estilo One UI */
+.language-switcher {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.language-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+    background-color: var(--oneui-primary);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--oneui-transition);
+    box-shadow: 0 4px 12px rgba(61, 106, 254, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.language-btn:hover {
+    background-color: #2d5ae0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(61, 106, 254, 0.4);
+}
+
+.language-btn:active {
+    transform: scale(0.98);
+}
+
+.language-btn i {
+    font-size: 1.1rem;
+}
+
+/* Efecto pulse */
+.language-btn.pulse::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--oneui-primary);
+    border-radius: 30px;
+    z-index: -1;
+    animation: pulse 2s infinite;
+    opacity: 0.7;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    70% {
+        transform: scale(1.15);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+/* Tooltip flotante */
+.language-btn::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.language-btn:hover::after {
+    opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .language-switcher {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .language-btn {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .language-switcher {
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .language-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        padding: 0;
+    }
+    
+    .language-btn span {
+        display: none;
+    }
+    
+    .language-btn i {
+        font-size: 1.2rem;
+    }
+}
+.ripple {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    animation: rippleEffect 0.6s linear;
+}
+
+@keyframes rippleEffect {
+    to {
+        transform: translate(-50%, -50%) scale(30);
+        opacity: 0;
+    }
+}
+</style>
+<body>
+<div class="lego-construction">
+  <div class="lego-base">
+    <div class="lego-logo-container">
+      <img src="/recursos/milogo.png" alt="Logo" class="lego-logo">
+    </div>
+    <div class="lego-progress-container">
+      <div class="lego-progress"></div>
+    </div>
+    <div class="lego-message">
+      <h2>Construyendo tu experiencia</h2>
+  
+    </div>
+  </div>
+  <div class="lego-blocks-container"></div>
+</div>
+
+ <div class="language-switcher">
+        <button class="language-btn pulse" id="languageBtn">
+            <i class="fas fa-language"></i>
+            <span>English</span>
+        </button>
+    </div>
+    <div class="theme-switcher">
+        <button class="theme-btn" id="themeBtn" title="Modo nocturno">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <nav id="mainNav">
+        <a class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></a>
+        <ul id="menuList">
+            <li><a href="#inicio" data-es="Inicio" data-en="Home">Inicio</a></li>
+            <li><a href="#skill" data-es="Habilidades" data-en="Skills">Habilidades</a></li>
+            <li><a href="#proyect" data-es="Proyectos" data-en="Proyects">Proyectos</a></li>
+            <li><a href="#acerca" data-es="Acerca de" data-en="About">Sobre Mi</a></li>
+        </ul>
+        <img src="/recursos/milogo.png" alt="Imagen Flotante" class="flotante" height="50px" width="50px">
+    </nav>
+    <section id="inicio" style="height: 100vh; padding: 20px;">
+    <div class="contenedor">  
+
+            <div class="image-container">
+                <img class="fondo" src="recursos/fondo1.png" alt="Logo" class="logo" >
+            </div>
+            
+            <div class="texto">
+                <h1>Salvador Andrade</h1>
+                <h2 class="subtitulo" data-es="Desarrollador Full-Stack" data-en="Full-Stack Developer">Desarrollador Full-Stack</h2>
+                
+            </div>
+
+            <div class="texto2">
+                <p class="" data-es="El código no tiene errores, solo soluciones esperando ser descubiertas." data-en="The code doesn't have errors, only solutions waiting to be discovered.">El código no tiene errores, solo soluciones esperando ser descubiertas.</p>
+            </div>
+        </div>
+    </section>
+
+ <section id="acerca" style="height: 100vh; padding: 20px;">
+    <div class="sobre-mi">
+        <div class="imagen">
+            <img src="recursos/Foto1.jpg" alt="Foto de Salvador" />
+        </div>
+        <div class="contenido">
+            <h1 data-es="Sobre Mí" data-en="About Me">Sobre Mí</h1>
+            <p data-es="Soy Salvador Ernesto Andrade Peña, un desarrollador full-stack apasionado por la creación de soluciones web innovadoras. Con una amplia experiencia tanto en desarrollo front-end como back-end, trabajo con tecnologías como HTML, CSS, JavaScript, PHP, Laravel, Node.js, Vue.js y React.js. Siempre en busca de nuevas tecnologías y desafíos, me dedico a mejorar constantemente mis habilidades y aportar un valor significativo a los proyectos en los que participo, fusionando creatividad y eficiencia en cada solución que desarrollo." 
+               data-en="I am Salvador Ernesto Andrade Peña, a passionate full-stack developer dedicated to creating innovative web solutions. With extensive experience in both front-end and back-end development, I work with technologies such as HTML, CSS, JavaScript, PHP, Laravel, Node.js, Vue.js, and React.js. Always seeking new technologies and challenges, I am committed to continuously improving my skills and adding significant value to the projects I participate in, combining creativity and efficiency in every solution I develop.">
+                Soy Salvador Ernesto Andrade Peña, un desarrollador full-stack apasionado por la creación de soluciones web innovadoras.
+                Con una amplia experiencia tanto en desarrollo front-end como back-end, trabajo con tecnologías
+                como HTML, CSS, JavaScript, PHP, Laravel, Node.js, Vue.js y React.js. Siempre en busca de nuevas 
+                tecnologías y desafíos, me dedico a mejorar constantemente mis habilidades y aportar un valor 
+                significativo a los proyectos en los que participo, fusionando creatividad y eficiencia en cada solución que desarrollo.
+            </p>
+            <a href="recursos/cv.pdf" class="descargar-cv" download="CV.pdf" data-es="Descargar CV" data-en="Download CV">Descargar CV</a>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+ 
+<section id="reconociminentos" style="padding: 20px;">
+<div class="reconocimientos-container">
+        <h2 class="reconocimientos-title" data-es="Mis Reconocimientos" data-en="My Awards">Mis Reconocimientos</h2>
+       
+        <div class="reconocimientos-carousel">
+
+            <div class="reconocimientos-items" id="carouselItems">
+                <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/1.png', 'CCNAv7: Switching, Routing, and Wireless Essentials')">
+                    <img src="/recursos/Recomo/1.png" alt="Diploma 1">
+                </div>
+
+                <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/2.png', 'CCNA: Introduction to Networks')">
+                    <img src="/recursos/Recomo/2.png" alt="Diploma 2">
+                </div>
+
+                <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/3.png', 'Networking challenge 2025')">
+                    <img src="/recursos/Recomo/3.png" alt="Diploma 3">
+                </div>
+                
+                <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/4.png', 'Concurso Estudiantil de Investigación 2024')">
+                    <img src="/recursos/Recomo/4.png" alt="Diploma 3">
+                </div>
+
+            </div>
+        </div>
+  
+    </div>
+
+    <div class="reconocimientos-modal" id="reconocimientos-modal">
+        <div class="reconocimientos-modal-content">
+            <button class="reconocimientos-close-btn" onclick="reconocimientosCloseModal()">&times;</button>
+            <img id="reconocimientos-modal-image" src="" alt="Diploma">
+            <p class="reconocimientos-description" id="reconocimientos-modal-description"></p>
+        </div>
+    </div>
+
+ </section>
+
+
+
+    
+    <section id="skill" >
+      
+<div class="container4" >
+ 
+           <h2 data-es="Habilidades Duras" data-en="Hard Skills">Habilidades Duras</h2>
+    
+
+    <div class="container">
+        <div class="card">
+            <img src="recursos/html.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>HTML</h2>
+            <div class="progress-bar html-progress">
+                <div class="progress" style="width: 90%;"></div>
+            </div>
+            <p>90%</p>
+        </div>
+        <div class="card">
+            <img src="recursos/sql.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>SQL</h2>
+            <div class="progress-bar sql-progress">
+                <div class="progress" style="width: 90%;"></div>
+            </div>
+            <p>90%</p>
+        </div>
+        <div class="card">
+            <img src="recursos/php.png" alt="" height="50" width="100" style="position: relative;">
+            <h2>PHP</h2>
+            <div class="progress-bar php-progress">
+                <div class="progress" style="width: 90%;"></div>
+            </div>
+            <p>90%</p>
+        </div>
+ 
+        <div class="card">
+            <img src="recursos/csha.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>C#</h2>
+            <div class="progress-bar csharp-progress">
+                <div class="progress" style="width: 85%;"></div>
+            </div>
+            <p>85%</p>
+        </div>
+        <div class="card">
+            <img src="recursos/react.png" alt="" height="50" width="60" style="position: relative;">
+            <h2>React</h2>
+            <div class="progress-bar react-progress">
+                <div class="progress" style="width: 85%;"></div>
+            </div>
+            <p>85%</p>
+        </div>
+        <div class="card">
+            <img src="recursos/python.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>Python</h2>
+            <div class="progress-bar python-progress">
+                <div class="progress" style="width: 80%;"></div>
+            </div>
+            <p>80%</p>
+        </div>
+        <div class="card">
+            <img src="recursos/vue.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>Vue</h2>
+            <div class="progress-bar vue-progress">
+                <div class="progress" style="width: 80%;"></div>
+            </div>
+            <p>80%</p>
+        </div>
+
+        <div class="card">
+            <img src="recursos/node.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>Node.js</h2>
+            <div class="progress-bar node-progress">
+                <div class="progress" style="width: 75%;"></div>
+            </div>
+            <p>75%</p>
+        </div>
+        <div class="card">
+            <img src="recursos/javas.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>JavaScript</h2>
+            <div class="progress-bar javascript-progress">
+                <div class="progress" style="width: 70%;"></div>
+            </div>
+            <p>70%</p>
+        </div>
+        <div class="card">
+            <img src="recursos/java.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>Java</h2>
+            <div class="progress-bar java-progress">
+                <div class="progress" style="width: 60%;"></div>
+            </div>
+            <p>60%</p>
+        </div>
+ 
+        <div class="card">
+            <img src="recursos/blender.png" alt="" height="50" width="60" style="position: relative;">
+            <h2>Blender</h2>
+            <div class="progress-bar blender-progress">
+                <div class="progress" style="width: 50%;"></div>
+            </div>
+            <p>50%</p>
+        </div>
+        <div class="card">
+            <img src="recursos/laravel.png" alt="" height="50" width="50" style="position: relative;">
+            <h2>Laravel</h2>
+            <div class="progress-bar laravel-progress">
+                <div class="progress" style="width: 40%;"></div>
+            </div>
+            <p>40%</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    </section>
+
+ <section id="skill blandas" >
+    <div class="skills-section">
+   
+        <h2 class="titleskills" data-es="Habilidades Blandas" data-en="Soft Skills">Habilidades Blandas</h2>
+    
+        <div class="skills-container">
+            <button class="arrow-btn left" onclick="moveSkills('left')">&#10094;</button>
+    
+            <div class="skills-container-content">
+                <div class="skill-card">
+                    <h3 class="skill-title" data-es="Comunicación efectiva" data-en="Effective Communication">Comunicación efectiva</h3>
+                    <p class="skill-description" data-es="Expresar ideas y conceptos técnicos de forma clara a equipos técnicos y no técnicos, y escuchar las necesidades de los clientes y compañeros." 
+                       data-en="Expressing ideas and technical concepts clearly to both technical and non-technical teams, and listening to the needs of clients and colleagues.">
+                        Expresar ideas y conceptos técnicos de forma clara a equipos técnicos y no técnicos, y escuchar las necesidades de los clientes y compañeros.
+                    </p>
+                </div>
+                <div class="skill-card">
+                    <h3 class="skill-title" data-es="Trabajo en equipo" data-en="Teamwork">Trabajo en equipo</h3>
+                    <p class="skill-description" data-es="Colaborar con desarrolladores, diseñadores y otros stakeholders, siendo abierto a recibir y dar retroalimentación constructiva." 
+                       data-en="Collaborating with developers, designers, and other stakeholders, being open to receiving and giving constructive feedback.">
+                        Colaborar con desarrolladores, diseñadores y otros stakeholders, siendo abierto a recibir y dar retroalimentación constructiva.
+                    </p>
+                </div>
+                <div class="skill-card">
+                    <h3 class="skill-title" data-es="Gestión del tiempo" data-en="Time Management">Gestión del tiempo</h3>
+                    <p class="skill-description" data-es="Priorizar tareas y proyectos según su urgencia e importancia, cumpliendo plazos y manejando múltiples proyectos simultáneamente." 
+                       data-en="Prioritizing tasks and projects according to their urgency and importance, meeting deadlines, and managing multiple projects simultaneously.">
+                        Priorizar tareas y proyectos según su urgencia e importancia, cumpliendo plazos y manejando múltiples proyectos simultáneamente.
+                    </p>
+                </div>
+                <div class="skill-card">
+                    <h3 class="skill-title" data-es="Resolución de problemas" data-en="Problem Solving">Resolución de problemas</h3>
+                    <p class="skill-description" data-es="Abordar desafíos técnicos y no técnicos de manera lógica y creativa, identificando rápidamente la raíz de los problemas y proponiendo soluciones efectivas." 
+                       data-en="Addressing technical and non-technical challenges logically and creatively, quickly identifying the root of problems and proposing effective solutions.">
+                        Abordar desafíos técnicos y no técnicos de manera lógica y creativa, identificando rápidamente la raíz de los problemas y proponiendo soluciones efectivas.
+                    </p>
+                </div>
+                <div class="skill-card">
+                    <h3 class="skill-title" data-es="Adaptabilidad" data-en="Adaptability">Adaptabilidad</h3>
+                    <p class="skill-description" data-es="Ajustarse a nuevas tecnologías, herramientas y cambios en los proyectos, manejando eficazmente entornos de trabajo dinámicos y cambiantes." 
+                       data-en="Adjusting to new technologies, tools, and project changes, effectively managing dynamic and changing work environments.">
+                        Ajustarse a nuevas tecnologías, herramientas y cambios en los proyectos, manejando eficazmente entornos de trabajo dinámicos y cambiantes.
+                    </p>
+                </div>
+            </div>
+    
+            <button class="arrow-btn right" onclick="moveSkills('right')">&#10095;</button>
+        </div>
+    </section>
+
+<section id="valores" style=" padding: 20px;">
+
+ <div class="valores">
+<h2 class="section-title" data-es="Intereses y Valores" data-en="Interests and Values">Intereses y Valores</h2>
+        <div class="container22">
+            
+            <div class="card2">
+                <h2 data-es="Intereses" data-en="Interests">Intereses</h2>
+                <ul class="list">
+                    <li data-es="Desarrollo de aplicaciones web" data-en="Web application development">Desarrollo de aplicaciones web</li>
+                    <li data-es="Arquitectura de software" data-en="Software architecture">Arquitectura de software</li>
+                    <li data-es="Diseño UX/UI" data-en="UX/UI Design">Diseño UX/UI</li>
+                    <li data-es="Inteligencia artificial" data-en="Artificial intelligence">Inteligencia artificial</li>
+                    <li data-es="Tecnologías de blockchain" data-en="Blockchain technologies">Tecnologías de blockchain</li>
+                </ul>
+            </div>
+        
+            <div class="card2">
+                <h2 data-es="Valores" data-en="Values">Valores</h2>
+                <ul class="list">
+                    <li data-es="Innovación constante" data-en="Constant innovation">Innovación constante</li>
+                    <li data-es="Trabajo en equipo" data-en="Teamwork">Trabajo en equipo</li>
+                    <li data-es="Resolución de problemas" data-en="Problem solving">Resolución de problemas</li>
+                    <li data-es="Compromiso con la calidad" data-en="Commitment to quality">Compromiso con la calidad</li>
+                    <li data-es="Aprendizaje continuo" data-en="Continuous learning">Aprendizaje continuo</li>
+                </ul>
+            </div>
+        </div>
+
+</div>
+
+
+</section>
+
+    <section id="proyect" >
+
+
+            <div class="projects-container">
+
+              
+                       <h2 class="projects-title" data-es="Mis Proyectos" data-en="My Projects">Mis Proyectos</h2>
+                      
+                <div class="projects-carousel">
+                    <button class="carousel-btn prev" onclick="moveProjects(-1)">&#10094;</button>
+                    
+                    <div class="projects-track" id="projectsTrack">
+                        <!-- Proyecto 1 -->
+                        <div class="project-card">
+                            <img src="/recursos/inicio.png" alt="Proyecto 1" class="project-image">
+                            <div class="project-info">
+                                <h3 class="project-title" data-es="Legal Connect" data-en="Legal Connect">Legal Connect</h3>
+                                <p class="project-description" data-es="Sistema integral para la gestión de casos legales con funcionalidades avanzadas." 
+                                   data-en="Comprehensive system for legal case management with advanced features.">
+                                    Sistema integral para la gestión de casos legales con funcionalidades avanzadas.
+                                </p>
+
+                                <div class="project-role" style="margin: 10px;padding: 10px; border-left: 4px solid var(--accent-color); border-radius: 5px; margin-top: 10px; display: flex; align-items: center; background-color: var(--role-bg); color: var(--role-text);">
+                                   
+                                    <p style="margin: 0;" data-es="Rol desempeñado: Desarrollador Frontend - Backend y Coordinador de Proyecto." 
+                                       data-en="Role: Frontend - Backend Developer and Project Coordinator.">
+                                        <strong>Rol desempeñado:</strong> Desarrollador Frontend - Backend  y Coordinador de Proyecto.
+                                    </p>
+                                </div>
+                                <div class="project-tech">
+                                    <span class="tech-tag">PHP</span>
+                                    <span class="tech-tag">CSS</span>
+                                   
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/xXSalvadorAndradeXx/LegalConnect" target="_blank" class="project-link" data-es="Código" data-en="Code">Código</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Proyecto 2 -->
+                        <div class="project-card">
+                            <img src="/recursos/huerto.png" alt="Proyecto 2" class="project-image">
+                            <div class="project-info">
+                                <h3 class="project-title" data-es="Huerto en Mano" data-en="Huerto en Mano">Huerto en Mano</h3>
+                                <p class="project-description" data-es="Plataforma para gestión de huertos urbanos, incluyendo foros de blockchain y visualización de datos." 
+                                   data-en="Platform for urban garden management, including blockchain forums and data visualization.">
+                                    Plataforma para gestión de huertos urbanos, incluyendo foros de blockchain y visualización de datos.
+                                </p>
+                                <div class="project-role" style="margin: 10px; padding: 10px; border-left: 4px solid var(--accent-color); border-radius: 5px; margin-top: 10px; display: flex; align-items: center; background-color: var(--role-bg); color: var(--role-text);">
+                                   
+                                    <p style="margin: 0;" data-es="Rol desempeñado: Desarrollador Frontend - Backendy Coordinador de Proyecto." 
+                                       data-en="Role: Frontend - Backend Developer and Project Coordinator.">
+                                        <strong>Rol desempeñado:</strong> Desarrollador Frontend - Backend y Coordinador de Proyecto.
+                                    </p>
+                                </div>
+                                <div class="project-tech">
+                                    <span class="tech-tag">HTML</span>
+                                    <span class="tech-tag">CSS</span>
+                                    <span class="tech-tag">Blockchain</span>
+                                    <span class="tech-tag" style="background-color: brown; color: azure;">En Desarrollo</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/Juan-Carlos-Mejia/huertoenmano" target="_blank" class="project-link" data-es="Código" data-en="Code">Código</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        <!-- Proyecto 3 -->
+                        <div class="project-card">
+                            <img src="/recursos/camaron.png" alt="Proyecto 3" class="project-image">
+                            <div class="project-info">
+                                <h3 class="project-title" data-es="Don Camarón Sistema Interno" data-en="Don Camarón Internal System">Don Camarón Sistema Interno</h3>
+                                <p class="project-description" data-es="Sistema interno para la gestión operativa de un restaurante." 
+                                   data-en="Internal system for operational management of a restaurant.">
+                                    Sistema interno para la gestión operativa de un restaurante.
+                                </p>
+
+                                <div class="project-role" style="margin: 10px;padding: 10px; border-left: 4px solid var(--accent-color); border-radius: 5px; margin-top: 10px; display: flex; align-items: center; background-color: var(--role-bg); color: var(--role-text);">
+                                   
+                                    <p style="margin: 0;" data-es="Rol desempeñado: Desarrollador Frontend - Backend y Coordinador de Proyecto." 
+                                       data-en="Role: Frontend - Backend Developer and Project Coordinator.">
+                                        <strong>Rol desempeñado:</strong> Desarrollador Frontend - Backend y Coordinador de Proyecto.
+                                    </p>
+                                </div>
+                                <div class="project-tech">
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">ASP.NET</span>
+                                    <span class="tech-tag">Visual Basic</span>
+                                    <span class="tech-tag">CSS</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" target="_blank" class="project-link" data-es="Código" data-en="Code">Código</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <img src="/recursos/sala.png" alt="Proyecto 3" class="project-image">
+                            <div class="project-info">
+                                <h3 class="project-title" data-es="Calculadora salarial" data-en="Salary Calculator">Calculadora salarial</h3>
+                                <p class="project-description" data-es="Aplicación web para calcular su salario en el salvador despues de descontar lo que dicte la ley" 
+                                   data-en="Web application to calculate your salary in El Salvador after deducting what the law dictates.">
+                                   Aplicación web para calcular su salario en el salvador despues de descontar lo que dicte la ley.
+                                </p>
+
+                                <div class="project-role" style="margin: 10px;padding: 10px; border-left: 4px solid var(--accent-color); border-radius: 5px; margin-top: 10px; display: flex; align-items: center; background-color: var(--role-bg); color: var(--role-text);">
+                                   
+                                    <p style="margin: 0;" data-es="Rol desempeñado: Desarrollador Frontend - Backend y Coordinador de Proyecto." 
+                                       data-en="Role: Frontend - Backend Developer and Project Coordinator.">
+                                        <strong>Rol desempeñado:</strong> Desarrollador Frontend - Backend y Coordinador de Proyecto.
+                                    </p>
+                                </div>
+                                <div class="project-tech">
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">HTML</span>
+                                    <span class="tech-tag">CSS</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" target="_blank" class="project-link" data-es="Código" data-en="Code">Código</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Proyecto 4 -->
+                        
+                        </div>
+                         <button class="carousel-btn next" onclick="moveProjects(1)">&#10095;</button>
+                    </div>
+                    
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+<section id="mis publicaciones" style="padding: 20px;">
+    <div id="publicacion-salud-mental">
+    <div class="publicacion-container">
+        <hr class="publicacion-divider">
+        <h2 class="publicacion-titulo" data-es="Mis Publicaciones" data-en="My Publications">
+            Mis Publicaciones
+        </h2>
+        
+        <div class="publicacion-content">
+            <div class="publicacion-imagen-container">
+                <img src="/recursos/salud-mental.jpg" alt="Investigación en Salud Mental" class="publicacion-imagen">
+                <div class="publicacion-badge" data-es="Estudio Científico" data-en="Scientific Study">Estudio Científico</div>
+            </div>
+            
+            <div class="publicacion-detalles">
+                <p class="publicacion-autores" data-es="Autores" data-en="Authors">Autores:</p>
+                 <p class="publicacion-autores">Salvador Ernesto Andrade Peña</p>
+                <p class="publicacion-autores"> Juan Carlos Mejia Morales</p>
+                <p class="publicacion-autores"> Xiomara Lisseth Machado De La Paz</p>
+                         <hr style="border: 1px solid black; margin: 20px; ">
+                <p class="publicacion-institucion" >Universidad Gerardo Barrios, Centro Regional de Usulután</p>
+                <p class="publicacion-fecha" >Ciclo 01-2024</p>
+                
+                <div class="publicacion-resumen">
+                    <h3 data-es="Resumen" data-en="Abstract">Resumen</h3>
+                    <p data-es="Evaluación del nivel en la salud mental de los estudiantes de la Facultad de Ciencias Jurídicas durante el Ciclo 01-2024 en la Universidad Gerardo Barrios, Centro Regional de Usulután." 
+                       data-en="Evaluation of the mental health level of students in the Faculty of Legal Sciences during the 01-2024 Semester at Universidad Gerardo Barrios, Regional Center of Usulután.">
+                        Evaluación del nivel en la salud mental de los estudiantes de la Facultad de Ciencias Jurídicas durante el Ciclo 01-2024 en la Universidad Gerardo Barrios, Centro Regional de Usulután.
+                    </p>
+                </div>
+                
+                <div class="publicacion-metodos">
+                    <h3 data-es="Métodos" data-en="Methods">Métodos</h3>
+                    <ul>
+                        <li data-es="Estudio cuantitativo" data-en="Quantitative study">Estudio cuantitativo</li>
+                        <li data-es="Muestreo estratificado" data-en="Stratified sampling">Muestreo estratificado</li>
+                        <li data-es="Instrumentos validados" data-en="Validated instruments">Instrumentos validados</li>
+                    </ul>
+                </div>
+                
+                <div class="publicacion-tags">
+                    <span class="tag" data-es="Psicología" data-en="Psychology">Psicología</span>
+                    <span class="tag" data-es="Educación Superior" data-en="Higher Education">Educación Superior</span>
+                    <span class="tag" data-es="Salud Pública" data-en="Public Health">Salud Pública</span>
+                </div>
+                
+                <a href="/recursos/Evaluación del nivel en la salud mental de los estudiantes de la Facultad de Ciencias Jurídicas, durante el Ciclo 01-2024 en la Universidad Gerardo Barrios, Centro Regional de Usulután.pdf" 
+                   class="publicacion-descarga" 
+                   target="_blank"
+                   data-es="Descargar Estudio Completo" 
+                   data-en="Download Full Study">
+                    Descargar Estudio Completo
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+
+
+<section id="testimonios" style="padding: 20px;">
+    <div class="testimonials-section">
+    <h2 class="section-title" data-es="Testimonios" data-en="Testimonials">Testimonios</h2>
+    <div class="testimonials-container">
+        <!-- Testimonio 1 -->
+        <div class="testimonial-card" onclick="openTestimonial(1)">
+            <div class="testimonial-avatar">
+                <img src="/testimonios/victor.jpg" alt="María González">
+            </div>
+            <h3 class="testimonial-name">Victor Rivera</h3></h3>
+        </div>
+        <div class="testimonial-card" onclick="openTestimonial(2)">
+            <div class="testimonial-avatar">
+                <img src="/testimonios/mary.jpg" alt="María González">
+            </div>
+            <h3 class="testimonial-name">Maria Salgado</h3></h3>
+        </div>
+<div class="testimonial-card" onclick="openTestimonial(3)">
+            <div class="testimonial-avatar">
+                <img src="/testimonios/juan.jpg" alt="María González">
+            </div>
+            <h3 class="testimonial-name">Juan Mejia</h3></h3>
+        </div>
+        <div class="testimonial-card" onclick="openTestimonial(4)">
+            <div class="testimonial-avatar">
+                <img src="/testimonios/july.jpg" alt="María González">
+            </div>
+            <h3 class="testimonial-name">Julissa Odaly</h3></h3>
+        </div>
+        <div class="testimonial-card" onclick="openTestimonial(5)">
+            <div class="testimonial-avatar">
+                <img src="/testimonios/ramon.jpg" alt="María González">
+            </div>
+            <h3 class="testimonial-name">Juan Ramon</h3></h3>
+        </div>
+    </div>
+</div>
+
+<!-- Popup de Testimonio -->
+<div id="testimonialPopup" class="testimonial-popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closeTestimonial()">&times;</span>
+        <div class="popup-avatar">
+            <img id="popupAvatar" src="" alt="">
+        </div>
+        <h3 id="popupName" class="popup-name"></h3>
+        <p id="popupDate" class="popup-date"></p>
+        <div class="popup-testimonial">
+            <p id="popupText"></p>
+        </div>
+    </div>
+</div>
+</section>
+
+<section id="contacto" class="contacto-section">
+    <div class="contacto-container">
+        <h2 class="section-title" data-es="Contáctame" data-en="Contact Me">Contáctame</h2>
+        
+<form class="contacto-form" id="contactForm">
+    <div class="form-group">
+        <label for="nombre" data-es="Nombre" data-en="Name">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="email" data-es="Correo Electrónico" data-en="Email">Correo Electrónico</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="mensaje" data-es="Mensaje" data-en="Message">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+    </div>
+    
+    <button type="submit" class="submit-btn" data-es="Enviar Mensaje" data-en="Send Message">
+        Enviar Mensaje
+    </button>
+</form>
+
+</section>
+
+<div id="mas" class="mas-content">
+        <h2 data-es="Conocer más" data-en="Learn more">Conocer más</h2>
+        <ul>
+            <li>
+                <a href="https://www.linkedin.com/in/salvadorandrade" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/xXSalvadorAndradeXx" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </li>
+            <li>
+                <a href="#contacto">
+                    <i class="fas fa-envelope"></i> salvadorandrade7089@gmail.com
+                </a>
+            </li>
+           
+        </ul>
+    </div>
+  
+   
+   <footer data-es="&copy; 2025 Salvador Andrade. Todos los derechos reservados." 
+    data-en="&copy; 2025 Salvador Andrade. All rights reserved.">
+    <div class="footer-content">
+        &copy; 2026 Salvador Andrade. Todos los derechos reservados.
+        <div class="social-links">
+            <a href="https://www.facebook.com/salvador.pena.515210/" target="_blank" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/_s_andrade_/" target="_blank" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+           
+ 
+        </div>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/scripts/proyect.js"></script>
+    <script src="/scripts/publicaciones.js"></script>
+    <script src="/scripts/skiilsb.js"></script>
+    <script src="/scripts/testimonio.js"></script>
+    <script src="/scripts/lego.js"></script>
+      <script src="/scripts/contacto.js"></script>
+    <script>
+
+// Variables para el carrusel
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Animar las barras de progreso al cargar la página
+    const progressBars = document.querySelectorAll('.progress');
+    
+    progressBars.forEach(bar => {
+        const targetWidth = bar.style.width;
+        bar.style.width = '0';
+        
+        setTimeout(() => {
+            bar.style.width = targetWidth;
+        }, 100);
+    });
+    
+    // Opcional: Efecto de hover más pronunciado
+    const cards = document.querySelectorAll('.card');
+    
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px)';
+            this.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.2)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(-5px)';
+            this.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.15)';
+        });
+    });
+});
+// Función para abrir el modal de reconocimientos
+function reconocimientosOpenModal(imageSrc, description) {
+    const modal = document.getElementById('reconocimientos-modal');
+    const modalImage = document.getElementById('reconocimientos-modal-image');
+    const modalDescription = document.getElementById('reconocimientos-modal-description');
+    
+    // Configurar el contenido del modal
+    modalImage.src = imageSrc;
+    modalImage.alt = description;
+    modalDescription.textContent = description;
+    
+    // Mostrar el modal con animación
+    modal.classList.add('active');
+    
+    // Bloquear el scroll del body
+    document.body.style.overflow = 'hidden';
+}
+
+// Función para cerrar el modal
+function reconocimientosCloseModal() {
+    const modal = document.getElementById('reconocimientos-modal');
+    
+    // Ocultar el modal
+    modal.classList.remove('active');
+    
+    // Restaurar el scroll del body
+    document.body.style.overflow = '';
+}
+
+// Cerrar modal al hacer clic fuera del contenido
+document.getElementById('reconocimientos-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        reconocimientosCloseModal();
+    }
+});
+
+// Cerrar modal con tecla ESC
+document.addEventListener('keydown', function(e) {
+    const modal = document.getElementById('reconocimientos-modal');
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+        reconocimientosCloseModal();
+    }
+});
+
+
+
+        // Toggle del menú móvil
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                
+                // Animación de clic
+                this.classList.add('clicked');
+                setTimeout(() => {
+                    this.classList.remove('clicked');
+                }, 300);
+            });
+            
+            // Cerrar menú al hacer clic en un enlace (solo móvil)
+            const menuLinks = document.querySelectorAll('#menuList a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth < 768) {
+                        mainNav.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Cambiar clase active al desplazarse
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('nav a');
+                
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+
+
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+    // Seleccionar todos los enlaces del menú
+    const menuLinks = document.querySelectorAll('#menuList a[href^="#"]');
+    
+    // Agregar evento click a cada enlace
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevenir comportamiento predeterminado
+            
+            // Obtener el ID de la sección objetivo
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                // Cerrar menú móvil si está abierto
+                const nav = document.getElementById('mainNav');
+                nav.classList.remove('active');
+                
+                // Calcular posición de la sección
+                const targetPosition = targetSection.offsetTop;
+                const startPosition = window.pageYOffset;
+                const distance = targetPosition - startPosition;
+                const duration = 800; // Duración en milisegundos
+                let startTime = null;
+                
+                // Función de animación
+                function animation(currentTime) {
+                    if (startTime === null) startTime = currentTime;
+                    const timeElapsed = currentTime - startTime;
+                    const run = ease(timeElapsed, startPosition, distance, duration);
+                    window.scrollTo(0, run);
+                    if (timeElapsed < duration) requestAnimationFrame(animation);
+                }
+                
+                // Función de easing para efecto suave
+                function ease(t, b, c, d) {
+                    t /= d/2;
+                    if (t < 1) return c/2*t*t*t + b;
+                    t -= 2;
+                    return c/2*(t*t*t + 2) + b;
+                }
+                
+                // Iniciar animación
+                requestAnimationFrame(animation);
+            }
+        });
+    });
+    
+    // Opcional: Actualizar URL sin recargar la página
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            const targetId = this.getAttribute('href');
+            history.pushState(null, null, targetId);
+        });
+    });
+});
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const languageBtn = document.getElementById('languageBtn');
+    const textElements = document.querySelectorAll('[data-es], [data-en]');
+    let currentLanguage = 'es'; // Idioma por defecto
+    
+    // Configurar tooltip inicial
+    updateButtonText();
+    
+    languageBtn.addEventListener('click', function() {
+        // Cambiar idioma
+        currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+        
+        // Actualizar todos los textos
+        textElements.forEach(element => {
+            if (element.hasAttribute(`data-${currentLanguage}`)) {
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    element.placeholder = element.getAttribute(`data-${currentLanguage}`);
+                } else {
+                    element.textContent = element.getAttribute(`data-${currentLanguage}`);
+                }
+            }
+        });
+        
+        // Actualizar el botón
+        updateButtonText();
+        
+        // Efecto visual
+        this.classList.add('clicked');
+        setTimeout(() => this.classList.remove('clicked'), 300);
+        
+        // Guardar preferencia (opcional)
+        localStorage.setItem('preferredLanguage', currentLanguage);
+    });
+    
+    // Cargar idioma guardado (opcional)
+    const savedLanguage = localStorage.getItem('preferredLanguage');
+    if (savedLanguage && savedLanguage !== currentLanguage) {
+        languageBtn.click(); // Simular click para cambiar idioma
+    }
+    
+    function updateButtonText() {
+        const langText = currentLanguage === 'es' ? 'English' : 'Español';
+        const tooltipText = currentLanguage === 'es' ? 'Cambiar a inglés' : 'Switch to Spanish';
+        
+        languageBtn.querySelector('span').textContent = langText;
+        languageBtn.setAttribute('data-tooltip', tooltipText);
+    }
+    
+    // Efecto de onda al hacer clic
+    languageBtn.addEventListener('click', function(e) {
+        const x = e.clientX - e.target.getBoundingClientRect().left;
+        const y = e.clientY - e.target.getBoundingClientRect().top;
+        
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+    });
+});
+
+// Añadir al CSS:
+/*
+.ripple {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    animation: rippleEffect 0.6s linear;
+}
+
+@keyframes rippleEffect {
+    to {
+        transform: translate(-50%, -50%) scale(30);
+        opacity: 0;
+    }
+}
+*/
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const themeBtn = document.getElementById('themeBtn');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // Verificar preferencia del sistema o guardada
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
+        enableDarkMode();
+    }
+    
+    // Configurar evento click
+    themeBtn.addEventListener('click', function() {
+        if (document.body.classList.contains('dark-mode')) {
+            disableDarkMode();
+        } else {
+            enableDarkMode();
+        }
+        
+        // Efecto de onda
+        this.classList.add('active');
+        setTimeout(() => this.classList.remove('active'), 300);
+    });
+    
+    // Opcional: Escuchar cambios en las preferencias del sistema
+    prefersDarkScheme.addListener(e => {
+        if (e.matches && !document.body.classList.contains('dark-mode')) {
+            enableDarkMode();
+        } else if (!e.matches && document.body.classList.contains('dark-mode')) {
+            disableDarkMode();
+        }
+    });
+    
+    function enableDarkMode() {
+        document.body.classList.add('dark-mode');
+        themeBtn.setAttribute('title', 'Modo diurno');
+        themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+        localStorage.setItem('theme', 'dark');
+        
+        // Animación especial
+        document.documentElement.style.setProperty('--oneui-transition', 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)');
+        setTimeout(() => {
+            document.documentElement.style.setProperty('--oneui-transition', 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)');
+        }, 500);
+    }
+    
+    function disableDarkMode() {
+        document.body.classList.remove('dark-mode');
+        themeBtn.setAttribute('title', 'Modo nocturno');
+        themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+        localStorage.setItem('theme', 'light');
+        
+        // Animación especial
+        document.documentElement.style.setProperty('--oneui-transition', 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)');
+        setTimeout(() => {
+            document.documentElement.style.setProperty('--oneui-transition', 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)');
+        }, 500);
+    }
+    
+    // Efecto de carga gradual para el modo oscuro
+    if (document.body.classList.contains('dark-mode')) {
+        document.body.style.opacity = '0';
+        setTimeout(() => {
+            document.body.style.transition = 'opacity 0.5s ease';
+            document.body.style.opacity = '1';
+        }, 10);
+    }
+});
+    </script>
+</body>
+</html>
