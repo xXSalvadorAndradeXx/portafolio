@@ -21,8 +21,8 @@
   <div id="loading-screen" class="loading-screen" aria-hidden="true">
     <div class="loading-content">
       <div class="loading-glow"></div>
-      <h1 class="loading-title">Construyendo una experiencia única...</h1>
-      <p class="loading-subtitle">Cargando creatividad, innovación y código.</p>
+      <h1 class="loading-title" data-i18n="loading_title">Construyendo una experiencia única...</h1>
+      <p class="loading-subtitle" data-i18n="loading_subtitle">Cargando creatividad, innovación y código.</p>
       <div class="progress-bar-container">
         <div class="progress-bar" id="progress-bar"></div>
       </div>
@@ -42,6 +42,24 @@
       <div class="navbar-container">
         <a href="#inicio" class="navbar-logo" aria-label="Ir al inicio">SA</a>
         
+        <!-- Selector de idioma en navbar -->
+        <div class="language-selector-nav">
+          <button class="lang-btn-nav" id="lang-toggle-btn" aria-label="Cambiar idioma">
+            <i class="ri-global-line"></i>
+            <span id="current-lang-flag">🇪🇸</span>
+          </button>
+          <div class="language-dropdown" id="language-dropdown">
+            <button class="lang-option" data-lang="es">🇪🇸 Español</button>
+            <button class="lang-option" data-lang="en">🇬🇧 English</button>
+            <button class="lang-option" data-lang="pt">🇧🇷 Português</button>
+            <button class="lang-option" data-lang="zh">🇨🇳 中文</button>
+            <button class="lang-option" data-lang="ja">🇯🇵 日本語</button>
+            <button class="lang-option" data-lang="ar">🇸🇦 العربية</button>
+            <button class="lang-option" data-lang="hi">🇮🇳 हिन्दी</button>
+            <button class="lang-option" data-lang="ru">🇷🇺 Русский</button>
+          </div>
+        </div>
+        
         <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menú" aria-expanded="false">
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
@@ -49,20 +67,33 @@
         </button>
         
         <ul class="navbar-menu" id="navbar-menu" role="menubar">
-          <li role="none"><a href="#inicio" role="menuitem" class="navbar-link">Inicio</a></li>
-          <li role="none"><a href="#sobre-mi" role="menuitem" class="navbar-link">Sobre mí</a></li>
-          <li role="none"><a href="#reconocimientos" role="menuitem" class="navbar-link">Reconocimientos</a></li>
-          <li role="none"><a href="#habilidades" role="menuitem" class="navbar-link">Habilidades</a></li>
-          <li role="none"><a href="#proyectos" role="menuitem" class="navbar-link">Proyectos</a></li>
-          <li role="none"><a href="#publicaciones" role="menuitem" class="navbar-link">Publicaciones</a></li>
-          <li role="none"><a href="#testimonios" role="menuitem" class="navbar-link">Testimonios</a></li>
-          <li role="none"><a href="#contacto" role="menuitem" class="navbar-link">Contacto</a></li>
+          <li role="none"><a href="#inicio" role="menuitem" class="navbar-link" data-i18n="nav_home">Inicio</a></li>
+          <li role="none"><a href="#sobre-mi" role="menuitem" class="navbar-link" data-i18n="nav_about">Sobre mí</a></li>
+          <li role="none"><a href="#reconocimientos" role="menuitem" class="navbar-link" data-i18n="nav_recognitions">Reconocimientos</a></li>
+          <li role="none"><a href="#habilidades" role="menuitem" class="navbar-link" data-i18n="nav_skills">Habilidades</a></li>
+          <li role="none"><a href="#proyectos" role="menuitem" class="navbar-link" data-i18n="nav_projects">Proyectos</a></li>
+          <li role="none"><a href="#publicaciones" role="menuitem" class="navbar-link" data-i18n="nav_publications">Publicaciones</a></li>
+          <li role="none"><a href="#testimonios" role="menuitem" class="navbar-link" data-i18n="nav_testimonials">Testimonios</a></li>
+          <li role="none"><a href="#contacto" role="menuitem" class="navbar-link" data-i18n="nav_contact">Contacto</a></li>
+          <!-- Selector de idioma en móvil -->
+          <li role="none" class="mobile-lang-selector">
+            <div class="mobile-lang-grid">
+              <button class="lang-option-mobile" data-lang="es">🇪🇸 ES</button>
+              <button class="lang-option-mobile" data-lang="en">🇬🇧 EN</button>
+              <button class="lang-option-mobile" data-lang="pt">🇧🇷 PT</button>
+              <button class="lang-option-mobile" data-lang="zh">🇨🇳 中文</button>
+              <button class="lang-option-mobile" data-lang="ja">🇯🇵 日本語</button>
+              <button class="lang-option-mobile" data-lang="ar">🇸🇦 AR</button>
+              <button class="lang-option-mobile" data-lang="hi">🇮🇳 HI</button>
+              <button class="lang-option-mobile" data-lang="ru">🇷🇺 RU</button>
+            </div>
+          </li>
         </ul>
         
         <div class="navbar-actions">
-          <a href="#" class="btn btn-cv" aria-label="Descargar CV">
+          <a href="#" class="btn btn-cv" aria-label="Descargar CV" data-i18n="download_cv_short">
             <i class="ri-download-line"></i>
-            <span>CV</span>
+            <span data-i18n="cv_short">CV</span>
           </a>
           <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar modo oscuro/claro">
             <i class="ri-sun-line sun-icon"></i>
@@ -76,29 +107,29 @@
     <section id="inicio" class="hero-section">
       <div id="particles-js" class="particles-container"></div>
       <div class="hero-content">
-        <div class="hero-badge" data-aos="fade-up">Disponible para proyectos</div>
+        <div class="hero-badge" data-aos="fade-up" data-i18n="available_badge">Disponible para proyectos</div>
         <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
           <span class="hero-name">Salvador Andrade</span>
         </h1>
         <div class="hero-typewriter" data-aos="fade-up" data-aos-delay="200">
           <span id="typed-text"></span>
         </div>
-        <p class="hero-motto" data-aos="fade-up" data-aos-delay="300">
+        <p class="hero-motto" data-aos="fade-up" data-aos-delay="300" data-i18n="hero_motto">
           "El código no tiene errores, solo soluciones esperando ser descubiertas."
         </p>
         <div class="hero-buttons" data-aos="fade-up" data-aos-delay="400">
           <a href="#proyectos" class="btn btn-primary">
-            <span>Ver proyectos</span>
+            <span data-i18n="view_projects">Ver proyectos</span>
             <i class="ri-arrow-right-line"></i>
           </a>
           <a href="#" class="btn btn-secondary">
-            <span>Descargar CV</span>
+            <span data-i18n="download_cv">Descargar CV</span>
             <i class="ri-download-line"></i>
           </a>
         </div>
       </div>
       <div class="scroll-indicator" aria-hidden="true">
-        <span>Desplazar</span>
+        <span data-i18n="scroll">Desplazar</span>
         <div class="scroll-line"></div>
       </div>
     </section>
@@ -114,32 +145,32 @@
             <div class="about-stats">
               <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
                 <span class="stat-number" data-target="40">0</span>+
-                <span class="stat-label">Proyectos</span>
+                <span class="stat-label" data-i18n="stat_projects">Proyectos</span>
               </div>
               <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
                 <span class="stat-number" data-target="8">0</span>+
-                <span class="stat-label">Tecnologías</span>
+                <span class="stat-label" data-i18n="stat_tech">Tecnologías</span>
               </div>
               <div class="stat-item" data-aos="zoom-in" data-aos-delay="400">
                 <span class="stat-number">100</span>%
-                <span class="stat-label">Pasión</span>
+                <span class="stat-label" data-i18n="stat_passion">Pasión</span>
               </div>
             </div>
           </div>
           <div class="about-info" data-aos="fade-left">
-            <h2 class="section-title">Sobre mí</h2>
-            <p class="about-text">
+            <h2 class="section-title" data-i18n="about_title">Sobre mí</h2>
+            <p class="about-text" data-i18n="about_text_1">
               Soy Salvador Ernesto Andrade Peña, un desarrollador full-stack apasionado por la creación de soluciones web innovadoras.
             </p>
-            <p class="about-text">
+            <p class="about-text" data-i18n="about_text_2">
               Con una amplia experiencia tanto en desarrollo front-end como back-end, trabajo con tecnologías como HTML, CSS, JavaScript, PHP, Laravel, Node.js, Vue.js, React.js y NestJS.
             </p>
-            <p class="about-text">
+            <p class="about-text" data-i18n="about_text_3">
               Siempre en busca de nuevas tecnologías y desafíos, me dedico a mejorar constantemente mis habilidades y aportar un valor significativo a los proyectos en los que participo, fusionando creatividad y eficiencia en cada solución que desarrollo.
             </p>
             <a href="#" class="btn btn-cta-large">
               <i class="ri-download-line"></i>
-              <span>Descargar mi CV</span>
+              <span data-i18n="download_cv_large">Descargar mi CV</span>
               <i class="ri-arrow-right-line"></i>
             </a>
           </div>
@@ -150,30 +181,30 @@
     <!-- ========== RECONOCIMIENTOS ========== -->
     <section id="reconocimientos" class="recognitions-section section-padding">
       <div class="container">
-        <h2 class="section-title text-center" data-aos="fade-up">Reconocimientos</h2>
+        <h2 class="section-title text-center" data-aos="fade-up" data-i18n="recognitions_title">Reconocimientos</h2>
         <div class="swiper recognitions-swiper" data-aos="fade-up" data-aos-delay="200">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <div class="recognition-card" onclick="openModal('modal-recognition-1')">
                 <div class="recognition-image"><i class="ri-award-line"></i></div>
-                <h3>Certificación Full-Stack</h3>
-                <p>Institución Tech</p>
+                <h3 data-i18n="recog_1_title">Certificación Full-Stack</h3>
+                <p data-i18n="recog_1_institution">Institución Tech</p>
                 <span>2024</span>
               </div>
             </div>
             <div class="swiper-slide">
               <div class="recognition-card" onclick="openModal('modal-recognition-2')">
                 <div class="recognition-image"><i class="ri-medal-line"></i></div>
-                <h3>Arquitectura de Software</h3>
-                <p>Academia Digital</p>
+                <h3 data-i18n="recog_2_title">Arquitectura de Software</h3>
+                <p data-i18n="recog_2_institution">Academia Digital</p>
                 <span>2023</span>
               </div>
             </div>
             <div class="swiper-slide">
               <div class="recognition-card" onclick="openModal('modal-recognition-3')">
                 <div class="recognition-image"><i class="ri-trophy-line"></i></div>
-                <h3>Liderazgo Técnico</h3>
-                <p>Innovación Lab</p>
+                <h3 data-i18n="recog_3_title">Liderazgo Técnico</h3>
+                <p data-i18n="recog_3_institution">Innovación Lab</p>
                 <span>2025</span>
               </div>
             </div>
@@ -186,39 +217,30 @@
     <!-- ========== HABILIDADES ========== -->
     <section id="habilidades" class="skills-section section-padding">
       <div class="container">
-        <h2 class="section-title text-center" data-aos="fade-up">Habilidades Duras</h2>
+        <h2 class="section-title text-center" data-aos="fade-up" data-i18n="hard_skills_title">Habilidades Duras</h2>
         <div class="skills-grid" id="skills-grid">
           <!-- Skills generadas dinámicamente -->
         </div>
         
-        <h2 class="section-title text-center mt-64" data-aos="fade-up">Habilidades Blandas</h2>
-        <div class="soft-skills-grid" data-aos="fade-up">
-          <div class="soft-skill-card"><i class="ri-user-star-line"></i><span>Liderazgo</span></div>
-          <div class="soft-skill-card"><i class="ri-team-line"></i><span>Trabajo en equipo</span></div>
-          <div class="soft-skill-card"><i class="ri-brain-line"></i><span>Pensamiento analítico</span></div>
-          <div class="soft-skill-card"><i class="ri-lightbulb-line"></i><span>Resolución de problemas</span></div>
-          <div class="soft-skill-card"><i class="ri-chat-3-line"></i><span>Comunicación efectiva</span></div>
-          <div class="soft-skill-card"><i class="ri-palette-line"></i><span>Creatividad</span></div>
-          <div class="soft-skill-card"><i class="ri-refresh-line"></i><span>Aprendizaje continuo</span></div>
-          <div class="soft-skill-card"><i class="ri-shuffle-line"></i><span>Adaptabilidad</span></div>
-          <div class="soft-skill-card"><i class="ri-shield-check-line"></i><span>Responsabilidad</span></div>
-          <div class="soft-skill-card"><i class="ri-timer-line"></i><span>Gestión del tiempo</span></div>
+        <h2 class="section-title text-center mt-64" data-aos="fade-up" data-i18n="soft_skills_title">Habilidades Blandas</h2>
+        <div class="soft-skills-grid" data-aos="fade-up" id="soft-skills-grid">
+          <!-- Soft skills generadas dinámicamente -->
         </div>
 
-        <h2 class="section-title text-center mt-64" data-aos="fade-up">Intereses y Valores</h2>
+        <h2 class="section-title text-center mt-64" data-aos="fade-up" data-i18n="interests_values_title">Intereses y Valores</h2>
         <div class="interests-values-grid" data-aos="fade-up">
-          <div class="interest-card"><i class="ri-robot-2-line"></i><span>Inteligencia Artificial</span></div>
-          <div class="interest-card"><i class="ri-code-s-slash-line"></i><span>Desarrollo Web</span></div>
-          <div class="interest-card"><i class="ri-open-source-line"></i><span>Open Source</span></div>
-          <div class="interest-card"><i class="ri-stack-line"></i><span>Arquitectura de Software</span></div>
-          <div class="interest-card"><i class="ri-layout-line"></i><span>UI/UX</span></div>
-          <div class="interest-card"><i class="ri-link"></i><span>Blockchain</span></div>
-          <div class="interest-card"><i class="ri-settings-3-line"></i><span>Automatización</span></div>
-          <div class="interest-card"><i class="ri-rocket-line"></i><span>Innovación</span></div>
-          <div class="value-card"><i class="ri-heart-line"></i><span>Honestidad</span></div>
-          <div class="value-card"><i class="ri-hand-heart-line"></i><span>Compromiso</span></div>
-          <div class="value-card"><i class="ri-star-line"></i><span>Calidad</span></div>
-          <div class="value-card"><i class="ri-scales-line"></i><span>Disciplina</span></div>
+          <div class="interest-card"><i class="ri-robot-2-line"></i><span data-i18n="interest_ai">Inteligencia Artificial</span></div>
+          <div class="interest-card"><i class="ri-code-s-slash-line"></i><span data-i18n="interest_web">Desarrollo Web</span></div>
+          <div class="interest-card"><i class="ri-open-source-line"></i><span data-i18n="interest_os">Open Source</span></div>
+          <div class="interest-card"><i class="ri-stack-line"></i><span data-i18n="interest_arch">Arquitectura de Software</span></div>
+          <div class="interest-card"><i class="ri-layout-line"></i><span data-i18n="interest_ui">UI/UX</span></div>
+          <div class="interest-card"><i class="ri-link"></i><span data-i18n="interest_blockchain">Blockchain</span></div>
+          <div class="interest-card"><i class="ri-settings-3-line"></i><span data-i18n="interest_automation">Automatización</span></div>
+          <div class="interest-card"><i class="ri-rocket-line"></i><span data-i18n="interest_innovation">Innovación</span></div>
+          <div class="value-card"><i class="ri-heart-line"></i><span data-i18n="value_honesty">Honestidad</span></div>
+          <div class="value-card"><i class="ri-hand-heart-line"></i><span data-i18n="value_commitment">Compromiso</span></div>
+          <div class="value-card"><i class="ri-star-line"></i><span data-i18n="value_quality">Calidad</span></div>
+          <div class="value-card"><i class="ri-scales-line"></i><span data-i18n="value_discipline">Disciplina</span></div>
         </div>
       </div>
     </section>
@@ -226,18 +248,18 @@
     <!-- ========== PROYECTOS ========== -->
     <section id="proyectos" class="projects-section section-padding">
       <div class="container">
-        <h2 class="section-title text-center" data-aos="fade-up">Mis Proyectos</h2>
+        <h2 class="section-title text-center" data-aos="fade-up" data-i18n="projects_title">Mis Proyectos</h2>
         <div class="swiper projects-swiper" data-aos="fade-up" data-aos-delay="200">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <div class="project-card">
                 <div class="project-image"><i class="ri-store-2-line"></i></div>
                 <h3>QuantumSprint</h3>
-                <p>Plataforma integral para mascotas.</p>
+                <p data-i18n="project_1_desc">Plataforma integral para mascotas.</p>
                 <div class="project-langs"><span>HTML</span><span>CSS</span><span>Vue</span><span>Node</span></div>
                 <div class="project-buttons">
-                  <a href="#" class="btn btn-small">Ver Proyecto</a>
-                  <button class="btn btn-small btn-outline" onclick="openModal('modal-project-1')">Más info</button>
+                  <a href="#" class="btn btn-small" data-i18n="view_project_btn">Ver Proyecto</a>
+                  <button class="btn btn-small btn-outline" onclick="openModal('modal-project-1')" data-i18n="more_info_btn">Más info</button>
                 </div>
               </div>
             </div>
@@ -245,11 +267,11 @@
               <div class="project-card">
                 <div class="project-image"><i class="ri-plant-line"></i></div>
                 <h3>Huerto en Mano</h3>
-                <p>Aplicación inteligente para gestión de jardines personalizados.</p>
+                <p data-i18n="project_2_desc">Aplicación inteligente para gestión de jardines personalizados.</p>
                 <div class="project-langs"><span>React</span><span>NestJS</span><span>PostgreSQL</span></div>
                 <div class="project-buttons">
-                  <a href="#" class="btn btn-small">Ver Proyecto</a>
-                  <button class="btn btn-small btn-outline" onclick="openModal('modal-project-2')">Más info</button>
+                  <a href="#" class="btn btn-small" data-i18n="view_project_btn">Ver Proyecto</a>
+                  <button class="btn btn-small btn-outline" onclick="openModal('modal-project-2')" data-i18n="more_info_btn">Más info</button>
                 </div>
               </div>
             </div>
@@ -262,12 +284,33 @@
     <!-- ========== PUBLICACIONES ========== -->
     <section id="publicaciones" class="publications-section section-padding">
       <div class="container">
-        <h2 class="section-title text-center" data-aos="fade-up">Publicaciones</h2>
+        <h2 class="section-title text-center" data-aos="fade-up" data-i18n="publications_title">Publicaciones</h2>
         <div class="swiper publications-swiper" data-aos="fade-up" data-aos-delay="200">
           <div class="swiper-wrapper">
-            <div class="swiper-slide"><div class="publication-card"><i class="ri-file-text-line"></i><h3>Calidad de Software</h3><p>Investigación sobre métricas y estándares.</p><a href="#" class="btn btn-small">Descargar</a></div></div>
-            <div class="swiper-slide"><div class="publication-card"><i class="ri-global-line"></i><h3>Aplicaciones Web</h3><p>Análisis de frameworks modernos.</p><a href="#" class="btn btn-small">Descargar</a></div></div>
-            <div class="swiper-slide"><div class="publication-card"><i class="ri-database-2-line"></i><h3>Modelado de Datos</h3><p>Estrategias para sistemas escalables.</p><a href="#" class="btn btn-small">Descargar</a></div></div>
+            <div class="swiper-slide">
+              <div class="publication-card">
+                <i class="ri-file-text-line"></i>
+                <h3 data-i18n="pub_1_title">Calidad de Software</h3>
+                <p data-i18n="pub_1_desc">Investigación sobre métricas y estándares.</p>
+                <a href="#" class="btn btn-small" data-i18n="download_btn">Descargar</a>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="publication-card">
+                <i class="ri-global-line"></i>
+                <h3 data-i18n="pub_2_title">Aplicaciones Web</h3>
+                <p data-i18n="pub_2_desc">Análisis de frameworks modernos.</p>
+                <a href="#" class="btn btn-small" data-i18n="download_btn">Descargar</a>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="publication-card">
+                <i class="ri-database-2-line"></i>
+                <h3 data-i18n="pub_3_title">Modelado de Datos</h3>
+                <p data-i18n="pub_3_desc">Estrategias para sistemas escalables.</p>
+                <a href="#" class="btn btn-small" data-i18n="download_btn">Descargar</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -276,7 +319,7 @@
     <!-- ========== TESTIMONIOS ========== -->
     <section id="testimonios" class="testimonials-section section-padding">
       <div class="container">
-        <h2 class="section-title text-center" data-aos="fade-up">Testimonios</h2>
+        <h2 class="section-title text-center" data-aos="fade-up" data-i18n="testimonials_title">Testimonios</h2>
         <div class="testimonials-grid" data-aos="fade-up">
           <div class="testimonial-card" onclick="openModal('modal-testimonial-1')">
             <div class="testimonial-avatar"><i class="ri-user-line"></i></div>
@@ -300,18 +343,27 @@
     <!-- ========== CONTACTO ========== -->
     <section id="contacto" class="contact-section section-padding">
       <div class="container">
-        <h2 class="section-title text-center" data-aos="fade-up">Contacto</h2>
+        <h2 class="section-title text-center" data-aos="fade-up" data-i18n="contact_title">Contacto</h2>
         <div class="contact-grid">
           <div class="contact-cards" data-aos="fade-right">
-            <a href="mailto:correo@ejemplo.com" class="contact-card"><i class="ri-mail-line"></i><span>Correo</span></a>
-            <a href="tel:+123456789" class="contact-card"><i class="ri-phone-line"></i><span>Teléfono</span></a>
-            <a href="#" class="contact-card"><i class="ri-whatsapp-line"></i><span>WhatsApp</span></a>
+            <a href="mailto:correo@ejemplo.com" class="contact-card">
+              <i class="ri-mail-line"></i>
+              <span data-i18n="contact_email">Correo</span>
+            </a>
+            <a href="tel:+123456789" class="contact-card">
+              <i class="ri-phone-line"></i>
+              <span data-i18n="contact_phone">Teléfono</span>
+            </a>
+            <a href="#" class="contact-card">
+              <i class="ri-whatsapp-line"></i>
+              <span data-i18n="contact_whatsapp">WhatsApp</span>
+            </a>
           </div>
           <form class="contact-form" data-aos="fade-left">
-            <input type="text" placeholder="Nombre" required aria-label="Nombre">
-            <input type="email" placeholder="Correo" required aria-label="Correo">
-            <textarea placeholder="Mensaje" rows="5" required aria-label="Mensaje"></textarea>
-            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+            <input type="text" placeholder="Nombre" required aria-label="Nombre" data-i18n-placeholder="form_name">
+            <input type="email" placeholder="Correo" required aria-label="Correo" data-i18n-placeholder="form_email">
+            <textarea placeholder="Mensaje" rows="5" required aria-label="Mensaje" data-i18n-placeholder="form_message"></textarea>
+            <button type="submit" class="btn btn-primary" data-i18n="send_message">Enviar mensaje</button>
           </form>
         </div>
       </div>
@@ -331,74 +383,20 @@
       </div>
     </section>
 
-    
-<!-- ========== Marca de Agua ========== -->
-    <div id="watermark" style="
-    position: fixed;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px);
-    color: rgba(255, 255, 255, 0.9);
-    padding: 12px 24px;
-    border-radius: 50px;
-    font-size: 13px;
-    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Inter', system-ui, sans-serif;
-    font-weight: 500;
-    letter-spacing: 0.3px;
-    z-index: 9999;
-    pointer-events: none;
-    white-space: nowrap;
-    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    font-style: normal;
-">
-    <span style="display: inline-flex; align-items: center; gap: 8px;">
-        <span style="font-size: 14px;"></span>
-        <span>En desarrollo</span>
-        <span style="width: 4px; height: 4px; background: rgba(255,255,255,0.4); border-radius: 50%; display: inline-block;"></span>
-        <span style="font-weight: 400; opacity: 0.7;">v 0.0.1-alpha</span>
-        <span style="width: 4px; height: 4px; background: rgba(255,255,255,0.4); border-radius: 50%; display: inline-block;"></span>
-        <span style="font-weight: 400; opacity: 0.7;">disculpe las molestias</span>
-        <span style="font-size: 14px;">
-  
-        </span>
-    </span>
-</div>
-
-<script>
-    function moverMarca() {
-        var marca = document.getElementById('watermark');
-        var ancho = window.innerWidth - marca.offsetWidth - 30;
-        var alto = window.innerHeight - marca.offsetHeight - 30;
-        
-        var x = Math.random() * ancho;
-        var y = Math.random() * alto;
-        
-        marca.style.left = x + 'px';
-        marca.style.top = y + 'px';
-        marca.style.right = 'auto';
-        marca.style.bottom = 'auto';
-    }
-    
-    setInterval(moverMarca, 4000);
-    window.addEventListener('load', moverMarca);
-    window.addEventListener('resize', moverMarca);
-</script>
-
     <!-- ========== FOOTER ========== -->
     <footer class="footer-premium">
       <div class="footer-glow"></div>
       <div class="container">
         <div class="footer-content">
           <a href="#" class="footer-logo">SA</a>
-          <p class="footer-quote">"Construyendo soluciones que conectan ideas con innovación."</p>
+          <p class="footer-quote" data-i18n="footer_quote">"Construyendo soluciones que conectan ideas con innovación."</p>
           <div class="footer-line"></div>
           <div class="footer-socials">
             <a href="#" aria-label="LinkedIn"><i class="ri-linkedin-line"></i></a>
             <a href="#" aria-label="GitHub"><i class="ri-github-line"></i></a>
             <a href="#" aria-label="Twitter"><i class="ri-twitter-x-line"></i></a>
           </div>
-          <p class="footer-copy">© 2026 Salvador Andrade. Todos los derechos reservados.</p>
+          <p class="footer-copy" data-i18n="footer_copy">© 2026 Salvador Andrade. Todos los derechos reservados.</p>
           <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">
             <i class="ri-arrow-up-line"></i>
           </button>
