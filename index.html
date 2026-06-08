@@ -20,681 +20,592 @@
     <meta property="twitter:title" content="Salvador Andrade | Desarrollador Full-Stack">
     <meta property="twitter:description" content="Portafolio profesional de Salvador Andrade, desarrollador Full-Stack especializado en tecnologías modernas.">
     <meta property="twitter:image" content="https://salvadorandrade.com/recursos/milogo.png">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Andrade Developer</title>
+    
+    <!-- Font Awesome & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    
     <link rel="icon" href="recursos/milogo.png" type="image/x-icon">
-<!-- Estilos Base -->
-
-<link rel="stylesheet" href="/style/style.css">
-
+    <!-- Estilos Base -->
+    <link rel="stylesheet" href="/style/style.css">
 </head>
 
 <body>
-<div class="lego-construction">
-  <div class="lego-base">
-    <div class="lego-logo-container">
-      <img src="/recursos/milogo.png" alt="Logo" class="lego-logo">
+    <!-- LEGO Loading Animation -->
+    <!-- PANTALLA DE CARGA MEJORADA -->
+<div id="loader" class="loader-wrapper">
+    <div class="loader-content">
+        <!-- Logo con animación -->
+        <div class="loader-logo-container">
+            <img src="/recursos/milogo.png" alt="Logo" class="loader-logo">
+            <div class="loader-spinner"></div>
+        </div>
+        
+        <!-- Mensaje de carga -->
+        <div class="loader-message">
+            <h2 class="loader-title">Preparando tu experiencia</h2>
+            <p class="loader-subtitle">Cargando portafolio...</p>
+        </div>
+        
+        <!-- Barra de progreso -->
+        <div class="loader-progress-container">
+            <div class="loader-progress-bar" id="loaderProgressBar">
+                <div class="loader-progress-glow"></div>
+            </div>
+            <span class="loader-percentage" id="loaderPercentage">0%</span>
+        </div>
     </div>
-    <div class="lego-progress-container">
-      <div class="lego-progress"></div>
+    
+    <!-- Partículas decorativas de fondo -->
+    <div class="loader-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
     </div>
-    <div class="lego-message">
-      <h2>Construyendo tu experiencia</h2>
-  
-    </div>
-  </div>
-  <div class="lego-blocks-container"></div>
 </div>
 
- <div class="language-switcher">
+    <!-- Floating Buttons -->
+    <div class="language-switcher">
         <button class="language-btn pulse" id="languageBtn">
             <i class="fas fa-language"></i>
             <span>English</span>
         </button>
     </div>
     <div class="theme-switcher">
-        <button class="theme-btn" id="themeBtn" title="Modo nocturno">
+        <button class="theme-btn" id="themeBtn" title="Cambiar a modo oscuro">
             <i class="fas fa-moon"></i>
         </button>
     </div>
 
+    <!-- Main Navigation -->
     <nav id="mainNav">
-        <a class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></a>
-        <ul id="menuList">
-            <li><a href="#inicio" data-es="Inicio" data-en="Home">Inicio</a></li>
-            <li><a href="#skill" data-es="Habilidades" data-en="Skills">Habilidades</a></li>
-            <li><a href="#proyect" data-es="Proyectos" data-en="Proyects">Proyectos</a></li>
-            <li><a href="#acerca" data-es="Acerca de" data-en="About">Sobre Mi</a></li>
-        </ul>
-        <img src="/recursos/milogo.png" alt="Imagen Flotante" class="flotante" height="50px" width="50px">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <img src="/Imagen/milogo.png" alt="Logo" height="36" width="36">
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul id="menuList">
+                <li><a href="#inicio" class="nav-link active" data-es="Inicio" data-en="Home">Inicio</a></li>
+                <li><a href="#skill" class="nav-link" data-es="Habilidades" data-en="Skills">Habilidades</a></li>
+                <li><a href="#proyect" class="nav-link" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
+                <li><a href="#acerca" class="nav-link" data-es="Acerca de" data-en="About">Sobre Mí</a></li>
+                <li><a href="#contacto" class="nav-link" data-es="Contacto" data-en="Contact">Contacto</a></li>
+            </ul>
+        </div>
     </nav>
-    <section id="inicio" style="height: 100vh; padding: 20px;">
-    <div class="contenedor">  
 
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="contenedor">  
             <div class="image-container">
-                <img class="fondo" src="recursos/fondo1.png" alt="Logo" class="logo" >
+                <img class="fondo" src="/Imagen/pro.png" alt="Logo de fondo">
             </div>
-            
             <div class="texto">
                 <h1>Salvador Andrade</h1>
                 <h2 class="subtitulo" data-es="Desarrollador Full-Stack" data-en="Full-Stack Developer">Desarrollador Full-Stack</h2>
-                
             </div>
-
             <div class="texto2">
-                <p class="" data-es="El código no tiene errores, solo soluciones esperando ser descubiertas." data-en="The code doesn't have errors, only solutions waiting to be discovered.">El código no tiene errores, solo soluciones esperando ser descubiertas.</p>
+                <p class="frase-personal" data-es="El código no tiene errores, solo soluciones esperando ser descubiertas." data-en="Code has no errors, only solutions waiting to be discovered.">El código no tiene errores, solo soluciones esperando ser descubiertas.</p>
             </div>
         </div>
     </section>
 
- <section id="acerca" style="height: 100vh; padding: 20px;">
-    <div class="sobre-mi">
-        <div class="imagen">
-            <img src="recursos/Foto1.jpg" alt="Foto de Salvador" />
-        </div>
-        <div class="contenido">
-            <h1 data-es="Sobre Mí" data-en="About Me">Sobre Mí</h1>
-            <p data-es="Soy Salvador Ernesto Andrade Peña, un desarrollador full-stack apasionado por la creación de soluciones web innovadoras. Con una amplia experiencia tanto en desarrollo front-end como back-end, trabajo con tecnologías como HTML, CSS, JavaScript, PHP, Laravel, Node.js, Vue.js y React.js. Siempre en busca de nuevas tecnologías y desafíos, me dedico a mejorar constantemente mis habilidades y aportar un valor significativo a los proyectos en los que participo, fusionando creatividad y eficiencia en cada solución que desarrollo." 
-               data-en="I am Salvador Ernesto Andrade Peña, a passionate full-stack developer dedicated to creating innovative web solutions. With extensive experience in both front-end and back-end development, I work with technologies such as HTML, CSS, JavaScript, PHP, Laravel, Node.js, Vue.js, and React.js. Always seeking new technologies and challenges, I am committed to continuously improving my skills and adding significant value to the projects I participate in, combining creativity and efficiency in every solution I develop.">
-                Soy Salvador Ernesto Andrade Peña, un desarrollador full-stack apasionado por la creación de soluciones web innovadoras.
-                Con una amplia experiencia tanto en desarrollo front-end como back-end, trabajo con tecnologías
-                como HTML, CSS, JavaScript, PHP, Laravel, Node.js, Vue.js y React.js. Siempre en busca de nuevas 
-                tecnologías y desafíos, me dedico a mejorar constantemente mis habilidades y aportar un valor 
-                significativo a los proyectos en los que participo, fusionando creatividad y eficiencia en cada solución que desarrollo.
-            </p>
-            <a href="recursos/cv.pdf" class="descargar-cv" download="CV.pdf" data-es="Descargar CV" data-en="Download CV">Descargar CV</a>
-        </div>
-    </div>
-</section>
-
-
-
-
-
- 
-<section id="reconociminentos" style="padding: 20px;">
-<div class="reconocimientos-container">
-        <h2 class="reconocimientos-title" data-es="Mis Reconocimientos" data-en="My Awards">Mis Reconocimientos</h2>
-       
-        <div class="reconocimientos-carousel">
-
-            <div class="reconocimientos-items" id="carouselItems">
-                <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/1.png', 'CCNAv7: Switching, Routing, and Wireless Essentials')">
-                    <img src="/recursos/Recomo/1.png" alt="Diploma 1">
-                </div>
-
-                <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/2.png', 'CCNA: Introduction to Networks')">
-                    <img src="/recursos/Recomo/2.png" alt="Diploma 2">
-                </div>
-
-                <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/3.png', 'Networking challenge 2025')">
-                    <img src="/recursos/Recomo/3.png" alt="Diploma 3">
-                </div>
-                
-                <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/4.png', 'Concurso Estudiantil de Investigación 2024')">
-                    <img src="/recursos/Recomo/4.png" alt="Diploma 3">
-                </div>
-
+    <!-- About Section -->
+    <section id="acerca" class="about-section">
+        <div class="sobre-mi">
+            <div class="imagen">
+                <img src="/Imagen/pro.png" alt="Foto de Salvador" loading="lazy"/>
             </div>
-        </div>
-  
-    </div>
-
-    <div class="reconocimientos-modal" id="reconocimientos-modal">
-        <div class="reconocimientos-modal-content">
-            <button class="reconocimientos-close-btn" onclick="reconocimientosCloseModal()">&times;</button>
-            <img id="reconocimientos-modal-image" src="" alt="Diploma">
-            <p class="reconocimientos-description" id="reconocimientos-modal-description"></p>
-        </div>
-    </div>
-
- </section>
-
-
-
-    
-    <section id="skill" >
-      
-<div class="container4" >
- 
-           <h2 data-es="Habilidades Duras" data-en="Hard Skills">Habilidades Duras</h2>
-    
-
-    <div class="container">
-        <div class="card">
-            <img src="recursos/html.png" alt="" height="50" width="50" style="position: relative;">
-            <h2>HTML</h2>
-            <div class="progress-bar html-progress">
-                <div class="progress" style="width: 90%;"></div>
+            <div class="contenido">
+                <h1 data-es="Sobre Mí" data-en="About Me">Sobre Mí</h1>
+                <p data-es="Soy Salvador Ernesto Andrade Peña, un desarrollador full-stack apasionado por la creación de soluciones web innovadoras. Con una amplia experiencia tanto en desarrollo front-end como back-end, trabajo con tecnologías como HTML, CSS, JavaScript, PHP, Laravel, Node.js, Vue.js y React.js. Siempre en busca de nuevas tecnologías y desafíos, me dedico a mejorar constantemente mis habilidades y aportar un valor significativo a los proyectos en los que participo, fusionando creatividad y eficiencia en cada solución que desarrollo." 
+                   data-en="I am Salvador Ernesto Andrade Peña, a passionate full-stack developer dedicated to creating innovative web solutions. With extensive experience in both front-end and back-end development, I work with technologies such as HTML, CSS, JavaScript, PHP, Laravel, Node.js, Vue.js, and React.js. Always seeking new technologies and challenges, I am committed to continuously improving my skills and adding significant value to the projects I participate in, combining creativity and efficiency in every solution I develop.">
+                    Soy Salvador Ernesto Andrade Peña, un desarrollador full-stack apasionado por la creación de soluciones web innovadoras. Con una amplia experiencia tanto en desarrollo front-end como back-end, trabajo con tecnologías como HTML, CSS, JavaScript, PHP, Laravel, Node.js, Vue.js y React.js. Siempre en busca de nuevas tecnologías y desafíos, me dedico a mejorar constantemente mis habilidades y aportar un valor significativo a los proyectos en los que participo, fusionando creatividad y eficiencia en cada solución que desarrollo.
+                </p>
+                <a href="recursos/cv.pdf" class="descargar-cv" download="SalvadorAndrade-CV.pdf" data-es="Descargar CV" data-en="Download CV">Descargar CV</a>
             </div>
-            <p>90%</p>
-        </div>
-        <div class="card">
-            <img src="recursos/sql.png" alt="" height="50" width="50" style="position: relative;">
-            <h2>SQL</h2>
-            <div class="progress-bar sql-progress">
-                <div class="progress" style="width: 90%;"></div>
-            </div>
-            <p>90%</p>
-        </div>
-        <div class="card">
-            <img src="recursos/php.png" alt="" height="50" width="100" style="position: relative;">
-            <h2>PHP</h2>
-            <div class="progress-bar php-progress">
-                <div class="progress" style="width: 90%;"></div>
-            </div>
-            <p>90%</p>
-        </div>
- 
-        <div class="card">
-            <img src="recursos/csha.png" alt="" height="50" width="50" style="position: relative;">
-            <h2>C#</h2>
-            <div class="progress-bar csharp-progress">
-                <div class="progress" style="width: 85%;"></div>
-            </div>
-            <p>85%</p>
-        </div>
-        <div class="card">
-            <img src="recursos/react.png" alt="" height="50" width="60" style="position: relative;">
-            <h2>React</h2>
-            <div class="progress-bar react-progress">
-                <div class="progress" style="width: 85%;"></div>
-            </div>
-            <p>85%</p>
-        </div>
-        <div class="card">
-            <img src="recursos/python.png" alt="" height="50" width="50" style="position: relative;">
-            <h2>Python</h2>
-            <div class="progress-bar python-progress">
-                <div class="progress" style="width: 80%;"></div>
-            </div>
-            <p>80%</p>
-        </div>
-        <div class="card">
-            <img src="recursos/vue.png" alt="" height="50" width="50" style="position: relative;">
-            <h2>Vue</h2>
-            <div class="progress-bar vue-progress">
-                <div class="progress" style="width: 80%;"></div>
-            </div>
-            <p>80%</p>
-        </div>
-
-        <div class="card">
-            <img src="recursos/node.png" alt="" height="50" width="50" style="position: relative;">
-            <h2>Node.js</h2>
-            <div class="progress-bar node-progress">
-                <div class="progress" style="width: 75%;"></div>
-            </div>
-            <p>75%</p>
-        </div>
-        <div class="card">
-            <img src="recursos/javas.png" alt="" height="50" width="50" style="position: relative;">
-            <h2>JavaScript</h2>
-            <div class="progress-bar javascript-progress">
-                <div class="progress" style="width: 70%;"></div>
-            </div>
-            <p>70%</p>
-        </div>
-        <div class="card">
-            <img src="recursos/java.png" alt="" height="50" width="50" style="position: relative;">
-            <h2>Java</h2>
-            <div class="progress-bar java-progress">
-                <div class="progress" style="width: 60%;"></div>
-            </div>
-            <p>60%</p>
-        </div>
- 
-        <div class="card">
-            <img src="recursos/blender.png" alt="" height="50" width="60" style="position: relative;">
-            <h2>Blender</h2>
-            <div class="progress-bar blender-progress">
-                <div class="progress" style="width: 50%;"></div>
-            </div>
-            <p>50%</p>
-        </div>
-        <div class="card">
-            <img src="recursos/laravel.png" alt="" height="50" width="50" style="position: relative;">
-            <h2>Laravel</h2>
-            <div class="progress-bar laravel-progress">
-                <div class="progress" style="width: 40%;"></div>
-            </div>
-            <p>40%</p>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-    </section>
-
- <section id="skill blandas" >
-    <div class="skills-section">
-   
-        <h2 class="titleskills" data-es="Habilidades Blandas" data-en="Soft Skills">Habilidades Blandas</h2>
-    
-        <div class="skills-container">
-            <button class="arrow-btn left" onclick="moveSkills('left')">&#10094;</button>
-    
-            <div class="skills-container-content">
-                <div class="skill-card">
-                    <h3 class="skill-title" data-es="Comunicación efectiva" data-en="Effective Communication">Comunicación efectiva</h3>
-                    <p class="skill-description" data-es="Expresar ideas y conceptos técnicos de forma clara a equipos técnicos y no técnicos, y escuchar las necesidades de los clientes y compañeros." 
-                       data-en="Expressing ideas and technical concepts clearly to both technical and non-technical teams, and listening to the needs of clients and colleagues.">
-                        Expresar ideas y conceptos técnicos de forma clara a equipos técnicos y no técnicos, y escuchar las necesidades de los clientes y compañeros.
-                    </p>
-                </div>
-                <div class="skill-card">
-                    <h3 class="skill-title" data-es="Trabajo en equipo" data-en="Teamwork">Trabajo en equipo</h3>
-                    <p class="skill-description" data-es="Colaborar con desarrolladores, diseñadores y otros stakeholders, siendo abierto a recibir y dar retroalimentación constructiva." 
-                       data-en="Collaborating with developers, designers, and other stakeholders, being open to receiving and giving constructive feedback.">
-                        Colaborar con desarrolladores, diseñadores y otros stakeholders, siendo abierto a recibir y dar retroalimentación constructiva.
-                    </p>
-                </div>
-                <div class="skill-card">
-                    <h3 class="skill-title" data-es="Gestión del tiempo" data-en="Time Management">Gestión del tiempo</h3>
-                    <p class="skill-description" data-es="Priorizar tareas y proyectos según su urgencia e importancia, cumpliendo plazos y manejando múltiples proyectos simultáneamente." 
-                       data-en="Prioritizing tasks and projects according to their urgency and importance, meeting deadlines, and managing multiple projects simultaneously.">
-                        Priorizar tareas y proyectos según su urgencia e importancia, cumpliendo plazos y manejando múltiples proyectos simultáneamente.
-                    </p>
-                </div>
-                <div class="skill-card">
-                    <h3 class="skill-title" data-es="Resolución de problemas" data-en="Problem Solving">Resolución de problemas</h3>
-                    <p class="skill-description" data-es="Abordar desafíos técnicos y no técnicos de manera lógica y creativa, identificando rápidamente la raíz de los problemas y proponiendo soluciones efectivas." 
-                       data-en="Addressing technical and non-technical challenges logically and creatively, quickly identifying the root of problems and proposing effective solutions.">
-                        Abordar desafíos técnicos y no técnicos de manera lógica y creativa, identificando rápidamente la raíz de los problemas y proponiendo soluciones efectivas.
-                    </p>
-                </div>
-                <div class="skill-card">
-                    <h3 class="skill-title" data-es="Adaptabilidad" data-en="Adaptability">Adaptabilidad</h3>
-                    <p class="skill-description" data-es="Ajustarse a nuevas tecnologías, herramientas y cambios en los proyectos, manejando eficazmente entornos de trabajo dinámicos y cambiantes." 
-                       data-en="Adjusting to new technologies, tools, and project changes, effectively managing dynamic and changing work environments.">
-                        Ajustarse a nuevas tecnologías, herramientas y cambios en los proyectos, manejando eficazmente entornos de trabajo dinámicos y cambiantes.
-                    </p>
-                </div>
-            </div>
-    
-            <button class="arrow-btn right" onclick="moveSkills('right')">&#10095;</button>
         </div>
     </section>
 
-<section id="valores" style=" padding: 20px;">
-
- <div class="valores">
-<h2 class="section-title" data-es="Intereses y Valores" data-en="Interests and Values">Intereses y Valores</h2>
-        <div class="container22">
-            
-            <div class="card2">
-                <h2 data-es="Intereses" data-en="Interests">Intereses</h2>
-                <ul class="list">
-                    <li data-es="Desarrollo de aplicaciones web" data-en="Web application development">Desarrollo de aplicaciones web</li>
-                    <li data-es="Arquitectura de software" data-en="Software architecture">Arquitectura de software</li>
-                    <li data-es="Diseño UX/UI" data-en="UX/UI Design">Diseño UX/UI</li>
-                    <li data-es="Inteligencia artificial" data-en="Artificial intelligence">Inteligencia artificial</li>
-                    <li data-es="Tecnologías de blockchain" data-en="Blockchain technologies">Tecnologías de blockchain</li>
-                </ul>
-            </div>
-        
-            <div class="card2">
-                <h2 data-es="Valores" data-en="Values">Valores</h2>
-                <ul class="list">
-                    <li data-es="Innovación constante" data-en="Constant innovation">Innovación constante</li>
-                    <li data-es="Trabajo en equipo" data-en="Teamwork">Trabajo en equipo</li>
-                    <li data-es="Resolución de problemas" data-en="Problem solving">Resolución de problemas</li>
-                    <li data-es="Compromiso con la calidad" data-en="Commitment to quality">Compromiso con la calidad</li>
-                    <li data-es="Aprendizaje continuo" data-en="Continuous learning">Aprendizaje continuo</li>
-                </ul>
-            </div>
-        </div>
-
-</div>
-
-
-</section>
-
-    <section id="proyect" >
-
-
-            <div class="projects-container">
-
-              
-                       <h2 class="projects-title" data-es="Mis Proyectos" data-en="My Projects">Mis Proyectos</h2>
-                      
-                <div class="projects-carousel">
-                    <button class="carousel-btn prev" onclick="moveProjects(-1)">&#10094;</button>
-                    
-                    <div class="projects-track" id="projectsTrack">
-                        <!-- Proyecto 1 -->
-                        <div class="project-card">
-                            <img src="/recursos/inicio.png" alt="Proyecto 1" class="project-image">
-                            <div class="project-info">
-                                <h3 class="project-title" data-es="Legal Connect" data-en="Legal Connect">Legal Connect</h3>
-                                <p class="project-description" data-es="Sistema integral para la gestión de casos legales con funcionalidades avanzadas." 
-                                   data-en="Comprehensive system for legal case management with advanced features.">
-                                    Sistema integral para la gestión de casos legales con funcionalidades avanzadas.
-                                </p>
-
-                                <div class="project-role" style="margin: 10px;padding: 10px; border-left: 4px solid var(--accent-color); border-radius: 5px; margin-top: 10px; display: flex; align-items: center; background-color: var(--role-bg); color: var(--role-text);">
-                                   
-                                    <p style="margin: 0;" data-es="Rol desempeñado: Desarrollador Frontend - Backend y Coordinador de Proyecto." 
-                                       data-en="Role: Frontend - Backend Developer and Project Coordinator.">
-                                        <strong>Rol desempeñado:</strong> Desarrollador Frontend - Backend  y Coordinador de Proyecto.
-                                    </p>
-                                </div>
-                                <div class="project-tech">
-                                    <span class="tech-tag">PHP</span>
-                                    <span class="tech-tag">CSS</span>
-                                   
-                                </div>
-                                <div class="project-links">
-                                    <a href="https://github.com/xXSalvadorAndradeXx/LegalConnect" target="_blank" class="project-link" data-es="Código" data-en="Code">Código</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Proyecto 2 -->
-                        <div class="project-card">
-                            <img src="/recursos/huerto.png" alt="Proyecto 2" class="project-image">
-                            <div class="project-info">
-                                <h3 class="project-title" data-es="Huerto en Mano" data-en="Huerto en Mano">Huerto en Mano</h3>
-                                <p class="project-description" data-es="Plataforma para gestión de huertos urbanos, incluyendo foros de blockchain y visualización de datos." 
-                                   data-en="Platform for urban garden management, including blockchain forums and data visualization.">
-                                    Plataforma para gestión de huertos urbanos, incluyendo foros de blockchain y visualización de datos.
-                                </p>
-                                <div class="project-role" style="margin: 10px; padding: 10px; border-left: 4px solid var(--accent-color); border-radius: 5px; margin-top: 10px; display: flex; align-items: center; background-color: var(--role-bg); color: var(--role-text);">
-                                   
-                                    <p style="margin: 0;" data-es="Rol desempeñado: Desarrollador Frontend - Backendy Coordinador de Proyecto." 
-                                       data-en="Role: Frontend - Backend Developer and Project Coordinator.">
-                                        <strong>Rol desempeñado:</strong> Desarrollador Frontend - Backend y Coordinador de Proyecto.
-                                    </p>
-                                </div>
-                                <div class="project-tech">
-                                    <span class="tech-tag">HTML</span>
-                                    <span class="tech-tag">CSS</span>
-                                    <span class="tech-tag">Blockchain</span>
-                                    <span class="tech-tag" style="background-color: brown; color: azure;">En Desarrollo</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="https://github.com/Juan-Carlos-Mejia/huertoenmano" target="_blank" class="project-link" data-es="Código" data-en="Code">Código</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-                        
-                        <!-- Proyecto 3 -->
-                        <div class="project-card">
-                            <img src="/recursos/camaron.png" alt="Proyecto 3" class="project-image">
-                            <div class="project-info">
-                                <h3 class="project-title" data-es="Don Camarón Sistema Interno" data-en="Don Camarón Internal System">Don Camarón Sistema Interno</h3>
-                                <p class="project-description" data-es="Sistema interno para la gestión operativa de un restaurante." 
-                                   data-en="Internal system for operational management of a restaurant.">
-                                    Sistema interno para la gestión operativa de un restaurante.
-                                </p>
-
-                                <div class="project-role" style="margin: 10px;padding: 10px; border-left: 4px solid var(--accent-color); border-radius: 5px; margin-top: 10px; display: flex; align-items: center; background-color: var(--role-bg); color: var(--role-text);">
-                                   
-                                    <p style="margin: 0;" data-es="Rol desempeñado: Desarrollador Frontend - Backend y Coordinador de Proyecto." 
-                                       data-en="Role: Frontend - Backend Developer and Project Coordinator.">
-                                        <strong>Rol desempeñado:</strong> Desarrollador Frontend - Backend y Coordinador de Proyecto.
-                                    </p>
-                                </div>
-                                <div class="project-tech">
-                                    <span class="tech-tag">JavaScript</span>
-                                    <span class="tech-tag">ASP.NET</span>
-                                    <span class="tech-tag">Visual Basic</span>
-                                    <span class="tech-tag">CSS</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="#" target="_blank" class="project-link" data-es="Código" data-en="Code">Código</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="project-card">
-                            <img src="/recursos/sala.png" alt="Proyecto 3" class="project-image">
-                            <div class="project-info">
-                                <h3 class="project-title" data-es="Calculadora salarial" data-en="Salary Calculator">Calculadora salarial</h3>
-                                <p class="project-description" data-es="Aplicación web para calcular su salario en el salvador despues de descontar lo que dicte la ley" 
-                                   data-en="Web application to calculate your salary in El Salvador after deducting what the law dictates.">
-                                   Aplicación web para calcular su salario en el salvador despues de descontar lo que dicte la ley.
-                                </p>
-
-                                <div class="project-role" style="margin: 10px;padding: 10px; border-left: 4px solid var(--accent-color); border-radius: 5px; margin-top: 10px; display: flex; align-items: center; background-color: var(--role-bg); color: var(--role-text);">
-                                   
-                                    <p style="margin: 0;" data-es="Rol desempeñado: Desarrollador Frontend - Backend y Coordinador de Proyecto." 
-                                       data-en="Role: Frontend - Backend Developer and Project Coordinator.">
-                                        <strong>Rol desempeñado:</strong> Desarrollador Frontend - Backend y Coordinador de Proyecto.
-                                    </p>
-                                </div>
-                                <div class="project-tech">
-                                    <span class="tech-tag">JavaScript</span>
-                                    <span class="tech-tag">HTML</span>
-                                    <span class="tech-tag">CSS</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="#" target="_blank" class="project-link" data-es="Código" data-en="Code">Código</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Proyecto 4 -->
-                        
-                        </div>
-                         <button class="carousel-btn next" onclick="moveProjects(1)">&#10095;</button>
+    <!-- Awards Section -->
+    <section id="reconocimientos" class="awards-section">
+        <div class="reconocimientos-container">
+            <h2 class="section-title" data-es="Mis Reconocimientos" data-en="My Awards">Mis Reconocimientos</h2>
+            <div class="reconocimientos-carousel">
+                <div class="reconocimientos-items" id="carouselItems">
+                    <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/1.png', 'CCNAv7: Switching, Routing, and Wireless Essentials')">
+                        <img src="/recursos/Recomo/1.png" alt="Diploma 1" loading="lazy">
                     </div>
-                    
-                   
+                    <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/2.png', 'CCNA: Introduction to Networks')">
+                        <img src="/recursos/Recomo/2.png" alt="Diploma 2" loading="lazy">
+                    </div>
+                    <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/3.png', 'Networking challenge 2025')">
+                        <img src="/recursos/Recomo/3.png" alt="Diploma 3" loading="lazy">
+                    </div>
+                    <div class="reconocimientos-card" onclick="reconocimientosOpenModal('/recursos/Recomo/4.png', 'Concurso Estudiantil de Investigación 2024')">
+                        <img src="/recursos/Recomo/4.png" alt="Diploma 4" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal para Reconocimientos -->
+        <div class="reconocimientos-modal" id="reconocimientos-modal">
+            <div class="reconocimientos-modal-content">
+                <button class="reconocimientos-close-btn" onclick="reconocimientosCloseModal()">&times;</button>
+                <img id="reconocimientos-modal-image" src="" alt="Diploma">
+                <p class="reconocimientos-description" id="reconocimientos-modal-description"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hard Skills Section -->
+    <section id="skill" class="hard-skills-section">
+        <div class="container4">
+            <h2 class="section-title" data-es="Habilidades Duras" data-en="Hard Skills">Habilidades Duras</h2>
+            <div class="container">
+                <!-- Skill Cards -->
+                <div class="card">
+                    <img src="recursos/html.png" alt="HTML" height="50" width="50">
+                    <h2>HTML</h2>
+                    <div class="progress-bar html-progress"><div class="progress" style="width: 90%;"></div></div>
+                    <p>90%</p>
+                </div>
+                <div class="card">
+                    <img src="recursos/sql.png" alt="SQL" height="50" width="50">
+                    <h2>SQL</h2>
+                    <div class="progress-bar sql-progress"><div class="progress" style="width: 90%;"></div></div>
+                    <p>90%</p>
+                </div>
+                <div class="card">
+                    <img src="recursos/php.png" alt="PHP" height="50" width="100">
+                    <h2>PHP</h2>
+                    <div class="progress-bar php-progress"><div class="progress" style="width: 90%;"></div></div>
+                    <p>90%</p>
+                </div>
+                <div class="card">
+                    <img src="recursos/csha.png" alt="C#" height="50" width="50">
+                    <h2>C#</h2>
+                    <div class="progress-bar csharp-progress"><div class="progress" style="width: 85%;"></div></div>
+                    <p>85%</p>
+                </div>
+                <div class="card">
+                    <img src="recursos/react.png" alt="React" height="50" width="60">
+                    <h2>React</h2>
+                    <div class="progress-bar react-progress"><div class="progress" style="width: 85%;"></div></div>
+                    <p>85%</p>
+                </div>
+                <div class="card">
+                    <img src="recursos/python.png" alt="Python" height="50" width="50">
+                    <h2>Python</h2>
+                    <div class="progress-bar python-progress"><div class="progress" style="width: 80%;"></div></div>
+                    <p>80%</p>
+                </div>
+                <div class="card">
+                    <img src="recursos/vue.png" alt="Vue" height="50" width="50">
+                    <h2>Vue.js</h2>
+                    <div class="progress-bar vue-progress"><div class="progress" style="width: 80%;"></div></div>
+                    <p>80%</p>
+                </div>
+                <div class="card">
+                    <img src="recursos/node.png" alt="Node.js" height="50" width="50">
+                    <h2>Node.js</h2>
+                    <div class="progress-bar node-progress"><div class="progress" style="width: 75%;"></div></div>
+                    <p>75%</p>
+                </div>
+                <div class="card">
+                    <img src="recursos/javas.png" alt="JavaScript" height="50" width="50">
+                    <h2>JavaScript</h2>
+                    <div class="progress-bar javascript-progress"><div class="progress" style="width: 70%;"></div></div>
+                    <p>70%</p>
+                </div>
+                <div class="card">
+                    <img src="recursos/java.png" alt="Java" height="50" width="50">
+                    <h2>Java</h2>
+                    <div class="progress-bar java-progress"><div class="progress" style="width: 60%;"></div></div>
+                    <p>60%</p>
+                </div>
+                <div class="card">
+                    <img src="recursos/blender.png" alt="Blender" height="50" width="60">
+                    <h2>Blender</h2>
+                    <div class="progress-bar blender-progress"><div class="progress" style="width: 50%;"></div></div>
+                    <p>50%</p>
+                </div>
+                <div class="card">
+                    <img src="recursos/laravel.png" alt="Laravel" height="50" width="50">
+                    <h2>Laravel</h2>
+                    <div class="progress-bar laravel-progress"><div class="progress" style="width: 40%;"></div></div>
+                    <p>40%</p>
                 </div>
             </div>
         </div>
     </section>
-    
 
-<section id="mis publicaciones" style="padding: 20px;">
-    <div id="publicacion-salud-mental">
-    <div class="publicacion-container">
-        <hr class="publicacion-divider">
-        <h2 class="publicacion-titulo" data-es="Mis Publicaciones" data-en="My Publications">
-            Mis Publicaciones
-        </h2>
-        
-        <div class="publicacion-content">
-            <div class="publicacion-imagen-container">
-                <img src="/recursos/salud-mental.jpg" alt="Investigación en Salud Mental" class="publicacion-imagen">
-                <div class="publicacion-badge" data-es="Estudio Científico" data-en="Scientific Study">Estudio Científico</div>
-            </div>
-            
-            <div class="publicacion-detalles">
-                <p class="publicacion-autores" data-es="Autores" data-en="Authors">Autores:</p>
-                 <p class="publicacion-autores">Salvador Ernesto Andrade Peña</p>
-                <p class="publicacion-autores"> Juan Carlos Mejia Morales</p>
-                <p class="publicacion-autores"> Xiomara Lisseth Machado De La Paz</p>
-                         <hr style="border: 1px solid black; margin: 20px; ">
-                <p class="publicacion-institucion" >Universidad Gerardo Barrios, Centro Regional de Usulután</p>
-                <p class="publicacion-fecha" >Ciclo 01-2024</p>
-                
-                <div class="publicacion-resumen">
-                    <h3 data-es="Resumen" data-en="Abstract">Resumen</h3>
-                    <p data-es="Evaluación del nivel en la salud mental de los estudiantes de la Facultad de Ciencias Jurídicas durante el Ciclo 01-2024 en la Universidad Gerardo Barrios, Centro Regional de Usulután." 
-                       data-en="Evaluation of the mental health level of students in the Faculty of Legal Sciences during the 01-2024 Semester at Universidad Gerardo Barrios, Regional Center of Usulután.">
-                        Evaluación del nivel en la salud mental de los estudiantes de la Facultad de Ciencias Jurídicas durante el Ciclo 01-2024 en la Universidad Gerardo Barrios, Centro Regional de Usulután.
-                    </p>
+    <!-- Soft Skills Section -->
+    <section id="skill-blandas" class="soft-skills-section">
+        <div class="skills-section">
+            <h2 class="section-title" data-es="Habilidades Blandas" data-en="Soft Skills">Habilidades Blandas</h2>
+            <div class="skills-container">
+                <button class="arrow-btn left" onclick="moveSkills('left')" aria-label="Desplazar izquierda">&#10094;</button>
+                <div class="skills-container-content">
+                    <div class="skill-card">
+                        <h3 class="skill-title" data-es="Comunicación efectiva" data-en="Effective Communication">Comunicación efectiva</h3>
+                        <p class="skill-description" data-es="Expresar ideas y conceptos técnicos de forma clara a equipos técnicos y no técnicos, y escuchar las necesidades de los clientes y compañeros." 
+                           data-en="Expressing ideas and technical concepts clearly to both technical and non-technical teams, and listening to the needs of clients and colleagues.">
+                            Expresar ideas y conceptos técnicos de forma clara a equipos técnicos y no técnicos, y escuchar las necesidades de los clientes y compañeros.
+                        </p>
+                    </div>
+                    <div class="skill-card">
+                        <h3 class="skill-title" data-es="Trabajo en equipo" data-en="Teamwork">Trabajo en equipo</h3>
+                        <p class="skill-description" data-es="Colaborar con desarrolladores, diseñadores y otros stakeholders, siendo abierto a recibir y dar retroalimentación constructiva." 
+                           data-en="Collaborating with developers, designers, and other stakeholders, being open to receiving and giving constructive feedback.">
+                            Colaborar con desarrolladores, diseñadores y otros stakeholders, siendo abierto a recibir y dar retroalimentación constructiva.
+                        </p>
+                    </div>
+                    <div class="skill-card">
+                        <h3 class="skill-title" data-es="Gestión del tiempo" data-en="Time Management">Gestión del tiempo</h3>
+                        <p class="skill-description" data-es="Priorizar tareas y proyectos según su urgencia e importancia, cumpliendo plazos y manejando múltiples proyectos simultáneamente." 
+                           data-en="Prioritizing tasks and projects according to their urgency and importance, meeting deadlines, and managing multiple projects simultaneously.">
+                            Priorizar tareas y proyectos según su urgencia e importancia, cumpliendo plazos y manejando múltiples proyectos simultáneamente.
+                        </p>
+                    </div>
+                    <div class="skill-card">
+                        <h3 class="skill-title" data-es="Resolución de problemas" data-en="Problem Solving">Resolución de problemas</h3>
+                        <p class="skill-description" data-es="Abordar desafíos técnicos y no técnicos de manera lógica y creativa, identificando rápidamente la raíz de los problemas y proponiendo soluciones efectivas." 
+                           data-en="Addressing technical and non-technical challenges logically and creatively, quickly identifying the root of problems and proposing effective solutions.">
+                            Abordar desafíos técnicos y no técnicos de manera lógica y creativa, identificando rápidamente la raíz de los problemas y proponiendo soluciones efectivas.
+                        </p>
+                    </div>
+                    <div class="skill-card">
+                        <h3 class="skill-title" data-es="Adaptabilidad" data-en="Adaptability">Adaptabilidad</h3>
+                        <p class="skill-description" data-es="Ajustarse a nuevas tecnologías, herramientas y cambios en los proyectos, manejando eficazmente entornos de trabajo dinámicos y cambiantes." 
+                           data-en="Adjusting to new technologies, tools, and project changes, effectively managing dynamic and changing work environments.">
+                            Ajustarse a nuevas tecnologías, herramientas y cambios en los proyectos, manejando eficazmente entornos de trabajo dinámicos y cambiantes.
+                        </p>
+                    </div>
                 </div>
-                
-                <div class="publicacion-metodos">
-                    <h3 data-es="Métodos" data-en="Methods">Métodos</h3>
-                    <ul>
-                        <li data-es="Estudio cuantitativo" data-en="Quantitative study">Estudio cuantitativo</li>
-                        <li data-es="Muestreo estratificado" data-en="Stratified sampling">Muestreo estratificado</li>
-                        <li data-es="Instrumentos validados" data-en="Validated instruments">Instrumentos validados</li>
+                <button class="arrow-btn right" onclick="moveSkills('right')" aria-label="Desplazar derecha">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interests & Values Section -->
+    <section id="valores" class="interests-section">
+        <div class="valores">
+            <h2 class="section-title" data-es="Intereses y Valores" data-en="Interests and Values">Intereses y Valores</h2>
+            <div class="container22">
+                <div class="card2">
+                    <h2 data-es="Intereses" data-en="Interests">Intereses</h2>
+                    <ul class="list">
+                        <li data-es="Desarrollo de aplicaciones web" data-en="Web application development">Desarrollo de aplicaciones web</li>
+                        <li data-es="Arquitectura de software" data-en="Software architecture">Arquitectura de software</li>
+                        <li data-es="Diseño UX/UI" data-en="UX/UI Design">Diseño UX/UI</li>
+                        <li data-es="Inteligencia artificial" data-en="Artificial intelligence">Inteligencia artificial</li>
+                        <li data-es="Tecnologías de blockchain" data-en="Blockchain technologies">Tecnologías de blockchain</li>
                     </ul>
                 </div>
-                
-                <div class="publicacion-tags">
-                    <span class="tag" data-es="Psicología" data-en="Psychology">Psicología</span>
-                    <span class="tag" data-es="Educación Superior" data-en="Higher Education">Educación Superior</span>
-                    <span class="tag" data-es="Salud Pública" data-en="Public Health">Salud Pública</span>
+                <div class="card2">
+                    <h2 data-es="Valores" data-en="Values">Valores</h2>
+                    <ul class="list">
+                        <li data-es="Innovación constante" data-en="Constant innovation">Innovación constante</li>
+                        <li data-es="Trabajo en equipo" data-en="Teamwork">Trabajo en equipo</li>
+                        <li data-es="Resolución de problemas" data-en="Problem solving">Resolución de problemas</li>
+                        <li data-es="Compromiso con la calidad" data-en="Commitment to quality">Compromiso con la calidad</li>
+                        <li data-es="Aprendizaje continuo" data-en="Continuous learning">Aprendizaje continuo</li>
+                    </ul>
                 </div>
-                
-                <a href="/recursos/Evaluación del nivel en la salud mental de los estudiantes de la Facultad de Ciencias Jurídicas, durante el Ciclo 01-2024 en la Universidad Gerardo Barrios, Centro Regional de Usulután.pdf" 
-                   class="publicacion-descarga" 
-                   target="_blank"
-                   data-es="Descargar Estudio Completo" 
-                   data-en="Download Full Study">
-                    Descargar Estudio Completo
-                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="proyect" class="projects-section">
+        <div class="projects-container">
+            <h2 class="section-title" data-es="Mis Proyectos" data-en="My Projects">Mis Proyectos</h2>
+            <div class="projects-carousel">
+                <button class="carousel-btn prev" onclick="moveProjects(-1)" aria-label="Proyecto anterior">&#10094;</button>
+                <div class="projects-track" id="projectsTrack">
+                    <!-- Project Cards -->
+                    <div class="project-card">
+                        <img src="/recursos/inicio.png" alt="Proyecto Legal Connect" class="project-image" loading="lazy">
+                        <div class="project-info">
+                            <h3 class="project-title" data-es="Legal Connect" data-en="Legal Connect">Legal Connect</h3>
+                            <p class="project-description" data-es="Sistema integral para la gestión de casos legales con funcionalidades avanzadas." 
+                               data-en="Comprehensive system for legal case management with advanced features.">
+                                Sistema integral para la gestión de casos legales con funcionalidades avanzadas.
+                            </p>
+                            <div class="project-role">
+                                <p style="margin: 0;" data-es="<strong>Rol:</strong> Desarrollador Frontend - Backend y Coordinador de Proyecto." 
+                                   data-en="<strong>Role:</strong> Frontend - Backend Developer and Project Coordinator.">
+                                    <strong>Rol:</strong> Desarrollador Frontend - Backend y Coordinador de Proyecto.
+                                </p>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">CSS</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/xXSalvadorAndradeXx/LegalConnect" target="_blank" rel="noopener" class="project-link" data-es="Código" data-en="Code">Código</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <img src="/recursos/huerto.png" alt="Proyecto Huerto en Mano" class="project-image" loading="lazy">
+                        <div class="project-info">
+                            <h3 class="project-title" data-es="Huerto en Mano" data-en="Huerto en Mano">Huerto en Mano</h3>
+                            <p class="project-description" data-es="Plataforma para gestión de huertos urbanos, incluyendo foros de blockchain y visualización de datos." 
+                               data-en="Platform for urban garden management, including blockchain forums and data visualization.">
+                                Plataforma para gestión de huertos urbanos, incluyendo foros de blockchain y visualización de datos.
+                            </p>
+                            <div class="project-role">
+                                <p style="margin: 0;" data-es="<strong>Rol:</strong> Desarrollador Frontend - Backend y Coordinador de Proyecto." 
+                                   data-en="<strong>Role:</strong> Frontend - Backend Developer and Project Coordinator.">
+                                    <strong>Rol:</strong> Desarrollador Frontend - Backend y Coordinador de Proyecto.
+                                </p>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">Blockchain</span>
+                                <span class="tech-tag" style="background-color: brown; color: azure;">En Desarrollo</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Juan-Carlos-Mejia/huertoenmano" target="_blank" rel="noopener" class="project-link" data-es="Código" data-en="Code">Código</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <img src="/recursos/camaron.png" alt="Proyecto Don Camarón" class="project-image" loading="lazy">
+                        <div class="project-info">
+                            <h3 class="project-title" data-es="Don Camarón Sistema Interno" data-en="Don Camarón Internal System">Don Camarón Sistema Interno</h3>
+                            <p class="project-description" data-es="Sistema interno para la gestión operativa de un restaurante." 
+                               data-en="Internal system for operational management of a restaurant.">
+                                Sistema interno para la gestión operativa de un restaurante.
+                            </p>
+                            <div class="project-role">
+                                <p style="margin: 0;" data-es="<strong>Rol:</strong> Desarrollador Frontend - Backend y Coordinador de Proyecto." 
+                                   data-en="<strong>Role:</strong> Frontend - Backend Developer and Project Coordinator.">
+                                    <strong>Rol:</strong> Desarrollador Frontend - Backend y Coordinador de Proyecto.
+                                </p>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">ASP.NET</span>
+                                <span class="tech-tag">Visual Basic</span>
+                                <span class="tech-tag">CSS</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" target="_blank" rel="noopener" class="project-link" data-es="Código" data-en="Code">Código</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="/recursos/sala.png" alt="Proyecto Calculadora Salarial" class="project-image" loading="lazy">
+                        <div class="project-info">
+                            <h3 class="project-title" data-es="Calculadora salarial" data-en="Salary Calculator">Calculadora salarial</h3>
+                            <p class="project-description" data-es="Aplicación web para calcular su salario en El Salvador después de descontar lo que dicte la ley." 
+                               data-en="Web application to calculate your salary in El Salvador after deducting what the law dictates.">
+                               Aplicación web para calcular su salario en El Salvador después de descontar lo que dicte la ley.
+                            </p>
+                            <div class="project-role">
+                                <p style="margin: 0;" data-es="<strong>Rol:</strong> Desarrollador Frontend - Backend y Coordinador de Proyecto." 
+                                   data-en="<strong>Role:</strong> Frontend - Backend Developer and Project Coordinator.">
+                                    <strong>Rol:</strong> Desarrollador Frontend - Backend y Coordinador de Proyecto.
+                                </p>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" target="_blank" rel="noopener" class="project-link" data-es="Código" data-en="Code">Código</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn next" onclick="moveProjects(1)" aria-label="Proyecto siguiente">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="mis-publicaciones" class="publications-section">
+        <div id="publicacion-salud-mental">
+            <div class="publicacion-container">
+                <hr class="publicacion-divider">
+                <h2 class="section-title" data-es="Mis Publicaciones" data-en="My Publications">Mis Publicaciones</h2>
+                <div class="publicacion-content">
+                    <div class="publicacion-imagen-container">
+                        <img src="/recursos/salud-mental.jpg" alt="Investigación en Salud Mental" class="publicacion-imagen" loading="lazy">
+                        <div class="publicacion-badge" data-es="Estudio Científico" data-en="Scientific Study">Estudio Científico</div>
+                    </div>
+                    <div class="publicacion-detalles">
+                        <p class="publicacion-autores" data-es="Autores:" data-en="Authors:">Autores:</p>
+                        <p class="publicacion-autores">Salvador Ernesto Andrade Peña</p>
+                        <p class="publicacion-autores">Juan Carlos Mejía Morales</p>
+                        <p class="publicacion-autores">Xiomara Lisseth Machado De La Paz</p>
+                        <hr style="border: 1px solid rgba(0,0,0,0.1); margin: 20px 0;">
+                        <p class="publicacion-institucion">Universidad Gerardo Barrios, Centro Regional de Usulután</p>
+                        <p class="publicacion-fecha">Ciclo 01-2024</p>
+                        
+                        <div class="publicacion-resumen">
+                            <h3 data-es="Resumen" data-en="Abstract">Resumen</h3>
+                            <p data-es="Evaluación del nivel en la salud mental de los estudiantes de la Facultad de Ciencias Jurídicas durante el Ciclo 01-2024 en la Universidad Gerardo Barrios, Centro Regional de Usulután." 
+                               data-en="Evaluation of the mental health level of students in the Faculty of Legal Sciences during the 01-2024 Semester at Universidad Gerardo Barrios, Regional Center of Usulután.">
+                                Evaluación del nivel en la salud mental de los estudiantes de la Facultad de Ciencias Jurídicas durante el Ciclo 01-2024 en la Universidad Gerardo Barrios, Centro Regional de Usulután.
+                            </p>
+                        </div>
+                        
+                        <div class="publicacion-metodos">
+                            <h3 data-es="Métodos" data-en="Methods">Métodos</h3>
+                            <ul>
+                                <li data-es="Estudio cuantitativo" data-en="Quantitative study">Estudio cuantitativo</li>
+                                <li data-es="Muestreo estratificado" data-en="Stratified sampling">Muestreo estratificado</li>
+                                <li data-es="Instrumentos validados" data-en="Validated instruments">Instrumentos validados</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="publicacion-tags">
+                            <span class="tag" data-es="Psicología" data-en="Psychology">Psicología</span>
+                            <span class="tag" data-es="Educación Superior" data-en="Higher Education">Educación Superior</span>
+                            <span class="tag" data-es="Salud Pública" data-en="Public Health">Salud Pública</span>
+                        </div>
+                        
+                        <a href="/recursos/Evaluación del nivel en la salud mental de los estudiantes de la Facultad de Ciencias Jurídicas, durante el Ciclo 01-2024 en la Universidad Gerardo Barrios, Centro Regional de Usulután.pdf" 
+                           class="publicacion-descarga" 
+                           target="_blank"
+                           data-es="Descargar Estudio Completo" 
+                           data-en="Download Full Study">
+                            Descargar Estudio Completo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <!-- Sección de Testimonios (Corregida) -->
+<section id="testimonios" class="reviews-section"> <!-- Cambio de clase principal -->
+
+    <div class="reviews-section-container"> <!-- Cambio de clase -->
+        <h2 class="section-title" data-es="Testimonios" data-en="Testimonials">Testimonios</h2>
+        <div class="reviews-cards-container"> <!-- Cambio de clase -->
+            <div class="review-card" onclick="openTestimonial(1)"> <!-- Cambio de clase -->
+                <div class="review-avatar">
+                    <img src="/testimonios/victor.jpg" alt="Victor Rivera" loading="lazy">
+                </div>
+                <h3 class="review-name">Victor Rivera</h3>
+            </div>
+         
+            <div class="review-card" onclick="openTestimonial(3)">
+                <div class="review-avatar">
+                    <img src="/testimonios/juan.jpg" alt="Juan Mejia" loading="lazy">
+                </div>
+                <h3 class="review-name">Juan Mejia</h3>
+            </div>
+          
+            <div class="review-card" onclick="openTestimonial(5)">
+                <div class="review-avatar">
+                    <img src="/testimonios/ramon.jpg" alt="Juan Ramon" loading="lazy">
+                </div>
+                <h3 class="review-name">Juan Ramon</h3>
             </div>
         </div>
     </div>
-</div>
+
+    <!-- Popup de Testimonio (Corregido) -->
+    <div id="testimonialPopup" class="review-popup"> <!-- Cambio de clase -->
+        <div class="review-popup-content"> <!-- Cambio de clase -->
+            <span class="review-close-btn" onclick="closeTestimonial()">&times;</span>
+            <div class="review-popup-avatar">
+                <img id="popupAvatar" src="" alt="">
+            </div>
+            <h3 id="popupName" class="review-popup-name"></h3>
+            <p id="popupDate" class="review-popup-date"></p>
+            <div class="review-popup-text">
+                <p id="popupText"></p>
+            </div>
+        </div>
+    </div>
 </section>
 
+    <!-- Contact Section -->
+    <section id="contacto" class="contact-section">
+        <div class="contacto-container">
+            <h2 class="section-title" data-es="Contáctame" data-en="Contact Me">Contáctame</h2>
+            <form class="contacto-form" id="contactForm">
+                <div class="form-group">
+                    <label for="nombre" data-es="Nombre" data-en="Name">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" data-es="Correo Electrónico" data-en="Email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje" data-es="Mensaje" data-en="Message">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn" data-es="Enviar Mensaje" data-en="Send Message">
+                    Enviar Mensaje
+                </button>
+            </form>
+            <div id="formMessage" class="form-message"></div>
+        </div>
+    </section>
 
-
-<section id="testimonios" style="padding: 20px;">
-    <div class="testimonials-section">
-    <h2 class="section-title" data-es="Testimonios" data-en="Testimonials">Testimonios</h2>
-    <div class="testimonials-container">
-        <!-- Testimonio 1 -->
-        <div class="testimonial-card" onclick="openTestimonial(1)">
-            <div class="testimonial-avatar">
-                <img src="/testimonios/victor.jpg" alt="María González">
-            </div>
-            <h3 class="testimonial-name">Victor Rivera</h3></h3>
-        </div>
-        <div class="testimonial-card" onclick="openTestimonial(2)">
-            <div class="testimonial-avatar">
-                <img src="/testimonios/mary.jpg" alt="María González">
-            </div>
-            <h3 class="testimonial-name">Maria Salgado</h3></h3>
-        </div>
-<div class="testimonial-card" onclick="openTestimonial(3)">
-            <div class="testimonial-avatar">
-                <img src="/testimonios/juan.jpg" alt="María González">
-            </div>
-            <h3 class="testimonial-name">Juan Mejia</h3></h3>
-        </div>
-        <div class="testimonial-card" onclick="openTestimonial(4)">
-            <div class="testimonial-avatar">
-                <img src="/testimonios/july.jpg" alt="María González">
-            </div>
-            <h3 class="testimonial-name">Julissa Odaly</h3></h3>
-        </div>
-        <div class="testimonial-card" onclick="openTestimonial(5)">
-            <div class="testimonial-avatar">
-                <img src="/testimonios/ramon.jpg" alt="María González">
-            </div>
-            <h3 class="testimonial-name">Juan Ramon</h3></h3>
-        </div>
-    </div>
-</div>
-
-<!-- Popup de Testimonio -->
-<div id="testimonialPopup" class="testimonial-popup">
-    <div class="popup-content">
-        <span class="close-btn" onclick="closeTestimonial()">&times;</span>
-        <div class="popup-avatar">
-            <img id="popupAvatar" src="" alt="">
-        </div>
-        <h3 id="popupName" class="popup-name"></h3>
-        <p id="popupDate" class="popup-date"></p>
-        <div class="popup-testimonial">
-            <p id="popupText"></p>
-        </div>
-    </div>
-</div>
-</section>
-
-<section id="contacto" class="contacto-section">
-    <div class="contacto-container">
-        <h2 class="section-title" data-es="Contáctame" data-en="Contact Me">Contáctame</h2>
-        
-<form class="contacto-form" id="contactForm">
-    <div class="form-group">
-        <label for="nombre" data-es="Nombre" data-en="Name">Nombre</label>
-        <input type="text" id="nombre" name="nombre" required>
-    </div>
-    
-    <div class="form-group">
-        <label for="email" data-es="Correo Electrónico" data-en="Email">Correo Electrónico</label>
-        <input type="email" id="email" name="email" required>
-    </div>
-    
-    <div class="form-group">
-        <label for="mensaje" data-es="Mensaje" data-en="Message">Mensaje</label>
-        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
-    </div>
-    
-    <button type="submit" class="submit-btn" data-es="Enviar Mensaje" data-en="Send Message">
-        Enviar Mensaje
-    </button>
-</form>
-
-</section>
-
-<div id="mas" class="mas-content">
+    <!-- More Links Section -->
+    <div id="mas" class="mas-content">
         <h2 data-es="Conocer más" data-en="Learn more">Conocer más</h2>
         <ul>
             <li>
-                <a href="https://www.linkedin.com/in/salvadorandrade" target="_blank">
+                <a href="https://www.linkedin.com/in/salvadorandrade" target="_blank" rel="noopener">
                     <i class="fab fa-linkedin"></i> LinkedIn
                 </a>
             </li>
             <li>
-                <a href="https://github.com/xXSalvadorAndradeXx" target="_blank">
+                <a href="https://github.com/xXSalvadorAndradeXx" target="_blank" rel="noopener">
                     <i class="fab fa-github"></i> GitHub
                 </a>
             </li>
             <li>
-                <a href="#contacto">
+                <a href="mailto:salvadorandrade7089@gmail.com">
                     <i class="fas fa-envelope"></i> salvadorandrade7089@gmail.com
                 </a>
             </li>
-           
         </ul>
     </div>
-  
    
-   <footer data-es="&copy; 2025 Salvador Andrade. Todos los derechos reservados." 
-    data-en="&copy; 2025 Salvador Andrade. All rights reserved.">
-    <div class="footer-content">
-        &copy; 2026 Salvador Andrade. Todos los derechos reservados.
-        <div class="social-links">
-            <a href="https://www.facebook.com/salvador.pena.515210/" target="_blank" aria-label="Facebook">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/_s_andrade_/" target="_blank" aria-label="Instagram">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            </a>
-           
- 
+    <footer data-es="&copy; 2025 Salvador Andrade. Todos los derechos reservados." 
+            data-en="&copy; 2025 Salvador Andrade. All rights reserved.">
+        <div class="footer-content">
+            <p>&copy; 2025 Salvador Andrade. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/salvador.pena.515210/" target="_blank" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/_s_andrade_/" target="_blank" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+            </div>
         </div>
-    </div>
-</footer>
-
-
-
-
-
-
-
-
-
+    </footer>
 
     <script src="/scripts/script.js"></script>
-     <script>
-
-// Variables para el carrusel
-
-    </script>
 </body>
 </html>

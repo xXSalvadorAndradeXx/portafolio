@@ -1,299 +1,229 @@
-let currentPosition = 0;
-
-        function moveCarousel(direction) {
-            const carousel = document.getElementById('carouselItems');
-            const items = carousel.children.length;
-            const itemWidth = carousel.children[0].offsetWidth + 16; // Card width + margin
-            const visibleItems = Math.floor(carousel.parentElement.offsetWidth / itemWidth);
-            currentPosition = Math.max(0, Math.min(currentPosition + direction, items - visibleItems));
-            carousel.style.transform = `translateX(-${currentPosition * itemWidth}px)`;
-        }
-
-        function reconocimientosOpenModal(imageSrc, description) {
-            document.getElementById('reconocimientos-modal-image').src = imageSrc;
-            document.getElementById('reconocimientos-modal-description').innerText = description;
-            document.getElementById('reconocimientos-modal').classList.add('active');
-        }
-
-        function reconocimientosCloseModal() {
-            document.getElementById('reconocimientos-modal').classList.remove('active');
-        }
-
-
-
+// ==============================================
+// VARIABLES GLOBALES Y CONFIGURACIÓN INICIAL
+// ==============================================
 let currentLanguage = 'es';
-        const languageBtn = document.getElementById('languageBtn');
-        
-        languageBtn.addEventListener('click', function() {
-            // Eliminar animación de pulso al hacer clic
-            this.classList.remove('pulse');
-            
-            // Pequeña animación de "click"
-            this.style.transform = 'translateY(2px)';
-            setTimeout(() => {
-                this.style.transform = 'translateY(-3px)';
-                
-                // Cambiar idioma después de la animación
-                currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
-                updateLanguage();
-                
-                // Restaurar animación de pulso después de 1 segundo
-                setTimeout(() => {
-                    this.classList.add('pulse');
-                }, 1000);
-                
-            }, 100);
-        });
-        
-        function updateLanguage() {
-            // Actualizar texto del botón
-            const btnText = languageBtn.querySelector('span');
-            btnText.textContent = currentLanguage === 'es' ? 'English' : 'Español';
-            
-            // Actualizar elementos con atributos data-es y data-en
-            document.querySelectorAll('[data-es], [data-en]').forEach(element => {
-                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                    element.placeholder = element.getAttribute(`data-${currentLanguage}`);
-                } else {
-                    element.textContent = element.getAttribute(`data-${currentLanguage}`);
-                }
-            });
-            
-            // Actualizar el atributo lang del documento
-            document.documentElement.lang = currentLanguage;
-            
-            // Actualizar el título de la página
-            document.title = currentLanguage === 'es' ? 'Salvador Andrade' : 'Salvador Andrade';
-        }
-        
-        // Función para mover las habilidades (existente)
-        function moveSkills(direction) {
-            // Tu código existente para mover las habilidades
-        }
+const languageBtn = document.getElementById('languageBtn');
+const menuToggle = document.getElementById('menuToggle');
+const navMenu = document.getElementById('mainNav');
+const themeBtn = document.getElementById('themeBtn');
+const body = document.body;
 
-
-
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navMenu = document.querySelector('nav ul');
+// ==============================================
+// ANIMACIÓN DE CARGA LEGO
+// ==============================================
+document.addEventListener("DOMContentLoaded", function() {
+    // Simular tiempo de carga
+    setTimeout(function() {
+        document.querySelector('.lego-construction').classList.add('hide');
+        setTimeout(function() {
+            document.querySelector('.lego-construction').style.display = 'none';
+        }, 1500);
+    }, 3500);
     
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('show');
-        });
-
-
-        function downloadCV() {
-    var link = document.createElement('a');
-    link.href = '/recursos/cv.pdf'; // Asegúrate de que la ruta sea correcta
-    link.download = 'MiCV'; // Nombre del archivo al descargarse
-    link.click(); // Simula el clic para descargar el archivo
-}
-
-
-window.addEventListener('scroll', function() {
-    const sobreMi = document.querySelector('.sobre-mi');
-    if (window.scrollY > 100) {  // Ajusta el valor para que se active después de un cierto desplazamiento
-        sobreMi.classList.add('visible');
-    } else {
-        sobreMi.classList.remove('visible');
-    }
+    // Inicializar componentes
+    initNavigation();
+    initTheme();
+    handleResize();
+    updateProjectsDisplay();
+    initContactForm();
 });
 
+// ==============================================
+// NAVEGACIÓN PRINCIPAL
+// ==============================================
+function initNavigation() {
+    // Menú móvil
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
 
-const items = document.querySelectorAll('.carousel-item');
-let currentIndex = 1;
+    // Cerrar menú al hacer clic en un enlace
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            // Marcar como activo
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+        });
+    });
 
-function updateCarousel(index) {
-    items.forEach((item, i) => {
-        item.classList.remove('active');
-        if (i === index) {
-            item.classList.add('active');
+    // Resaltar enlace activo según la sección visible
+    window.addEventListener('scroll', highlightNavLink);
+}
+
+function highlightNavLink() {
+    const sections = document.querySelectorAll('section[id]');
+    let scrollY = window.pageYOffset;
+
+    sections.forEach(current => {
+        const sectionHeight = current.offsetHeight;
+        const sectionTop = current.offsetTop - 100;
+        const sectionId = current.getAttribute('id');
+        
+        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            document.querySelector('.nav-link[href*=' + sectionId + ']')?.classList.add('active');
+        } else {
+            document.querySelector('.nav-link[href*=' + sectionId + ']')?.classList.remove('active');
         }
     });
 }
 
+// ==============================================
+// CAMBIO DE IDIOMA
+// ==============================================
+languageBtn.addEventListener('click', function() {
+    this.classList.remove('pulse');
+    this.style.transform = 'scale(0.95)';
+    
+    setTimeout(() => {
+        this.style.transform = 'scale(1.05)';
+        currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+        updateLanguage();
+        
+        setTimeout(() => {
+            this.style.transform = 'scale(1)';
+            this.classList.add('pulse');
+        }, 200);
+    }, 100);
+});
 
+function updateLanguage() {
+    const btnText = languageBtn.querySelector('span');
+    btnText.textContent = currentLanguage === 'es' ? 'English' : 'Español';
+    
+    document.querySelectorAll('[data-es], [data-en]').forEach(element => {
+        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+            element.placeholder = element.getAttribute(`data-${currentLanguage}`);
+        } else {
+            const translatedText = element.getAttribute(`data-${currentLanguage}`);
+            if (translatedText) {
+                element.innerHTML = translatedText;
+            }
+        }
+    });
+    
+    document.documentElement.lang = currentLanguage;
+    document.title = currentLanguage === 'es' ? 'Salvador Andrade | Desarrollador Full-Stack' : 'Salvador Andrade | Full-Stack Developer';
+}
 
-let currentIndex1 = 0; // Índice inicial
+// ==============================================
+// MODO OSCURO / CLARO
+// ==============================================
+function initTheme() {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const localStorageTheme = localStorage.getItem('theme');
+    
+    if (localStorageTheme === 'dark' || (!localStorageTheme && prefersDark)) {
+        enableDarkMode();
+    }
+    
+    themeBtn.addEventListener('click', toggleDarkMode);
+}
+
+function toggleDarkMode() {
+    if (body.classList.contains('dark-mode')) {
+        disableDarkMode();
+    } else {
+        enableDarkMode();
+    }
+}
+
+function enableDarkMode() {
+    body.classList.add('dark-mode');
+    themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+    themeBtn.title = 'Cambiar a modo claro';
+    localStorage.setItem('theme', 'dark');
+}
+
+function disableDarkMode() {
+    body.classList.remove('dark-mode');
+    themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+    themeBtn.title = 'Cambiar a modo oscuro';
+    localStorage.setItem('theme', 'light');
+}
+
+// ==============================================
+// CARRUSEL DE HABILIDADES BLANDAS
+// ==============================================
+let currentSkillIndex = 0;
 
 function moveSkills(direction) {
     const container = document.querySelector('.skills-container-content');
     const cards = container.children;
-    const cardWidth = document.querySelector('.skill-card').offsetWidth + 20; // Ajuste del margen
+    const cardWidth = cards[0].offsetWidth + 25; // Ancho + gap
     
-    // Si es hacia la izquierda
     if (direction === 'left') {
-        currentIndex = currentIndex === 0 ? cards.length - 4 : currentIndex - 1; // Si está en el primer elemento, regresa al último
-    } 
-    // Si es hacia la derecha
-    else if (direction === 'right') {
-        currentIndex = currentIndex === cards.length - 4 ? 0 : currentIndex + 1; // Si está en el último elemento, regresa al primero
+        currentSkillIndex = Math.max(0, currentSkillIndex - 1);
+    } else {
+        currentSkillIndex = Math.min(cards.length - 1, currentSkillIndex + 1);
     }
-
-    // Desplazamos el contenedor de las tarjetas
-    container.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+    
+    container.scrollTo({
+        left: currentSkillIndex * cardWidth,
+        behavior: 'smooth'
+    });
 }
-// Modo nocturno
-const themeBtn = document.getElementById('themeBtn');
-        const body = document.body;
-        
-        // Verificar preferencia del sistema o localStorage
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const localStorageTheme = localStorage.getItem('theme');
-        
-        if (localStorageTheme === 'dark' || (!localStorageTheme && prefersDark)) {
-            enableDarkMode();
-        }
-        
-        themeBtn.addEventListener('click', toggleDarkMode);
-        
-        function toggleDarkMode() {
-            if (body.classList.contains('dark-mode')) {
-                disableDarkMode();
-            } else {
-                enableDarkMode();
-            }
-        }
-        
-        function enableDarkMode() {
-            body.classList.add('dark-mode');
-            themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
-            localStorage.setItem('theme', 'dark');
-        }
-        
-        function disableDarkMode() {
-            body.classList.remove('dark-mode');
-            themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
-            localStorage.setItem('theme', 'light');
-        }
-        
-        // Opcional: Cambiar automáticamente según la preferencia del sistema
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-            if (localStorage.getItem('theme') === null) {
-                if (e.matches) {
-                    enableDarkMode();
-                } else {
-                    disableDarkMode();
-                }
-            }
-        });
 
+// ==============================================
+// CARRUSEL DE PROYECTOS
+// ==============================================
+let currentProjectIndex = 0;
 
- // JavaScript para el carrusel de proyectos
- let currentProjectIndex = 0;
-        const projectCards = document.querySelectorAll('.project-card');
-        const projectsTrack = document.getElementById('projectsTrack');
-        const projectsPerView = 3;
-        
-        function updateProjectsDisplay() {
-            const cardWidth = projectCards[0].offsetWidth + 40; // Ancho + margen
-            projectsTrack.style.transform = `translateX(-${currentProjectIndex * cardWidth}px)`;
-            
-            // Ocultar/mostrar botones según la posición
-            document.querySelector('.carousel-btn.prev').style.display = 
-                currentProjectIndex === 0 ? 'none' : 'flex';
-            
-            document.querySelector('.carousel-btn.next').style.display = 
-                currentProjectIndex >= projectCards.length - projectsPerView ? 'none' : 'flex';
-        }
-        
-        function moveProjects(direction) {
-            const maxIndex = projectCards.length - projectsPerView;
-            
-            currentProjectIndex += direction;
-            
-            if (currentProjectIndex < 0) {
-                currentProjectIndex = 0;
-            } else if (currentProjectIndex > maxIndex) {
-                currentProjectIndex = maxIndex;
-            }
-            
-            updateProjectsDisplay();
-        }
-        
-        // Ajustar para pantallas más pequeñas
-        function handleResize() {
-            const width = window.innerWidth;
-            
-            if (width <= 900) {
-                projectsPerView = 2;
-            } else if (width <= 600) {
-                projectsPerView = 1;
-            } else {
-                projectsPerView = 3;
-            }
-            
-            updateProjectsDisplay();
-        }
-        
-        window.addEventListener('resize', handleResize);
-        document.addEventListener('DOMContentLoaded', () => {
-            handleResize();
-            updateProjectsDisplay();
-        });
-        document.addEventListener("DOMContentLoaded", function() {
-            var frases = [
-                "El código no tiene errores, solo soluciones esperando ser descubiertas.",
-                "Cada bug es una oportunidad para aprender algo nuevo.",
-                "Lo más importante no es el lenguaje, sino la forma en que piensas como programador.",
-                "Ser fullstack significa ser curioso y nunca dejar de aprender.",
-                "Los proyectos grandes empiezan con pequeños pasos... y muchos commits.",
-                "El mejor código es el que no necesitas escribir.",
-                "El desarrollo web es un viaje, no un destino.",
-                "Con cada línea de código, construimos el futuro, un proyecto a la vez."
-            ];
+function updateProjectsDisplay() {
+    const track = document.getElementById('projectsTrack');
+    const cards = document.querySelectorAll('.project-card');
+    if (!track || cards.length === 0) return;
+    
+    const cardWidth = cards[0].offsetWidth + 30;
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    
+    document.querySelector('.carousel-btn.prev').style.opacity = currentProjectIndex === 0 ? '0.5' : '1';
+    document.querySelector('.carousel-btn.next').style.opacity = currentProjectIndex * cardWidth >= maxScroll ? '0.5' : '1';
+}
 
-            // Obtener el día actual
-            var diaDelMes = new Date().getDate();
-
-            // Elegir una frase diferente según el día
-            var fraseElegida = frases[diaDelMes % frases.length];
-
-            // Cambiar el contenido de la etiqueta <p> con la clase "frase-personal"
-            document.querySelector(".frase-personal").textContent = fraseElegida;
-        });
-
-
-
-
-
-
-        // Datos de los testimonios
-const testimonials = [
-    {
-        id: 1,
-        name: "Victor Rivera",
-        avatar: "/testimonios/victor.jpg",
-        date: "Junio 2025",
-        text: "Excelente profesional. Su trabajo en el desarrollo de nuestro sistema legal fue fundamental para optimizar nuestros procesos. Siempre atento a los detalles y con soluciones innovadoras."
-    },
-    {
-        id: 2,
-        name: "Maria Salgado",
-        avatar: "/testimonios/mary.jpg",
-        date: "Marzo 2025",
-        text: "Trabajar con él fue una experiencia enriquecedora. Su capacidad para resolver problemas complejos y su dedicación al proyecto superaron todas nuestras expectativas."
-    },
-    {
-        id: 3,
-        name: "Juan Mejia",
-        avatar: "/testimonios/juan.jpg",
-        date: "Julio 2025",
-        text: "Su enfoque metódico y su atención al detalle hicieron que nuestro proyecto fuera un éxito. Recomiendo ampliamente sus servicios profesionales."
-    },
-    {
-        id: 4,
-        name: "Julissa Odaly",
-        avatar: "/testimonios/july.jpg",
-        date: "Noviembre 2025",
-        text: "Trabajar con él fue una experiencia enriquecedora. Su capacidad para resolver problemas complejos y su dedicación al proyecto superaron todas nuestras expectativas."
-    },
-    {
-        id: 5,
-        name: "Juan Ramon",
-        avatar: "/testimonios/ramon.jpg",
-        date: "Mayo 2025",
-        text: "Su enfoque metódico y su atención al detalle hicieron que nuestro proyecto fuera un éxito. Recomiendo ampliamente sus servicios profesionales."
+function moveProjects(direction) {
+    const track = document.getElementById('projectsTrack');
+    const cards = document.querySelectorAll('.project-card');
+    if (!track || cards.length === 0) return;
+    
+    const cardWidth = cards[0].offsetWidth + 30;
+    
+    if (direction === -1) {
+        currentProjectIndex = Math.max(0, currentProjectIndex - 1);
+    } else {
+        currentProjectIndex = Math.min(Math.floor((track.scrollWidth - track.clientWidth) / cardWidth), currentProjectIndex + 1);
     }
+    
+    track.scrollTo({
+        left: currentProjectIndex * cardWidth,
+        behavior: 'smooth'
+    });
+    
+    setTimeout(updateProjectsDisplay, 500);
+}
+
+// ==============================================
+// MODAL DE RECONOCIMIENTOS
+// ==============================================
+function reconocimientosOpenModal(imageSrc, description) {
+    document.getElementById('reconocimientos-modal-image').src = imageSrc;
+    document.getElementById('reconocimientos-modal-description').innerText = description;
+    document.getElementById('reconocimientos-modal').classList.add('active');
+}
+
+function reconocimientosCloseModal() {
+    document.getElementById('reconocimientos-modal').classList.remove('active');
+}
+
+// ==============================================
+// MODAL DE TESTIMONIOS
+// ==============================================
+const testimonials = [
+    { id: 1, name: "Victor Rivera", avatar: "/testimonios/victor.jpg", date: "Junio 2024", text: "Excelente profesional. Su trabajo en el desarrollo de nuestro sistema legal fue fundamental para optimizar nuestros procesos. Siempre atento a los detalles y con soluciones innovadoras." },
+    { id: 2, name: "Maria Salgado", avatar: "/testimonios/mary.jpg", date: "Marzo 2024", text: "Trabajar con él fue una experiencia enriquecedora. Su capacidad para resolver problemas complejos y su dedicación al proyecto superaron todas nuestras expectativas." },
+    { id: 3, name: "Juan Mejia", avatar: "/testimonios/juan.jpg", date: "Julio 2024", text: "Su enfoque metódico y su atención al detalle hicieron que nuestro proyecto fuera un éxito. Recomiendo ampliamente sus servicios profesionales." },
+    { id: 4, name: "Julissa Odaly", avatar: "/testimonios/july.jpg", date: "Noviembre 2024", text: "Trabajar con él fue una experiencia enriquecedora. Su capacidad para resolver problemas complejos y su dedicación al proyecto superaron todas nuestras expectativas." },
+    { id: 5, name: "Juan Ramon", avatar: "/testimonios/ramon.jpg", date: "Mayo 2024", text: "Su enfoque metódico y su atención al detalle hicieron que nuestro proyecto fuera un éxito. Recomiendo ampliamente sus servicios profesionales." }
 ];
 
 function openTestimonial(id) {
@@ -311,10 +241,189 @@ function closeTestimonial() {
     document.getElementById('testimonialPopup').style.display = 'none';
 }
 
-// Cerrar al hacer clic fuera del contenido
+// ==============================================
+// FORMULARIO DE CONTACTO
+// ==============================================
+function initContactForm() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const messageDiv = document.getElementById('formMessage');
+        messageDiv.className = 'form-message';
+        messageDiv.style.display = 'none';
+        
+        // Validación simple
+        const nombre = document.getElementById('nombre').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const mensaje = document.getElementById('mensaje').value.trim();
+        
+        if (!nombre || !email || !mensaje) {
+            messageDiv.textContent = currentLanguage === 'es' ? 'Por favor, complete todos los campos.' : 'Please fill in all fields.';
+            messageDiv.classList.add('error');
+            return;
+        }
+        
+        // Simular envío (reemplazar con tu lógica real)
+        const submitBtn = form.querySelector('.submit-btn');
+        submitBtn.disabled = true;
+        submitBtn.textContent = currentLanguage === 'es' ? 'Enviando...' : 'Sending...';
+        
+        setTimeout(() => {
+            messageDiv.textContent = currentLanguage === 'es' ? '¡Mensaje enviado con éxito! Te responderé pronto.' : 'Message sent successfully! I will reply soon.';
+            messageDiv.classList.add('success');
+            form.reset();
+            submitBtn.disabled = false;
+            submitBtn.textContent = currentLanguage === 'es' ? 'Enviar Mensaje' : 'Send Message';
+        }, 2000);
+    });
+}
+
+// ==============================================
+// FUNCIONES AUXILIARES
+// ==============================================
+function handleResize() {
+    updateProjectsDisplay();
+}
+
+window.addEventListener('resize', handleResize);
+
+// Cerrar modales al hacer clic fuera
 window.onclick = function(event) {
     const popup = document.getElementById('testimonialPopup');
+    const modal = document.getElementById('reconocimientos-modal');
+    
     if (event.target === popup) {
         closeTestimonial();
     }
+    if (event.target === modal) {
+        reconocimientosCloseModal();
+    }
 }
+
+// Frase dinámica del día
+document.addEventListener("DOMContentLoaded", function() {
+    const frases = [
+        "El código no tiene errores, solo soluciones esperando ser descubiertas.",
+        "Cada bug es una oportunidad para aprender algo nuevo.",
+        "Lo más importante no es el lenguaje, sino la forma en que piensas como programador.",
+        "Ser fullstack significa ser curioso y nunca dejar de aprender.",
+        "Los proyectos grandes empiezan con pequeños pasos... y muchos commits.",
+        "El mejor código es el que no necesitas escribir.",
+        "El desarrollo web es un viaje, no un destino.",
+        "Con cada línea de código, construimos el futuro, un proyecto a la vez."
+    ];
+    
+    const diaDelMes = new Date().getDate();
+    const fraseElegida = frases[diaDelMes % frases.length];
+    const elementoFrase = document.querySelector(".frase-personal");
+    if (elementoFrase) {
+        elementoFrase.textContent = fraseElegida;
+    }
+});
+
+// ==============================================
+// PANTALLA DE CARGA MEJORADA (ROBUSTA Y ELEGANTE)
+// ==============================================
+function initLoader() {
+    const loader = document.getElementById('loader');
+    const progressBar = document.querySelector('.loader-progress-bar::before');
+    const percentageText = document.getElementById('loaderPercentage');
+    
+    // Si no existe el loader, salir
+    if (!loader) return;
+    
+    let progress = 0;
+    const targetProgress = 100;
+    const duration = 2500; // Duración total: 2.5 segundos
+    const interval = 30; // Actualizar cada 30ms
+    const steps = duration / interval;
+    const increment = targetProgress / steps;
+    
+    // Simular progreso con pequeñas variaciones aleatorias para que sea más realista
+    const progressInterval = setInterval(() => {
+        // Añadir variación aleatoria entre 0.5 y 1.5 veces el incremento base
+        const randomFactor = 0.5 + Math.random() * 1.0;
+        progress += increment * randomFactor;
+        
+        // Limitar el progreso al 95% hasta que la página esté realmente cargada
+        if (progress > 95) {
+            progress = 95;
+        }
+        
+        // Actualizar barra de progreso
+        const progressBarElement = document.querySelector('.loader-progress-bar');
+        if (progressBarElement) {
+            progressBarElement.style.setProperty('--progress', `${Math.min(progress, 100)}%`);
+            // Actualizar el pseudo-elemento mediante un estilo inline
+            progressBarElement.style.background = `
+                linear-gradient(
+                    90deg,
+                    #3d6afe 0%,
+                    #5e8bff ${Math.min(progress, 100)}%,
+                    rgba(255, 255, 255, 0.1) ${Math.min(progress, 100)}%
+                )
+            `;
+        }
+        
+        // Actualizar texto del porcentaje
+        if (percentageText) {
+            percentageText.textContent = `${Math.floor(progress)}%`;
+        }
+        
+    }, interval);
+    
+    // Cuando la página esté completamente cargada
+    window.addEventListener('load', () => {
+        // Completar la barra al 100%
+        clearInterval(progressInterval);
+        
+        if (percentageText) {
+            percentageText.textContent = '100%';
+        }
+        
+        const progressBarElement = document.querySelector('.loader-progress-bar');
+        if (progressBarElement) {
+            progressBarElement.style.background = `
+                linear-gradient(
+                    90deg,
+                    #3d6afe 0%,
+                    #5e8bff 100%,
+                    rgba(255, 255, 255, 0.1) 100%
+                )
+            `;
+        }
+        
+        // Pequeño retraso para que se vea el 100% antes de desaparecer
+        setTimeout(() => {
+            // Añadir clase para la animación de salida
+            loader.classList.add('fade-out');
+            
+            // Eliminar el loader del DOM después de la animación
+            setTimeout(() => {
+                if (loader && loader.parentNode) {
+                    loader.remove();
+                }
+                console.log('✅ Carga completada - Loader eliminado');
+            }, 800); // Coincide con la duración de la transición CSS
+        }, 500);
+    });
+    
+    // Fallback: si después de 8 segundos no ha cargado, ocultar el loader igualmente
+    setTimeout(() => {
+        if (loader && loader.parentNode) {
+            console.warn('⚠️ Tiempo de espera agotado - Ocultando loader por seguridad');
+            loader.classList.add('fade-out');
+            setTimeout(() => {
+                if (loader && loader.parentNode) {
+                    loader.remove();
+                }
+            }, 800);
+        }
+    }, 8000);
+}
+
+// Inicializar cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', initLoader);
