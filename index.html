@@ -1,195 +1,339 @@
 <!DOCTYPE html>
 <html lang="es" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Salvador Andrade – Desarrollador Full-Stack apasionado por crear soluciones web innovadoras." />
-  <title>Salvador Andrade · Full-Stack Developer</title>
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" />
-
-  <!-- AOS -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-
-  <!-- Swiper -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="ePortafolio Premium de Salvador Andrade - Desarrollador Full-Stack Senior. Experiencia visual de última generación.">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>Salvador Andrade | Desarrollador Full-Stack</title>
+  
+  <!-- CDN Libraries -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet">
+  
+  <!-- style.css -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<!-- =========================================================
-     CUSTOM CURSOR
-========================================================= -->
-<div class="cursor" id="cursor" aria-hidden="true"></div>
-<div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
-
-<!-- =========================================================
-     LOADER
-========================================================= -->
-<div class="loader" id="loader" role="status" aria-label="Cargando sitio">
-  <div class="loader__bg"></div>
-  <div class="loader__glow loader__glow--1"></div>
-  <div class="loader__glow loader__glow--2"></div>
-  <div class="loader__content">
-    <div class="loader__logo">SA</div>
-    <h1 class="loader__title">Construyendo una experiencia única...</h1>
-    <p class="loader__subtitle">Cargando creatividad, innovación y código.</p>
-    <div class="loader__bar-wrap">
-      <div class="loader__bar" id="loaderBar"></div>
+  <!-- ========== LOADING SCREEN ========== -->
+  <div id="loading-screen" class="loading-screen" aria-hidden="true">
+    <div class="loading-content">
+      <div class="loading-glow"></div>
+      <h1 class="loading-title">Construyendo una experiencia única...</h1>
+      <p class="loading-subtitle">Cargando creatividad, innovación y código.</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+      <div class="loading-percentage" id="loading-percentage">0%</div>
     </div>
-    <div class="loader__percent" id="loaderPercent">0%</div>
   </div>
-</div>
 
-<!-- =========================================================
-     NAVBAR
-========================================================= -->
-<header class="navbar" id="navbar" role="banner">
-  <div class="navbar__container">
-    <a href="#hero" class="navbar__logo" aria-label="Inicio – Salvador Andrade">SA</a>
+  <!-- ========== CUSTOM CURSOR ========== -->
+  <div class="custom-cursor" id="custom-cursor"></div>
+  <div class="cursor-dot" id="cursor-dot"></div>
 
-    <nav class="navbar__menu" id="navMenu" role="navigation" aria-label="Navegación principal">
-      <a href="#hero"           class="navbar__link">Inicio</a>
-      <a href="#about"          class="navbar__link">Sobre mí</a>
-      <a href="#awards"         class="navbar__link">Reconocimientos</a>
-      <a href="#skills"         class="navbar__link">Habilidades</a>
-      <a href="#projects"       class="navbar__link">Proyectos</a>
-      <a href="#publications"   class="navbar__link">Publicaciones</a>
-      <a href="#testimonials"   class="navbar__link">Testimonios</a>
-      <a href="#contact"        class="navbar__link">Contacto</a>
+  <!-- ========== MAIN CONTENT ========== -->
+  <main id="main-content" class="main-content" style="opacity: 0; visibility: hidden;">
+    
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Navegación principal">
+      <div class="navbar-container">
+        <a href="#inicio" class="navbar-logo" aria-label="Ir al inicio">SA</a>
+        
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+        
+        <ul class="navbar-menu" id="navbar-menu" role="menubar">
+          <li role="none"><a href="#inicio" role="menuitem" class="navbar-link">Inicio</a></li>
+          <li role="none"><a href="#sobre-mi" role="menuitem" class="navbar-link">Sobre mí</a></li>
+          <li role="none"><a href="#reconocimientos" role="menuitem" class="navbar-link">Reconocimientos</a></li>
+          <li role="none"><a href="#habilidades" role="menuitem" class="navbar-link">Habilidades</a></li>
+          <li role="none"><a href="#proyectos" role="menuitem" class="navbar-link">Proyectos</a></li>
+          <li role="none"><a href="#publicaciones" role="menuitem" class="navbar-link">Publicaciones</a></li>
+          <li role="none"><a href="#testimonios" role="menuitem" class="navbar-link">Testimonios</a></li>
+          <li role="none"><a href="#contacto" role="menuitem" class="navbar-link">Contacto</a></li>
+        </ul>
+        
+        <div class="navbar-actions">
+          <a href="#" class="btn btn-cv" aria-label="Descargar CV">
+            <i class="ri-download-line"></i>
+            <span>CV</span>
+          </a>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar modo oscuro/claro">
+            <i class="ri-sun-line sun-icon"></i>
+            <i class="ri-moon-line moon-icon"></i>
+          </button>
+        </div>
+      </div>
     </nav>
 
-    <div class="navbar__actions">
-      <a href="#" class="btn btn--ghost btn--sm" aria-label="Descargar CV">
-        <i class="ri-download-2-line" aria-hidden="true"></i>
-        <span>CV</span>
-      </a>
-      <button class="navbar__theme" id="themeToggle" aria-label="Cambiar tema">
-        <i class="ri-sun-line" id="themeIcon" aria-hidden="true"></i>
-      </button>
-      <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</header>
-
-<!-- Mobile overlay -->
-<div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
-
-<!-- =========================================================
-     HERO
-========================================================= -->
-<section class="hero" id="hero" aria-label="Presentación">
-  <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
-  <div class="hero__glow hero__glow--1" aria-hidden="true"></div>
-  <div class="hero__glow hero__glow--2" aria-hidden="true"></div>
-  <div class="hero__glow hero__glow--3" aria-hidden="true"></div>
-
-  <div class="hero__content">
-    <div class="hero__badge" data-aos="fade-down" data-aos-delay="200">
-      <span class="hero__badge-dot"></span>
-      Disponible para proyectos
-    </div>
-    <h1 class="hero__name" data-aos="fade-up" data-aos-delay="300">
-      <span class="hero__name-line">Salvador</span>
-      <span class="hero__name-line hero__name-line--accent">Andrade</span>
-    </h1>
-    <div class="hero__role" data-aos="fade-up" data-aos-delay="450">
-      <span class="hero__role-prefix">Soy un </span>
-      <span class="hero__role-typed" id="typedRole"></span>
-    </div>
-    <p class="hero__quote" data-aos="fade-up" data-aos-delay="600">
-      "El código no tiene errores, solo soluciones esperando ser descubiertas."
-    </p>
-    <div class="hero__cta" data-aos="fade-up" data-aos-delay="750">
-      <a href="#projects" class="btn btn--primary btn--lg">
-        <span>Ver proyectos</span>
-        <i class="ri-arrow-right-line" aria-hidden="true"></i>
-      </a>
-      <a href="#" class="btn btn--outline btn--lg">
-        <i class="ri-download-2-line" aria-hidden="true"></i>
-        <span>Descargar CV</span>
-      </a>
-    </div>
-    <div class="hero__stats" data-aos="fade-up" data-aos-delay="900">
-      <div class="hero__stat">
-        <span class="hero__stat-num" data-count="40">0</span><span>+</span>
-        <span class="hero__stat-label">Proyectos</span>
+    <!-- ========== HERO SECTION ========== -->
+    <section id="inicio" class="hero-section">
+      <div id="particles-js" class="particles-container"></div>
+      <div class="hero-content">
+        <div class="hero-badge" data-aos="fade-up">Disponible para proyectos</div>
+        <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
+          <span class="hero-name">Salvador Andrade</span>
+        </h1>
+        <div class="hero-typewriter" data-aos="fade-up" data-aos-delay="200">
+          <span id="typed-text"></span>
+        </div>
+        <p class="hero-motto" data-aos="fade-up" data-aos-delay="300">
+          "El código no tiene errores, solo soluciones esperando ser descubiertas."
+        </p>
+        <div class="hero-buttons" data-aos="fade-up" data-aos-delay="400">
+          <a href="#proyectos" class="btn btn-primary">
+            <span>Ver proyectos</span>
+            <i class="ri-arrow-right-line"></i>
+          </a>
+          <a href="#" class="btn btn-secondary">
+            <span>Descargar CV</span>
+            <i class="ri-download-line"></i>
+          </a>
+        </div>
       </div>
-      <div class="hero__stat-divider" aria-hidden="true"></div>
-      <div class="hero__stat">
-        <span class="hero__stat-num" data-count="8">0</span><span>+</span>
-        <span class="hero__stat-label">Tecnologías</span>
+      <div class="scroll-indicator" aria-hidden="true">
+        <span>Desplazar</span>
+        <div class="scroll-line"></div>
       </div>
-      <div class="hero__stat-divider" aria-hidden="true"></div>
-      <div class="hero__stat">
-        <span class="hero__stat-num" data-count="5">0</span><span>+</span>
-        <span class="hero__stat-label">Años exp.</span>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="hero__scroll" aria-label="Hacer scroll hacia abajo">
-    <div class="hero__scroll-line"></div>
-    <span class="hero__scroll-text">Scroll</span>
-  </div>
-</section>
-
-<!-- =========================================================
-     ABOUT
-========================================================= -->
-<section class="about section" id="about" aria-labelledby="about-title">
-  <div class="container">
-    <div class="about__grid">
-      <!-- Photo -->
-      <div class="about__photo-wrap" data-aos="fade-right">
-        <div class="about__photo-frame">
-          <div class="about__photo-placeholder" aria-label="Foto de Salvador Andrade">
-            <span class="about__photo-initials">SA</span>
+    <!-- ========== SOBRE MÍ ========== -->
+    <section id="sobre-mi" class="about-section section-padding">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-image-container" data-aos="fade-right">
+            <div class="about-image-placeholder">
+              <i class="ri-user-3-line"></i>
+            </div>
+            <div class="about-stats">
+              <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+                <span class="stat-number" data-target="40">0</span>+
+                <span class="stat-label">Proyectos</span>
+              </div>
+              <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
+                <span class="stat-number" data-target="8">0</span>+
+                <span class="stat-label">Tecnologías</span>
+              </div>
+              <div class="stat-item" data-aos="zoom-in" data-aos-delay="400">
+                <span class="stat-number">100</span>%
+                <span class="stat-label">Pasión</span>
+              </div>
+            </div>
           </div>
-          <div class="about__photo-ring about__photo-ring--1"></div>
-          <div class="about__photo-ring about__photo-ring--2"></div>
-        </div>
-        <div class="about__photo-badge">
-          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-          Full-Stack Dev
+          <div class="about-info" data-aos="fade-left">
+            <h2 class="section-title">Sobre mí</h2>
+            <p class="about-text">
+              Soy Salvador Ernesto Andrade Peña, un desarrollador full-stack apasionado por la creación de soluciones web innovadoras.
+            </p>
+            <p class="about-text">
+              Con una amplia experiencia tanto en desarrollo front-end como back-end, trabajo con tecnologías como HTML, CSS, JavaScript, PHP, Laravel, Node.js, Vue.js, React.js y NestJS.
+            </p>
+            <p class="about-text">
+              Siempre en busca de nuevas tecnologías y desafíos, me dedico a mejorar constantemente mis habilidades y aportar un valor significativo a los proyectos en los que participo, fusionando creatividad y eficiencia en cada solución que desarrollo.
+            </p>
+            <a href="#" class="btn btn-cta-large">
+              <i class="ri-download-line"></i>
+              <span>Descargar mi CV</span>
+              <i class="ri-arrow-right-line"></i>
+            </a>
+          </div>
         </div>
       </div>
-      <!-- Content -->
-      <div class="about__content" data-aos="fade-left">
-        <div class="section__label">Conóceme</div>
-        <h2 class="section__title" id="about-title">Sobre mí</h2>
-        <p class="about__text">
-          Soy <strong>Salvador Ernesto Andrade Peña</strong>, un desarrollador full-stack apasionado por la creación de soluciones web innovadoras.
-        </p>
-        <p class="about__text">
-          Con una amplia experiencia tanto en desarrollo front-end como back-end, trabajo con tecnologías como HTML, CSS, JavaScript, PHP, Laravel, Node.js, Vue.js, React.js y NestJS.
-        </p>
-        <p class="about__text">
-          Siempre en busca de nuevas tecnologías y desafíos, me dedico a mejorar constantemente mis habilidades y aportar un valor significativo a los proyectos en los que participo, fusionando creatividad y eficiencia en cada solución que desarrollo.
-        </p>
+    </section>
 
+    <!-- ========== RECONOCIMIENTOS ========== -->
+    <section id="reconocimientos" class="recognitions-section section-padding">
+      <div class="container">
+        <h2 class="section-title text-center" data-aos="fade-up">Reconocimientos</h2>
+        <div class="swiper recognitions-swiper" data-aos="fade-up" data-aos-delay="200">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="recognition-card" onclick="openModal('modal-recognition-1')">
+                <div class="recognition-image"><i class="ri-award-line"></i></div>
+                <h3>Certificación Full-Stack</h3>
+                <p>Institución Tech</p>
+                <span>2024</span>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="recognition-card" onclick="openModal('modal-recognition-2')">
+                <div class="recognition-image"><i class="ri-medal-line"></i></div>
+                <h3>Arquitectura de Software</h3>
+                <p>Academia Digital</p>
+                <span>2023</span>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="recognition-card" onclick="openModal('modal-recognition-3')">
+                <div class="recognition-image"><i class="ri-trophy-line"></i></div>
+                <h3>Liderazgo Técnico</h3>
+                <p>Innovación Lab</p>
+                <span>2025</span>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== HABILIDADES ========== -->
+    <section id="habilidades" class="skills-section section-padding">
+      <div class="container">
+        <h2 class="section-title text-center" data-aos="fade-up">Habilidades Duras</h2>
+        <div class="skills-grid" id="skills-grid">
+          <!-- Skills generadas dinámicamente -->
+        </div>
         
+        <h2 class="section-title text-center mt-64" data-aos="fade-up">Habilidades Blandas</h2>
+        <div class="soft-skills-grid" data-aos="fade-up">
+          <div class="soft-skill-card"><i class="ri-user-star-line"></i><span>Liderazgo</span></div>
+          <div class="soft-skill-card"><i class="ri-team-line"></i><span>Trabajo en equipo</span></div>
+          <div class="soft-skill-card"><i class="ri-brain-line"></i><span>Pensamiento analítico</span></div>
+          <div class="soft-skill-card"><i class="ri-lightbulb-line"></i><span>Resolución de problemas</span></div>
+          <div class="soft-skill-card"><i class="ri-chat-3-line"></i><span>Comunicación efectiva</span></div>
+          <div class="soft-skill-card"><i class="ri-palette-line"></i><span>Creatividad</span></div>
+          <div class="soft-skill-card"><i class="ri-refresh-line"></i><span>Aprendizaje continuo</span></div>
+          <div class="soft-skill-card"><i class="ri-shuffle-line"></i><span>Adaptabilidad</span></div>
+          <div class="soft-skill-card"><i class="ri-shield-check-line"></i><span>Responsabilidad</span></div>
+          <div class="soft-skill-card"><i class="ri-timer-line"></i><span>Gestión del tiempo</span></div>
+        </div>
 
-        <a href="#" class="btn btn--primary btn--xl about__cta">
-          <i class="ri-download-2-line" aria-hidden="true"></i>
-          <span>Descargar mi CV</span>
-        </a>
+        <h2 class="section-title text-center mt-64" data-aos="fade-up">Intereses y Valores</h2>
+        <div class="interests-values-grid" data-aos="fade-up">
+          <div class="interest-card"><i class="ri-robot-2-line"></i><span>Inteligencia Artificial</span></div>
+          <div class="interest-card"><i class="ri-code-s-slash-line"></i><span>Desarrollo Web</span></div>
+          <div class="interest-card"><i class="ri-open-source-line"></i><span>Open Source</span></div>
+          <div class="interest-card"><i class="ri-stack-line"></i><span>Arquitectura de Software</span></div>
+          <div class="interest-card"><i class="ri-layout-line"></i><span>UI/UX</span></div>
+          <div class="interest-card"><i class="ri-link"></i><span>Blockchain</span></div>
+          <div class="interest-card"><i class="ri-settings-3-line"></i><span>Automatización</span></div>
+          <div class="interest-card"><i class="ri-rocket-line"></i><span>Innovación</span></div>
+          <div class="value-card"><i class="ri-heart-line"></i><span>Honestidad</span></div>
+          <div class="value-card"><i class="ri-hand-heart-line"></i><span>Compromiso</span></div>
+          <div class="value-card"><i class="ri-star-line"></i><span>Calidad</span></div>
+          <div class="value-card"><i class="ri-scales-line"></i><span>Disciplina</span></div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<div id="watermark" style="
+    <!-- ========== PROYECTOS ========== -->
+    <section id="proyectos" class="projects-section section-padding">
+      <div class="container">
+        <h2 class="section-title text-center" data-aos="fade-up">Mis Proyectos</h2>
+        <div class="swiper projects-swiper" data-aos="fade-up" data-aos-delay="200">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="project-card">
+                <div class="project-image"><i class="ri-store-2-line"></i></div>
+                <h3>QuantumSprint</h3>
+                <p>Plataforma integral para mascotas.</p>
+                <div class="project-langs"><span>HTML</span><span>CSS</span><span>Vue</span><span>Node</span></div>
+                <div class="project-buttons">
+                  <a href="#" class="btn btn-small">Ver Proyecto</a>
+                  <button class="btn btn-small btn-outline" onclick="openModal('modal-project-1')">Más info</button>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="project-card">
+                <div class="project-image"><i class="ri-plant-line"></i></div>
+                <h3>Huerto en Mano</h3>
+                <p>Aplicación inteligente para gestión de jardines personalizados.</p>
+                <div class="project-langs"><span>React</span><span>NestJS</span><span>PostgreSQL</span></div>
+                <div class="project-buttons">
+                  <a href="#" class="btn btn-small">Ver Proyecto</a>
+                  <button class="btn btn-small btn-outline" onclick="openModal('modal-project-2')">Más info</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PUBLICACIONES ========== -->
+    <section id="publicaciones" class="publications-section section-padding">
+      <div class="container">
+        <h2 class="section-title text-center" data-aos="fade-up">Publicaciones</h2>
+        <div class="swiper publications-swiper" data-aos="fade-up" data-aos-delay="200">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><div class="publication-card"><i class="ri-file-text-line"></i><h3>Calidad de Software</h3><p>Investigación sobre métricas y estándares.</p><a href="#" class="btn btn-small">Descargar</a></div></div>
+            <div class="swiper-slide"><div class="publication-card"><i class="ri-global-line"></i><h3>Aplicaciones Web</h3><p>Análisis de frameworks modernos.</p><a href="#" class="btn btn-small">Descargar</a></div></div>
+            <div class="swiper-slide"><div class="publication-card"><i class="ri-database-2-line"></i><h3>Modelado de Datos</h3><p>Estrategias para sistemas escalables.</p><a href="#" class="btn btn-small">Descargar</a></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TESTIMONIOS ========== -->
+    <section id="testimonios" class="testimonials-section section-padding">
+      <div class="container">
+        <h2 class="section-title text-center" data-aos="fade-up">Testimonios</h2>
+        <div class="testimonials-grid" data-aos="fade-up">
+          <div class="testimonial-card" onclick="openModal('modal-testimonial-1')">
+            <div class="testimonial-avatar"><i class="ri-user-line"></i></div>
+            <h3>Victor</h3>
+            <div class="stars">★★★★★</div>
+          </div>
+          <div class="testimonial-card" onclick="openModal('modal-testimonial-2')">
+            <div class="testimonial-avatar"><i class="ri-user-line"></i></div>
+            <h3>Juan</h3>
+            <div class="stars">★★★★★</div>
+          </div>
+          <div class="testimonial-card" onclick="openModal('modal-testimonial-3')">
+            <div class="testimonial-avatar"><i class="ri-user-line"></i></div>
+            <h3>Ramón</h3>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACTO ========== -->
+    <section id="contacto" class="contact-section section-padding">
+      <div class="container">
+        <h2 class="section-title text-center" data-aos="fade-up">Contacto</h2>
+        <div class="contact-grid">
+          <div class="contact-cards" data-aos="fade-right">
+            <a href="mailto:correo@ejemplo.com" class="contact-card"><i class="ri-mail-line"></i><span>Correo</span></a>
+            <a href="tel:+123456789" class="contact-card"><i class="ri-phone-line"></i><span>Teléfono</span></a>
+            <a href="#" class="contact-card"><i class="ri-whatsapp-line"></i><span>WhatsApp</span></a>
+          </div>
+          <form class="contact-form" data-aos="fade-left">
+            <input type="text" placeholder="Nombre" required aria-label="Nombre">
+            <input type="email" placeholder="Correo" required aria-label="Correo">
+            <textarea placeholder="Mensaje" rows="5" required aria-label="Mensaje"></textarea>
+            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONOCER MÁS ========== -->
+    <section class="social-section section-padding">
+      <div class="container">
+        <div class="social-grid" data-aos="fade-up">
+          <a href="#" class="social-card" aria-label="LinkedIn"><i class="ri-linkedin-line"></i></a>
+          <a href="#" class="social-card" aria-label="GitHub"><i class="ri-github-line"></i></a>
+          <a href="#" class="social-card" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+          <a href="#" class="social-card" aria-label="Facebook"><i class="ri-facebook-line"></i></a>
+          <a href="#" class="social-card" aria-label="Correo"><i class="ri-mail-line"></i></a>
+          <a href="#" class="social-card" aria-label="Portafolio"><i class="ri-global-line"></i></a>
+        </div>
+      </div>
+    </section>
+
+    
+<!-- ========== Marca de Agua ========== -->
+    <div id="watermark" style="
     position: fixed;
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(12px);
@@ -215,7 +359,9 @@
         <span style="font-weight: 400; opacity: 0.7;">v 0.0.1-alpha</span>
         <span style="width: 4px; height: 4px; background: rgba(255,255,255,0.4); border-radius: 50%; display: inline-block;"></span>
         <span style="font-weight: 400; opacity: 0.7;">disculpe las molestias</span>
-        <span style="font-size: 14px;"></span>
+        <span style="font-size: 14px;">
+  
+        </span>
     </span>
 </div>
 
@@ -239,712 +385,42 @@
     window.addEventListener('resize', moverMarca);
 </script>
 
-<!-- =========================================================
-     AWARDS
-========================================================= -->
-<section class="awards section" id="awards" aria-labelledby="awards-title">
-  <div class="container">
-    <div class="section__header" data-aos="fade-up">
-      <div class="section__label">Logros</div>
-      <h2 class="section__title" id="awards-title">Reconocimientos</h2>
-      <p class="section__desc">Certificaciones y diplomas que respaldan mi trayectoria profesional.</p>
-    </div>
-
-    <div class="swiper awards-swiper" data-aos="fade-up" data-aos-delay="200">
-      <div class="swiper-wrapper">
-
-        <div class="swiper-slide">
-          <div class="award-card" data-award="0" role="button" tabindex="0" aria-label="Ver diploma: Desarrollo Web Full-Stack">
-            <div class="award-card__img-wrap">
-              <div class="award-card__img-placeholder"><i class="ri-award-line" aria-hidden="true"></i></div>
-            </div>
-            <div class="award-card__body">
-              <h3 class="award-card__name">Desarrollo Web Full-Stack</h3>
-              <span class="award-card__org">Platzi Academy</span>
-              <span class="award-card__year">2023</span>
-            </div>
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer-premium">
+      <div class="footer-glow"></div>
+      <div class="container">
+        <div class="footer-content">
+          <a href="#" class="footer-logo">SA</a>
+          <p class="footer-quote">"Construyendo soluciones que conectan ideas con innovación."</p>
+          <div class="footer-line"></div>
+          <div class="footer-socials">
+            <a href="#" aria-label="LinkedIn"><i class="ri-linkedin-line"></i></a>
+            <a href="#" aria-label="GitHub"><i class="ri-github-line"></i></a>
+            <a href="#" aria-label="Twitter"><i class="ri-twitter-x-line"></i></a>
           </div>
-        </div>
-
-        <div class="swiper-slide">
-          <div class="award-card" data-award="1" role="button" tabindex="0" aria-label="Ver diploma: Node.js Advanced">
-            <div class="award-card__img-wrap">
-              <div class="award-card__img-placeholder"><i class="ri-medal-line" aria-hidden="true"></i></div>
-            </div>
-            <div class="award-card__body">
-              <h3 class="award-card__name">Node.js Advanced</h3>
-              <span class="award-card__org">Udemy</span>
-              <span class="award-card__year">2023</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="swiper-slide">
-          <div class="award-card" data-award="2" role="button" tabindex="0" aria-label="Ver diploma: Arquitectura de Software">
-            <div class="award-card__img-wrap">
-              <div class="award-card__img-placeholder"><i class="ri-trophy-line" aria-hidden="true"></i></div>
-            </div>
-            <div class="award-card__body">
-              <h3 class="award-card__name">Arquitectura de Software</h3>
-              <span class="award-card__org">Coursera</span>
-              <span class="award-card__year">2022</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="swiper-slide">
-          <div class="award-card" data-award="3" role="button" tabindex="0" aria-label="Ver diploma: Vue.js & React Expert">
-            <div class="award-card__img-wrap">
-              <div class="award-card__img-placeholder"><i class="ri-star-line" aria-hidden="true"></i></div>
-            </div>
-            <div class="award-card__body">
-              <h3 class="award-card__name">Vue.js & React Expert</h3>
-              <span class="award-card__org">Frontend Masters</span>
-              <span class="award-card__year">2024</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="swiper-slide">
-          <div class="award-card" data-award="4" role="button" tabindex="0" aria-label="Ver diploma: Docker & DevOps">
-            <div class="award-card__img-wrap">
-              <div class="award-card__img-placeholder"><i class="ri-shield-check-line" aria-hidden="true"></i></div>
-            </div>
-            <div class="award-card__body">
-              <h3 class="award-card__name">Docker & DevOps</h3>
-              <span class="award-card__org">LinkedIn Learning</span>
-              <span class="award-card__year">2024</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <div class="swiper-pagination awards-pagination"></div>
-    </div>
-  </div>
-</section>
-
-<!-- Awards Modal -->
-<div class="modal" id="awardModal" role="dialog" aria-modal="true" aria-labelledby="awardModalTitle" aria-hidden="true">
-  <div class="modal__overlay" id="awardModalOverlay"></div>
-  <div class="modal__box">
-    <button class="modal__close" id="awardModalClose" aria-label="Cerrar modal"><i class="ri-close-line" aria-hidden="true"></i></button>
-    <div class="modal__img-wrap">
-      <div class="modal__img-placeholder" id="awardModalIcon"></div>
-    </div>
-    <h3 class="modal__title" id="awardModalTitle"></h3>
-    <p class="modal__org" id="awardModalOrg"></p>
-    <p class="modal__date" id="awardModalDate"></p>
-    <p class="modal__desc" id="awardModalDesc"></p>
-  </div>
-</div>
-
-<!-- =========================================================
-     SKILLS – HARD
-========================================================= -->
-<section class="skills section" id="skills" aria-labelledby="skills-title">
-  <div class="container">
-    <div class="section__header" data-aos="fade-up">
-      <div class="section__label">Experticia</div>
-      <h2 class="section__title" id="skills-title">Habilidades Técnicas</h2>
-      <p class="section__desc">Tecnologías que domino para construir soluciones robustas y escalables.</p>
-    </div>
-
-    <div class="skills__grid">
-
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="50">
-        <div class="skill-card__header">
-          <div class="skill-card__icon" style="background:var(--clr-html)"><i class="ri-html5-line" aria-hidden="true"></i></div>
-          <span class="skill-card__name">HTML5</span>
-          <span class="skill-card__pct">98%</span>
-        </div>
-        <div class="skill-card__bar-bg" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" aria-label="HTML5 98%">
-          <div class="skill-card__bar" data-width="98"></div>
-        </div>
-      </div>
-
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="80">
-        <div class="skill-card__header">
-          <div class="skill-card__icon" style="background:var(--clr-css)"><i class="ri-css3-line" aria-hidden="true"></i></div>
-          <span class="skill-card__name">CSS3</span>
-          <span class="skill-card__pct">95%</span>
-        </div>
-        <div class="skill-card__bar-bg" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="CSS3 95%">
-          <div class="skill-card__bar" data-width="95"></div>
-        </div>
-      </div>
-
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="110">
-        <div class="skill-card__header">
-          <div class="skill-card__icon" style="background:var(--clr-js)"><i class="ri-javascript-line" aria-hidden="true"></i></div>
-          <span class="skill-card__name">JavaScript</span>
-          <span class="skill-card__pct">95%</span>
-        </div>
-        <div class="skill-card__bar-bg" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="JavaScript 95%">
-          <div class="skill-card__bar" data-width="95"></div>
-        </div>
-      </div>
-
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="140">
-        <div class="skill-card__header">
-          <div class="skill-card__icon" style="background:var(--clr-ts)"><i class="ri-code-s-slash-line" aria-hidden="true"></i></div>
-          <span class="skill-card__name">TypeScript</span>
-          <span class="skill-card__pct">90%</span>
-        </div>
-        <div class="skill-card__bar-bg" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="TypeScript 90%">
-          <div class="skill-card__bar" data-width="90"></div>
-        </div>
-      </div>
-
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="170">
-        <div class="skill-card__header">
-          <div class="skill-card__icon" style="background:var(--clr-php)"><i class="ri-terminal-box-line" aria-hidden="true"></i></div>
-          <span class="skill-card__name">PHP</span>
-          <span class="skill-card__pct">90%</span>
-        </div>
-        <div class="skill-card__bar-bg" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="PHP 90%">
-          <div class="skill-card__bar" data-width="90"></div>
-        </div>
-      </div>
-
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="skill-card__header">
-          <div class="skill-card__icon" style="background:var(--clr-laravel)"><i class="ri-sword-line" aria-hidden="true"></i></div>
-          <span class="skill-card__name">Laravel</span>
-          <span class="skill-card__pct">90%</span>
-        </div>
-        <div class="skill-card__bar-bg" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Laravel 90%">
-          <div class="skill-card__bar" data-width="90"></div>
-        </div>
-      </div>
-
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="230">
-        <div class="skill-card__header">
-          <div class="skill-card__icon" style="background:var(--clr-node)"><i class="ri-node-tree" aria-hidden="true"></i></div>
-          <span class="skill-card__name">Node.js</span>
-          <span class="skill-card__pct">90%</span>
-        </div>
-        <div class="skill-card__bar-bg" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Node.js 90%">
-          <div class="skill-card__bar" data-width="90"></div>
-        </div>
-      </div>
-
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="260">
-        <div class="skill-card__header">
-          <div class="skill-card__icon" style="background:var(--clr-nest)"><i class="ri-server-line" aria-hidden="true"></i></div>
-          <span class="skill-card__name">NestJS</span>
-          <span class="skill-card__pct">88%</span>
-        </div>
-        <div class="skill-card__bar-bg" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="NestJS 88%">
-          <div class="skill-card__bar" data-width="88"></div>
-        </div>
-      </div>
-
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="290">
-        <div class="skill-card__header">
-          <div class="skill-card__icon" style="background:var(--clr-vue)"><i class="ri-vuejs-line" aria-hidden="true"></i></div>
-          <span class="skill-card__name">Vue.js</span>
-          <span class="skill-card__pct">85%</span>
-        </div>
-        <div class="skill-card__bar-bg" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Vue.js 85%">
-          <div class="skill-card__bar" data-width="85"></div>
-        </div>
-      </div>
-
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="320">
-        <div class="skill-card__header">
-          <div class="skill-card__icon" style="background:var(--clr-react)"><i class="ri-reactjs-line" aria-hidden="true"></i></div>
-          <span class="skill-card__name">React.js</span>
-          <span class="skill-card__pct">85%</span>
-        </div>
-        <div class="skill-card__bar-bg" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="React.js 85%">
-          <div class="skill-card__bar" data-width="85"></div>
-        </div>
-      </div>
-
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="350">
-        <div class="skill-card__header">
-          <div class="skill-card__icon" style="background:var(--clr-mysql)"><i class="ri-database-2-line" aria-hidden="true"></i></div>
-          <span class="skill-card__name">MySQL</span>
-          <span class="skill-card__pct">90%</span>
-        </div>
-        <div class="skill-card__bar-bg" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="MySQL 90%">
-          <div class="skill-card__bar" data-width="90"></div>
-        </div>
-      </div>
-
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="380">
-        <div class="skill-card__header">
-          <div class="skill-card__icon" style="background:var(--clr-pg)"><i class="ri-database-line" aria-hidden="true"></i></div>
-          <span class="skill-card__name">PostgreSQL</span>
-          <span class="skill-card__pct">82%</span>
-        </div>
-        <div class="skill-card__bar-bg" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" aria-label="PostgreSQL 82%">
-          <div class="skill-card__bar" data-width="82"></div>
-        </div>
-      </div>
-
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="410">
-        <div class="skill-card__header">
-          <div class="skill-card__icon" style="background:var(--clr-mongo)"><i class="ri-leaf-line" aria-hidden="true"></i></div>
-          <span class="skill-card__name">MongoDB</span>
-          <span class="skill-card__pct">80%</span>
-        </div>
-        <div class="skill-card__bar-bg" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="MongoDB 80%">
-          <div class="skill-card__bar" data-width="80"></div>
-        </div>
-      </div>
-
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="440">
-        <div class="skill-card__header">
-          <div class="skill-card__icon" style="background:var(--clr-git)"><i class="ri-git-branch-line" aria-hidden="true"></i></div>
-          <span class="skill-card__name">Git</span>
-          <span class="skill-card__pct">92%</span>
-        </div>
-        <div class="skill-card__bar-bg" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Git 92%">
-          <div class="skill-card__bar" data-width="92"></div>
-        </div>
-      </div>
-
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="470">
-        <div class="skill-card__header">
-          <div class="skill-card__icon" style="background:var(--clr-github)"><i class="ri-github-line" aria-hidden="true"></i></div>
-          <span class="skill-card__name">GitHub</span>
-          <span class="skill-card__pct">90%</span>
-        </div>
-        <div class="skill-card__bar-bg" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="GitHub 90%">
-          <div class="skill-card__bar" data-width="90"></div>
-        </div>
-      </div>
-
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="500">
-        <div class="skill-card__header">
-          <div class="skill-card__icon" style="background:var(--clr-docker)"><i class="ri-ship-line" aria-hidden="true"></i></div>
-          <span class="skill-card__name">Docker</span>
-          <span class="skill-card__pct">75%</span>
-        </div>
-        <div class="skill-card__bar-bg" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="Docker 75%">
-          <div class="skill-card__bar" data-width="75"></div>
-        </div>
-      </div>
-
-    </div><!-- /skills__grid -->
-
-    <!-- Soft Skills -->
-    <div class="section__sub-header" data-aos="fade-up">
-      <h3 class="section__subtitle">Habilidades Blandas</h3>
-    </div>
-    <div class="soft-skills__grid">
-      <div class="soft-card" data-aos="zoom-in" data-aos-delay="50"><i class="ri-user-star-line" aria-hidden="true"></i><span>Liderazgo</span></div>
-      <div class="soft-card" data-aos="zoom-in" data-aos-delay="80"><i class="ri-team-line" aria-hidden="true"></i><span>Trabajo en equipo</span></div>
-      <div class="soft-card" data-aos="zoom-in" data-aos-delay="110"><i class="ri-brain-line" aria-hidden="true"></i><span>Pensamiento analítico</span></div>
-      <div class="soft-card" data-aos="zoom-in" data-aos-delay="140"><i class="ri-lightbulb-line" aria-hidden="true"></i><span>Resolución de problemas</span></div>
-      <div class="soft-card" data-aos="zoom-in" data-aos-delay="170"><i class="ri-message-3-line" aria-hidden="true"></i><span>Comunicación efectiva</span></div>
-      <div class="soft-card" data-aos="zoom-in" data-aos-delay="200"><i class="ri-palette-line" aria-hidden="true"></i><span>Creatividad</span></div>
-      <div class="soft-card" data-aos="zoom-in" data-aos-delay="230"><i class="ri-book-open-line" aria-hidden="true"></i><span>Aprendizaje continuo</span></div>
-      <div class="soft-card" data-aos="zoom-in" data-aos-delay="260"><i class="ri-refresh-line" aria-hidden="true"></i><span>Adaptabilidad</span></div>
-      <div class="soft-card" data-aos="zoom-in" data-aos-delay="290"><i class="ri-shield-user-line" aria-hidden="true"></i><span>Responsabilidad</span></div>
-      <div class="soft-card" data-aos="zoom-in" data-aos-delay="320"><i class="ri-time-line" aria-hidden="true"></i><span>Gestión del tiempo</span></div>
-    </div>
-
-    <!-- Interests & Values -->
-    <div class="section__sub-header" data-aos="fade-up">
-      <h3 class="section__subtitle">Intereses &amp; Valores</h3>
-    </div>
-    <div class="interests__grid">
-      <div class="interest-card" data-aos="fade-up" data-aos-delay="50"><i class="ri-robot-line" aria-hidden="true"></i><span>Inteligencia Artificial</span></div>
-      <div class="interest-card" data-aos="fade-up" data-aos-delay="80"><i class="ri-global-line" aria-hidden="true"></i><span>Desarrollo Web</span></div>
-      <div class="interest-card" data-aos="fade-up" data-aos-delay="110"><i class="ri-open-source-line" aria-hidden="true"></i><span>Open Source</span></div>
-      <div class="interest-card" data-aos="fade-up" data-aos-delay="140"><i class="ri-building-2-line" aria-hidden="true"></i><span>Arquitectura de Software</span></div>
-      <div class="interest-card" data-aos="fade-up" data-aos-delay="170"><i class="ri-brush-line" aria-hidden="true"></i><span>UI/UX</span></div>
-      <div class="interest-card" data-aos="fade-up" data-aos-delay="200"><i class="ri-link-m" aria-hidden="true"></i><span>Blockchain</span></div>
-      <div class="interest-card" data-aos="fade-up" data-aos-delay="230"><i class="ri-settings-3-line" aria-hidden="true"></i><span>Automatización</span></div>
-      <div class="interest-card" data-aos="fade-up" data-aos-delay="260"><i class="ri-flashlight-line" aria-hidden="true"></i><span>Innovación</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- =========================================================
-     PROJECTS
-========================================================= -->
-<section class="projects section" id="projects" aria-labelledby="projects-title">
-  <div class="container">
-    <div class="section__header" data-aos="fade-up">
-      <div class="section__label">Portfolio</div>
-      <h2 class="section__title" id="projects-title">Mis Proyectos</h2>
-      <p class="section__desc">Soluciones construidas con pasión, tecnología y propósito.</p>
-    </div>
-
-    <div class="swiper projects-swiper" data-aos="fade-up" data-aos-delay="200">
-      <div class="swiper-wrapper">
-
-        <!-- Project 1 -->
-        <div class="swiper-slide">
-          <div class="project-card">
-            <div class="project-card__img">
-              <div class="project-card__img-inner project-card__img-inner--1">
-                <i class="ri-paw-line" aria-hidden="true"></i>
-              </div>
-              <div class="project-card__status">En producción</div>
-            </div>
-            <div class="project-card__body">
-              <h3 class="project-card__name">QuantumSprint</h3>
-              <p class="project-card__desc">Plataforma integral para mascotas: gestión veterinaria, seguimiento de salud y comunidad.</p>
-              <div class="project-card__tags">
-                <span class="tag tag--vue">Vue</span>
-                <span class="tag tag--nest">NestJS</span>
-                <span class="tag tag--pg">PostgreSQL</span>
-                <span class="tag tag--docker">Docker</span>
-              </div>
-              <div class="project-card__actions">
-                <a href="#" class="btn btn--primary btn--sm">Ver Proyecto <i class="ri-external-link-line" aria-hidden="true"></i></a>
-                <button class="btn btn--ghost btn--sm" data-project="0" aria-label="Más información sobre QuantumSprint">Más info</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="swiper-slide">
-          <div class="project-card">
-            <div class="project-card__img">
-              <div class="project-card__img-inner project-card__img-inner--2">
-                <i class="ri-plant-line" aria-hidden="true"></i>
-              </div>
-              <div class="project-card__status">En desarrollo</div>
-            </div>
-            <div class="project-card__body">
-              <h3 class="project-card__name">Huerto en Mano</h3>
-              <p class="project-card__desc">Aplicación inteligente para gestión de jardines personalizados con IA y sensores IoT.</p>
-              <div class="project-card__tags">
-                <span class="tag tag--react">React</span>
-                <span class="tag tag--node">Node.js</span>
-                <span class="tag tag--mongo">MongoDB</span>
-                <span class="tag tag--ts">TypeScript</span>
-              </div>
-              <div class="project-card__actions">
-                <a href="#" class="btn btn--primary btn--sm">Ver Proyecto <i class="ri-external-link-line" aria-hidden="true"></i></a>
-                <button class="btn btn--ghost btn--sm" data-project="1" aria-label="Más información sobre Huerto en Mano">Más info</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 3 (extra) -->
-        <div class="swiper-slide">
-          <div class="project-card">
-            <div class="project-card__img">
-              <div class="project-card__img-inner project-card__img-inner--3">
-                <i class="ri-store-2-line" aria-hidden="true"></i>
-              </div>
-              <div class="project-card__status">Completado</div>
-            </div>
-            <div class="project-card__body">
-              <h3 class="project-card__name">NexCommerce</h3>
-              <p class="project-card__desc">E-commerce moderno con sistema de carrito dual, pagos integrados y panel administrativo.</p>
-              <div class="project-card__tags">
-                <span class="tag tag--laravel">Laravel</span>
-                <span class="tag tag--vue">Vue</span>
-                <span class="tag tag--mysql">MySQL</span>
-                <span class="tag tag--docker">Docker</span>
-              </div>
-              <div class="project-card__actions">
-                <a href="#" class="btn btn--primary btn--sm">Ver Proyecto <i class="ri-external-link-line" aria-hidden="true"></i></a>
-                <button class="btn btn--ghost btn--sm" data-project="2" aria-label="Más información sobre NexCommerce">Más info</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <div class="swiper-pagination projects-pagination"></div>
-      <div class="swiper-button-prev projects-prev" aria-label="Proyecto anterior"></div>
-      <div class="swiper-button-next projects-next" aria-label="Proyecto siguiente"></div>
-    </div>
-  </div>
-</section>
-
-<!-- Project Modal -->
-<div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle" aria-hidden="true">
-  <div class="modal__overlay" id="projectModalOverlay"></div>
-  <div class="modal__box modal__box--wide">
-    <button class="modal__close" id="projectModalClose" aria-label="Cerrar modal"><i class="ri-close-line" aria-hidden="true"></i></button>
-    <div class="modal__project-header" id="projectModalHeader"></div>
-    <h3 class="modal__title" id="projectModalTitle"></h3>
-    <p class="modal__desc" id="projectModalDesc"></p>
-    <div class="modal__features" id="projectModalFeatures"></div>
-    <div class="modal__tech" id="projectModalTech"></div>
-    <div class="modal__links" id="projectModalLinks"></div>
-  </div>
-</div>
-
-<!-- =========================================================
-     PUBLICATIONS
-========================================================= -->
-<section class="publications section" id="publications" aria-labelledby="publications-title">
-  <div class="container">
-    <div class="section__header" data-aos="fade-up">
-      <div class="section__label">Investigación</div>
-      <h2 class="section__title" id="publications-title">Mis Publicaciones</h2>
-      <p class="section__desc">Investigaciones académicas que aportan al ecosistema tecnológico.</p>
-    </div>
-
-    <div class="swiper publications-swiper" data-aos="fade-up" data-aos-delay="200">
-      <div class="swiper-wrapper">
-
-        <div class="swiper-slide">
-          <div class="pub-card">
-            <div class="pub-card__img"><i class="ri-article-line" aria-hidden="true"></i></div>
-            <div class="pub-card__body">
-              <span class="pub-card__rubro">Calidad de Software</span>
-              <h3 class="pub-card__name">Métricas y Estándares ISO en el Ciclo de Vida del Software</h3>
-              <p class="pub-card__desc">Análisis comparativo de métricas de calidad aplicadas a proyectos de software empresarial bajo el estándar ISO/IEC 25010.</p>
-              <div class="pub-card__researchers">
-                <i class="ri-user-line" aria-hidden="true"></i>
-                Salvador Andrade, Carlos Flores, María López
-              </div>
-              <a href="#" class="btn btn--outline btn--sm pub-card__btn">
-                <i class="ri-download-2-line" aria-hidden="true"></i> Descargar
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="swiper-slide">
-          <div class="pub-card">
-            <div class="pub-card__img"><i class="ri-global-line" aria-hidden="true"></i></div>
-            <div class="pub-card__body">
-              <span class="pub-card__rubro">Aplicaciones Web</span>
-              <h3 class="pub-card__name">Arquitecturas PWA: Offline-First y Sincronización Incremental</h3>
-              <p class="pub-card__desc">Estudio sobre la implementación de Progressive Web Apps con arquitectura offline-first, Service Workers y estrategias de sincronización.</p>
-              <div class="pub-card__researchers">
-                <i class="ri-user-line" aria-hidden="true"></i>
-                Salvador Andrade, Roberto Sánchez
-              </div>
-              <a href="#" class="btn btn--outline btn--sm pub-card__btn">
-                <i class="ri-download-2-line" aria-hidden="true"></i> Descargar
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="swiper-slide">
-          <div class="pub-card">
-            <div class="pub-card__img"><i class="ri-database-2-line" aria-hidden="true"></i></div>
-            <div class="pub-card__body">
-              <span class="pub-card__rubro">Modelado de Datos</span>
-              <h3 class="pub-card__name">Estrategias Híbridas SQL/NoSQL para Sistemas de Alta Concurrencia</h3>
-              <p class="pub-card__desc">Investigación sobre patrones de modelado de datos en entornos de alta demanda usando combinaciones de PostgreSQL y MongoDB.</p>
-              <div class="pub-card__researchers">
-                <i class="ri-user-line" aria-hidden="true"></i>
-                Salvador Andrade, Ana Martínez, Luis Torres
-              </div>
-              <a href="#" class="btn btn--outline btn--sm pub-card__btn">
-                <i class="ri-download-2-line" aria-hidden="true"></i> Descargar
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <div class="swiper-pagination publications-pagination"></div>
-    </div>
-  </div>
-</section>
-
-<!-- =========================================================
-     TESTIMONIALS
-========================================================= -->
-<section class="testimonials section" id="testimonials" aria-labelledby="testimonials-title">
-  <div class="container">
-    <div class="section__header" data-aos="fade-up">
-      <div class="section__label">Lo que dicen</div>
-      <h2 class="section__title" id="testimonials-title">Testimonios</h2>
-    </div>
-
-    <div class="swiper testimonials-swiper" data-aos="fade-up" data-aos-delay="200">
-      <div class="swiper-wrapper">
-
-        <div class="swiper-slide">
-          <div class="testi-card" data-testi="0" role="button" tabindex="0" aria-label="Ver testimonio de Victor">
-            <div class="testi-card__avatar"><span>V</span></div>
-            <h4 class="testi-card__name">Victor</h4>
-            <div class="testi-card__stars" aria-label="5 estrellas">★★★★★</div>
-            <p class="testi-card__preview">"Salvador es un desarrollador excepcional que siempre entrega más de lo esperado..."</p>
-          </div>
-        </div>
-
-        <div class="swiper-slide">
-          <div class="testi-card" data-testi="1" role="button" tabindex="0" aria-label="Ver testimonio de Juan">
-            <div class="testi-card__avatar"><span>J</span></div>
-            <h4 class="testi-card__name">Juan</h4>
-            <div class="testi-card__stars" aria-label="5 estrellas">★★★★★</div>
-            <p class="testi-card__preview">"Trabajar con Salvador fue una experiencia increíble, su dominio técnico es impresionante..."</p>
-          </div>
-        </div>
-
-        <div class="swiper-slide">
-          <div class="testi-card" data-testi="2" role="button" tabindex="0" aria-label="Ver testimonio de Ramón">
-            <div class="testi-card__avatar"><span>R</span></div>
-            <h4 class="testi-card__name">Ramón</h4>
-            <div class="testi-card__stars" aria-label="5 estrellas">★★★★★</div>
-            <p class="testi-card__preview">"Su capacidad de resolver problemas complejos de forma elegante es única en el mercado..."</p>
-          </div>
-        </div>
-
-      </div>
-      <div class="swiper-pagination testimonials-pagination"></div>
-    </div>
-  </div>
-</section>
-
-<!-- Testimonials Modal -->
-<div class="modal" id="testiModal" role="dialog" aria-modal="true" aria-labelledby="testiModalName" aria-hidden="true">
-  <div class="modal__overlay" id="testiModalOverlay"></div>
-  <div class="modal__box">
-    <button class="modal__close" id="testiModalClose" aria-label="Cerrar modal"><i class="ri-close-line" aria-hidden="true"></i></button>
-    <div class="testi-modal__avatar" id="testiModalAvatar"></div>
-    <h3 class="modal__title" id="testiModalName"></h3>
-    <p class="testi-modal__cargo" id="testiModalCargo"></p>
-    <div class="testi-modal__stars" id="testiModalStars"></div>
-    <p class="testi-modal__quote" id="testiModalQuote"></p>
-  </div>
-</div>
-
-<!-- =========================================================
-     CONTACT
-========================================================= -->
-<section class="contact section" id="contact" aria-labelledby="contact-title">
-  <div class="container">
-    <div class="section__header" data-aos="fade-up">
-      <div class="section__label">Hablemos</div>
-      <h2 class="section__title" id="contact-title">Contacto</h2>
-      <p class="section__desc">¿Tienes un proyecto en mente? Me encantaría escucharte.</p>
-    </div>
-
-    <div class="contact__grid">
-      <!-- Info Cards -->
-      <div class="contact__info" data-aos="fade-right">
-        <div class="contact-card">
-          <div class="contact-card__icon"><i class="ri-mail-send-line" aria-hidden="true"></i></div>
-          <div>
-            <span class="contact-card__label">Correo</span>
-            <a href="mailto:salvador@example.com" class="contact-card__value">salvador@example.com</a>
-          </div>
-        </div>
-        <div class="contact-card">
-          <div class="contact-card__icon"><i class="ri-phone-line" aria-hidden="true"></i></div>
-          <div>
-            <span class="contact-card__label">Teléfono</span>
-            <a href="tel:+50300000000" class="contact-card__value">+503 0000-0000</a>
-          </div>
-        </div>
-        <div class="contact-card">
-          <div class="contact-card__icon"><i class="ri-whatsapp-line" aria-hidden="true"></i></div>
-          <div>
-            <span class="contact-card__label">WhatsApp</span>
-            <a href="https://wa.me/50300000000" target="_blank" rel="noopener" class="contact-card__value">+503 0000-0000</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Form -->
-      <div class="contact__form-wrap" data-aos="fade-left">
-        <div class="contact__form-glass">
-          <div class="form-group">
-            <label for="contactName" class="form-label">Nombre</label>
-            <input type="text" id="contactName" class="form-input" placeholder="Tu nombre completo" aria-required="true" />
-            <span class="form-error" id="nameError"></span>
-          </div>
-          <div class="form-group">
-            <label for="contactEmail" class="form-label">Correo</label>
-            <input type="email" id="contactEmail" class="form-input" placeholder="tu@correo.com" aria-required="true" />
-            <span class="form-error" id="emailError"></span>
-          </div>
-          <div class="form-group">
-            <label for="contactMsg" class="form-label">Mensaje</label>
-            <textarea id="contactMsg" class="form-input form-input--textarea" rows="5" placeholder="Cuéntame sobre tu proyecto..." aria-required="true"></textarea>
-            <span class="form-error" id="msgError"></span>
-          </div>
-          <button class="btn btn--primary btn--full" id="contactSubmit" type="button">
-            <span>Enviar mensaje</span>
-            <i class="ri-send-plane-line" aria-hidden="true"></i>
+          <p class="footer-copy">© 2026 Salvador Andrade. Todos los derechos reservados.</p>
+          <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">
+            <i class="ri-arrow-up-line"></i>
           </button>
-          <div class="form-success" id="formSuccess" aria-live="polite" hidden>
-            <i class="ri-checkbox-circle-line" aria-hidden="true"></i>
-            ¡Mensaje enviado exitosamente!
-          </div>
         </div>
       </div>
-    </div>
+    </footer>
+  </main>
 
-    <!-- Social / Know more -->
-    <div class="section__sub-header" data-aos="fade-up">
-      <h3 class="section__subtitle">Conóceme más</h3>
-    </div>
-    <div class="social__grid" data-aos="fade-up" data-aos-delay="100">
-      <a href="#" class="social-card" aria-label="LinkedIn"><i class="ri-linkedin-box-line" aria-hidden="true"></i><span>LinkedIn</span></a>
-      <a href="#" class="social-card" aria-label="GitHub"><i class="ri-github-line" aria-hidden="true"></i><span>GitHub</span></a>
-      <a href="#" class="social-card" aria-label="Instagram"><i class="ri-instagram-line" aria-hidden="true"></i><span>Instagram</span></a>
-      <a href="#" class="social-card" aria-label="Facebook"><i class="ri-facebook-box-line" aria-hidden="true"></i><span>Facebook</span></a>
-      <a href="mailto:salvador@example.com" class="social-card" aria-label="Correo electrónico"><i class="ri-mail-line" aria-hidden="true"></i><span>Email</span></a>
-      <a href="#" class="social-card social-card--highlight" aria-label="Portafolio"><i class="ri-global-line" aria-hidden="true"></i><span>Portafolio</span></a>
-    </div>
+  <!-- ========== MODALES ========== -->
+  <div id="modal-container" class="modal-container">
+    <!-- Los modales se generan dinámicamente -->
   </div>
-</section>
 
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-<footer class="footer" role="contentinfo">
-  <div class="footer__bg-glow footer__bg-glow--1" aria-hidden="true"></div>
-  <div class="footer__bg-glow footer__bg-glow--2" aria-hidden="true"></div>
-  <div class="container footer__inner">
-    <div class="footer__top" data-aos="fade-up">
-      <div class="footer__brand">
-        <div class="footer__logo">SA</div>
-        <p class="footer__tagline">Construyendo soluciones que conectan<br>ideas con innovación.</p>
-      </div>
-      <div class="footer__links-group">
-        <h4 class="footer__links-title">Navegación</h4>
-        <nav aria-label="Footer navigation">
-          <a href="#hero" class="footer__link">Inicio</a>
-          <a href="#about" class="footer__link">Sobre mí</a>
-          <a href="#skills" class="footer__link">Habilidades</a>
-          <a href="#projects" class="footer__link">Proyectos</a>
-          <a href="#contact" class="footer__link">Contacto</a>
-        </nav>
-      </div>
-      <div class="footer__links-group">
-        <h4 class="footer__links-title">Redes</h4>
-        <a href="#" class="footer__link"><i class="ri-linkedin-box-line" aria-hidden="true"></i> LinkedIn</a>
-        <a href="#" class="footer__link"><i class="ri-github-line" aria-hidden="true"></i> GitHub</a>
-        <a href="#" class="footer__link"><i class="ri-instagram-line" aria-hidden="true"></i> Instagram</a>
-      </div>
-    </div>
-
-    <div class="footer__line" aria-hidden="true">
-      <div class="footer__line-anim"></div>
-    </div>
-
-    <div class="footer__bottom" data-aos="fade-up">
-      <p class="footer__copy">© 2026 Salvador Andrade. Todos los derechos reservados.</p>
-      <button class="footer__back-top" id="backTop" aria-label="Volver al inicio">
-        <i class="ri-arrow-up-line" aria-hidden="true"></i>
-      </button>
-    </div>
-  </div>
-</footer>
-
-<!-- =========================================================
-     SCRIPTS
-========================================================= -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-<script src="script.js"></script>
+  <!-- Scripts CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  
+  <!-- script.js -->
+  <script src="script.js"></script>
 </body>
 </html>
