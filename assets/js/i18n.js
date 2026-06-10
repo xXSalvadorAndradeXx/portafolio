@@ -34,7 +34,7 @@ const i18n = {
             'contact.title': 'Contacto',
             'footer.sitemap': 'Mapa del Sitio',
             'footer.technologies': 'Tecnologías',
-            'footer.copyright': '© 2024 Salvador Andrade. Todos los derechos reservados.',
+            'footer.copyright': '© 2026 Salvador Andrade. Todos los derechos reservados.',
             'footer.tagline': 'Hecho con pasión, creatividad y miles de líneas de código.',
             'loader.text': 'Creando experiencias únicas'
         },
@@ -68,7 +68,7 @@ const i18n = {
             'contact.title': 'Contact',
             'footer.sitemap': 'Site Map',
             'footer.technologies': 'Technologies',
-            'footer.copyright': '© 2024 Salvador Andrade. All rights reserved.',
+            'footer.copyright': '© 2026 Salvador Andrade. All rights reserved.',
             'footer.tagline': 'Made with passion, creativity and thousands of lines of code.',
             'loader.text': 'Creating unique experiences'
         }
