@@ -1,6 +1,5 @@
 /**
  * Main Application
- * Initializes all modules and handles global functionality
  */
 class App {
     constructor() {
@@ -8,7 +7,6 @@ class App {
     }
 
     init() {
-        // Wait for DOM content to be loaded
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => this.onReady());
         } else {
@@ -17,115 +15,64 @@ class App {
     }
 
     onReady() {
-        // Initialize modules
+        i18n.init();
         this.initCursor();
         this.initParticles();
         this.initHeader();
         this.initMobileMenu();
         this.initPopups();
+        this.initSkillPopups();
         this.initCounters();
         this.initMagneticButtons();
-        this.initSmoothScroll();
+        this.initSmoothScrollLinks();
         this.initScrollReveal();
         this.initLanguageToggle();
         this.initLazyLoading();
-        
-        console.log('✨ Portfolio initialized successfully');
+        this.initActiveNavLink();
     }
 
-    /**
-     * Custom cursor
-     */
     initCursor() {
         const cursor = document.getElementById('cursor');
         const follower = document.getElementById('cursorFollower');
-        
         if (!cursor || !follower) return;
-        
-        // Check if it's a touch device
         if ('ontouchstart' in window) {
             cursor.style.display = 'none';
             follower.style.display = 'none';
             document.body.style.cursor = 'auto';
             return;
         }
-        
-        let mouseX = 0;
-        let mouseY = 0;
-        let cursorX = 0;
-        let cursorY = 0;
-        let followerX = 0;
-        let followerY = 0;
-        
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
+        let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0, followerX = 0, followerY = 0;
+        document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+        const interactive = document.querySelectorAll('a, button, .magnetic, .skill-card, .project-card, .contact-card, .recognition-card, .soft-skill-card, .testimonial-card, .publication-card');
+        interactive.forEach(el => {
+            el.addEventListener('mouseenter', () => { cursor.classList.add('cursor--hover'); follower.classList.add('cursor-follower--hover'); });
+            el.addEventListener('mouseleave', () => { cursor.classList.remove('cursor--hover'); follower.classList.remove('cursor-follower--hover'); });
         });
-        
-        // Hover effect on interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, .magnetic, .skill-card, .project-card, .contact-card, .recognition-card, .soft-skill-card, .testimonial-card');
-        
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.classList.add('cursor--hover');
-                follower.classList.add('cursor-follower--hover');
-            });
-            
-            el.addEventListener('mouseleave', () => {
-                cursor.classList.remove('cursor--hover');
-                follower.classList.remove('cursor-follower--hover');
-            });
-        });
-        
-        // Animation loop using requestAnimationFrame
-        const animateCursor = () => {
-            // Smooth cursor movement
+        const animate = () => {
             cursorX += (mouseX - cursorX) * 0.3;
             cursorY += (mouseY - cursorY) * 0.3;
-            
             followerX += (mouseX - followerX) * 0.1;
             followerY += (mouseY - followerY) * 0.1;
-            
             cursor.style.left = `${cursorX}px`;
             cursor.style.top = `${cursorY}px`;
-            
             follower.style.left = `${followerX}px`;
             follower.style.top = `${followerY}px`;
-            
-            requestAnimationFrame(animateCursor);
+            requestAnimationFrame(animate);
         };
-        
-        animateCursor();
+        animate();
     }
 
-    /**
-     * Particles background
-     */
     initParticles() {
         const canvas = document.getElementById('particles');
         if (!canvas) return;
-        
         const ctx = canvas.getContext('2d');
         let particles = [];
-        let animationId;
-        
-        const resize = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        };
-        
-        window.addEventListener('resize', () => {
-            resize();
-            createParticles();
-        });
-        
+        let animId;
+        const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
+        window.addEventListener('resize', () => { resize(); createParticles(); });
         resize();
-        
         class Particle {
-            constructor() {
-                this.reset();
-            }
-            
+            constructor() { this.reset(); }
             reset() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
@@ -134,16 +81,10 @@ class App {
                 this.speedY = (Math.random() - 0.5) * 0.5;
                 this.opacity = Math.random() * 0.5 + 0.1;
             }
-            
             update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                
-                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
-                    this.reset();
-                }
+                this.x += this.speedX; this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
             }
-            
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -151,418 +92,334 @@ class App {
                 ctx.fill();
             }
         }
-        
         const createParticles = () => {
-            const particleCount = Math.floor((canvas.width * canvas.height) / 15000);
-            particles = [];
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
+            const count = Math.floor((canvas.width * canvas.height) / 15000);
+            particles = Array.from({ length: count }, () => new Particle());
         };
-        
         createParticles();
-        
         const animate = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            particles.forEach(particle => {
-                particle.update();
-                particle.draw();
-            });
-            
-            // Draw connections
+            particles.forEach(p => { p.update(); p.draw(); });
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < 150) {
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 150) {
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(79, 140, 255, ${0.05 * (1 - distance / 150)})`;
+                        ctx.strokeStyle = `rgba(79, 140, 255, ${0.05 * (1 - dist / 150)})`;
                         ctx.lineWidth = 0.5;
                         ctx.stroke();
                     }
                 }
             }
-            
-            animationId = requestAnimationFrame(animate);
+            animId = requestAnimationFrame(animate);
         };
-        
         animate();
+    }
+
+initHeader() {
+    const header = document.getElementById('header');
+    if (!header) return;
+    
+    // El header siempre permanece visible y sticky
+    // Solo agregamos efecto de sombra al hacer scroll
+    
+    let ticking = false;
+    const updateHeaderScroll = () => {
+        const currentScroll = window.scrollY;
+        const theme = document.documentElement.getAttribute('data-theme');
         
-        // Cleanup on page unload
-        window.addEventListener('beforeunload', () => {
-            if (animationId) {
-                cancelAnimationFrame(animationId);
+        if (currentScroll > 50) {
+            if (theme === 'light') {
+                header.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'rgba(255, 255, 255, 0.9)';
+            } else {
+                header.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.4)';
+                header.style.background = 'rgba(14, 14, 16, 0.9)';
+            }
+        } else {
+            if (theme === 'light') {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.06)';
+                header.style.background = 'rgba(255, 255, 255, 0.75)';
+            } else {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
+                header.style.background = 'rgba(14, 14, 16, 0.75)';
+            }
+        }
+        ticking = false;
+    };
+    
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(updateHeaderScroll);
+            ticking = true;
+        }
+    }, { passive: true });
+    
+    // Observar cambios de tema para actualizar el header
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.attributeName === 'data-theme') {
+                updateHeaderScroll();
             }
         });
-    }
+    });
+    
+    observer.observe(document.documentElement, { attributes: true });
+}
 
-    /**
-     * Header scroll behavior
-     */
-    initHeader() {
-        const header = document.getElementById('header');
-        if (!header) return;
-        
-        let lastScroll = 0;
-        let scrollTimeout;
-        
-        const handleScroll = () => {
-            const currentScroll = window.scrollY;
-            
-            if (currentScroll > 100) {
-                if (currentScroll > lastScroll) {
-                    // Scrolling down
-                    header.classList.add('header--hidden');
-                } else {
-                    // Scrolling up
-                    header.classList.remove('header--hidden');
-                }
-            } else {
-                header.classList.remove('header--hidden');
-            }
-            
-            lastScroll = currentScroll;
-            
-            // Debounce scroll handler
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                if (currentScroll < 100) {
-                    header.classList.remove('header--hidden');
-                }
-            }, 100);
-        };
-        
-        window.addEventListener('scroll', handleScroll, { passive: true });
-    }
-
-    /**
-     * Mobile menu
-     */
     initMobileMenu() {
         const menuBtn = document.getElementById('menuBtn');
-        const menu = document.querySelector('.header__menu');
-        const links = document.querySelectorAll('.header__link');
-        
+        const menu = document.getElementById('headerMenu');
+        const overlay = document.getElementById('menuOverlay');
         if (!menuBtn || !menu) return;
-        
-        const toggleMenu = () => {
-            const isOpen = menu.classList.contains('header__menu--active');
-            
-            if (isOpen) {
-                menu.classList.remove('header__menu--active');
-                menuBtn.classList.remove('header__menu-btn--active');
-                menuBtn.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
-            } else {
-                menu.classList.add('header__menu--active');
-                menuBtn.classList.add('header__menu-btn--active');
-                menuBtn.setAttribute('aria-expanded', 'true');
-                document.body.style.overflow = 'hidden';
-            }
+        const closeMenu = () => {
+            menu.classList.remove('header__menu--active');
+            menuBtn.classList.remove('header__menu-btn--active');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            if (overlay) overlay.classList.remove('header__menu-overlay--active');
+            document.body.classList.remove('no-scroll');
         };
-        
-        menuBtn.addEventListener('click', toggleMenu);
-        
-        // Close menu when clicking a link
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.remove('header__menu--active');
-                menuBtn.classList.remove('header__menu-btn--active');
-                menuBtn.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
-            });
+        const openMenu = () => {
+            menu.classList.add('header__menu--active');
+            menuBtn.classList.add('header__menu-btn--active');
+            menuBtn.setAttribute('aria-expanded', 'true');
+            if (overlay) overlay.classList.add('header__menu-overlay--active');
+            document.body.classList.add('no-scroll');
+        };
+        menuBtn.addEventListener('click', () => {
+            menu.classList.contains('header__menu--active') ? closeMenu() : openMenu();
         });
-        
-        // Close menu when pressing Escape
+        if (overlay) overlay.addEventListener('click', closeMenu);
+        menu.querySelectorAll('.header__link').forEach(link => link.addEventListener('click', closeMenu));
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && menu.classList.contains('header__menu--active')) {
-                toggleMenu();
-            }
+            if (e.key === 'Escape' && menu.classList.contains('header__menu--active')) closeMenu();
         });
     }
 
-    /**
-     * Popup functionality
-     */
     initPopups() {
         const popup = document.getElementById('popup');
-        const popupOverlay = document.getElementById('popupOverlay');
-        const popupClose = document.getElementById('popupClose');
-        const popupBody = document.getElementById('popupBody');
-        
-        if (!popup || !popupOverlay || !popupClose || !popupBody) return;
-        
-        // Open popup
+        const overlay = document.getElementById('popupOverlay');
+        const closeBtn = document.getElementById('popupClose');
+        const body = document.getElementById('popupBody');
+        if (!popup || !overlay || !closeBtn || !body) return;
         const openPopup = (content) => {
-            popupBody.innerHTML = content;
+            body.innerHTML = content;
             popup.classList.add('popup--active');
             popup.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
+            document.body.classList.add('no-scroll');
         };
-        
-        // Close popup
         const closePopup = () => {
             popup.classList.remove('popup--active');
             popup.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
+            document.body.classList.remove('no-scroll');
         };
-        
-        popupOverlay.addEventListener('click', closePopup);
-        popupClose.addEventListener('click', closePopup);
-        
-        // Close on Escape
+        overlay.addEventListener('click', closePopup);
+        closeBtn.addEventListener('click', closePopup);
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && popup.classList.contains('popup--active')) {
-                closePopup();
-            }
+            if (e.key === 'Escape' && popup.classList.contains('popup--active')) closePopup();
         });
-        
         // Diploma popups
-        document.querySelectorAll('[data-diploma]').forEach(card => {
+        document.querySelectorAll('[data-popup="diploma"]').forEach(card => {
             card.addEventListener('click', () => {
-                const title = card.querySelector('.recognition-card__title').textContent;
-                const institution = card.querySelector('.recognition-card__institution').textContent;
-                const date = card.querySelector('.recognition-card__date').textContent;
-                
-                const content = `
-                    <h3>${title}</h3>
-                    <p><strong>Institución:</strong> ${institution}</p>
-                    <p><strong>Fecha:</strong> ${date}</p>
-                    <p style="margin-top: 16px;">Certificación oficial que acredita la finalización exitosa del programa de formación, demostrando competencias avanzadas en el área correspondiente.</p>
-                `;
-                
-                openPopup(content);
+                const title = card.getAttribute('data-popup-title');
+                const institution = card.getAttribute('data-popup-institution');
+                const date = card.getAttribute('data-popup-date');
+                openPopup(`<h3>${title}</h3><p><strong>Institución:</strong> ${institution}</p><p><strong>Fecha:</strong> ${date}</p><p style="margin-top:16px">Certificación oficial que acredita competencias avanzadas en el área correspondiente.</p>`);
             });
         });
-        
         // Soft skill popups
-        document.querySelectorAll('[data-soft-skill]').forEach(card => {
+        document.querySelectorAll('[data-popup="softskill"]').forEach(card => {
             card.addEventListener('click', () => {
-                const title = card.querySelector('.soft-skill-card__title').textContent;
-                const desc = card.querySelector('.soft-skill-card__desc').textContent;
-                
-                const content = `
-                    <h3>${title}</h3>
-                    <p>${desc}</p>
-                    <p style="margin-top: 16px;"><strong>Aplicación profesional:</strong></p>
-                    <p>Esta habilidad se aplica diariamente en entornos de desarrollo colaborativo, permitiendo una comunicación efectiva con stakeholders, equipos multidisciplinarios y clientes.</p>
-                    <p style="margin-top: 12px;"><strong>Beneficio clave:</strong></p>
-                    <p>Mejora significativa en la productividad del equipo, reducción de malentendidos y mayor satisfacción en los proyectos.</p>
-                `;
-                
-                openPopup(content);
+                const title = card.getAttribute('data-softskill-title');
+                const desc = card.getAttribute('data-softskill-desc');
+                openPopup(`<h3>${title}</h3><p>${desc}</p><p style="margin-top:16px"><strong>Aplicación profesional:</strong> Esta habilidad se aplica diariamente en entornos colaborativos.</p><p style="margin-top:12px"><strong>Beneficio:</strong> Mejora la productividad y satisfacción en proyectos.</p>`);
             });
         });
-        
         // Testimonial popups
-        document.querySelectorAll('[data-testimonial]').forEach(card => {
+        document.querySelectorAll('[data-popup="testimonial"]').forEach(card => {
             card.addEventListener('click', () => {
-                const name = card.querySelector('.testimonial-card__name').textContent;
-                const role = card.querySelector('.testimonial-card__role').textContent;
+                const name = card.getAttribute('data-testimonial-name');
+                const role = card.getAttribute('data-testimonial-role');
                 const text = card.querySelector('.testimonial-card__text').textContent;
-                
-                const content = `
-                    <div style="text-align: center; margin-bottom: 20px;">
-                        <i class="fas fa-user-circle" style="font-size: 5rem; color: var(--color-secondary); opacity: 0.4;"></i>
-                    </div>
-                    <h3 style="text-align: center;">${name}</h3>
-                    <p style="text-align: center; color: var(--color-accent);">${role}</p>
-                    <div style="text-align: center; margin: 16px 0; color: #fbbf24;">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 20px;">"${text}"</p>
-                    <p style="margin-top: 20px; color: var(--color-secondary);">Trabajar con Salvador fue una experiencia excepcional. Su profesionalismo, atención al detalle y capacidad para entender las necesidades del proyecto superaron nuestras expectativas. Recomiendo ampliamente sus servicios.</p>
-                `;
-                
-                openPopup(content);
+                openPopup(`<div style="text-align:center;margin-bottom:16px"><i class="fas fa-user-circle" style="font-size:4rem;opacity:0.4"></i></div><h3 style="text-align:center">${name}</h3><p style="text-align:center;color:var(--color-accent)">${role}</p><div style="text-align:center;margin:12px 0;color:#fbbf24"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p style="font-size:1.05rem;line-height:1.8;margin-top:16px">${text}</p><p style="margin-top:16px;color:var(--color-secondary)">Trabajar con Salvador fue una experiencia excepcional. Su profesionalismo y atención al detalle superaron nuestras expectativas.</p>`);
             });
         });
     }
 
-    /**
-     * Number counter animation
-     */
+    initSkillPopups() {
+        const popup = document.getElementById('popup');
+        const body = document.getElementById('popupBody');
+        if (!popup || !body) return;
+        const skillData = {
+            html5: { icon: 'fab fa-html5', name: 'HTML5', desc: 'Lenguaje de marcado para estructura web semántica y accesible.', experience: 'Más de 5 años', use: 'Maquetación semántica, SEO, accesibilidad web, estructura de documentos.', level: '95%', projects: 'ePortfolio, Huerto en Mano, QuantumSprint', color: '#E34F26' },
+            css3: { icon: 'fab fa-css3-alt', name: 'CSS3', desc: 'Estilos avanzados con animaciones, flexbox, grid y diseño responsive.', experience: 'Más de 5 años', use: 'Diseño responsive, animaciones, layouts complejos, temas personalizados.', level: '90%', projects: 'ePortfolio, Landing Pages, Dashboards', color: '#1572B6' },
+            javascript: { icon: 'fab fa-js', name: 'JavaScript', desc: 'Programación del lado del cliente y servidor con ES6+.', experience: 'Más de 5 años', use: 'SPA, manipulación DOM, APIs, aplicaciones interactivas.', level: '92%', projects: 'VaresaAI, QuantumSprint, ePortfolio', color: '#F7DF1E' },
+            typescript: { icon: 'fab fa-js', name: 'TypeScript', desc: 'JavaScript tipado para desarrollo escalable y mantenible.', experience: '3 años', use: 'Aplicaciones enterprise, tipado estático, POO avanzada.', level: '88%', projects: 'QuantumSprint, APIs REST', color: '#3178C6' },
+            react: { icon: 'fab fa-react', name: 'React', desc: 'Biblioteca para interfaces de usuario interactivas y componentes reutilizables.', experience: '4 años', use: 'SPA, dashboards, aplicaciones interactivas, estado global.', level: '90%', projects: 'Huerto en Mano, Dashboards, ePortfolio', color: '#61DAFB' },
+            nestjs: { icon: 'fas fa-server', name: 'NestJS', desc: 'Framework Node.js progresivo para aplicaciones backend escalables.', experience: '2 años', use: 'APIs REST, microservicios, arquitectura modular.', level: '82%', projects: 'QuantumSprint, APIs empresariales', color: '#E0234E' },
+            nodejs: { icon: 'fab fa-node-js', name: 'Node.js', desc: 'Entorno de ejecución JavaScript del lado del servidor.', experience: '4 años', use: 'Backend, APIs, servicios web, scripting, automatización.', level: '90%', projects: 'Huerto en Mano, VaresaAI, APIs REST', color: '#339933' },
+            php: { icon: 'fab fa-php', name: 'PHP', desc: 'Lenguaje de scripting para desarrollo web del lado del servidor.', experience: '3 años', use: 'Backend tradicional, CMS, Laravel, APIs.', level: '78%', projects: 'Sistemas legacy, Laravel apps', color: '#777BB4' },
+            python: { icon: 'fab fa-python', name: 'Python', desc: 'Lenguaje versátil para desarrollo web, IA y automatización.', experience: '3 años', use: 'Machine Learning, Flask, automatización, scripting.', level: '85%', projects: 'VaresaAI, Scripts automatizados', color: '#3776AB' },
+            mysql: { icon: 'fas fa-database', name: 'MySQL', desc: 'Sistema de gestión de bases de datos relacional.', experience: '4 años', use: 'Modelado de datos, consultas complejas, optimización.', level: '88%', projects: 'QuantumSprint, Sistemas empresariales', color: '#4479A1' },
+            docker: { icon: 'fab fa-docker', name: 'Docker', desc: 'Contenedores para despliegue y desarrollo consistente.', experience: '2 años', use: 'CI/CD, entornos aislados, microservicios.', level: '80%', projects: 'Infraestructura DevOps', color: '#2496ED' },
+            git: { icon: 'fab fa-git-alt', name: 'Git', desc: 'Control de versiones distribuido para trabajo colaborativo.', experience: '5 años', use: 'Control de versiones, branching, code review, CI/CD.', level: '95%', projects: 'Todos los proyectos', color: '#F05032' }
+        };
+        document.querySelectorAll('.skill-card[data-skill]').forEach(card => {
+            card.addEventListener('click', () => {
+                const skillKey = card.getAttribute('data-skill');
+                const data = skillData[skillKey];
+                if (!data) return;
+                const content = `
+                    <div class="popup-skill__icon"><i class="${data.icon}" style="color:${data.color}"></i></div>
+                    <h3 style="text-align:center">${data.name}</h3>
+                    <p style="text-align:center;color:var(--color-secondary)">${data.desc}</p>
+                    <div class="popup-skill__level-bar"><div class="popup-skill__level-fill" style="width:${data.level}"></div></div>
+                    <p style="text-align:center;font-weight:600;color:var(--color-accent)">${data.level}</p>
+                    <p style="margin-top:16px"><strong>Experiencia:</strong> ${data.experience}</p>
+                    <p><strong>Casos de uso:</strong> ${data.use}</p>
+                    <p><strong>Proyectos relacionados:</strong> ${data.projects}</p>
+                `;
+                body.innerHTML = content;
+                popup.classList.add('popup--active');
+                popup.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('no-scroll');
+            });
+        });
+    }
+
     initCounters() {
         const counters = document.querySelectorAll('[data-counter]');
-        
-        const animateCounter = (counter) => {
-            const target = parseInt(counter.getAttribute('data-counter'));
-            const duration = 2000;
-            const startTime = performance.now();
-            
-            const update = (currentTime) => {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                
-                // Ease out cubic
-                const eased = 1 - Math.pow(1 - progress, 3);
-                const current = Math.round(target * eased);
-                
-                counter.textContent = current;
-                
-                if (progress < 1) {
-                    requestAnimationFrame(update);
-                }
-            };
-            
-            requestAnimationFrame(update);
-        };
-        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    animateCounter(entry.target);
-                    observer.unobserve(entry.target);
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-counter'));
+                    const duration = 2000;
+                    const startTime = performance.now();
+                    const update = (currentTime) => {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        counter.textContent = Math.round(target * eased);
+                        if (progress < 1) requestAnimationFrame(update);
+                    };
+                    requestAnimationFrame(update);
+                    observer.unobserve(counter);
                 }
             });
         }, { threshold: 0.5 });
-        
-        counters.forEach(counter => observer.observe(counter));
+        counters.forEach(c => observer.observe(c));
     }
 
-    /**
-     * Magnetic button effect
-     */
     initMagneticButtons() {
-        const magneticElements = document.querySelectorAll('.magnetic');
-        
-        magneticElements.forEach(el => {
+        document.querySelectorAll('.magnetic').forEach(el => {
             el.addEventListener('mousemove', (e) => {
                 const rect = el.getBoundingClientRect();
                 const x = e.clientX - rect.left - rect.width / 2;
                 const y = e.clientY - rect.top - rect.height / 2;
-                
-                const strength = 0.15;
-                const moveX = x * strength;
-                const moveY = y * strength;
-                
                 requestAnimationFrame(() => {
-                    el.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                    el.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
                 });
             });
-            
             el.addEventListener('mouseleave', () => {
-                requestAnimationFrame(() => {
-                    el.style.transform = 'translate(0, 0)';
-                });
+                requestAnimationFrame(() => { el.style.transform = 'translate(0, 0)'; });
             });
         });
     }
 
-    /**
-     * Smooth scroll for anchor links
-     */
-    initSmoothScroll() {
+    initSmoothScrollLinks() {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const targetId = this.getAttribute('href');
-                
                 if (targetId === '#') return;
-                
                 const target = document.querySelector(targetId);
-                
                 if (target) {
                     e.preventDefault();
-                    
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    const headerHeight = document.getElementById('header')?.offsetHeight || 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
                 }
             });
         });
     }
 
-    /**
-     * Scroll reveal using Intersection Observer
-     */
     initScrollReveal() {
-        const revealElements = document.querySelectorAll('[data-animate]');
-        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    
-                    // Don't unobserve stagger containers
-                    if (entry.target.getAttribute('data-animate') !== 'stagger') {
-                        observer.unobserve(entry.target);
-                    }
+                    observer.unobserve(entry.target);
                 }
             });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
-        
-        revealElements.forEach(el => observer.observe(el));
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
     }
 
-    /**
-     * Language toggle
-     */
     initLanguageToggle() {
-        const langToggle = document.getElementById('languageToggle');
-        const langLabel = langToggle?.querySelector('.lang-label');
-        
-        if (!langToggle || !langLabel) return;
-        
-        let currentLang = 'ES';
-        
-        langToggle.addEventListener('click', () => {
-            currentLang = currentLang === 'ES' ? 'EN' : 'ES';
-            langLabel.textContent = currentLang;
-            
-            // Add animation
-            langLabel.style.transform = 'scale(0.8)';
+        const btn = document.getElementById('languageToggle');
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+            i18n.toggle();
+            const label = btn.querySelector('.lang-label');
+            label.style.transform = 'scale(0.8)';
             requestAnimationFrame(() => {
-                langLabel.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                langLabel.style.transform = 'scale(1)';
+                label.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                label.style.transform = 'scale(1)';
             });
-            
-            // Here you would implement actual language switching
-            console.log(`Language changed to: ${currentLang}`);
         });
     }
 
-    /**
-     * Lazy loading for images
-     */
     initLazyLoading() {
         if ('loading' in HTMLImageElement.prototype) {
-            // Browser supports lazy loading natively
             document.querySelectorAll('img[data-src]').forEach(img => {
                 img.src = img.dataset.src;
                 img.removeAttribute('data-src');
             });
         } else {
-            // Fallback using Intersection Observer
-            const imageObserver = new IntersectionObserver((entries) => {
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const img = entry.target;
                         img.src = img.dataset.src;
                         img.removeAttribute('data-src');
-                        imageObserver.unobserve(img);
+                        observer.unobserve(img);
                     }
                 });
             });
-            
-            document.querySelectorAll('img[data-src]').forEach(img => {
-                imageObserver.observe(img);
-            });
+            document.querySelectorAll('img[data-src]').forEach(img => observer.observe(img));
         }
+    }
+
+    initActiveNavLink() {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.header__link');
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -70% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
     }
 }
 
-// Initialize application
 const app = new App();

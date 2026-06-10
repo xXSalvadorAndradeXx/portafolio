@@ -2,23 +2,19 @@
 <html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Salvador Andrade - Full Stack Developer | Portafolio profesional con proyectos innovadores y soluciones tecnológicas de vanguardia">
-    <meta name="keywords" content="desarrollador full stack, programador, web developer, JavaScript, React, Node.js, portfolio">
-    <meta name="author" content="Salvador Andrade">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Salvador Andrade - Full Stack Developer | Portafolio profesional premium">
+    <meta name="theme-color" content="#050505">
     
     <!-- Open Graph -->
     <meta property="og:title" content="Salvador Andrade | Full Stack Developer">
-    <meta property="og:description" content="El código es ser uno mismo. Desarrollo web de alta calidad con tecnologías modernas.">
+    <meta property="og:description" content="El código es ser uno mismo. Desarrollo web de alta calidad.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://salvadorandrade.com">
-    <meta property="og:image" content="https://salvadorandrade.com/assets/img/og-image.jpg">
     
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Salvador Andrade | Full Stack Developer">
-    <meta name="twitter:description" content="El código es ser uno mismo. Desarrollo web de alta calidad con tecnologías modernas.">
-    <meta name="twitter:image" content="https://salvadorandrade.com/assets/img/twitter-image.jpg">
     
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -27,18 +23,12 @@
         "@type": "Person",
         "name": "Salvador Andrade",
         "jobTitle": "Full Stack Developer",
-        "url": "https://salvadorandrade.com",
-        "sameAs": [
-            "https://linkedin.com/in/salvadorandrade",
-            "https://github.com/salvadorandrade"
-        ]
+        "url": "https://salvadorandrade.com"
     }
     </script>
     
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
     <link rel="manifest" href="/manifest.json">
-    
     <title>Salvador Andrade | Full Stack Developer</title>
     
     <!-- Fonts -->
@@ -46,13 +36,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- Libraries -->
+    <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <!-- Lenis Smooth Scroll -->
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.9/dist/lenis.min.js"></script>
+    
+    <!-- Swiper -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     
@@ -75,9 +69,9 @@
             </div>
             <div class="loader__logo" id="loaderLogo">
                 <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-                    <rect x="10" y="10" width="60" height="60" rx="16" stroke="white" stroke-width="2" fill="none"/>
-                    <path d="M25 55L40 25L55 55" stroke="white" stroke-width="2" fill="none"/>
-                    <circle cx="40" cy="45" r="3" fill="white"/>
+                    <rect x="10" y="10" width="60" height="60" rx="16" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <path d="M25 55L40 25L55 55" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <circle cx="40" cy="45" r="3" fill="currentColor"/>
                 </svg>
             </div>
             <p class="loader__text" id="loaderText">Creando experiencias únicas</p>
@@ -102,12 +96,15 @@
                 </svg>
             </a>
             
-            <ul class="header__menu" role="menubar">
-                <li role="none"><a href="#about" role="menuitem" class="header__link">Sobre mí</a></li>
-                <li role="none"><a href="#skills" role="menuitem" class="header__link">Habilidades</a></li>
-                <li role="none"><a href="#projects" role="menuitem" class="header__link">Proyectos</a></li>
-                <li role="none"><a href="#publications" role="menuitem" class="header__link">Publicaciones</a></li>
-                <li role="none"><a href="#contact" role="menuitem" class="header__link">Contacto</a></li>
+            <div class="header__menu-overlay" id="menuOverlay"></div>
+            
+            <ul class="header__menu" id="headerMenu" role="menubar">
+                <li role="none"><a href="#about" role="menuitem" class="header__link" data-i18n="nav.about">Sobre mí</a></li>
+                <li role="none"><a href="#recognitions" role="menuitem" class="header__link" data-i18n="nav.recognitions">Reconocimientos</a></li>
+                <li role="none"><a href="#skills" role="menuitem" class="header__link" data-i18n="nav.skills">Habilidades</a></li>
+                <li role="none"><a href="#projects" role="menuitem" class="header__link" data-i18n="nav.projects">Proyectos</a></li>
+                <li role="none"><a href="#publications" role="menuitem" class="header__link" data-i18n="nav.publications">Publicaciones</a></li>
+                <li role="none"><a href="#contact" role="menuitem" class="header__link" data-i18n="nav.contact">Contacto</a></li>
             </ul>
             
             <div class="header__actions">
@@ -130,28 +127,22 @@
     <!-- Main Content -->
     <main id="main-content">
         <!-- Hero Section -->
-        <section class="hero" id="hero" aria-label="Presentación">
+        <section class="hero section" id="hero" aria-label="Presentación">
             <div class="hero__content">
-                
-                <h1 class="hero__title" data-animate="fade-up">
+                <div class="hero__badge" data-animate="fade-up">
+                    <span class="hero__badge-dot"></span>
+                    <span data-i18n="hero.availability">Disponible para proyectos</span>
+                </div>
+                <h1 class="hero__title">
                     <span class="hero__name">Salvador Andrade</span>
-                    <span class="hero__role">Full Stack Developer</span>
+                    <span class="hero__role" data-i18n="hero.role">Full Stack Developer</span>
                 </h1>
-                <p class="hero__motto" data-animate="fade-up">
-                    "El código es ser uno mismo"
-                </p>
-                <div class="hero__actions" data-animate="fade-up">
-                    <a href="#projects" class="btn btn--primary magnetic">
-                        <span>Ver proyectos</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="/assets/documents/cv-salvador-andrade.pdf" class="btn btn--secondary magnetic" download>
-                        <span>Descargar CV</span>
-                        <i class="fas fa-download"></i>
-                    </a>
+                <p class="hero__motto" data-i18n="hero.motto">"El código es ser uno mismo"</p>
+                <div class="hero__actions">
+                    <a href="#projects" class="btn btn--primary magnetic" data-i18n="hero.viewProjects">Ver proyectos</a>
+                    <a href="/assets/documents/cv-salvador-andrade.pdf" class="btn btn--secondary magnetic" download data-i18n="hero.downloadCV">Descargar CV</a>
                 </div>
             </div>
-            
         </section>
 
         <!-- About Section -->
@@ -168,7 +159,7 @@
 
                     <!-- Imagen de perfil -->
                     <img
-                        src="/assets/img/perfil.png"
+                        src="/assets/img/Foto.png"
                         alt="Foto de Salvador Andrade"
                         class="about__profile-image"
                     >
@@ -198,38 +189,29 @@
         <section class="recognitions section" id="recognitions" aria-label="Reconocimientos">
             <div class="container">
                 <h2 class="section__title" data-animate="fade-up">
-                    <span class="section__title-accent">Reconocimientos</span>
+                    <span class="section__title-accent" data-i18n="recognitions.title">Reconocimientos</span>
                 </h2>
                 <div class="swiper recognitions-swiper" data-animate="fade-up">
                     <div class="swiper-wrapper">
-                        <!-- Diploma 1 -->
                         <div class="swiper-slide">
-                            <div class="recognition-card glass" data-diploma="diploma-1">
-                                <div class="recognition-card__image">
-                                    <i class="fas fa-certificate"></i>
-                                </div>
+                            <div class="recognition-card glass" data-popup="diploma" data-popup-title="Full Stack Web Development" data-popup-institution="Platzi" data-popup-date="2023">
+                                <div class="recognition-card__image"><i class="fas fa-certificate"></i></div>
                                 <h3 class="recognition-card__title">Full Stack Web Development</h3>
                                 <p class="recognition-card__institution">Platzi</p>
                                 <p class="recognition-card__date">2023</p>
                             </div>
                         </div>
-                        <!-- Diploma 2 -->
                         <div class="swiper-slide">
-                            <div class="recognition-card glass" data-diploma="diploma-2">
-                                <div class="recognition-card__image">
-                                    <i class="fas fa-award"></i>
-                                </div>
+                            <div class="recognition-card glass" data-popup="diploma" data-popup-title="Arquitectura de Software" data-popup-institution="Udemy" data-popup-date="2024">
+                                <div class="recognition-card__image"><i class="fas fa-award"></i></div>
                                 <h3 class="recognition-card__title">Arquitectura de Software</h3>
                                 <p class="recognition-card__institution">Udemy</p>
                                 <p class="recognition-card__date">2024</p>
                             </div>
                         </div>
-                        <!-- Diploma 3 -->
                         <div class="swiper-slide">
-                            <div class="recognition-card glass" data-diploma="diploma-3">
-                                <div class="recognition-card__image">
-                                    <i class="fas fa-star"></i>
-                                </div>
+                            <div class="recognition-card glass" data-popup="diploma" data-popup-title="Cloud Computing AWS" data-popup-institution="Amazon Web Services" data-popup-date="2024">
+                                <div class="recognition-card__image"><i class="fas fa-cloud"></i></div>
                                 <h3 class="recognition-card__title">Cloud Computing AWS</h3>
                                 <p class="recognition-card__institution">Amazon Web Services</p>
                                 <p class="recognition-card__date">2024</p>
@@ -247,138 +229,114 @@
         <section class="skills section" id="skills" aria-label="Habilidades duras">
             <div class="container">
                 <h2 class="section__title" data-animate="fade-up">
-                    <span class="section__title-accent">Habilidades Duras</span>
+                    <span class="section__title-accent" data-i18n="skills.title">Habilidades Duras</span>
                 </h2>
                 <div class="skills__grid">
-                    <div class="skill-card glass" data-skill="html" data-animate="scale-in">
-                        <div class="skill-card__icon">
-                            <i class="fab fa-html5"></i>
-                        </div>
+                    <!-- Skill: HTML5 -->
+                    <div class="skill-card glass" data-skill="html5" data-animate="scale-in">
+                        <div class="skill-card__icon"><i class="fab fa-html5"></i></div>
                         <h3 class="skill-card__name">HTML5</h3>
-                        <div class="skill-card__bar">
-                            <div class="skill-card__bar-fill" style="width: 0%" data-width="95%"></div>
-                        </div>
+                        <div class="skill-card__bar"><div class="skill-card__bar-fill" style="width:0%" data-width="95%"></div></div>
+                        <span class="skill-card__percent">95%</span>
                         <span class="skill-card__level">Avanzado</span>
                     </div>
-
-                    <div class="skill-card glass" data-skill="css" data-animate="scale-in">
-                        <div class="skill-card__icon">
-                            <i class="fab fa-css3-alt"></i>
-                        </div>
+                    
+                    <!-- Skill: CSS3 -->
+                    <div class="skill-card glass" data-skill="css3" data-animate="scale-in">
+                        <div class="skill-card__icon"><i class="fab fa-css3-alt"></i></div>
                         <h3 class="skill-card__name">CSS3</h3>
-                        <div class="skill-card__bar">
-                            <div class="skill-card__bar-fill" style="width: 0%" data-width="90%"></div>
-                        </div>
+                        <div class="skill-card__bar"><div class="skill-card__bar-fill" style="width:0%" data-width="90%"></div></div>
+                        <span class="skill-card__percent">90%</span>
                         <span class="skill-card__level">Avanzado</span>
                     </div>
-
+                    
+                    <!-- Skill: JavaScript -->
                     <div class="skill-card glass" data-skill="javascript" data-animate="scale-in">
-                        <div class="skill-card__icon">
-                            <i class="fab fa-js"></i>
-                        </div>
+                        <div class="skill-card__icon"><i class="fab fa-js"></i></div>
                         <h3 class="skill-card__name">JavaScript</h3>
-                        <div class="skill-card__bar">
-                            <div class="skill-card__bar-fill" style="width: 0%" data-width="92%"></div>
-                        </div>
+                        <div class="skill-card__bar"><div class="skill-card__bar-fill" style="width:0%" data-width="92%"></div></div>
+                        <span class="skill-card__percent">92%</span>
                         <span class="skill-card__level">Avanzado</span>
                     </div>
-
+                    
+                    <!-- Skill: TypeScript -->
                     <div class="skill-card glass" data-skill="typescript" data-animate="scale-in">
-                        <div class="skill-card__icon">
-                            <i class="fab fa-js"></i>
-                        </div>
+                        <div class="skill-card__icon"><i class="fab fa-js" style="color:#3178c6"></i></div>
                         <h3 class="skill-card__name">TypeScript</h3>
-                        <div class="skill-card__bar">
-                            <div class="skill-card__bar-fill" style="width: 0%" data-width="85%"></div>
-                        </div>
+                        <div class="skill-card__bar"><div class="skill-card__bar-fill" style="width:0%" data-width="88%"></div></div>
+                        <span class="skill-card__percent">88%</span>
                         <span class="skill-card__level">Avanzado</span>
                     </div>
-
-                    <div class="skill-card glass" data-skill="nodejs" data-animate="scale-in">
-                        <div class="skill-card__icon">
-                            <i class="fab fa-node-js"></i>
-                        </div>
-                        <h3 class="skill-card__name">Node.js</h3>
-                        <div class="skill-card__bar">
-                            <div class="skill-card__bar-fill" style="width: 0%" data-width="88%"></div>
-                        </div>
-                        <span class="skill-card__level">Avanzado</span>
-                    </div>
-
+                    
+                    <!-- Skill: React -->
                     <div class="skill-card glass" data-skill="react" data-animate="scale-in">
-                        <div class="skill-card__icon">
-                            <i class="fab fa-react"></i>
-                        </div>
+                        <div class="skill-card__icon"><i class="fab fa-react"></i></div>
                         <h3 class="skill-card__name">React</h3>
-                        <div class="skill-card__bar">
-                            <div class="skill-card__bar-fill" style="width: 0%" data-width="90%"></div>
-                        </div>
+                        <div class="skill-card__bar"><div class="skill-card__bar-fill" style="width:0%" data-width="90%"></div></div>
+                        <span class="skill-card__percent">90%</span>
                         <span class="skill-card__level">Avanzado</span>
                     </div>
-
+                    
+                    <!-- Skill: NestJS -->
+                    <div class="skill-card glass" data-skill="nestjs" data-animate="scale-in">
+                        <div class="skill-card__icon"><i class="fas fa-server"></i></div>
+                        <h3 class="skill-card__name">NestJS</h3>
+                        <div class="skill-card__bar"><div class="skill-card__bar-fill" style="width:0%" data-width="82%"></div></div>
+                        <span class="skill-card__percent">82%</span>
+                        <span class="skill-card__level">Intermedio-Avanzado</span>
+                    </div>
+                    
+                    <!-- Skill: NodeJS -->
+                    <div class="skill-card glass" data-skill="nodejs" data-animate="scale-in">
+                        <div class="skill-card__icon"><i class="fab fa-node-js"></i></div>
+                        <h3 class="skill-card__name">Node.js</h3>
+                        <div class="skill-card__bar"><div class="skill-card__bar-fill" style="width:0%" data-width="90%"></div></div>
+                        <span class="skill-card__percent">90%</span>
+                        <span class="skill-card__level">Avanzado</span>
+                    </div>
+                    
+                    <!-- Skill: PHP -->
+                    <div class="skill-card glass" data-skill="php" data-animate="scale-in">
+                        <div class="skill-card__icon"><i class="fab fa-php"></i></div>
+                        <h3 class="skill-card__name">PHP</h3>
+                        <div class="skill-card__bar"><div class="skill-card__bar-fill" style="width:0%" data-width="78%"></div></div>
+                        <span class="skill-card__percent">78%</span>
+                        <span class="skill-card__level">Intermedio</span>
+                    </div>
+                    
+                    <!-- Skill: Python -->
                     <div class="skill-card glass" data-skill="python" data-animate="scale-in">
-                        <div class="skill-card__icon">
-                            <i class="fab fa-python"></i>
-                        </div>
+                        <div class="skill-card__icon"><i class="fab fa-python"></i></div>
                         <h3 class="skill-card__name">Python</h3>
-                        <div class="skill-card__bar">
-                            <div class="skill-card__bar-fill" style="width: 0%" data-width="85%"></div>
-                        </div>
+                        <div class="skill-card__bar"><div class="skill-card__bar-fill" style="width:0%" data-width="85%"></div></div>
+                        <span class="skill-card__percent">85%</span>
                         <span class="skill-card__level">Avanzado</span>
                     </div>
-
-                    <div class="skill-card glass" data-skill="docker" data-animate="scale-in">
-                        <div class="skill-card__icon">
-                            <i class="fab fa-docker"></i>
-                        </div>
-                        <h3 class="skill-card__name">Docker</h3>
-                        <div class="skill-card__bar">
-                            <div class="skill-card__bar-fill" style="width: 0%" data-width="80%"></div>
-                        </div>
-                        <span class="skill-card__level">Intermedio</span>
-                    </div>
-
-                    <div class="skill-card glass" data-skill="git" data-animate="scale-in">
-                        <div class="skill-card__icon">
-                            <i class="fab fa-git-alt"></i>
-                        </div>
-                        <h3 class="skill-card__name">Git</h3>
-                        <div class="skill-card__bar">
-                            <div class="skill-card__bar-fill" style="width: 0%" data-width="95%"></div>
-                        </div>
-                        <span class="skill-card__level">Avanzado</span>
-                    </div>
-
+                    
+                    <!-- Skill: MySQL -->
                     <div class="skill-card glass" data-skill="mysql" data-animate="scale-in">
-                        <div class="skill-card__icon">
-                            <i class="fas fa-database"></i>
-                        </div>
+                        <div class="skill-card__icon"><i class="fas fa-database"></i></div>
                         <h3 class="skill-card__name">MySQL</h3>
-                        <div class="skill-card__bar">
-                            <div class="skill-card__bar-fill" style="width: 0%" data-width="88%"></div>
-                        </div>
+                        <div class="skill-card__bar"><div class="skill-card__bar-fill" style="width:0%" data-width="88%"></div></div>
+                        <span class="skill-card__percent">88%</span>
                         <span class="skill-card__level">Avanzado</span>
                     </div>
-
-                    <div class="skill-card glass" data-skill="mongodb" data-animate="scale-in">
-                        <div class="skill-card__icon">
-                            <i class="fas fa-leaf"></i>
-                        </div>
-                        <h3 class="skill-card__name">MongoDB</h3>
-                        <div class="skill-card__bar">
-                            <div class="skill-card__bar-fill" style="width: 0%" data-width="82%"></div>
-                        </div>
+                    
+                    <!-- Skill: Docker -->
+                    <div class="skill-card glass" data-skill="docker" data-animate="scale-in">
+                        <div class="skill-card__icon"><i class="fab fa-docker"></i></div>
+                        <h3 class="skill-card__name">Docker</h3>
+                        <div class="skill-card__bar"><div class="skill-card__bar-fill" style="width:0%" data-width="80%"></div></div>
+                        <span class="skill-card__percent">80%</span>
                         <span class="skill-card__level">Intermedio</span>
                     </div>
-
-                    <div class="skill-card glass" data-skill="rest-api" data-animate="scale-in">
-                        <div class="skill-card__icon">
-                            <i class="fas fa-plug"></i>
-                        </div>
-                        <h3 class="skill-card__name">REST API</h3>
-                        <div class="skill-card__bar">
-                            <div class="skill-card__bar-fill" style="width: 0%" data-width="90%"></div>
-                        </div>
+                    
+                    <!-- Skill: Git -->
+                    <div class="skill-card glass" data-skill="git" data-animate="scale-in">
+                        <div class="skill-card__icon"><i class="fab fa-git-alt"></i></div>
+                        <h3 class="skill-card__name">Git</h3>
+                        <div class="skill-card__bar"><div class="skill-card__bar-fill" style="width:0%" data-width="95%"></div></div>
+                        <span class="skill-card__percent">95%</span>
                         <span class="skill-card__level">Avanzado</span>
                     </div>
                 </div>
@@ -389,50 +347,50 @@
         <section class="soft-skills section" id="soft-skills" aria-label="Habilidades blandas">
             <div class="container">
                 <h2 class="section__title" data-animate="fade-up">
-                    <span class="section__title-accent">Habilidades Blandas</span>
+                    <span class="section__title-accent" data-i18n="softSkills.title">Habilidades Blandas</span>
                 </h2>
                 <div class="swiper soft-skills-swiper" data-animate="fade-up">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <div class="soft-skill-card glass" data-soft-skill="teamwork">
+                            <div class="soft-skill-card glass" data-popup="softskill" data-softskill-title="Trabajo en Equipo" data-softskill-desc="Colaboración efectiva en equipos multidisciplinarios">
                                 <i class="fas fa-users soft-skill-card__icon"></i>
                                 <h3 class="soft-skill-card__title">Trabajo en Equipo</h3>
                                 <p class="soft-skill-card__desc">Colaboración efectiva en equipos multidisciplinarios</p>
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="soft-skill-card glass" data-soft-skill="communication">
+                            <div class="soft-skill-card glass" data-popup="softskill" data-softskill-title="Comunicación" data-softskill-desc="Comunicación clara con stakeholders">
                                 <i class="fas fa-comments soft-skill-card__icon"></i>
                                 <h3 class="soft-skill-card__title">Comunicación</h3>
-                                <p class="soft-skill-card__desc">Comunicación clara y efectiva con stakeholders</p>
+                                <p class="soft-skill-card__desc">Comunicación clara con stakeholders</p>
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="soft-skill-card glass" data-soft-skill="leadership">
+                            <div class="soft-skill-card glass" data-popup="softskill" data-softskill-title="Liderazgo" data-softskill-desc="Capacidad para guiar equipos">
                                 <i class="fas fa-crown soft-skill-card__icon"></i>
                                 <h3 class="soft-skill-card__title">Liderazgo</h3>
-                                <p class="soft-skill-card__desc">Capacidad para guiar equipos hacia objetivos comunes</p>
+                                <p class="soft-skill-card__desc">Capacidad para guiar equipos</p>
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="soft-skill-card glass" data-soft-skill="problem-solving">
+                            <div class="soft-skill-card glass" data-popup="softskill" data-softskill-title="Resolución de Problemas" data-softskill-desc="Enfoque analítico para soluciones">
                                 <i class="fas fa-puzzle-piece soft-skill-card__icon"></i>
                                 <h3 class="soft-skill-card__title">Resolución de Problemas</h3>
-                                <p class="soft-skill-card__desc">Enfoque analítico para soluciones efectivas</p>
+                                <p class="soft-skill-card__desc">Enfoque analítico para soluciones</p>
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="soft-skill-card glass" data-soft-skill="creativity">
+                            <div class="soft-skill-card glass" data-popup="softskill" data-softskill-title="Creatividad" data-softskill-desc="Innovación en soluciones únicas">
                                 <i class="fas fa-lightbulb soft-skill-card__icon"></i>
                                 <h3 class="soft-skill-card__title">Creatividad</h3>
-                                <p class="soft-skill-card__desc">Innovación en el desarrollo de soluciones únicas</p>
+                                <p class="soft-skill-card__desc">Innovación en soluciones únicas</p>
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="soft-skill-card glass" data-soft-skill="adaptability">
+                            <div class="soft-skill-card glass" data-popup="softskill" data-softskill-title="Adaptabilidad" data-softskill-desc="Flexibilidad ante nuevas tecnologías">
                                 <i class="fas fa-sync-alt soft-skill-card__icon"></i>
                                 <h3 class="soft-skill-card__title">Adaptabilidad</h3>
-                                <p class="soft-skill-card__desc">Flexibilidad ante cambios y nuevas tecnologías</p>
+                                <p class="soft-skill-card__desc">Flexibilidad ante nuevas tecnologías</p>
                             </div>
                         </div>
                     </div>
@@ -445,48 +403,18 @@
         <section class="projects section" id="projects" aria-label="Proyectos">
             <div class="container">
                 <h2 class="section__title" data-animate="fade-up">
-                    <span class="section__title-accent">Proyectos</span>
+                    <span class="section__title-accent" data-i18n="projects.title">Proyectos</span>
                 </h2>
                 <div class="swiper projects-swiper" data-animate="fade-up">
                     <div class="swiper-wrapper">
-                        <!-- Project 1 -->
                         <div class="swiper-slide">
                             <div class="project-card glass">
-                                <div class="project-card__image">
-                                    <i class="fas fa-seedling"></i>
-                                </div>
+                                <div class="project-card__image"><i class="fas fa-seedling"></i></div>
                                 <div class="project-card__content">
                                     <h3 class="project-card__title">Huerto en Mano</h3>
                                     <p class="project-card__description">Aplicación IoT para gestión inteligente de huertos urbanos con Arduino y ESP32</p>
                                     <span class="project-card__status project-card__status--active">Activo</span>
-                                    <div class="project-card__tech">
-                                        <span>React</span>
-                                        <span>Node.js</span>
-                                        <span>Arduino</span>
-                                    </div>
-                                    <div class="project-card__bars">
-                                        <div class="project-bar">
-                                            <span class="project-bar__label">JavaScript</span>
-                                            <div class="project-bar__track">
-                                                <div class="project-bar__fill" style="width: 60%"></div>
-                                            </div>
-                                            <span class="project-bar__percent">60%</span>
-                                        </div>
-                                        <div class="project-bar">
-                                            <span class="project-bar__label">TypeScript</span>
-                                            <div class="project-bar__track">
-                                                <div class="project-bar__fill" style="width: 25%"></div>
-                                            </div>
-                                            <span class="project-bar__percent">25%</span>
-                                        </div>
-                                        <div class="project-bar">
-                                            <span class="project-bar__label">C++</span>
-                                            <div class="project-bar__track">
-                                                <div class="project-bar__fill" style="width: 15%"></div>
-                                            </div>
-                                            <span class="project-bar__percent">15%</span>
-                                        </div>
-                                    </div>
+                                    <div class="project-card__tech"><span>React</span><span>Node.js</span><span>Arduino</span></div>
                                     <div class="project-card__actions">
                                         <a href="#" class="btn btn--small magnetic">Ver código</a>
                                         <a href="#" class="btn btn--small btn--primary magnetic">Ver demo</a>
@@ -494,38 +422,14 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Project 2 -->
                         <div class="swiper-slide">
                             <div class="project-card glass">
-                                <div class="project-card__image">
-                                    <i class="fas fa-rocket"></i>
-                                </div>
+                                <div class="project-card__image"><i class="fas fa-rocket"></i></div>
                                 <div class="project-card__content">
                                     <h3 class="project-card__title">QuantumSprint</h3>
-                                    <p class="project-card__description">Plataforma de gestión ágil de proyectos con metodología Scrum y Kanban</p>
+                                    <p class="project-card__description">Plataforma de gestión ágil de proyectos con Scrum y Kanban</p>
                                     <span class="project-card__status project-card__status--active">Activo</span>
-                                    <div class="project-card__tech">
-                                        <span>Vue.js</span>
-                                        <span>NestJS</span>
-                                        <span>PostgreSQL</span>
-                                    </div>
-                                    <div class="project-card__bars">
-                                        <div class="project-bar">
-                                            <span class="project-bar__label">TypeScript</span>
-                                            <div class="project-bar__track">
-                                                <div class="project-bar__fill" style="width: 70%"></div>
-                                            </div>
-                                            <span class="project-bar__percent">70%</span>
-                                        </div>
-                                        <div class="project-bar">
-                                            <span class="project-bar__label">Vue</span>
-                                            <div class="project-bar__track">
-                                                <div class="project-bar__fill" style="width: 30%"></div>
-                                            </div>
-                                            <span class="project-bar__percent">30%</span>
-                                        </div>
-                                    </div>
+                                    <div class="project-card__tech"><span>Vue.js</span><span>NestJS</span><span>PostgreSQL</span></div>
                                     <div class="project-card__actions">
                                         <a href="#" class="btn btn--small magnetic">Ver código</a>
                                         <a href="#" class="btn btn--small btn--primary magnetic">Ver demo</a>
@@ -533,84 +437,14 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Project 3 -->
                         <div class="swiper-slide">
                             <div class="project-card glass">
-                                <div class="project-card__image">
-                                    <i class="fas fa-robot"></i>
-                                </div>
+                                <div class="project-card__image"><i class="fas fa-robot"></i></div>
                                 <div class="project-card__content">
                                     <h3 class="project-card__title">VaresaAI</h3>
                                     <p class="project-card__description">Asistente virtual inteligente con procesamiento de lenguaje natural</p>
                                     <span class="project-card__status project-card__status--development">En Desarrollo</span>
-                                    <div class="project-card__tech">
-                                        <span>Python</span>
-                                        <span>Flask</span>
-                                        <span>TensorFlow</span>
-                                    </div>
-                                    <div class="project-card__bars">
-                                        <div class="project-bar">
-                                            <span class="project-bar__label">Python</span>
-                                            <div class="project-bar__track">
-                                                <div class="project-bar__fill" style="width: 80%"></div>
-                                            </div>
-                                            <span class="project-bar__percent">80%</span>
-                                        </div>
-                                        <div class="project-bar">
-                                            <span class="project-bar__label">JavaScript</span>
-                                            <div class="project-bar__track">
-                                                <div class="project-bar__fill" style="width: 20%"></div>
-                                            </div>
-                                            <span class="project-bar__percent">20%</span>
-                                        </div>
-                                    </div>
-                                    <div class="project-card__actions">
-                                        <a href="#" class="btn btn--small magnetic">Ver código</a>
-                                        <a href="#" class="btn btn--small btn--primary magnetic">Ver demo</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 4 -->
-                        <div class="swiper-slide">
-                            <div class="project-card glass">
-                                <div class="project-card__image">
-                                    <i class="fas fa-code"></i>
-                                </div>
-                                <div class="project-card__content">
-                                    <h3 class="project-card__title">ePortfolio</h3>
-                                    <p class="project-card__description">Portafolio profesional premium con animaciones avanzadas</p>
-                                    <span class="project-card__status project-card__status--active">Activo</span>
-                                    <div class="project-card__tech">
-                                        <span>HTML5</span>
-                                        <span>CSS3</span>
-                                        <span>JavaScript</span>
-                                    </div>
-                                    <div class="project-card__bars">
-                                        <div class="project-bar">
-                                            <span class="project-bar__label">JavaScript</span>
-                                            <div class="project-bar__track">
-                                                <div class="project-bar__fill" style="width: 50%"></div>
-                                            </div>
-                                            <span class="project-bar__percent">50%</span>
-                                        </div>
-                                        <div class="project-bar">
-                                            <span class="project-bar__label">CSS</span>
-                                            <div class="project-bar__track">
-                                                <div class="project-bar__fill" style="width: 35%"></div>
-                                            </div>
-                                            <span class="project-bar__percent">35%</span>
-                                        </div>
-                                        <div class="project-bar">
-                                            <span class="project-bar__label">HTML</span>
-                                            <div class="project-bar__track">
-                                                <div class="project-bar__fill" style="width: 15%"></div>
-                                            </div>
-                                            <span class="project-bar__percent">15%</span>
-                                        </div>
-                                    </div>
+                                    <div class="project-card__tech"><span>Python</span><span>Flask</span><span>TensorFlow</span></div>
                                     <div class="project-card__actions">
                                         <a href="#" class="btn btn--small magnetic">Ver código</a>
                                         <a href="#" class="btn btn--small btn--primary magnetic">Ver demo</a>
@@ -630,17 +464,15 @@
         <section class="publications section" id="publications" aria-label="Publicaciones">
             <div class="container">
                 <h2 class="section__title" data-animate="fade-up">
-                    <span class="section__title-accent">Publicaciones</span>
+                    <span class="section__title-accent" data-i18n="publications.title">Publicaciones</span>
                 </h2>
                 <div class="swiper publications-swiper" data-animate="fade-up">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="publication-card glass">
-                                <div class="publication-card__image">
-                                    <i class="fas fa-newspaper"></i>
-                                </div>
+                                <div class="publication-card__image"><i class="fas fa-newspaper"></i></div>
                                 <h3 class="publication-card__title">Arquitecturas Modernas en Node.js</h3>
-                                <p class="publication-card__desc">Guía completa sobre patrones de diseño y arquitectura limpia</p>
+                                <p class="publication-card__desc">Guía completa sobre patrones de diseño</p>
                                 <span class="publication-card__category">Desarrollo Web</span>
                                 <span class="publication-card__date">2024</span>
                                 <a href="#" class="btn btn--small magnetic" target="_blank" rel="noopener">Ver publicación</a>
@@ -648,9 +480,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="publication-card glass">
-                                <div class="publication-card__image">
-                                    <i class="fas fa-book"></i>
-                                </div>
+                                <div class="publication-card__image"><i class="fas fa-book"></i></div>
                                 <h3 class="publication-card__title">IoT con Arduino y ESP32</h3>
                                 <p class="publication-card__desc">Proyectos prácticos de Internet de las Cosas</p>
                                 <span class="publication-card__category">Hardware</span>
@@ -660,11 +490,9 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="publication-card glass">
-                                <div class="publication-card__image">
-                                    <i class="fas fa-file-alt"></i>
-                                </div>
+                                <div class="publication-card__image"><i class="fas fa-file-alt"></i></div>
                                 <h3 class="publication-card__title">Blockchain para Principiantes</h3>
-                                <p class="publication-card__desc">Introducción práctica a la tecnología blockchain</p>
+                                <p class="publication-card__desc">Introducción práctica a blockchain</p>
                                 <span class="publication-card__category">Blockchain</span>
                                 <span class="publication-card__date">2024</span>
                                 <a href="#" class="btn btn--small magnetic" target="_blank" rel="noopener">Ver publicación</a>
@@ -680,59 +508,41 @@
         <section class="testimonials section" id="testimonials" aria-label="Testimonios">
             <div class="container">
                 <h2 class="section__title" data-animate="fade-up">
-                    <span class="section__title-accent">Testimonios</span>
+                    <span class="section__title-accent" data-i18n="testimonials.title">Testimonios</span>
                 </h2>
                 <div class="swiper testimonials-swiper" data-animate="fade-up">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <div class="testimonial-card glass" data-testimonial="juan-ramon">
-                                <div class="testimonial-card__avatar">
-                                    <i class="fas fa-user-circle"></i>
-                                </div>
+                            <div class="testimonial-card glass" data-popup="testimonial" data-testimonial-name="Juan Ramón" data-testimonial-role="CEO TechSolutions">
+                                <div class="testimonial-card__avatar"><i class="fas fa-user-circle"></i></div>
                                 <h3 class="testimonial-card__name">Juan Ramón</h3>
                                 <p class="testimonial-card__role">CEO TechSolutions</p>
                                 <div class="testimonial-card__stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 </div>
                                 <p class="testimonial-card__text">"Excelente profesional, entregó el proyecto antes del plazo..."</p>
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="testimonial-card glass" data-testimonial="victor-rivera">
-                                <div class="testimonial-card__avatar">
-                                    <i class="fas fa-user-circle"></i>
-                                </div>
+                            <div class="testimonial-card glass" data-popup="testimonial" data-testimonial-name="Víctor Rivera" data-testimonial-role="Director de Innovación">
+                                <div class="testimonial-card__avatar"><i class="fas fa-user-circle"></i></div>
                                 <h3 class="testimonial-card__name">Víctor Rivera</h3>
                                 <p class="testimonial-card__role">Director de Innovación</p>
                                 <div class="testimonial-card__stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 </div>
                                 <p class="testimonial-card__text">"Calidad excepcional y gran atención al detalle..."</p>
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="testimonial-card glass" data-testimonial="juan-mejia">
-                                <div class="testimonial-card__avatar">
-                                    <i class="fas fa-user-circle"></i>
-                                </div>
+                            <div class="testimonial-card glass" data-popup="testimonial" data-testimonial-name="Juan Mejía" data-testimonial-role="CTO StartupHub">
+                                <div class="testimonial-card__avatar"><i class="fas fa-user-circle"></i></div>
                                 <h3 class="testimonial-card__name">Juan Mejía</h3>
                                 <p class="testimonial-card__role">CTO StartupHub</p>
                                 <div class="testimonial-card__stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 </div>
-                                <p class="testimonial-card__text">"Un desarrollador que realmente entiende las necesidades del negocio..."</p>
+                                <p class="testimonial-card__text">"Un desarrollador que entiende las necesidades del negocio..."</p>
                             </div>
                         </div>
                     </div>
@@ -745,9 +555,9 @@
         <section class="contact section" id="contact" aria-label="Contacto">
             <div class="container">
                 <h2 class="section__title" data-animate="fade-up">
-                    <span class="section__title-accent">Contacto</span>
+                    <span class="section__title-accent" data-i18n="contact.title">Contacto</span>
                 </h2>
-                <div class="contact__grid" data-animate="fade-up">
+                <div class="contact__grid">
                     <a href="mailto:salvador@andrade.com" class="contact-card glass magnetic">
                         <i class="fas fa-envelope contact-card__icon"></i>
                         <span class="contact-card__label">Correo</span>
@@ -776,27 +586,13 @@
         <section class="pre-footer" aria-label="Redes sociales">
             <div class="container">
                 <div class="pre-footer__social">
-                    <a href="#" class="pre-footer__social-link glass magnetic" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="#" class="pre-footer__social-link glass magnetic" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="#" class="pre-footer__social-link glass magnetic" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="pre-footer__social-link glass magnetic" aria-label="Facebook">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="#" class="pre-footer__social-link glass magnetic" aria-label="X">
-                        <i class="fab fa-x-twitter"></i>
-                    </a>
-                    <a href="#" class="pre-footer__social-link glass magnetic" aria-label="YouTube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="#" class="pre-footer__social-link glass magnetic" aria-label="Correo">
-                        <i class="fas fa-envelope"></i>
-                    </a>
+                    <a href="#" class="pre-footer__social-link glass magnetic" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="pre-footer__social-link glass magnetic" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" class="pre-footer__social-link glass magnetic" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="pre-footer__social-link glass magnetic" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="pre-footer__social-link glass magnetic" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="pre-footer__social-link glass magnetic" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="pre-footer__social-link glass magnetic" aria-label="Correo"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </section>
@@ -812,35 +608,30 @@
                             <circle cx="20" cy="23" r="2" fill="currentColor"/>
                         </svg>
                         <h3 class="footer__name">Salvador Andrade</h3>
-                        <p class="footer__motto">"El código es ser uno mismo"</p>
+                        <p class="footer__motto" data-i18n="hero.motto">"El código es ser uno mismo"</p>
                     </div>
                     <div class="footer__sitemap">
-                        <h4>Mapa del Sitio</h4>
+                        <h4 data-i18n="footer.sitemap">Mapa del Sitio</h4>
                         <ul>
-                            <li><a href="#hero">Inicio</a></li>
-                            <li><a href="#about">Sobre mí</a></li>
-                            <li><a href="#skills">Habilidades</a></li>
-                            <li><a href="#projects">Proyectos</a></li>
-                            <li><a href="#publications">Publicaciones</a></li>
-                            <li><a href="#contact">Contacto</a></li>
+                            <li><a href="#hero" data-i18n="nav.home">Inicio</a></li>
+                            <li><a href="#about" data-i18n="nav.about">Sobre mí</a></li>
+                            <li><a href="#skills" data-i18n="nav.skills">Habilidades</a></li>
+                            <li><a href="#projects" data-i18n="nav.projects">Proyectos</a></li>
+                            <li><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
                         </ul>
                     </div>
                     <div class="footer__tech">
-                        <h4>Tecnologías</h4>
+                        <h4 data-i18n="footer.technologies">Tecnologías</h4>
                         <ul>
-                            <li>React</li>
-                            <li>Node.js</li>
-                            <li>TypeScript</li>
-                            <li>Python</li>
-                            <li>Docker</li>
-                            <li>PostgreSQL</li>
+                            <li>React</li><li>Node.js</li><li>TypeScript</li>
+                            <li>Python</li><li>Docker</li><li>PostgreSQL</li>
                         </ul>
                     </div>
                 </div>
                 <div class="footer__divider"></div>
                 <div class="footer__bottom">
-                    <p class="footer__copyright">&copy; 2024 Salvador Andrade. Todos los derechos reservados.</p>
-                    <p class="footer__tagline">Hecho con pasión, creatividad y miles de líneas de código.</p>
+                    <p class="footer__copyright" data-i18n="footer.copyright">&copy; 2024 Salvador Andrade. Todos los derechos reservados.</p>
+                    <p class="footer__tagline" data-i18n="footer.tagline">Hecho con pasión, creatividad y miles de líneas de código.</p>
                 </div>
             </div>
         </footer>
@@ -850,209 +641,13 @@
     <div class="popup" id="popup" aria-hidden="true" role="dialog" aria-modal="true">
         <div class="popup__overlay" id="popupOverlay"></div>
         <div class="popup__content glass" id="popupContent">
-            <button class="popup__close" id="popupClose" aria-label="Cerrar">
-                <i class="fas fa-times"></i>
-            </button>
+            <button class="popup__close" id="popupClose" aria-label="Cerrar"><i class="fas fa-times"></i></button>
             <div class="popup__body" id="popupBody"></div>
         </div>
     </div>
 
-
-<!-- Watermark - En Desarrollo -->
-<div id="watermark" style="
-    position: fixed;
-    background: rgba(14, 14, 16, 0.8);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    color: #ffffff;
-    padding: 10px 22px;
-    border-radius: 50px;
-    font-size: 12px;
-    font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    font-weight: 500;
-    letter-spacing: 0.2px;
-    z-index: 9998;
-    pointer-events: none;
-    white-space: nowrap;
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.3),
-        0 1px 2px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    font-style: normal;
-    opacity: 0;
-    transform: translateY(10px);
-">
-    <span style="display: inline-flex; align-items: center; gap: 8px;">
-        <span style="
-            display: inline-flex;
-            width: 6px;
-            height: 6px;
-            background: #4F8CFF;
-            border-radius: 50%;
-            animation: watermark-pulse 2s ease-in-out infinite;
-            box-shadow: 0 0 8px rgba(79, 140, 255, 0.6);
-        "></span>
-        <span style="font-weight: 600; color: #ffffff;">En desarrollo</span>
-        <span style="
-            width: 3px;
-            height: 3px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 50%;
-            display: inline-block;
-        "></span>
-        <span style="font-weight: 400; color: #bdbdbd;">v 0.0.1-alpha</span>
-        <span style="
-            width: 3px;
-            height: 3px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 50%;
-            display: inline-block;
-        "></span>
-        <span style="font-weight: 400; color: #bdbdbd;">disculpe las molestias</span>
-        <span style="
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 16px;
-            height: 16px;
-            background: rgba(79, 140, 255, 0.15);
-            border-radius: 50%;
-            font-size: 10px;
-        ">🕊️</span>
-    </span>
-</div>
-
-<style>
-    @keyframes watermark-pulse {
-        0%, 100% { 
-            opacity: 1; 
-            box-shadow: 0 0 8px rgba(79, 140, 255, 0.6);
-        }
-        50% { 
-            opacity: 0.4; 
-            box-shadow: 0 0 16px rgba(79, 140, 255, 0.9);
-        }
-    }
-    
-    @keyframes watermark-fade-in {
-        from {
-            opacity: 0;
-            transform: translateY(10px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-</style>
-
-<script>
-    (function() {
-        var marca = document.getElementById('watermark');
-        var isTransitioning = false;
-        var currentX = 0;
-        var currentY = 0;
-        
-        // Initial fade-in after loader
-        function initWatermark() {
-            setTimeout(function() {
-                marca.style.animation = 'watermark-fade-in 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards';
-                posicionInicial();
-            }, 3500); // After loader animation (3s) + small delay
-        }
-        
-        function posicionInicial() {
-            var ancho = window.innerWidth - marca.offsetWidth - 24;
-            var alto = window.innerHeight - marca.offsetHeight - 24;
-            
-            // Position at bottom-right initially
-            currentX = ancho;
-            currentY = alto;
-            
-            marca.style.left = currentX + 'px';
-            marca.style.top = currentY + 'px';
-            marca.style.right = 'auto';
-            marca.style.bottom = 'auto';
-            marca.style.opacity = '1';
-            marca.style.transform = 'translateY(0)';
-        }
-        
-        function moverMarca() {
-            if (isTransitioning) return;
-            
-            var ancho = window.innerWidth - marca.offsetWidth - 24;
-            var alto = window.innerHeight - marca.offsetHeight - 24;
-            
-            var nuevaX, nuevaY;
-            var padding = 40; // Minimum distance from edges
-            
-            // Generate new position ensuring minimum movement
-            do {
-                nuevaX = Math.random() * (ancho - padding * 2) + padding;
-                nuevaY = Math.random() * (alto - padding * 2) + padding;
-            } while (
-                Math.abs(nuevaX - currentX) < 100 && 
-                Math.abs(nuevaY - currentY) < 100
-            );
-            
-            isTransitioning = true;
-            
-            // Fade out slightly
-            marca.style.opacity = '0.6';
-            marca.style.transform = 'scale(0.98)';
-            
-            setTimeout(function() {
-                currentX = nuevaX;
-                currentY = nuevaY;
-                
-                marca.style.left = currentX + 'px';
-                marca.style.top = currentY + 'px';
-                marca.style.right = 'auto';
-                marca.style.bottom = 'auto';
-                
-                // Fade back in
-                requestAnimationFrame(function() {
-                    marca.style.opacity = '1';
-                    marca.style.transform = 'scale(1)';
-                });
-                
-                setTimeout(function() {
-                    isTransitioning = false;
-                }, 800);
-            }, 200);
-        }
-        
-        // Move watermark every 5 seconds for more relaxed feel
-        setInterval(moverMarca, 5000);
-        
-        // Initialize
-        window.addEventListener('load', initWatermark);
-        
-        // Handle resize
-        var resizeTimeout;
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(function() {
-                posicionInicial();
-            }, 250);
-        });
-        
-        // Pause animation when user is interacting
-        var idleTimeout;
-        document.addEventListener('mousemove', function() {
-            clearTimeout(idleTimeout);
-            marca.style.opacity = '0.5';
-            
-            idleTimeout = setTimeout(function() {
-                marca.style.opacity = '1';
-            }, 2000);
-        });
-    })();
-</script>
-
     <!-- Scripts -->
+    <script src="/assets/js/i18n.js"></script>
     <script src="/assets/js/main.js"></script>
     <script src="/assets/js/loader.js"></script>
     <script src="/assets/js/animations.js"></script>

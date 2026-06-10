@@ -1,167 +1,34 @@
 /**
- * Carousel Module
- * Initializes all Swiper carousels with premium configurations
+ * Carousels Module
  */
 class Carousels {
-    constructor() {
-        this.init();
-    }
+    constructor() { this.init(); }
 
     init() {
-        this.initRecognitionsCarousel();
-        this.initSoftSkillsCarousel();
-        this.initProjectsCarousel();
-        this.initPublicationsCarousel();
-        this.initTestimonialsCarousel();
-    }
+        const swiperConfig = (selector, slidesPerView = 1, spaceBetween = 20, breakpoints = {}, autoplay = false) => {
+            const el = document.querySelector(selector);
+            if (!el) return;
+            const config = {
+                slidesPerView, spaceBetween, loop: true,
+                pagination: { el: `${selector} .swiper-pagination`, clickable: true },
+                speed: 600, grabCursor: true,
+            };
+            if (breakpoints && Object.keys(breakpoints).length) config.breakpoints = breakpoints;
+            if (autoplay) config.autoplay = { delay: autoplay, disableOnInteraction: false };
+            const navNext = el.querySelector('.swiper-button-next');
+            const navPrev = el.querySelector('.swiper-button-prev');
+            if (navNext && navPrev) {
+                config.navigation = { nextEl: navNext, prevEl: navPrev };
+            }
+            new Swiper(el, config);
+        };
 
-    /**
-     * Recognitions carousel
-     */
-    initRecognitionsCarousel() {
-        new Swiper('.recognitions-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 24,
-            loop: true,
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.recognitions-swiper .swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.recognitions-swiper .swiper-button-next',
-                prevEl: '.recognitions-swiper .swiper-button-prev',
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 2,
-                },
-                1024: {
-                    slidesPerView: 3,
-                },
-            },
-            speed: 600,
-            grabCursor: true,
-        });
-    }
-
-    /**
-     * Soft skills carousel
-     */
-    initSoftSkillsCarousel() {
-        new Swiper('.soft-skills-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            loop: true,
-            autoplay: {
-                delay: 3500,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.soft-skills-swiper .swiper-pagination',
-                clickable: true,
-            },
-            breakpoints: {
-                480: {
-                    slidesPerView: 2,
-                },
-                768: {
-                    slidesPerView: 3,
-                },
-                1024: {
-                    slidesPerView: 4,
-                },
-            },
-            speed: 500,
-            grabCursor: true,
-        });
-    }
-
-    /**
-     * Projects carousel
-     */
-    initProjectsCarousel() {
-        new Swiper('.projects-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            pagination: {
-                el: '.projects-swiper .swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.projects-swiper .swiper-button-next',
-                prevEl: '.projects-swiper .swiper-button-prev',
-            },
-            speed: 700,
-            grabCursor: true,
-            effect: 'slide',
-        });
-    }
-
-    /**
-     * Publications carousel
-     */
-    initPublicationsCarousel() {
-        new Swiper('.publications-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 24,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.publications-swiper .swiper-pagination',
-                clickable: true,
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 2,
-                },
-                1024: {
-                    slidesPerView: 3,
-                },
-            },
-            speed: 600,
-            grabCursor: true,
-        });
-    }
-
-    /**
-     * Testimonials carousel
-     */
-    initTestimonialsCarousel() {
-        new Swiper('.testimonials-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 24,
-            loop: true,
-            autoplay: {
-                delay: 4500,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.testimonials-swiper .swiper-pagination',
-                clickable: true,
-            },
-            breakpoints: {
-                768: {
-                    slidesPerView: 2,
-                },
-                1024: {
-                    slidesPerView: 3,
-                },
-            },
-            speed: 600,
-            grabCursor: true,
-        });
+        swiperConfig('.recognitions-swiper', 1, 24, { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }, 4000);
+        swiperConfig('.soft-skills-swiper', 1, 20, { 480: { slidesPerView: 2 }, 768: { slidesPerView: 3 }, 1024: { slidesPerView: 4 } }, 3500);
+        swiperConfig('.projects-swiper', 1, 30, {}, false);
+        swiperConfig('.publications-swiper', 1, 24, { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }, 5000);
+        swiperConfig('.testimonials-swiper', 1, 24, { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }, 4500);
     }
 }
 
-// Initialize carousels
-document.addEventListener('DOMContentLoaded', () => {
-    new Carousels();
-});
+document.addEventListener('DOMContentLoaded', () => { new Carousels(); });
