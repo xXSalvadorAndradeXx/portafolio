@@ -378,7 +378,6 @@ img { max-width: 100%; height: auto; display: block; }
 .loader {
     position: fixed;
     inset: 0;
-    background: var(--bg-primary);
     z-index: var(--z-loader);
     display: flex;
     align-items: center;
@@ -386,6 +385,17 @@ img { max-width: 100%; height: auto; display: block; }
     opacity: 1;
     visibility: visible;
     transition: opacity 0.6s ease, visibility 0.6s ease;
+    overflow: hidden;
+}
+
+.loader::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("/assets/img/cup.jpg") center center / cover no-repeat;
+    filter: blur(5px);
+    transform: scale(1.1); /* Evita bordes blancos por el blur */
+    z-index: -1;
 }
 
 .loader--hidden {
