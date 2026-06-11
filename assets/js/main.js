@@ -29,6 +29,7 @@ class App {
         this.initLanguageToggle();
         this.initLazyLoading();
         this.initActiveNavLink();
+        this.initMigrationPopup();
     }
 
     initCursor() {
@@ -120,56 +121,49 @@ class App {
         animate();
     }
 
-initHeader() {
-    const header = document.getElementById('header');
-    if (!header) return;
-    
-    // El header siempre permanece visible y sticky
-    // Solo agregamos efecto de sombra al hacer scroll
-    
-    let ticking = false;
-    const updateHeaderScroll = () => {
-        const currentScroll = window.scrollY;
-        const theme = document.documentElement.getAttribute('data-theme');
-        
-        if (currentScroll > 50) {
-            if (theme === 'light') {
-                header.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)';
-                header.style.background = 'rgba(255, 255, 255, 0.9)';
+    initHeader() {
+        const header = document.getElementById('header');
+        if (!header) return;
+        let ticking = false;
+        const updateHeaderScroll = () => {
+            const currentScroll = window.scrollY;
+            const theme = document.documentElement.getAttribute('data-theme');
+            if (currentScroll > 50) {
+                if (theme === 'light') {
+                    header.style.boxShadow = '0 4px 24px rgba(0, 0, 0, 0.08)';
+                    header.style.background = 'rgba(255, 255, 255, 0.9)';
+                    header.style.borderColor = 'rgba(0, 0, 0, 0.08)';
+                } else {
+                    header.style.boxShadow = '0 4px 24px rgba(0, 0, 0, 0.5)';
+                    header.style.background = 'rgba(14, 14, 16, 0.85)';
+                    header.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                }
             } else {
-                header.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.4)';
-                header.style.background = 'rgba(14, 14, 16, 0.9)';
+                if (theme === 'light') {
+                    header.style.boxShadow = '0 2px 12px rgba(0, 0, 0, 0.04)';
+                    header.style.background = 'rgba(255, 255, 255, 0.75)';
+                    header.style.borderColor = 'rgba(0, 0, 0, 0.06)';
+                } else {
+                    header.style.boxShadow = 'none';
+                    header.style.background = 'rgba(14, 14, 16, 0.7)';
+                    header.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+                }
             }
-        } else {
-            if (theme === 'light') {
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.06)';
-                header.style.background = 'rgba(255, 255, 255, 0.75)';
-            } else {
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
-                header.style.background = 'rgba(14, 14, 16, 0.75)';
+            ticking = false;
+        };
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateHeaderScroll);
+                ticking = true;
             }
-        }
-        ticking = false;
-    };
-    
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            requestAnimationFrame(updateHeaderScroll);
-            ticking = true;
-        }
-    }, { passive: true });
-    
-    // Observar cambios de tema para actualizar el header
-    const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            if (mutation.attributeName === 'data-theme') {
-                updateHeaderScroll();
-            }
+        }, { passive: true });
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'data-theme') updateHeaderScroll();
+            });
         });
-    });
-    
-    observer.observe(document.documentElement, { attributes: true });
-}
+        observer.observe(document.documentElement, { attributes: true });
+    }
 
     initMobileMenu() {
         const menuBtn = document.getElementById('menuBtn');
@@ -222,7 +216,6 @@ initHeader() {
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && popup.classList.contains('popup--active')) closePopup();
         });
-        // Diploma popups
         document.querySelectorAll('[data-popup="diploma"]').forEach(card => {
             card.addEventListener('click', () => {
                 const title = card.getAttribute('data-popup-title');
@@ -231,7 +224,6 @@ initHeader() {
                 openPopup(`<h3>${title}</h3><p><strong>Institución:</strong> ${institution}</p><p><strong>Fecha:</strong> ${date}</p><p style="margin-top:16px">Certificación oficial que acredita competencias avanzadas en el área correspondiente.</p>`);
             });
         });
-        // Soft skill popups
         document.querySelectorAll('[data-popup="softskill"]').forEach(card => {
             card.addEventListener('click', () => {
                 const title = card.getAttribute('data-softskill-title');
@@ -239,13 +231,12 @@ initHeader() {
                 openPopup(`<h3>${title}</h3><p>${desc}</p><p style="margin-top:16px"><strong>Aplicación profesional:</strong> Esta habilidad se aplica diariamente en entornos colaborativos.</p><p style="margin-top:12px"><strong>Beneficio:</strong> Mejora la productividad y satisfacción en proyectos.</p>`);
             });
         });
-        // Testimonial popups
         document.querySelectorAll('[data-popup="testimonial"]').forEach(card => {
             card.addEventListener('click', () => {
                 const name = card.getAttribute('data-testimonial-name');
                 const role = card.getAttribute('data-testimonial-role');
                 const text = card.querySelector('.testimonial-card__text').textContent;
-                openPopup(`<div style="text-align:center;margin-bottom:16px"><i class="fas fa-user-circle" style="font-size:4rem;opacity:0.4"></i></div><h3 style="text-align:center">${name}</h3><p style="text-align:center;color:var(--color-accent)">${role}</p><div style="text-align:center;margin:12px 0;color:#fbbf24"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p style="font-size:1.05rem;line-height:1.8;margin-top:16px">${text}</p><p style="margin-top:16px;color:var(--color-secondary)">Trabajar con Salvador fue una experiencia excepcional. Su profesionalismo y atención al detalle superaron nuestras expectativas.</p>`);
+                openPopup(`<div style="text-align:center;margin-bottom:16px"><i class="fas fa-user-circle" style="font-size:4rem;opacity:0.4;color:var(--color-secondary)"></i></div><h3 style="text-align:center">${name}</h3><p style="text-align:center;color:var(--color-accent)">${role}</p><div style="text-align:center;margin:12px 0;color:#fbbf24"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p style="font-size:1.05rem;line-height:1.8;margin-top:16px">${text}</p><p style="margin-top:16px;color:var(--color-secondary)">Trabajar con Salvador fue una experiencia excepcional. Su profesionalismo y atención al detalle superaron nuestras expectativas.</p>`);
             });
         });
     }
@@ -397,29 +388,93 @@ initHeader() {
     initActiveNavLink() {
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.header__link');
-        
-        const observerOptions = {
-            root: null,
-            rootMargin: '-20% 0px -70% 0px',
-            threshold: 0
-        };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const id = entry.target.getAttribute('id');
                     navLinks.forEach(link => {
                         link.classList.remove('active');
-                        if (link.getAttribute('href') === `#${id}`) {
-                            link.classList.add('active');
-                        }
+                        if (link.getAttribute('href') === `#${id}`) link.classList.add('active');
                     });
                 }
             });
-        }, observerOptions);
-
+        }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
         sections.forEach(section => observer.observe(section));
     }
+
+    initMigrationPopup() {
+    const migrationPopup = document.getElementById('popupMigration');
+    const closeBtn = document.getElementById('popupMigrationClose');
+    const acceptBtn = document.getElementById('popupMigrationAccept');
+    const overlay = migrationPopup?.querySelector('.popup-migration__overlay');
+    
+    if (!migrationPopup) return;
+    
+    // SIEMPRE mostrar
+    const closeMigrationPopup = () => {
+        // Limpiar estilos inline primero
+        migrationPopup.style.opacity = '';
+        migrationPopup.style.visibility = '';
+        migrationPopup.style.pointerEvents = '';
+        // Luego agregar la clase
+        migrationPopup.classList.add('popup--hidden');
+        document.body.classList.remove('no-scroll');
+    };
+    
+    const showMigrationPopup = () => {
+        // Verificar que no haya otro popup abierto
+        const otherPopup = document.getElementById('popup');
+        if (otherPopup && otherPopup.classList.contains('popup--active')) {
+            setTimeout(showMigrationPopup, 500);
+            return;
+        }
+        // Remover la clase hidden y limpiar estilos inline residuales
+        migrationPopup.classList.remove('popup--hidden');
+        migrationPopup.style.opacity = '';
+        migrationPopup.style.visibility = '';
+        migrationPopup.style.pointerEvents = '';
+        document.body.classList.add('no-scroll');
+    };
+    
+    // Mostrar después del loader
+    const loader = document.getElementById('loader');
+    if (loader) {
+        if (loader.classList.contains('loader--hidden')) {
+            setTimeout(showMigrationPopup, 500);
+        } else {
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.target.classList.contains('loader--hidden')) {
+                        setTimeout(showMigrationPopup, 500);
+                        observer.disconnect();
+                    }
+                });
+            });
+            observer.observe(loader, { attributes: true, attributeFilter: ['class'] });
+        }
+    } else {
+        setTimeout(showMigrationPopup, 800);
+    }
+    
+    // Event listeners para cerrar
+    closeBtn?.addEventListener('click', closeMigrationPopup);
+    acceptBtn?.addEventListener('click', closeMigrationPopup);
+    overlay?.addEventListener('click', closeMigrationPopup);
+    
+    // Cerrar con ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !migrationPopup.classList.contains('popup--hidden')) {
+            closeMigrationPopup();
+        }
+    });
+    
+    // Cerrar al hacer clic en enlaces del popup
+    migrationPopup.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            setTimeout(closeMigrationPopup, 300);
+        });
+    });
+}
 }
 
 const app = new App();
