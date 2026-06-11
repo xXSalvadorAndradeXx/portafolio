@@ -475,6 +475,103 @@ class App {
         });
     });
 }
+
+
+
+initWatermark() {
+    const watermark = document.getElementById('watermark');
+    if (!watermark) return;
+    
+    const positions = [
+        'watermark--bottom-right',
+        'watermark--bottom-left',
+        'watermark--top-right',
+        'watermark--top-left'
+    ];
+    
+    let currentPosition = 0;
+    let moveTimeout;
+    
+    const moveWatermark = () => {
+        // Remover clases de posición anteriores
+        positions.forEach(pos => watermark.classList.remove(pos));
+        
+        // Agregar clase de animación
+        watermark.classList.add('watermark--moving');
+        
+        // Obtener dimensiones
+        const watermarkWidth = watermark.offsetWidth;
+        const watermarkHeight = watermark.offsetHeight;
+        const maxX = window.innerWidth - watermarkWidth - 30;
+        const maxY = window.innerHeight - watermarkHeight - 100;
+        
+        // Calcular posición aleatoria con márgenes
+        const randomX = Math.max(20, Math.random() * maxX);
+        const randomY = Math.max(90, Math.random() * maxY);
+        
+        // Aplicar posición
+        watermark.style.left = randomX + 'px';
+        watermark.style.top = randomY + 'px';
+        watermark.style.right = 'auto';
+        watermark.style.bottom = 'auto';
+        
+        // Remover clase de animación después de completar
+        clearTimeout(moveTimeout);
+        moveTimeout = setTimeout(() => {
+            watermark.classList.remove('watermark--moving');
+        }, 1500);
+        
+        // Programar siguiente movimiento
+        setTimeout(moveWatermark, 5000 + Math.random() * 2000);
+    };
+    
+    // Primer movimiento después de la entrada
+    setTimeout(moveWatermark, 4000);
+    
+    // Recalcular en resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            const watermarkWidth = watermark.offsetWidth;
+            const watermarkHeight = watermark.offsetHeight;
+            const maxX = window.innerWidth - watermarkWidth - 30;
+            const maxY = window.innerHeight - watermarkHeight - 100;
+            
+            const currentLeft = parseFloat(watermark.style.left) || 0;
+            const currentTop = parseFloat(watermark.style.top) || 0;
+            
+            watermark.style.left = Math.min(currentLeft, maxX) + 'px';
+            watermark.style.top = Math.min(currentTop, maxY) + 'px';
+        }, 200);
+    });
+    
+    // Pausar movimiento cuando hay un popup abierto
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.target === document.body && mutation.attributeName === 'class') {
+                if (document.body.classList.contains('no-scroll')) {
+                    watermark.style.opacity = '0.3';
+                    watermark.style.transition = 'opacity 0.3s ease';
+                } else {
+                    watermark.style.opacity = '1';
+                }
+            }
+        });
+    });
+    
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+}
+
+
+
+
+
+
+
+
+
+
 }
 
 const app = new App();

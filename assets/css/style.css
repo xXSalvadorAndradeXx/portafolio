@@ -1308,3 +1308,211 @@ img { max-width: 100%; height: auto; display: block; }
     background: linear-gradient(90deg, var(--color-accent), var(--color-accent-hover));
     border-radius: var(--radius-full);
 }
+
+
+/* ============================================
+   Marca de Agua Premium
+   ============================================ */
+.watermark {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9998;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, left, top, bottom, right;
+    animation: watermarkEntry 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes watermarkEntry {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.watermark__content {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(14, 14, 16, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.85);
+    padding: 10px 20px;
+    border-radius: var(--radius-full);
+    font-family: var(--font-primary);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 
+                0 2px 8px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+}
+
+[data-theme="light"] .watermark__content {
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    color: rgba(29, 29, 31, 0.85);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 
+                0 2px 8px rgba(0, 0, 0, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.watermark__glow {
+    position: absolute;
+    inset: -1px;
+    border-radius: var(--radius-full);
+    background: linear-gradient(135deg, 
+        rgba(79, 140, 255, 0.15), 
+        transparent 40%, 
+        transparent 60%, 
+        rgba(79, 140, 255, 0.1));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.watermark:hover .watermark__glow {
+    opacity: 1;
+}
+
+.watermark__icon {
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    animation: watermarkIconPulse 3s ease-in-out infinite;
+}
+
+.watermark__icon--right {
+    animation-delay: 0.5s;
+}
+
+@keyframes watermarkIconPulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+}
+
+.watermark__text {
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.watermark__dot {
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+[data-theme="light"] .watermark__dot {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.watermark__version {
+    font-weight: 400;
+    opacity: 0.65;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.watermark__message {
+    font-weight: 400;
+    opacity: 0.65;
+    font-style: italic;
+    font-size: 0.78rem;
+}
+
+/* Animación de movimiento */
+.watermark--moving {
+    transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Posiciones alternativas */
+.watermark--top-left {
+    top: 100px;
+    left: 24px;
+    right: auto;
+    bottom: auto;
+}
+
+.watermark--top-right {
+    top: 100px;
+    right: 24px;
+    left: auto;
+    bottom: auto;
+}
+
+.watermark--bottom-left {
+    bottom: 24px;
+    left: 24px;
+    right: auto;
+    top: auto;
+}
+
+.watermark--bottom-right {
+    bottom: 24px;
+    right: 24px;
+    left: auto;
+    top: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .watermark__content {
+        padding: 8px 16px;
+        font-size: 0.72rem;
+        gap: 7px;
+    }
+    
+    .watermark__icon {
+        font-size: 0.8rem;
+    }
+    
+    .watermark__version {
+        font-size: 0.7rem;
+    }
+    
+    .watermark__message {
+        font-size: 0.7rem;
+    }
+    
+    .watermark__dot {
+        width: 3px;
+        height: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .watermark {
+        bottom: 16px;
+        right: 16px;
+    }
+    
+    .watermark__content {
+        padding: 7px 14px;
+        font-size: 0.68rem;
+        gap: 6px;
+        border-radius: var(--radius-lg);
+    }
+    
+    .watermark__message {
+        display: none;
+    }
+    
+    .watermark__dot:last-of-type {
+        display: none;
+    }
+}
